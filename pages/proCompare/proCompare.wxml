@@ -1,0 +1,55 @@
+<view class="page">
+  <view class="searchbar">
+    <view class="searchbar__box">
+      <text class="searchbar__icon">🔍</text>
+      <input class="searchbar__input" value="{{keyword}}" bindinput="onInput" confirm-type="search"
+             bindconfirm="doSearch" placeholder="搜专业加入对比，如 计算机" placeholder-style="color:#bbb" />
+    </view>
+    <view class="searchbar__btn" bindtap="doSearch">搜索</view>
+  </view>
+
+  <!-- 已选对比项 -->
+  <view wx:if="{{selected.length}}" class="sel">
+    <view class="sel__hd">已选 {{selected.length}}/3</view>
+    <view class="sel__chips">
+      <view wx:for="{{selected}}" wx:key="name" class="sel__chip" data-name="{{item.name}}" bindtap="removeSel">
+        {{item.name}} ✕
+      </view>
+    </view>
+  </view>
+
+  <!-- 对比表 -->
+  <view wx:if="{{rows.length}}" class="cmp">
+    <view class="cmp__row cmp__row--head">
+      <view class="cmp__label"></view>
+      <view wx:for="{{selected}}" wx:key="name" class="cmp__cell cmp__cell--head">{{item.name}}</view>
+    </view>
+    <view wx:for="{{rows}}" wx:key="label" class="cmp__row">
+      <view class="cmp__label">{{item.label}}</view>
+      <view wx:for="{{item.vals}}" wx:for-item="v" wx:for-index="vi" wx:key="vi" class="cmp__cell">{{v}}</view>
+    </view>
+  </view>
+  <view wx:elif="{{selected.length===1}}" class="tip">再加 1 个专业即可对比</view>
+
+  <!-- 搜索结果 -->
+  <view wx:if="{{loading}}" class="tip">查询中…</view>
+  <view wx:elif="{{searched && !results.length}}" class="tip">没找到「{{keyword}}」相关专业</view>
+  <empty-state wx:elif="{{!searched && !selected.length}}" img="/assets/illus/mascot.png"
+               title="搜专业，横向对比" desc="搜专业，选 2–3 个对比就业率 · 薪酬" />
+
+  <view wx:if="{{results.length}}" class="list">
+    <view class="list__hd">搜索结果（点＋加入对比）</view>
+    <view wx:for="{{results}}" wx:key="name" class="card mj">
+      <view class="mj__main">
+        <view class="mj__name">{{item.name}}</view>
+        <view class="mj__meta">
+          <text wx:if="{{item.category}}">{{item.category}}</text>
+          <text wx:if="{{item.emp}}"> · 就业 {{item.emp}}%</text>
+          <text wx:if="{{item.salary}}"> · {{item.salary}}元</text>
+        </view>
+      </view>
+      <view wx:if="{{item.inSel}}" class="mj__add mj__add--on">已选</view>
+      <view wx:else class="mj__add" data-idx="{{index}}" catchtap="add">＋对比</view>
+    </view>
+  </view>
+</view>

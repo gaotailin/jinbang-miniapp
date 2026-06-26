@@ -1,0 +1,67 @@
+<view class="page">
+
+  <view class="hero">
+    <view class="hero__title">智能测评</view>
+    <view class="hero__sub">兴趣 · 分数 — 生成你的升学报告</view>
+    <view class="steps">
+      <view class="steps__item {{step>=1?'on':''}}">1 基础</view>
+      <view class="steps__line"></view>
+      <view class="steps__item {{step>=2?'on':''}}">2 兴趣</view>
+    </view>
+  </view>
+
+  <block wx:if="{{step===1}}">
+    <view class="card">
+      <view class="sec-title">考生信息</view>
+      <view class="field">
+        <text class="field__label">📍 省份</text>
+        <picker mode="selector" range="{{provinces}}" bindchange="onProvince">
+          <view class="field__value">{{province}} ›</view>
+        </picker>
+      </view>
+      <view class="divider"></view>
+      <view class="field__label mb-16">选科类别</view>
+      <view class="flex gap-20 mb-8">
+        <view class="opt {{examType==='物理类'?'opt--on':''}}" data-v="物理类" bindtap="chooseExam">
+          <text class="opt__icon">🔬</text><view class="opt__txt">物理类</view>
+        </view>
+        <view class="opt {{examType==='历史类'?'opt--on':''}}" data-v="历史类" bindtap="chooseExam">
+          <text class="opt__icon">📚</text><view class="opt__txt">历史类</view>
+        </view>
+      </view>
+    </view>
+
+    <view class="card">
+      <view class="sec-title">高考分数</view>
+      <input class="score-input" type="number" value="{{score}}" bindinput="onScore"
+             placeholder="输入分数" placeholder-style="color:#ccc;font-size:40rpx;" />
+    </view>
+
+    <view class="footer">
+      <button class="btn btn--primary btn--lg btn--block" data-step="2" bindtap="goStep">下一步：兴趣测评</button>
+    </view>
+  </block>
+
+  <block wx:if="{{step===2}}">
+    <view class="card">
+      <view class="flex justify-between items-center">
+        <view class="sec-title" style="margin:0;">霍兰德职业兴趣</view>
+        <text class="text-sm text-muted">已答 {{answeredCount}}/{{questions.length}}</text>
+      </view>
+      <view class="text-sm text-muted mt-8">凭直觉选择，未作答视为「不符合」。</view>
+    </view>
+    <view wx:if="{{loadingQ}}" class="card text-center text-muted">题库加载中…</view>
+    <view wx:for="{{questions}}" wx:key="id" class="card q">
+      <view class="q__title">{{index+1}}. {{item.question}}</view>
+      <view class="flex gap-16 mt-16">
+        <view class="q__opt {{answers[item.id]==='A'?'q__opt--yes':''}}" data-qid="{{item.id}}" data-choice="A" bindtap="answer">{{item.option_a}}</view>
+        <view class="q__opt {{answers[item.id]==='B'?'q__opt--no':''}}" data-qid="{{item.id}}" data-choice="B" bindtap="answer">{{item.option_b}}</view>
+      </view>
+    </view>
+    <view class="footer footer--row">
+      <button class="btn btn--ghost btn--lg" data-step="1" bindtap="goStep">上一步</button>
+      <button class="btn btn--gold btn--lg flex-1" loading="{{submitting}}" bindtap="submit">🎯 生成升学报告</button>
+    </view>
+  </block>
+
+</view>

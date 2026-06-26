@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "icon": "../../components/icon/icon"
+  },
+  "navigationBarTitleText": "查大学",
+  "enablePullDownRefresh": true
+}

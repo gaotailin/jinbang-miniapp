@@ -1,0 +1,72 @@
+<view class="page">
+
+  <!-- 无成绩 -->
+  <empty-state wx:if="{{!hasData}}" img="/assets/illus/mascot.png" title="先设置你的高考成绩"
+    desc="一键填报需要你的分数来生成冲稳保方案" action="去设置成绩" bind:action="goPick" />
+
+  <block wx:else>
+    <!-- 头部 -->
+    <view class="hero">
+      <view class="hero__t">一键智能填报</view>
+      <view class="hero__s">按意向自动生成「冲 / 稳 / 保」方案，一键加入选校单</view>
+      <view class="hero__score">{{meta.province}} · {{meta.subject}} · {{meta.score}}分 · 本科批</view>
+    </view>
+
+    <!-- 院校层次偏好 -->
+    <view class="card">
+      <view class="card__hd">院校层次偏好</view>
+      <view class="chips">
+        <view wx:for="{{levels}}" wx:key="k" class="chip {{levelPref===item.k?'chip--on':''}}"
+              hover-class="chip--press" hover-stay-time="80" data-k="{{item.k}}" bindtap="setLevel">{{item.label}}</view>
+      </view>
+    </view>
+
+    <!-- 冲稳保数量 -->
+    <view class="card">
+      <view class="card__hd">冲稳保数量（每档 0–12）</view>
+      <view class="step" wx:for="{{[{b:'chong',n:'冲一冲',c:'chong'},{b:'wen',n:'稳一稳',c:'wen'},{b:'bao',n:'保一保',c:'bao'}]}}" wx:key="b">
+        <view class="step__label step__label--{{item.c}}">{{item.n}}</view>
+        <view class="step__ctrl">
+          <view class="step__btn" hover-class="step__btn--press" hover-stay-time="80" data-band="{{item.b}}" data-d="-1" bindtap="step">－</view>
+          <text class="step__num">{{item.b==='chong'?chong:(item.b==='wen'?wen:bao)}}</text>
+          <view class="step__btn" hover-class="step__btn--press" hover-stay-time="80" data-band="{{item.b}}" data-d="1" bindtap="step">＋</view>
+        </view>
+      </view>
+    </view>
+
+    <button class="btn-main" loading="{{loading}}" bindtap="generate">一键生成方案</button>
+
+    <!-- 生成结果 -->
+    <block wx:if="{{done}}">
+      <view class="result-tip">共生成 <text class="hl">{{total}}</text> 所，已加入选校单</view>
+
+      <view class="grp" wx:if="{{result.chong.length}}">
+        <view class="grp__hd grp__hd--chong">冲一冲 · {{result.chong.length}}所</view>
+        <view wx:for="{{result.chong}}" wx:key="school" class="ritem">
+          <view class="ritem__name">{{item.school}}<text wx:if="{{item.level}}" class="ritem__lv">{{item.level}}</text></view>
+          <view class="ritem__meta">{{item.major}} · {{item.minScore}}分 / 位次{{item.minRank}}</view>
+        </view>
+      </view>
+
+      <view class="grp" wx:if="{{result.wen.length}}">
+        <view class="grp__hd grp__hd--wen">稳一稳 · {{result.wen.length}}所</view>
+        <view wx:for="{{result.wen}}" wx:key="school" class="ritem">
+          <view class="ritem__name">{{item.school}}<text wx:if="{{item.level}}" class="ritem__lv">{{item.level}}</text></view>
+          <view class="ritem__meta">{{item.major}} · {{item.minScore}}分 / 位次{{item.minRank}}</view>
+        </view>
+      </view>
+
+      <view class="grp" wx:if="{{result.bao.length}}">
+        <view class="grp__hd grp__hd--bao">保一保 · {{result.bao.length}}所</view>
+        <view wx:for="{{result.bao}}" wx:key="school" class="ritem">
+          <view class="ritem__name">{{item.school}}<text wx:if="{{item.level}}" class="ritem__lv">{{item.level}}</text></view>
+          <view class="ritem__meta">{{item.major}} · {{item.minScore}}分 / 位次{{item.minRank}}</view>
+        </view>
+      </view>
+
+      <button class="btn-ghost" bindtap="goVolunteer">去选校单查看方案 ›</button>
+    </block>
+
+    <view class="foot">方案基于位次冲稳保估算 · 仅供参考，请结合招生章程</view>
+  </block>
+</view>

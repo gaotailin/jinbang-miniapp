@@ -1,0 +1,74 @@
+<view class="page">
+
+  <view class="hero">
+    <view class="hero__t">艺术类综合分测算</view>
+    <view class="hero__s">按官方折算公式算投档分，并对照控制线</view>
+  </view>
+
+  <view class="form">
+    <view class="row">
+      <text class="row__lb">省份</text>
+      <picker class="row__pick" mode="selector" range="{{provNames}}" value="{{provIdx}}" bindchange="onProv">
+        <view class="pick__v">{{provNames[provIdx]}} ›</view>
+      </picker>
+    </view>
+    <view class="row">
+      <text class="row__lb">类别</text>
+      <picker class="row__pick" mode="selector" range="{{catNames}}" value="{{catIdx}}" bindchange="onCat">
+        <view class="pick__v">{{catNames[catIdx]}} ›</view>
+      </picker>
+    </view>
+    <view wx:if="{{multiForm}}" class="row">
+      <text class="row__lb">折算办法</text>
+      <picker class="row__pick" mode="selector" range="{{formNames}}" value="{{formIdx}}" bindchange="onForm">
+        <view class="pick__v">{{formNames[formIdx]}} ›</view>
+      </picker>
+    </view>
+    <view class="row">
+      <text class="row__lb">高考文化分</text>
+      <input class="row__in" type="digit" value="{{culture}}" bindinput="onCulture" placeholder="如 480" placeholder-style="color:#bbb" />
+    </view>
+    <view class="row">
+      <text class="row__lb">专业统考分</text>
+      <input class="row__in" type="digit" value="{{major}}" bindinput="onMajor" placeholder="如 230" placeholder-style="color:#bbb" />
+    </view>
+    <view class="calc-btn" hover-class="calc-btn--press" hover-stay-time="80" bindtap="calc">测算综合分</view>
+  </view>
+
+  <view wx:if="{{multiForm}}" class="warn-form">⚠️ 该省综合分由招生院校在多种办法中各选其一，请按目标院校简章选「折算办法」</view>
+
+  <view wx:if="{{result}}" class="res">
+    <view class="res__lb">综合分（投档分）· {{result.formula.name}}</view>
+    <view class="res__num">{{result.comp}}</view>
+    <view class="res__line res__line--{{lineCls}}">{{lineText}}</view>
+
+    <view wx:if="{{result.seg}}" class="res__rank">
+      <text class="res__rank-n">全省约第 {{result.seg.rank}} 名</text>
+      <text class="res__rank-s">超过全省约 {{result.seg.beat}}% 考生（共 {{result.seg.total}} 人）</text>
+      <text class="res__rank-src">{{result.seg.name}} · 据{{result.seg.source}}（分段抽样插值，约数）</text>
+    </view>
+    <view wx:elif="{{result}}" class="res__norank">该省该类暂无综合分位次数据（仅已收录省份显示），综合分以官方为准</view>
+
+    <view wx:if="{{result.mseg}}" class="res__major">
+      <text class="res__major-n">专业统考全省约第 {{result.mseg.rank}} 名</text>
+      <text class="res__major-s">你的专业统考分超过全省约 {{result.mseg.beat}}% 考生（共 {{result.mseg.total}} 人）</text>
+    </view>
+
+    <view wx:if="{{result.cat.ben}}" class="res__detail">
+      <view class="dt-row">
+        <text>本科控制线</text>
+        <text>文化 {{result.cat.ben.c}} / 统考 {{result.cat.ben.m}}</text>
+      </view>
+      <view wx:if="{{result.cat.zhuan}}" class="dt-row">
+        <text>专科控制线</text>
+        <text>文化 {{result.cat.zhuan.c}} / 统考 {{result.cat.zhuan.m}}</text>
+      </view>
+    </view>
+  </view>
+
+  <view wx:if="{{lineNote}}" class="note">📌 {{lineNote}}</view>
+  <view class="note">说明：综合分按 a×文化 + b×专业 的官方系数折算。结果仅供参考，以省考试院当年正式公布为准。</view>
+  <view class="src">数据来源：{{provNames[provIdx]}}省考试院 · 2025（仅官方公开源）</view>
+
+  <view class="ft-safe"></view>
+</view>

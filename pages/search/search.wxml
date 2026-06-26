@@ -1,0 +1,90 @@
+<view class="page">
+  <view class="searchbar">
+    <view class="searchbar__box">
+      <text class="searchbar__icon">🔍</text>
+      <input class="searchbar__input" value="{{keyword}}" bindinput="onInput" confirm-type="search"
+             bindconfirm="doSearch" placeholder="输入院校名称，如 内蒙古大学" placeholder-style="color:#bbb" />
+    </view>
+    <view class="searchbar__btn" bindtap="doSearch">搜索</view>
+  </view>
+
+  <!-- 顶部分区 tab -->
+  <view class="tabs">
+    <view class="tabs__i tabs__i--on">全部院校</view>
+    <view class="tabs__i" hover-class="tabs__i--press" hover-stay-time="80" bindtap="goTab" data-t="rank">大学排名</view>
+    <view class="tabs__i" hover-class="tabs__i--press" hover-stay-time="80" bindtap="goTab" data-t="compare">院校对比</view>
+    <view class="tabs__i" hover-class="tabs__i--press" hover-stay-time="80" bindtap="goTab" data-t="fav">我的关注</view>
+  </view>
+
+  <!-- 常驻分类横滑条 -->
+  <scroll-view class="cstrip" scroll-x enhanced show-scrollbar="{{false}}">
+    <view wx:for="{{cateStrip}}" wx:key="*this" class="cchip {{activeCate===item?'cchip--on':''}}"
+          data-c="{{item}}" bindtap="pickCate" hover-class="cchip--press" hover-stay-time="80">{{item}}</view>
+  </scroll-view>
+
+  <!-- 筛选条：地区 / 层次 / 排序 -->
+  <view class="fbar">
+    <view class="fbar__i {{panel==='prov'?'fbar__i--on':''}} {{province!=='不限'?'fbar__i--act':''}}" data-p="prov" bindtap="openPanel">
+      <text class="fbar__t">{{province==='不限'?'院校地区':province}}</text><text class="caret">▾</text>
+    </view>
+    <view class="fbar__i {{panel==='level'?'fbar__i--on':''}} {{level!=='不限'?'fbar__i--act':''}}" data-p="level" bindtap="openPanel">
+      <text class="fbar__t">{{level==='不限'?'院校层次':level}}</text><text class="caret">▾</text>
+    </view>
+    <view class="fbar__i {{panel==='sort'?'fbar__i--on':''}} {{sort!=='default'?'fbar__i--act':''}}" data-p="sort" bindtap="openPanel">
+      <text class="fbar__t">{{sortLabel}}</text><text class="caret">▾</text>
+    </view>
+  </view>
+
+  <!-- 下拉面板 -->
+  <view wx:if="{{panel}}" class="fmask" bindtap="closePanel"></view>
+  <view wx:if="{{panel}}" class="fpanel">
+    <view wx:if="{{panel==='prov'}}" class="fopts">
+      <view wx:for="{{provOpts}}" wx:key="*this" class="fopt {{province===item?'fopt--on':''}}" data-v="{{item}}" bindtap="pickProv">{{item}}</view>
+    </view>
+    <view wx:elif="{{panel==='level'}}" class="fopts">
+      <view wx:for="{{levelOpts}}" wx:key="*this" class="fopt {{level===item?'fopt--on':''}}" data-v="{{item}}" bindtap="pickLevel">{{item}}</view>
+    </view>
+    <view wx:elif="{{panel==='sort'}}" class="fopts">
+      <view wx:for="{{sortOpts}}" wx:key="k" class="fopt {{sort===item.k?'fopt--on':''}}" data-v="{{item.k}}" bindtap="pickSort">{{item.label}}</view>
+    </view>
+  </view>
+
+  <!-- 骨架屏（首屏加载） -->
+  <view wx:if="{{loading && !schools.length}}" class="list">
+    <view wx:for="{{[1,2,3,4,5]}}" wx:key="*this" class="card skel">
+      <view class="skel__line skel__line--lg"></view>
+      <view class="skel__line skel__line--sm"></view>
+    </view>
+  </view>
+
+  <!-- 空态 -->
+  <view wx:elif="{{!loading && !schools.length}}" class="empty">
+    <view class="empty__icon">🔍</view>
+    <view class="empty__title">没有符合条件的院校</view>
+    <view class="empty__sub">换个筛选条件或关键词试试</view>
+  </view>
+
+  <!-- 院校列表 -->
+  <view wx:else class="list">
+    <view wx:for="{{schools}}" wx:key="school" class="card sch" hover-class="sch-hover">
+      <view class="sch__logo" style="background:{{item.badge.color}}" data-name="{{item.school}}" bindtap="goSchool">{{item.badge.txt}}</view>
+      <view class="sch__main" data-name="{{item.school}}" bindtap="goSchool">
+        <text class="sch__name">{{item.school}}</text>
+        <view wx:if="{{item.tags.length}}" class="sch__tags">
+          <text wx:for="{{item.tags}}" wx:for-item="tg" wx:key="t" class="tag2 {{tg.hot?'tag2--hot':''}}">{{tg.t}}</text>
+        </view>
+        <view class="sch__meta">
+          <text wx:if="{{item.city}}">{{item.city}}</text>
+          <text wx:elif="{{item.province}}">{{item.province}}</text>
+          <text wx:if="{{item.type}}" class="sch__type">· {{item.type}}</text>
+          <text class="sch__more">查录取分 ›</text>
+        </view>
+      </view>
+      <view wx:if="{{item.inFav}}" class="sch__fav sch__fav--on">已加入</view>
+      <view wx:else class="sch__fav" data-idx="{{index}}" catchtap="addFav">＋选校单</view>
+    </view>
+
+    <view wx:if="{{loading && schools.length}}" class="loadmore">加载中…</view>
+    <view wx:elif="{{noMore && schools.length>=10}}" class="loadmore">没有更多了</view>
+  </view>
+</view>

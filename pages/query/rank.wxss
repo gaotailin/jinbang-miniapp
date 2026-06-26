@@ -1,0 +1,10 @@
+.page { padding-top: 16rpx; }
+.opt { flex: 1; background: #fff; border: 2rpx solid #e6e6e6; border-radius: 16rpx; padding: 20rpx 0; text-align: center; }
+.opt--on { border-color: #ff6600; background: rgba(255,102,0,0.04); }
+.opt__txt { font-size: 28rpx; font-weight: 600; color: #ff6600; }
+.score-input { font-size: 80rpx; font-weight: 700; color: #ff6600; text-align: center; padding: 16rpx 0; }
+.result { text-align: center; padding: 48rpx 24rpx; }
+.result__label { font-size: 26rpx; color: #666; }
+.result__num { font-size: 96rpx; font-weight: 700; color: #ff6600; line-height: 1.1; }
+.result__unit { font-size: 28rpx; color: #cc4d00; }
+.opt--sm { padding: 16rpx 0; }

@@ -1,0 +1,51 @@
+<view class="page">
+
+  <!-- 介绍 -->
+  <block wx:if="{{step==='intro'}}">
+    <view class="hero">
+      <view class="hero__t">🧭 新高考选科测评</view>
+      <view class="hero__s">内蒙古 3+1+2 · 答 {{total}} 题，给你选科组合建议</view>
+    </view>
+    <view class="card intro">
+      <view class="intro__row">📌 首选：物理 / 历史（决定理工 or 文史方向）</view>
+      <view class="intro__row">📌 再选：化学 / 生物 / 地理 / 政治 任选 2 科</view>
+      <view class="intro__row">📌 结果给出推荐组合 · 专业覆盖率 · 适合方向</view>
+    </view>
+    <button class="btn btn--gold btn--lg btn--block mt-16" bindtap="start">开始测评</button>
+  </block>
+
+  <!-- 答题 -->
+  <block wx:elif="{{step==='quiz'}}">
+    <view class="prog">第 {{qIndex+1}} / {{total}} 题</view>
+    <view class="prog-bar"><view class="prog-bar__fill" style="width:{{(qIndex)/total*100}}%"></view></view>
+    <view class="q">{{question.q}}</view>
+    <view class="opts">
+      <view wx:for="{{question.opts}}" wx:key="t" class="opt" data-i="{{index}}" bindtap="choose">{{item.t}}</view>
+    </view>
+  </block>
+
+  <!-- 结果 -->
+  <block wx:elif="{{step==='result'}}">
+    <view class="res-hero">
+      <view class="res-hero__label">推荐选科组合</view>
+      <view class="res-hero__combo">{{result.combo}}</view>
+      <view class="res-hero__cover">专业可报覆盖率约 <text class="res-hero__num">{{result.coverage}}%</text></view>
+    </view>
+
+    <view class="card">
+      <view class="sec-title">适合方向</view>
+      <view class="res-dir">{{result.dir}}</view>
+    </view>
+
+    <view class="card">
+      <view class="sec-title">备选组合</view>
+      <view wx:for="{{result.alts}}" wx:key="combo" class="alt">
+        <text class="alt__c">{{item.combo}}</text>
+        <text class="alt__v">覆盖约 {{item.cover}}%</text>
+      </view>
+    </view>
+
+    <view class="foot-tip">覆盖率为公开口径约数，具体以各校招生选科要求为准</view>
+    <button class="btn btn--outline btn--block mt-16" bindtap="restart">重新测一次</button>
+  </block>
+</view>

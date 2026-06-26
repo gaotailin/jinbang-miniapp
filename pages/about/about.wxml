@@ -1,0 +1,33 @@
+<view class="page">
+  <view class="head">
+    <view class="head__logo">鹿</view>
+    <view class="head__name">九色鹿前程助手</view>
+    <view class="head__ver">版本 {{version}}</view>
+  </view>
+
+  <view class="card">
+    <view class="sec-title">关于我们</view>
+    <view class="p">九色鹿前程助手是一款面向<text class="b">内蒙古高考考生</text>的报考辅助工具，帮助考生按分数、位次匹配全国院校与专业，提供冲稳保参考、院校/专业对比、霍兰德/MBTI/选科测评等服务。</view>
+    <view class="p">运营主体：包头市九色鹿文化传播有限责任公司。</view>
+  </view>
+
+  <view class="card">
+    <view class="sec-title">数据来源</view>
+    <view class="p">院校与专业信息、录取分数线、就业薪酬等数据，整理自软科、阳光高考平台、各高校公开招生计划及就业质量报告等<text class="b">公开渠道</text>。</view>
+  </view>
+
+  <view class="card">
+    <view class="sec-title">免责声明</view>
+    <view class="p">本产品所有数据与测算结果<text class="b">仅供参考</text>，录取概率为统计估算，实际录取以各省考试院及高校官方公布为准。请考生结合官方信息谨慎填报，本产品不对填报结果承担责任。</view>
+  </view>
+
+  <view class="card">
+    <view class="row" bindtap="copyKefu"><text>联系客服（微信）</text><text class="row__r">{{kefu}} 复制</text></view>
+    <view class="divider"></view>
+    <view class="row" bindtap="goPrivacy"><text>隐私政策</text><text class="row__r">›</text></view>
+    <view class="divider"></view>
+    <view class="row" bindtap="goAgreement"><text>用户协议</text><text class="row__r">›</text></view>
+  </view>
+
+  <view class="foot">© 2026 包头市九色鹿文化传播有限责任公司</view>
+</view>

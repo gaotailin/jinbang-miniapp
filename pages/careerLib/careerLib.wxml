@@ -1,0 +1,30 @@
+<view class="page">
+  <view class="hero">
+    <view class="hero__t">职业库</view>
+    <view class="hero__s">想做什么职业 → 该报什么专业。薪资见就业薪酬榜</view>
+    <view class="hero__btn" hover-class="act--press" hover-stay-time="80" bindtap="goSalary">查就业薪酬榜 ›</view>
+  </view>
+
+  <view wx:for="{{fields}}" wx:key="field" class="grp">
+    <view class="grp__hd" hover-class="grp__hd--press" hover-stay-time="80" data-i="{{index}}" bindtap="toggle">
+      <view class="grp__ic"><icon name="{{item.icon}}" size="40" color="#e8780a" /></view>
+      <text class="grp__name">{{item.field}}</text>
+      <text class="grp__cnt">{{item.jobs.length}} 个职业</text>
+      <text class="grp__arrow">{{openIdx===index ? '▾' : '▸'}}</text>
+    </view>
+    <view wx:if="{{openIdx===index}}" class="grp__body">
+      <view wx:for="{{item.jobs}}" wx:for-item="j" wx:key="name" class="job">
+        <view class="job__top">
+          <text class="job__name">{{j.name}}</text>
+          <text class="job__edu">{{j.edu}}</text>
+        </view>
+        <view class="job__desc">{{j.desc}}</view>
+        <view class="job__row"><text class="job__k">对口专业</text><text class="job__v">{{j.majors}}</text></view>
+        <view class="job__row"><text class="job__k">前景</text><text class="job__v">{{j.outlook}}</text></view>
+      </view>
+    </view>
+  </view>
+
+  <view class="note">职业描述为通识指导,具体以院校培养方案/行业实况为准;薪资以就业薪酬榜(真实数据)为准。</view>
+  <view class="ft-safe"></view>
+</view>

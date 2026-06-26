@@ -1,0 +1,50 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/pick/pick",
+    "pages/search/search",
+    "pages/major/major",
+    "pages/compare/compare",
+    "pages/ranking/ranking",
+    "pages/proCompare/proCompare",
+    "pages/subject/subject",
+    "pages/samescore/samescore",
+    "pages/section/section",
+    "pages/batchline/batchline",
+    "pages/aiChat/aiChat",
+    "pages/enrollPlan/enrollPlan",
+    "pages/guide/guide",
+    "pages/about/about",
+    "pages/privacy/privacy",
+    "pages/agreement/agreement",
+    "pages/feedback/feedback",
+    "pages/volunteer/volunteer",
+    "pages/mine/mine",
+    "pages/test/test",
+    "pages/report/report",
+    "pages/mbti/mbti",
+    "pages/school/school",
+    "pages/query/batch",
+    "pages/query/rank",
+    "pages/warn/warn"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#FFFFFF",
+    "navigationBarTitleText": "九色鹿前程助手",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#F7F7F7"
+  },
+  "tabBar": {
+    "color": "#999999",
+    "selectedColor": "#FF6600",
+    "backgroundColor": "#FFFFFF",
+    "borderStyle": "black",
+    "list": [
+      { "pagePath": "pages/index/index", "text": "首页", "iconPath": "images/home.png", "selectedIconPath": "images/home_on.png" },
+      { "pagePath": "pages/search/search", "text": "查大学", "iconPath": "images/search.png", "selectedIconPath": "images/search_on.png" },
+      { "pagePath": "pages/volunteer/volunteer", "text": "选校单", "iconPath": "images/list.png", "selectedIconPath": "images/list_on.png" },
+      { "pagePath": "pages/mine/mine", "text": "我的", "iconPath": "images/me.png", "selectedIconPath": "images/me_on.png" }
+    ]
+  },
+  "sitemapLocation": "sitemap.json"
+}

@@ -1,0 +1,13 @@
+.page { padding: 24rpx; }
+.card { background: #fff; border-radius: 20rpx; padding: 28rpx; }
+.lbl { font-size: 26rpx; color: #666; margin: 8rpx 0 14rpx; }
+.ta {
+  width: 100%; box-sizing: border-box; height: 220rpx;
+  background: #f7f7f7; border-radius: 14rpx; padding: 22rpx; font-size: 28rpx;
+}
+.ipt {
+  width: 100%; box-sizing: border-box; margin-top: 4rpx;
+  background: #f7f7f7; border-radius: 14rpx; padding: 22rpx; font-size: 28rpx;
+}
+.kefu { text-align: center; font-size: 25rpx; color: #999; padding: 32rpx; }
+.kefu__n { color: #ff6600; font-weight: 600; }

@@ -1,0 +1,23 @@
+<view class="page">
+  <view class="tabs">
+    <view wx:for="{{tabs}}" wx:key="key" class="tabs__i {{tab===item.key?'tabs__i--on':''}}"
+          data-k="{{item.key}}" bindtap="switchTab">{{item.name}}</view>
+  </view>
+
+  <skeleton wx:if="{{loading}}" rows="6" />
+
+  <empty-state wx:elif="{{!list.length}}" img="/assets/illus/empty-box.png" title="暂无榜单数据" desc="切换其他榜单试试" />
+
+  <view wx:else class="list">
+    <view wx:for="{{list}}" wx:key="school" class="rk" data-name="{{item.school}}" bindtap="goSchool">
+      <view class="rk__no rk__no--{{item.rank<=3 ? item.rank : 0}}">{{item.rank}}</view>
+      <view class="rk__main">
+        <view class="rk__name">{{item.school}}</view>
+        <view wx:if="{{item.level}}" class="rk__level">{{item.level}}</view>
+      </view>
+      <view class="rk__metric">{{item.metric}}</view>
+    </view>
+  </view>
+
+  <view class="foot-tip">数据来源：软科 / 院校就业质量报告 · 仅供参考</view>
+</view>

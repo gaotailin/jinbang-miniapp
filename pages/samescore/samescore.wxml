@@ -1,0 +1,47 @@
+<view class="page">
+  <view class="form">
+    <view class="form__row">
+      <text class="form__label">省份</text>
+      <view class="form__val form__val--fixed">内蒙古</view>
+    </view>
+    <view class="form__divider"></view>
+    <view class="form__row">
+      <text class="form__label">科类</text>
+      <picker mode="selector" range="{{subjects}}" value="{{subjectIndex}}" bindchange="onSubject">
+        <view class="form__val">{{subjects[subjectIndex]}} ›</view>
+      </picker>
+    </view>
+    <view class="form__divider"></view>
+    <view class="form__row">
+      <text class="form__label">高考分数</text>
+      <input class="form__input" type="number" value="{{score}}" bindinput="onScore"
+             placeholder="输入你的分数" placeholder-style="color:#bbb" />
+    </view>
+    <button class="btn btn--gold btn--lg btn--block mt-16" loading="{{loading}}" bindtap="query">看同分去向</button>
+  </view>
+
+  <block wx:if="{{done}}">
+    <view class="tip-rank">你的位次约 <text class="hl">{{userRank}}</text> 名 · 同位次段 <text class="hl">{{bucket}}</text>，近几年考生去向如下</view>
+
+    <!-- ±5分步进：快速看相邻分数去向 -->
+    <view class="stepper">
+      <view class="stepper__btn" hover-class="stepper__btn--press" hover-stay-time="80" bindtap="stepScore" data-d="-5">‹ -5分</view>
+      <view class="stepper__cur">{{score}}分</view>
+      <view class="stepper__btn" hover-class="stepper__btn--press" hover-stay-time="80" bindtap="stepScore" data-d="5">+5分 ›</view>
+    </view>
+
+    <view class="list">
+      <view wx:for="{{list}}" wx:key="id" class="card sch" hover-class="sch-hover" hover-stay-time="80" data-name="{{item.school}}" bindtap="goSchool">
+        <view class="flex justify-between items-center">
+          <text class="sch__name">{{item.school}}</text>
+          <text wx:if="{{item.level}}" class="tag tag--gold">{{item.level}}</text>
+        </view>
+        <view wx:if="{{item.major}}" class="sch__major">{{item.major}}</view>
+        <view class="sch__meta">投档 {{item.minScore}}分 · 位次{{item.minRank}} · {{item.year}}年</view>
+      </view>
+      <view wx:if="{{!list.length}}" class="empty">该位次段暂无去向数据，换个分数试试</view>
+    </view>
+  </block>
+
+  <empty-state wx:elif="{{!loading}}" img="/assets/illus/mascot.png" title="输入分数，看同位次考生去向" desc="和你同位次的考生都去了哪些院校" />
+</view>

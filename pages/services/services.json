@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "icon": "../../components/icon/icon"
+  },
+  "navigationBarTitleText": "全部服务",
+  "navigationBarBackgroundColor": "#FFFFFF",
+  "backgroundColor": "#F7F7F7"
+}

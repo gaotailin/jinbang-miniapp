@@ -1,0 +1,78 @@
+<view class="page">
+  <view class="hd">
+    <view class="hd__name">{{name}}</view>
+    <text wx:if="{{level}}" class="tag tag--gold">{{level}}</text>
+  </view>
+
+  <view wx:if="{{loading}}" class="tip">加载中…</view>
+
+  <block wx:else>
+    <view class="card" wx:if="{{softRank || avgSalary || empRate || intro}}">
+      <view class="sec-title">院校概况</view>
+      <view class="stat-row" wx:if="{{softRank || avgSalary || empRate}}">
+        <view class="stat" wx:if="{{softRank}}">
+          <view class="stat__num">{{softRank}}</view>
+          <view class="stat__lbl">软科排名</view>
+        </view>
+        <view class="stat" wx:if="{{avgSalary}}">
+          <view class="stat__num">{{avgSalary}}</view>
+          <view class="stat__lbl">毕业均薪(元)</view>
+        </view>
+        <view class="stat" wx:if="{{empRate}}">
+          <view class="stat__num">{{empRate}}%</view>
+          <view class="stat__lbl">就业率</view>
+        </view>
+      </view>
+      <view class="intro" wx:if="{{intro}}">{{intro}}</view>
+    </view>
+
+    <!-- 研究生信息 -->
+    <view class="card" wx:if="{{hasGrad || masterN || doctorN || ugMajorN}}">
+      <view class="sec-title">研究生 / 办学信息</view>
+      <view class="stat-row">
+        <view class="stat" wx:if="{{masterN}}">
+          <view class="stat__num">{{masterN}}</view>
+          <view class="stat__lbl">硕士点</view>
+        </view>
+        <view class="stat" wx:if="{{doctorN}}">
+          <view class="stat__num">{{doctorN}}</view>
+          <view class="stat__lbl">博士点</view>
+        </view>
+        <view class="stat" wx:if="{{ugMajorN}}">
+          <view class="stat__num">{{ugMajorN}}</view>
+          <view class="stat__lbl">本科专业</view>
+        </view>
+      </view>
+      <view class="grad-note">
+        <text class="tag {{hasGrad ? 'tag--gold' : 'tag--muted'}}">{{hasGrad ? '✓ 设有研究生院' : '无研究生院'}}</text>
+        <text wx:if="{{website}}" class="grad-site" bindtap="copySite">官网：{{website}}</text>
+      </view>
+    </view>
+
+    <view class="card" wx:if="{{majors.length}}">
+      <view class="sec-title">招生专业（{{majors.length}}）</view>
+      <view class="flex flex-wrap gap-12">
+        <text wx:for="{{majors}}" wx:key="*this" class="tag tag--primary major-tag">{{item}}</text>
+      </view>
+    </view>
+
+    <view class="card">
+      <view class="sec-title">历年录取</view>
+      <view wx:if="{{!history.length}}" class="tip">暂无录取数据</view>
+      <view wx:for="{{history}}" wx:key="id" class="row">
+        <view class="row__l">
+          <view class="row__major">{{item.major}}</view>
+          <view class="row__sub">{{item.year}} · {{item.subject}} · {{item.batch}}</view>
+        </view>
+        <view class="row__r">
+          <view class="row__score">{{item.min_score}}</view>
+          <view class="row__rank" wx:if="{{item.min_rank}}">位次 {{item.min_rank}}</view>
+        </view>
+      </view>
+    </view>
+
+    <view class="footer">
+      <button class="btn btn--gold btn--lg btn--block" bindtap="favorite">＋ 加入选校单</button>
+    </view>
+  </block>
+</view>

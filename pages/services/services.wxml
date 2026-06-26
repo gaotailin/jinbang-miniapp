@@ -1,0 +1,107 @@
+<view class="page">
+
+  <!-- 普通类填报 -->
+  <view class="card">
+    <view class="card__hd">普通类填报</view>
+    <view class="grid">
+      <view class="cell" hover-class="cell--press" hover-stay-time="80" bindtap="go" data-url="/pages/pick/pick">
+        <view class="cell__ic ic--orange"><icon name="compass" size="42" color="#e8780a" /></view><view class="cell__t">智能选校</view>
+      </view>
+      <view class="cell" hover-class="cell--press" hover-stay-time="80" bindtap="go" data-url="/pages/autofill/autofill">
+        <view class="cell__ic ic--orange"><icon name="fill" size="42" color="#e8780a" /></view><view class="cell__t">一键填报</view>
+      </view>
+      <view class="cell" hover-class="cell--press" hover-stay-time="80" bindtap="go" data-url="/pages/volunteer/volunteer" data-tab="1">
+        <view class="cell__ic ic--blue"><icon name="list" size="42" color="#2b86d9" /></view><view class="cell__t">选校单</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 高考工具箱 -->
+  <view class="card">
+    <view class="card__hd">高考工具箱</view>
+    <view class="grid">
+      <view class="cell" hover-class="cell--press" hover-stay-time="80" bindtap="go" data-url="/pages/search/search" data-tab="1">
+        <view class="cell__ic ic--orange"><icon name="school" size="42" color="#e8780a" /></view><view class="cell__t">找大学</view>
+      </view>
+      <view class="cell" hover-class="cell--press" hover-stay-time="80" bindtap="go" data-url="/pages/major/major">
+        <view class="cell__ic ic--blue"><icon name="major" size="42" color="#2b86d9" /></view><view class="cell__t">挑专业</view>
+      </view>
+      <view class="cell" hover-class="cell--press" hover-stay-time="80" bindtap="go" data-url="/pages/section/section">
+        <view class="cell__ic ic--green"><icon name="rank1" size="42" color="#27ae60" /></view><view class="cell__t">一分一段</view>
+      </view>
+      <view class="cell" hover-class="cell--press" hover-stay-time="80" bindtap="go" data-url="/pages/batchline/batchline">
+        <view class="cell__ic ic--gray"><icon name="batch" size="42" color="#6b7280" /></view><view class="cell__t">批次线</view>
+      </view>
+      <view class="cell" hover-class="cell--press" hover-stay-time="80" bindtap="go" data-url="/pages/samescore/samescore">
+        <view class="cell__ic ic--purple"><icon name="same" size="42" color="#8b5cf6" /></view><view class="cell__t">同分去向</view>
+      </view>
+      <view class="cell" hover-class="cell--press" hover-stay-time="80" bindtap="go" data-url="/pages/probability/probability">
+        <view class="cell__ic ic--pink"><icon name="report" size="42" color="#e85d6a" /></view><view class="cell__t">录取概率</view>
+      </view>
+      <view class="cell" hover-class="cell--press" hover-stay-time="80" bindtap="go" data-url="/pages/enrollPlan/enrollPlan">
+        <view class="cell__ic ic--steel"><icon name="plan" size="42" color="#5b7a99" /></view><view class="cell__t">招生计划</view>
+      </view>
+      <view class="cell" hover-class="cell--press" hover-stay-time="80" bindtap="go" data-url="/pages/compare/compare">
+        <view class="cell__ic ic--green"><icon name="compare" size="42" color="#27ae60" /></view><view class="cell__t">院校对比</view>
+      </view>
+      <view class="cell" hover-class="cell--press" hover-stay-time="80" bindtap="go" data-url="/pages/proCompare/proCompare">
+        <view class="cell__ic ic--blue"><icon name="proCompare" size="42" color="#2b86d9" /></view><view class="cell__t">专业对比</view>
+      </view>
+      <view class="cell" hover-class="cell--press" hover-stay-time="80" bindtap="go" data-url="/pages/ranking/ranking">
+        <view class="cell__ic ic--gold"><icon name="trophy" size="42" color="#e0a400" /></view><view class="cell__t">大学排行</view>
+      </view>
+      <view class="cell" hover-class="cell--press" hover-stay-time="80" bindtap="go" data-url="/pages/career/career">
+        <view class="cell__ic ic--green"><icon name="salary" size="42" color="#27ae60" /></view><view class="cell__t">就业薪酬</view>
+      </view>
+      <view class="cell" hover-class="cell--press" hover-stay-time="80" bindtap="go" data-url="/pages/careerLib/careerLib">
+        <view class="cell__ic ic--orange"><icon name="compass" size="42" color="#e8780a" /></view><view class="cell__t">职业库</view>
+      </view>
+      <view class="cell" hover-class="cell--press" hover-stay-time="80" bindtap="go" data-url="/pages/warn/warn">
+        <view class="cell__ic ic--pink"><icon name="shield" size="42" color="#e85d6a" /></view><view class="cell__t">虚假大学</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 多元升学 -->
+  <view class="card">
+    <view class="card__hd">多元升学</view>
+    <view class="grid">
+      <view class="cell" hover-class="cell--press" hover-stay-time="80" bindtap="go" data-url="/pages/guide/guide">
+        <view class="cell__ic ic--gold"><icon name="cap" size="42" color="#e0a400" /></view><view class="cell__t">强基计划</view>
+      </view>
+      <view class="cell" hover-class="cell--press" hover-stay-time="80" bindtap="go" data-url="/pages/guide/guide">
+        <view class="cell__ic ic--green"><icon name="report" size="42" color="#27ae60" /></view><view class="cell__t">综合评价</view>
+      </view>
+      <view class="cell" hover-class="cell--press" hover-stay-time="80" bindtap="go" data-url="/pages/guide/guide">
+        <view class="cell__ic ic--blue"><icon name="cap" size="42" color="#2b86d9" /></view><view class="cell__t">高校专项</view>
+      </view>
+      <view class="cell" hover-class="cell--press" hover-stay-time="80" bindtap="go" data-url="/pages/guide/guide">
+        <view class="cell__ic ic--orange"><icon name="major" size="42" color="#e8780a" /></view><view class="cell__t">报考指南</view>
+      </view>
+      <view class="cell" hover-class="cell--press" hover-stay-time="80" bindtap="go" data-url="/pages/artCalc/artCalc">
+        <view class="cell__ic ic--purple"><icon name="palette" size="42" color="#8b5cf6" /></view><view class="cell__t">艺考综合分</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 测评与工具 -->
+  <view class="card">
+    <view class="card__hd">测评与工具</view>
+    <view class="grid">
+      <view class="cell" hover-class="cell--press" hover-stay-time="80" bindtap="go" data-url="/pages/test/test">
+        <view class="cell__ic ic--orange"><icon name="compass" size="42" color="#e8780a" /></view><view class="cell__t">霍兰德测评</view>
+      </view>
+      <view class="cell" hover-class="cell--press" hover-stay-time="80" bindtap="go" data-url="/pages/mbti/mbti">
+        <view class="cell__ic ic--purple"><icon name="mind" size="42" color="#8b5cf6" /></view><view class="cell__t">MBTI测评</view>
+      </view>
+      <view class="cell" hover-class="cell--press" hover-stay-time="80" bindtap="go" data-url="/pages/subject/subject">
+        <view class="cell__ic ic--green"><icon name="cap" size="42" color="#27ae60" /></view><view class="cell__t">新高考选科</view>
+      </view>
+      <view class="cell" hover-class="cell--press" hover-stay-time="80" bindtap="go" data-url="/pages/report/report" data-guard="report">
+        <view class="cell__ic ic--steel"><icon name="report" size="42" color="#5b7a99" /></view><view class="cell__t">升学报告</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="foot">更多服务持续上线中 · 数据仅供参考</view>
+</view>

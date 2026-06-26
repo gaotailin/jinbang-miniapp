@@ -1,0 +1,79 @@
+<view class="page">
+
+  <!-- 头部 -->
+  <view class="profile">
+    <view class="profile__avatar">考</view>
+    <view class="profile__info">
+      <view class="profile__name">九色鹿考生</view>
+      <view class="profile__sub">愿你前程似锦 · 一举高中</view>
+    </view>
+  </view>
+
+  <!-- 快捷入口 -->
+  <view class="quick">
+    <view class="quick__item" hover-class="quick__item--press" hover-stay-time="80" bindtap="goTest">
+      <view class="quick__icon"><icon name="compass" color="#e8780a" size="52" /></view>
+      <view class="quick__txt">测一测</view>
+    </view>
+    <view class="quick__item" hover-class="quick__item--press" hover-stay-time="80" bindtap="goReport">
+      <view class="quick__icon"><icon name="report" color="#2b86d9" size="52" /></view>
+      <view class="quick__txt">我的报告</view>
+    </view>
+  </view>
+
+  <!-- 测评历史 -->
+  <view class="card">
+    <view class="flex justify-between items-center">
+      <view class="sec-title" style="margin:0;">测评历史</view>
+      <text wx:if="{{history.length}}" class="text-sm text-muted" bindtap="clearHistory">清空</text>
+    </view>
+
+    <view wx:if="{{!history.length}}" class="text-sm text-muted text-center py-16">暂无记录，去测一测吧</view>
+
+    <view wx:for="{{history}}" wx:key="time" class="hist">
+      <view class="flex justify-between items-center">
+        <text class="hist__score">{{item.score}} 分</text>
+        <text class="tag tag--gold" wx:if="{{item.top3}}">{{item.top3}}</text>
+      </view>
+      <view class="hist__meta">{{item.province}} · {{item.examType}} · {{item.time}}</view>
+    </view>
+  </view>
+
+  <!-- 设置占位 -->
+  <view class="card">
+    <view class="row" bindtap="goMbti">
+      <view class="row__l"><icon name="mind" color="#8b5cf6" size="40" /><text class="row__label">MBTI 性格测评</text></view>
+      <text class="row__r">›</text>
+    </view>
+    <view class="divider"></view>
+    <view class="row" bindtap="goSubject">
+      <view class="row__l"><icon name="cap" color="#27ae60" size="40" /><text class="row__label">新高考选科测评</text></view>
+      <text class="row__r">›</text>
+    </view>
+    <view class="divider"></view>
+    <view class="row" bindtap="goWarn">
+      <view class="row__l"><icon name="shield" color="#e85d6a" size="40" /><text class="row__label">野鸡大学避坑</text></view>
+      <text class="row__r">›</text>
+    </view>
+  </view>
+
+  <!-- 其他 -->
+  <view class="card">
+    <button class="row row-btn" open-type="share">
+      <view class="row__l"><icon name="share" color="#2b86d9" size="40" /><text class="row__label">分享给好友</text></view>
+      <text class="row__r">›</text>
+    </button>
+    <view class="divider"></view>
+    <view class="row" bindtap="goFeedback">
+      <view class="row__l"><icon name="chat" color="#e8780a" size="40" /><text class="row__label">意见反馈</text></view>
+      <text class="row__r">›</text>
+    </view>
+    <view class="divider"></view>
+    <view class="row" bindtap="goAbout">
+      <view class="row__l"><icon name="info" color="#6b7280" size="40" /><text class="row__label">关于我们</text></view>
+      <text class="row__r">›</text>
+    </view>
+  </view>
+
+  <view class="footer-tip">九色鹿前程助手 · 兴趣 · 分数 智能选校</view>
+</view>

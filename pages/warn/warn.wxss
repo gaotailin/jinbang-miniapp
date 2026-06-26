@@ -1,0 +1,9 @@
+.page { padding-bottom: 40rpx; }
+.hero { background: linear-gradient(135deg,#8c2b2b,#E74C3C); color:#fff; padding: 44rpx 40rpx; border-radius: 0 0 32rpx 32rpx; margin-bottom: 20rpx; }
+.hero__t { font-size: 40rpx; font-weight: 700; }
+.hero__s { font-size: 24rpx; opacity: .9; margin-top: 8rpx; }
+.tip__t { font-size: 30rpx; font-weight: 700; color: #111111; display: flex; align-items: center; }
+.tip__n { width: 40rpx; height: 40rpx; line-height: 40rpx; text-align: center; background: #E74C3C; color: #fff; border-radius: 9999rpx; font-size: 24rpx; margin-right: 14rpx; }
+.tip__d { font-size: 26rpx; color: #666; line-height: 1.6; margin-top: 12rpx; }
+.footer-tip { text-align:center; font-size: 22rpx; color:#bbb; padding: 24rpx; }
+.tip { margin-bottom: 4rpx; }

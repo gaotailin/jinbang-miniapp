@@ -1,0 +1,32 @@
+<view class="page">
+
+  <empty-state wx:if="{{!fav.length}}" img="/assets/illus/mascot.png"
+               title="先把院校加进选校单" desc="在「查大学」收藏 2 所以上，再来对比"
+               action="去查大学" bind:action="goSearch" />
+
+  <block wx:else>
+    <view class="pick">
+      <view class="pick__hd">选 2–3 所对比（已选 {{selected.length}}/3）</view>
+      <view class="pick__chips">
+        <view wx:for="{{fav}}" wx:key="school"
+              class="chip {{selected.indexOf(item.school)>=0 ? 'chip--on' : ''}}"
+              data-name="{{item.school}}" bindtap="toggle">{{item.school}}</view>
+      </view>
+    </view>
+
+    <view wx:if="{{loading}}" class="tip">加载对比数据…</view>
+
+    <view wx:elif="{{cols.length>=2}}" class="cmp">
+      <view class="cmp__row cmp__row--head">
+        <view class="cmp__label"></view>
+        <view wx:for="{{cols}}" wx:key="name" class="cmp__cell cmp__cell--head">{{item.name}}</view>
+      </view>
+      <view wx:for="{{rows}}" wx:key="label" class="cmp__row">
+        <view class="cmp__label">{{item.label}}</view>
+        <view wx:for="{{item.vals}}" wx:for-item="v" wx:for-index="vi" wx:key="vi" class="cmp__cell">{{v}}</view>
+      </view>
+    </view>
+
+    <view wx:else class="tip">从上面勾选 2 所以上院校开始对比</view>
+  </block>
+</view>

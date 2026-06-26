@@ -1,0 +1,23 @@
+.page { padding: 20rpx 24rpx 60rpx; }
+
+.bar { display: flex; align-items: center; justify-content: space-between; padding: 8rpx 4rpx 16rpx; }
+.bar__pv { font-size: 28rpx; color: #8b5cf6; font-weight: 600; }
+.bar__cnt { font-size: 24rpx; color: #999; }
+
+.tabs { white-space: nowrap; margin-bottom: 16rpx; }
+.tab { display: inline-block; padding: 12rpx 28rpx; margin-right: 14rpx; font-size: 26rpx; color: #666; background: #f3f3f3; border-radius: 9999rpx; }
+.tab--on { background: #8b5cf6; color: #fff; font-weight: 600; }
+
+.list { }
+.card { display: flex; align-items: center; background: #fff; border-radius: 18rpx; padding: 22rpx 24rpx; margin-bottom: 14rpx; box-shadow: 0 4rpx 14rpx rgba(0,0,0,0.04); }
+.card--press { transform: scale(0.99); transition: transform .08s; }
+.card__logo { width: 72rpx; height: 72rpx; line-height: 72rpx; text-align: center; border-radius: 50%; background: linear-gradient(135deg,#8b5cf6,#b08cf0); color: #fff; font-size: 34rpx; font-weight: 700; flex-shrink: 0; }
+.card__main { flex: 1; min-width: 0; margin-left: 20rpx; }
+.card__name { font-size: 30rpx; color: #111; font-weight: 600; }
+.card__meta { margin-top: 8rpx; }
+.card__tag { font-size: 22rpx; color: #8b5cf6; background: #f3eeff; border-radius: 6rpx; padding: 2rpx 12rpx; }
+.card__prov { font-size: 24rpx; color: #999; margin-left: 14rpx; }
+.card__arrow { font-size: 36rpx; color: #ccc; }
+
+.empty { text-align: center; color: #999; font-size: 26rpx; padding: 80rpx 0; }
+.note { font-size: 22rpx; color: #aaa; line-height: 1.6; margin: 24rpx 8rpx 0; }

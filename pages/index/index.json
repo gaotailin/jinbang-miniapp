@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "icon": "../../components/icon/icon"
+  },
+  "navigationBarTitleText": "九色鹿前程助手"
+}

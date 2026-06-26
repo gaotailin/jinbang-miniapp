@@ -1,0 +1,7 @@
+<view class="es">
+  <image wx:if="{{img}}" class="es__img" src="{{img}}" mode="aspectFit" />
+  <view wx:else class="es__icon">{{icon}}</view>
+  <view class="es__title">{{title}}</view>
+  <view wx:if="{{desc}}" class="es__desc">{{desc}}</view>
+  <view wx:if="{{action}}" class="es__btn" hover-class="es__btn--press" hover-stay-time="80" bindtap="onTap">{{action}}</view>
+</view>

@@ -1,0 +1,51 @@
+App({
+  globalData: {
+    baseURL: 'https://jinbangtimingnm.cn',
+    apiKey: 'jinbang-2026',
+    isIOS: false,
+    payEnabled: false,
+    openid: 'dev_001',
+    localDev: true
+  },
+
+  onLaunch() {
+    console.log('九色鹿前程助手 启动 (本地模式)')
+    try {
+      var p = (wx.getDeviceInfo ? wx.getDeviceInfo().platform : wx.getSystemInfoSync().platform) || ''
+      this.globalData.isIOS = String(p).toLowerCase() === 'ios'
+    } catch (e) {}
+    wx.setStorageSync('jb_openid', 'dev_001')
+  },
+
+  ensureLogin: function(cb) {
+    if (cb) cb(this.globalData.openid)
+  },
+
+  request: function(path, opts) {
+    opts = opts || {}
+    var that = this
+    // 本地模式：快速失败，不阻塞页面渲染
+    if (this.globalData.localDev) {
+      return Promise.resolve({ _local: true, path: path })
+    }
+    return new Promise(function(resolve, reject) {
+      wx.request({
+        url: that.globalData.baseURL + path,
+        method: opts.method || 'GET',
+        data: opts.data || {},
+        header: { 'Content-Type': 'application/json', 'X-API-Key': that.globalData.apiKey },
+        timeout: 2000,
+        success: function(res) {
+          if (res.statusCode === 200 && res.data) {
+            resolve(res.data)
+          } else {
+            reject(res.data || { error: 'fail' })
+          }
+        },
+        fail: function(err) {
+          reject(err)
+        }
+      })
+    })
+  }
+})

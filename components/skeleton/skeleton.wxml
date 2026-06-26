@@ -1,0 +1,6 @@
+<view wx:if="{{show}}" class="sk">
+  <view wx:for="{{rowsArr}}" wx:key="*this" class="sk__card">
+    <view class="sk__line sk__line--lg"></view>
+    <view class="sk__line sk__line--sm"></view>
+  </view>
+</view>

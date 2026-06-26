@@ -1,0 +1,61 @@
+.page { padding-bottom: 60rpx; }
+
+/* 概要条 */
+.summary {
+  background: linear-gradient(135deg, #ff6600 0%, #ff7834 100%);
+  color: #fff; padding: 40rpx; border-radius: 0 0 32rpx 32rpx; margin-bottom: 24rpx;
+}
+.summary__row { font-size: 28rpx; opacity: 0.85; }
+.summary__row .dot { margin: 0 12rpx; }
+.summary__score { font-size: 80rpx; font-weight: 700; margin-top: 8rpx; }
+.summary__unit { font-size: 30rpx; font-weight: 400; opacity: 0.7; margin-left: 8rpx; }
+
+/* 兴趣六维 */
+.hex { display: flex; align-items: center; gap: 16rpx; margin-bottom: 16rpx; }
+.hex__label { width: 150rpx; font-size: 26rpx; color: #333; }
+.hex__val { width: 48rpx; text-align: right; font-size: 26rpx; font-weight: 600; color: #ff6600; }
+
+.guide { background: #f7f7f7; border-radius: 12rpx; padding: 20rpx; margin-top: 20rpx; }
+.guide__row { display: flex; margin-bottom: 8rpx; }
+.guide__k { width: 130rpx; color: #999; font-size: 26rpx; flex-shrink: 0; }
+.guide__v { flex: 1; color: #333; font-size: 26rpx; }
+
+/* 八字 */
+.bazi-head { display: flex; gap: 16rpx; }
+.bazi-head__item {
+  flex: 1; background: #f7f7f7; border-radius: 12rpx; padding: 20rpx 12rpx; text-align: center;
+}
+.bazi-head__k { font-size: 22rpx; color: #999; }
+.bazi-head__v { font-size: 28rpx; font-weight: 700; color: #ff6600; margin-top: 6rpx; }
+
+.match { margin-bottom: 20rpx; }
+.match__name { font-size: 28rpx; font-weight: 600; color: #111111; }
+.match__reason { font-size: 24rpx; color: #999; margin-top: 8rpx; line-height: 1.5; }
+
+/* 分数定位 */
+.rank { display: flex; align-items: baseline; }
+.rank__num { font-size: 64rpx; font-weight: 700; color: #ff6600; }
+.rank__unit { font-size: 26rpx; color: #666; margin-left: 12rpx; }
+
+/* 冲稳保 */
+.band { border-left: 8rpx solid #ccc; padding-left: 20rpx; margin-bottom: 28rpx; }
+.band--chong { border-color: #E74C3C; }
+.band--wen   { border-color: #F39C12; }
+.band--bao   { border-color: #27AE60; }
+.band__head { display: flex; align-items: center; gap: 12rpx; margin-bottom: 12rpx; }
+.band__name {
+  width: 44rpx; height: 44rpx; border-radius: 9999rpx; color: #fff;
+  font-size: 26rpx; font-weight: 700; display: flex; align-items: center; justify-content: center;
+}
+.band--chong .band__name { background: #E74C3C; }
+.band--wen   .band__name { background: #F39C12; }
+.band--bao   .band__name { background: #27AE60; }
+
+.school { padding: 14rpx 0; border-bottom: 1rpx solid #f0f0f0; }
+.school:last-child { border-bottom: none; }
+.school__name { font-size: 28rpx; font-weight: 600; color: #111111; }
+.school__meta { font-size: 22rpx; color: #999; margin-top: 4rpx; }
+.school__fit { font-size: 22rpx; color: #cc4d00; background: #fff3e6; border-radius: 6rpx; padding: 4rpx 10rpx; margin-top: 6rpx; display: inline-block; }
+.school__prob { color: #27AE60; font-weight: 600; margin-left: 12rpx; }
+
+.footer-tip { text-align: center; font-size: 22rpx; color: #bbb; padding: 20rpx; }

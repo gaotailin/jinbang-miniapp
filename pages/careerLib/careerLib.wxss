@@ -1,0 +1,27 @@
+.page { padding: 20rpx 24rpx 60rpx; }
+
+.hero { background: linear-gradient(135deg,#e85d04,#f0892e); border-radius: 20rpx; padding: 32rpx; color: #fff; }
+.hero__t { font-size: 38rpx; font-weight: 800; }
+.hero__s { font-size: 24rpx; opacity: .92; margin-top: 10rpx; }
+.hero__btn { display: inline-block; margin-top: 20rpx; font-size: 24rpx; background: rgba(255,255,255,.22); border-radius: 9999rpx; padding: 10rpx 28rpx; }
+.act--press { transform: scale(.97); transition: transform .08s; }
+
+.grp { background: #fff; border-radius: 18rpx; margin-top: 18rpx; overflow: hidden; box-shadow: 0 4rpx 14rpx rgba(0,0,0,.04); }
+.grp__hd { display: flex; align-items: center; padding: 26rpx 24rpx; }
+.grp__hd--press { background: #fafafa; }
+.grp__ic { width: 56rpx; height: 56rpx; background: #fff6ef; border-radius: 12rpx; display: flex; align-items: center; justify-content: center; }
+.grp__name { flex: 1; font-size: 30rpx; font-weight: 700; color: #111; margin-left: 18rpx; }
+.grp__cnt { font-size: 22rpx; color: #999; margin-right: 14rpx; }
+.grp__arrow { font-size: 26rpx; color: #bbb; }
+
+.grp__body { padding: 0 24rpx 10rpx; }
+.job { border-top: 1rpx solid #f2f2f2; padding: 20rpx 0; }
+.job__top { display: flex; align-items: center; justify-content: space-between; }
+.job__name { font-size: 28rpx; font-weight: 700; color: #e85d04; }
+.job__edu { font-size: 22rpx; color: #888; background: #f5f5f5; border-radius: 8rpx; padding: 2rpx 14rpx; }
+.job__desc { font-size: 25rpx; color: #555; margin-top: 8rpx; }
+.job__row { display: flex; font-size: 24rpx; margin-top: 8rpx; }
+.job__k { color: #999; width: 120rpx; flex-shrink: 0; }
+.job__v { color: #333; flex: 1; }
+
+.note { font-size: 22rpx; color: #aaa; line-height: 1.6; margin: 24rpx 8rpx 0; }

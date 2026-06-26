@@ -1,0 +1,11 @@
+<view class="page">
+  <view wx:if="{{loading}}" class="tip">加载中…</view>
+  <view wx:for="{{groups}}" wx:key="year" class="card">
+    <view class="sec-title">{{item.year}} 年 · 内蒙古</view>
+    <view wx:for="{{item.items}}" wx:for-item="b" wx:key="batch" class="brow">
+      <text class="brow__name">{{b.batch}}</text>
+      <text class="brow__score">{{b.score}}</text>
+    </view>
+  </view>
+  <view wx:if="{{!loading && !groups.length}}" class="tip">暂无批次线数据</view>
+</view>

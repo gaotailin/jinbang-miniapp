@@ -1,0 +1,55 @@
+<view class="page">
+  <!-- 按学校 / 按专业 查询切换 -->
+  <view class="modes">
+    <view class="modes__i {{mode==='school'?'modes__i--on':''}}" hover-class="modes__i--press" hover-stay-time="80" bindtap="setMode" data-m="school">按学校查询</view>
+    <view class="modes__i {{mode==='major'?'modes__i--on':''}}" hover-class="modes__i--press" hover-stay-time="80" bindtap="setMode" data-m="major">按专业查询</view>
+  </view>
+
+  <!-- 省份 + 年份 + 科类 -->
+  <view class="bar bar--filters">
+    <picker mode="selector" range="{{provinces}}" value="{{provinceIndex}}" bindchange="onProvince">
+      <view class="bar__subj">{{province}} ▾</view>
+    </picker>
+    <picker mode="selector" range="{{years}}" value="{{yearIndex}}" bindchange="onYear">
+      <view class="bar__subj">{{year}}年 ▾</view>
+    </picker>
+    <picker mode="selector" range="{{subjects}}" value="{{subjectIndex}}" bindchange="onSubject">
+      <view class="bar__subj">{{subject}} ▾</view>
+    </picker>
+  </view>
+
+  <view class="bar">
+    <input class="bar__inp" type="text" value="{{keyword}}" bindinput="onSchool"
+           placeholder="{{ph}}" placeholder-style="color:#bbb" confirm-type="search" bindconfirm="search"/>
+    <button class="bar__btn" bindtap="search" loading="{{loading}}">查询</button>
+  </view>
+
+  <skeleton wx:if="{{loading}}" rows="5" />
+  <empty-state wx:elif="{{error}}" icon="{{errIcon}}" title="{{error}}" desc="{{errDesc}}" action="{{errRetry ? '重试' : '重新查询'}}" bind:action="search" />
+  <view wx:else class="list">
+    <view wx:for="{{list}}" wx:key="school" class="card group">
+      <view class="group__hd" data-name="{{item.school}}" bindtap="goSchool">
+        <text class="group__name">{{item.school}}</text>
+        <text class="group__arrow">›</text>
+      </view>
+      <view wx:if="{{item.sid}}" class="group__plan" data-sid="{{item.sid}}" bindtap="goOfficialPlan">
+        <text>📋 查看官方招生计划</text>
+      </view>
+      <view wx:for="{{item.items}}" wx:key="major" wx:for-item="it" class="row">
+        <view class="row__main">
+          <text class="row__major">{{it.major}}</text>
+          <view class="row__tags">
+            <text class="tag">{{it.batch}}</text>
+            <text wx:if="{{it.subject}}" class="tag tag--gray">{{it.subject}}</text>
+          </view>
+        </view>
+        <view class="row__nums">
+          <text class="row__plan">最低 {{it.score}} 分</text>
+          <text wx:if="{{it.rank}}" class="row__fee">位次 {{it.rank}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="foot-tip">往年录取数据参考 · 点卡片内链接查看官方最新计划</view>
+</view>

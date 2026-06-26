@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "skeleton": "../../components/skeleton/skeleton",
+    "empty-state": "../../components/empty-state/empty-state"
+  },
+  "navigationBarTitleText": "录取概率",
+  "enablePullDownRefresh": true
+}

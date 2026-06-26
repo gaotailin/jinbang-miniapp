@@ -1,0 +1,77 @@
+<view class="page">
+  <!-- 搜索栏 -->
+  <view class="searchbar">
+    <view class="searchbar__box">
+      <text class="searchbar__icon">🔍</text>
+      <input class="searchbar__input" value="{{keyword}}" bindinput="onInput" confirm-type="search"
+             bindconfirm="doSearch" placeholder="输入专业名称，如 计算机 / 临床医学" placeholder-style="color:#bbb" />
+    </view>
+    <view class="searchbar__btn" bindtap="doSearch">搜索</view>
+  </view>
+
+  <view class="subentry" bindtap="goProCompare">⚖️ 多专业横向对比 ›</view>
+
+  <!-- 门类筛选条（横向滑动） -->
+  <scroll-view wx:if="{{!searched}}" class="cate-bar" scroll-x enhanced show-scrollbar="{{false}}">
+    <view wx:for="{{cateList}}" wx:key="*this" class="cate-chip {{activeCate===item?'cate-chip--on':''}}"
+          data-cate="{{item}}" bindtap="filterByCate" hover-class="cate-chip--press" hover-stay-time="80">
+      {{item}}
+    </view>
+  </scroll-view>
+
+  <skeleton wx:if="{{loading}}" rows="8" />
+  <empty-state wx:elif="{{!loading && !list.length}}" img="/assets/illus/empty-search.png" title="没找到相关专业" desc="换个关键词，或选上方门类浏览" />
+
+  <!-- 专业列表 -->
+  <view wx:else class="list">
+    <view wx:for="{{list}}" wx:key="id" class="card mj" hover-class="mj-hover" hover-stay-time="80" data-idx="{{index}}" bindtap="toggle">
+      <!-- 主行：专业名 + 学位 -->
+      <view class="mj__head">
+        <text class="mj__name">{{item.name}}</text>
+        <text wx:if="{{item.degree}}" class="tag tag--gold">{{item.degree}}</text>
+      </view>
+
+      <!-- 标签行：门类 + 学历 + 学制 -->
+      <view class="mj__tags">
+        <text wx:if="{{item.category}}" class="mj__tag">{{item.category}}</text>
+        <text wx:if="{{item.level}}" class="mj__tag">{{item.level}}</text>
+        <text wx:if="{{item.years}}" class="mj__tag">{{item.years}}年</text>
+      </view>
+
+      <!-- 数据行：就业率 + 平均薪酬（首屏可见，不藏到展开里） -->
+      <view class="mj__data">
+        <view wx:if="{{item.empRate}}" class="mj__data-item">
+          <text class="mj__data-val">{{item.empRate}}%</text>
+          <text class="mj__data-label">就业率</text>
+        </view>
+        <view wx:if="{{item.salary}}" class="mj__data-item mj__data-item--accent">
+          <text class="mj__data-val">¥{{item.salary}}</text>
+          <text class="mj__data-label">平均月薪</text>
+        </view>
+        <view class="mj__more">
+          <text wx:if="{{item.direction || item.courses || item.intro}}">{{openIdx===index?'收起 ▲':'详情 ▼'}}</text>
+        </view>
+      </view>
+
+      <!-- 展开详情 -->
+      <view wx:if="{{openIdx===index}}" class="mj__detail">
+        <view wx:if="{{item.subCategory}}" class="mj__d-row"><text class="mj__d-k">专业类</text>{{item.subCategory}}</view>
+        <view wx:if="{{item.direction}}" class="mj__d-row"><text class="mj__d-k">就业方向</text>{{item.direction}}</view>
+        <view wx:if="{{item.courses}}" class="mj__d-row"><text class="mj__d-k">主干课程</text>{{item.courses}}</view>
+        <view wx:if="{{item.intro}}" class="mj__intro">{{item.intro}}</view>
+        <!-- 开设院校（enrollment_special 真数据，点进院校详情） -->
+        <view wx:if="{{item.schoolsLoaded && item.schools.length}}" class="mj__schools">
+          <view class="mj__d-k">开设院校 · 录取分（高→低，部分）</view>
+          <view wx:for="{{item.schools}}" wx:for-item="s" wx:key="school" class="mj__sch" data-name="{{s.school}}" catchtap="goSchool" hover-class="mj__sch--press" hover-stay-time="80">
+            <text class="mj__sch-n">{{s.school}}</text>
+            <text class="mj__sch-p">{{s.province}}</text>
+            <text class="mj__sch-sc">{{s.minScore}}分{{s.minRank? ' · 位次'+s.minRank : ''}}</text>
+          </view>
+        </view>
+        <view wx:elif="{{!item.schoolsLoaded}}" class="mj__loading">开设院校加载中…</view>
+        <view wx:if="{{!item.direction && !item.courses && !item.intro && item.schoolsLoaded && !item.schools.length}}" class="mj__empty">暂无更多详情</view>
+      </view>
+    </view>
+
+  </view>
+</view>

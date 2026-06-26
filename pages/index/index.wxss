@@ -1,0 +1,211 @@
+/* ===== 全局基调 ===== */
+.page {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #FFF3E8 0%, #FFF8F2 18%, #FFFFFF 42%);
+  padding-bottom: 140rpx;
+}
+
+/* ===== 1. 顶部导航 ===== */
+.topbar {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 28rpx 28rpx 0;
+}
+.topbar__name { font-size: 38rpx; font-weight: 800; color: #1a1a1a; }
+.topbar__tabs { display: flex; gap: 36rpx; }
+.topbar__tab {
+  font-size: 28rpx; color: #aaa; font-weight: 400;
+  padding-bottom: 10rpx; border-bottom: 4rpx solid transparent; transition: all 0.2s;
+}
+.topbar__tab--on { color: #e85d04; font-weight: 700; border-bottom-color: #e85d04; }
+
+/* ===== 2. 搜索框 ===== */
+.search-bar {
+  display: flex; align-items: center; gap: 14rpx;
+  margin: 24rpx 24rpx 20rpx;
+  height: 82rpx; padding: 0 28rpx;
+  background: #fff; border-radius: 44rpx;
+  box-shadow: 0 4px 16rpx rgba(0,0,0,0.04);
+}
+.search-bar__icon { font-size: 28rpx; flex-shrink: 0; }
+.search-bar__ph { font-size: 28rpx; color: #bbb; }
+
+/* ===== 3. Hero 数据看板 ===== */
+.hero {
+  margin: 0 24rpx 24rpx; padding: 28rpx 28rpx 24rpx;
+  background: #fff; border-radius: 20rpx;
+  box-shadow: 0 4px 20rpx rgba(0,0,0,0.05);
+}
+
+/* 顶部信息行 */
+.hero__info {
+  display: flex; align-items: center; justify-content: space-between;
+}
+.hero__loc { display: flex; align-items: center; gap: 8rpx; flex: 1; min-width: 0; }
+.hero__dot { font-size: 16rpx; color: #e85d04; flex-shrink: 0; }
+.hero__loc-txt { font-size: 24rpx; color: #555; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.hero__edit {
+  display: flex; align-items: center; gap: 6rpx; flex-shrink: 0;
+  font-size: 24rpx; color: #e85d04; font-weight: 600;
+  padding: 10rpx 22rpx; background: #FFF3E8; border-radius: 22rpx;
+}
+.hero__edit-icon { font-size: 22rpx; }
+
+/* ===== 可视化曲线区域 ===== */
+.hero__viz {
+  margin: 24rpx 0 8rpx; padding: 4rpx 0;
+  background: #FFF9F2; border-radius: 16rpx; position: relative;
+}
+.viz-canvas {
+  width: 100%; height: 110rpx; display: block;
+}
+
+/* 空态 */
+.hero__empty { text-align: center; padding: 48rpx 20rpx 16rpx; }
+.hero__empty-text { font-size: 26rpx; color: #aaa; margin-bottom: 22rpx; }
+.hero__empty-btn {
+  display: inline-block; padding: 16rpx 44rpx;
+  background: linear-gradient(135deg, #e85d04, #ff7b2c);
+  color: #fff; font-size: 28rpx; font-weight: 600; border-radius: 32rpx;
+}
+
+/* ===== 冲稳保三栏 ===== */
+.hero__bands {
+  display: flex; justify-content: space-around; margin-top: 16rpx;
+  padding-top: 20rpx; border-top: 1rpx solid #f2f2f2;
+}
+.band { text-align: center; flex: 1; }
+.band__num { display: block; font-size: 56rpx; font-weight: 800; line-height: 1.1; }
+.band--chong .band__num { color: #e85d04; }
+.band--wen  .band__num { color: #27ae60; }
+.band--bao  .band__num { color: #2980b9; }
+.band__bot { display: flex; align-items: center; justify-content: center; gap: 4rpx; margin-top: 4rpx; }
+.band__label { font-size: 24rpx; color: #999; font-weight: 500; }
+.band__arrow { font-size: 28rpx; color: #ccc; font-weight: 300; }
+
+/* ===== 4. 双大卡片 ===== */
+.actions { display: flex; gap: 16rpx; margin: 0 24rpx 24rpx; }
+.act {
+  flex: 1; border-radius: 20rpx; padding: 32rpx 24rpx 24rpx;
+  position: relative; overflow: hidden; color: #fff;
+}
+.act--ai { background: linear-gradient(145deg, #FF8C00 0%, #FF5722 100%); }
+.act--hl { background: linear-gradient(145deg, #FFB300 0%, #FF8F00 100%); }
+.act--press { transform: scale(0.97); opacity: 0.92; transition: transform 0.08s, opacity 0.08s; }
+.act__title { font-size: 30rpx; font-weight: 700; margin-bottom: 8rpx; }
+.act__sub { font-size: 24rpx; opacity: 0.88; }
+.act__deco {
+  position: absolute; right: -4rpx; bottom: -4rpx;
+  font-size: 76rpx; opacity: 0.14;
+}
+
+/* ===== 5. 金刚区 ===== */
+.grid-section {
+  margin: 0 24rpx 20rpx; padding: 12rpx 4rpx 8rpx;
+  background: #fff; border-radius: 20rpx;
+  box-shadow: 0 4px 20rpx rgba(0,0,0,0.04);
+}
+.grid { display: flex; flex-wrap: wrap; }
+.grid__i {
+  width: 25%; text-align: center; padding: 16rpx 0 10rpx;
+  border-radius: 14rpx; position: relative; transition: background 0.12s;
+}
+.grid__i:active { background: #fafafa; }
+
+/* 统一图标容器 */
+.grid__ic {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 72rpx; height: 72rpx; border-radius: 20rpx; margin-bottom: 8rpx;
+}
+.grid__ic-inner { font-size: 36rpx; line-height: 1; }
+.grid__ic--school { background: #FFF3E8; } .grid__ic--school .grid__ic-inner { filter: none; }
+.grid__ic--major  { background: #E8F4FD; }
+.grid__ic--batch  { background: #F0F0F0; color: #666; font-weight: 300; }
+.grid__ic--same   { background: #F3E8FF; }
+.grid__ic--rank   { background: #E8F8F0; }
+.grid__ic--job    { background: #FFF8E1; }
+.grid__ic--plan   { background: #F0F4F8; }
+.grid__ic--ai     { background: #FFE8EC; }
+.grid__ic--more   { background: #FFF3E8; }
+
+.grid__t { font-size: 24rpx; color: #555; font-weight: 500; }
+
+/* 金刚区按压反馈 */
+.grid__i--press { background: #f2f2f2; }
+
+/* AI角标 */
+.grid__badge {
+  position: absolute; top: 10rpx; right: 8rpx;
+  font-size: 18rpx; color: #fff; background: #e74c3c;
+  padding: 2rpx 8rpx; border-radius: 8rpx; line-height: 1.4; font-weight: 700;
+}
+
+/* ===== 引导文案 ===== */
+.tagline {
+  text-align: center; padding: 16rpx 40rpx 48rpx;
+  font-size: 24rpx; color: #bbb;
+}
+
+/* ===== 6. 悬浮AI ===== */
+.fab {
+  position: fixed; right: 24rpx; bottom: 120rpx; z-index: 999;
+  display: flex; flex-direction: column; align-items: center; gap: 4rpx;
+}
+.fab__inner {
+  width: 100rpx; height: 100rpx;
+  background: linear-gradient(145deg, #6C63FF 0%, #e85d04 100%);
+  border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  font-size: 44rpx; box-shadow: 0 8px 28rpx rgba(108,99,255,0.35);
+  position: relative; z-index: 2;
+}
+.fab__ring {
+  position: absolute; top: -6rpx; left: -6rpx;
+  width: 112rpx; height: 112rpx; border-radius: 50%;
+  border: 2rpx solid rgba(108,99,255,0.25);
+  animation: fabPulse 2.2s ease-in-out infinite; z-index: 1;
+}
+@keyframes fabPulse {
+  0%, 100% { transform: scale(1); opacity: 0.6; }
+  50% { transform: scale(1.12); opacity: 0; }
+}
+.fab__label { font-size: 20rpx; color: #6C63FF; font-weight: 600; }
+
+/* ===== 艺术类面板 ===== */
+.art-panel { margin: 0 24rpx; }
+.art-panel__main {
+  display: flex; align-items: center; justify-content: space-between;
+  background: linear-gradient(135deg, #8b5cf6 0%, #b08cf0 100%);
+  border-radius: 20rpx; padding: 36rpx 32rpx; color: #fff;
+}
+.art-panel__t { font-size: 36rpx; font-weight: 800; }
+.art-panel__s { font-size: 24rpx; opacity: 0.92; margin-top: 10rpx; }
+.art-panel__arrow { font-size: 44rpx; opacity: 0.8; }
+.art-grid { display: flex; gap: 16rpx; margin-top: 16rpx; }
+.art-cell { flex: 1; background: #fff; border-radius: 16rpx; padding: 24rpx 20rpx; box-shadow: 0 4rpx 14rpx rgba(0,0,0,0.05); }
+.art-cell__t { font-size: 28rpx; font-weight: 700; color: #111; }
+.art-cell__s { font-size: 22rpx; color: #999; margin-top: 8rpx; }
+.art-panel__tip { font-size: 22rpx; color: #999; text-align: center; margin-top: 16rpx; }
+
+/* ===== 高校排行榜预览 ===== */
+.rk-sec { margin: 8rpx 24rpx 0; }
+.rk-sec__hd { display: flex; align-items: center; justify-content: space-between; padding: 8rpx 4rpx 16rpx; }
+.rk-sec__title { font-size: 32rpx; font-weight: 700; color: #111; }
+.rk-sec__more { font-size: 24rpx; color: #999; }
+.rk-scroll { white-space: nowrap; width: 100%; }
+.rk-card {
+  display: inline-block; vertical-align: top; white-space: normal;
+  width: 480rpx; margin-right: 20rpx; padding: 24rpx;
+  background: #fff; border-radius: 20rpx; box-shadow: 0 4rpx 16rpx rgba(0,0,0,0.05);
+}
+.rk-card:last-child { margin-right: 4rpx; }
+.rk-card--press { transform: scale(0.98); transition: transform .08s; }
+.rk-card__t { font-size: 28rpx; font-weight: 700; color: #e85d04; margin-bottom: 16rpx; }
+.rk-row { display: flex; align-items: center; padding: 10rpx 0; }
+.rk-row__n {
+  width: 40rpx; height: 40rpx; line-height: 40rpx; text-align: center;
+  font-size: 24rpx; font-weight: 700; color: #bbb; flex-shrink: 0;
+}
+.rk-row__n--1 { color: #fff; background: #e0a400; border-radius: 8rpx; }
+.rk-row__n--2 { color: #fff; background: #b0b8c4; border-radius: 8rpx; }
+.rk-row__n--3 { color: #fff; background: #cd8c5a; border-radius: 8rpx; }
+.rk-row__s { flex: 1; font-size: 26rpx; color: #333; margin-left: 16rpx; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.rk-row__m { font-size: 24rpx; color: #999; flex-shrink: 0; margin-left: 12rpx; }

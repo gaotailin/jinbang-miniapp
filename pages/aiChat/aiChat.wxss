@@ -1,0 +1,41 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background: #f7f7f7;
+}
+.disclaimer {
+  display: flex; align-items: flex-start; gap: 10rpx;
+  padding: 16rpx 24rpx; background: #fff7e6; border-bottom: 1rpx solid #ffe6c0;
+}
+.disclaimer__icon { font-size: 26rpx; flex-shrink: 0; margin-top: 2rpx; }
+.disclaimer__text { font-size: 22rpx; color: #996600; line-height: 1.5; }
+.quick { padding: 20rpx 24rpx; background: #fff; border-bottom: 1rpx solid #e6e6e6; }
+.quick__title { font-size: 24rpx; color: #999; margin-bottom: 12rpx; }
+.quick__chip {
+  padding: 12rpx 20rpx; background: #f0f5ff; color: #2969c0;
+  border-radius: 32rpx; font-size: 24rpx; border: 1rpx solid #d0e0f8;
+}
+.msgs { flex: 1; padding: 20rpx 24rpx; overflow-y: auto; }
+.msgs__empty { text-align: center; padding: 120rpx 40rpx 0; }
+.msgs__empty-icon { font-size: 80rpx; margin-bottom: 20rpx; }
+.msgs__empty-img { width: 300rpx; height: 220rpx; margin-bottom: 12rpx; }
+.msgs__empty-text { font-size: 30rpx; font-weight: 600; color: #333; margin-bottom: 8rpx; }
+.msgs__empty-sub { font-size: 24rpx; color: #999; }
+.msg { margin-bottom: 20rpx; display: flex; flex-direction: column; }
+.msg--user { align-items: flex-end; }
+.msg--ai  { align-items: flex-start; }
+.msg__bubble { max-width: 85%; padding: 18rpx 24rpx; border-radius: 16rpx; font-size: 28rpx; line-height: 1.6; word-break: break-all; }
+.msg--user .msg__bubble { background: #ff6600; color: #fff; border-bottom-right-radius: 4rpx; }
+.msg--ai .msg__bubble { background: #fff; color: #333; border: 1rpx solid #e6e6e6; border-bottom-left-radius: 4rpx; }
+.msg__bubble--typing { padding: 12rpx 24rpx; }
+.msg__note { font-size: 20rpx; color: #ccc; margin-top: 6rpx; margin-left: 4rpx; }
+.typing-dot { color: #ccc; animation: blink 1.4s infinite; margin-right: 6rpx; }
+.typing-dot:nth-child(2) { animation-delay: 0.2s; }
+.typing-dot:nth-child(3) { animation-delay: 0.4s; }
+@keyframes blink { 0%, 60%, 100% { opacity: 0.2; } 30% { opacity: 1; } }
+.input-bar { display: flex; align-items: center; gap: 16rpx; padding: 16rpx 24rpx; background: #fff; border-top: 1rpx solid #e6e6e6; }
+.input-bar__input { flex: 1; height: 72rpx; padding: 0 20rpx; background: #f5f5f5; border-radius: 36rpx; font-size: 28rpx; }
+.input-bar__btn { height: 72rpx; padding: 0 28rpx; line-height: 72rpx; background: #e0e0e0; color: #999; border-radius: 36rpx; font-size: 28rpx; text-align: center; }
+.input-bar__btn--on { background: #ff6600; color: #fff; }
+.ft-safe { height: env(safe-area-inset-bottom); }

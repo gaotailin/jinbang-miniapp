@@ -1,0 +1,8 @@
+# 密钥
+project.private.config.json
+
+# 临时
+*.log *.tmp *.tar.gz
+
+# 系统
+.DS_Store Thumbs.db node_modules/

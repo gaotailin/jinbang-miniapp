@@ -1,0 +1,61 @@
+<view class="page">
+
+  <!-- 成绩条 -->
+  <view class="bar">
+    <view class="bar__l">
+      <text class="bar__loc">{{profile.province}} ｜ {{profile.subject}}</text>
+      <view class="bar__rank">
+        <text class="bar__rank-lb">我的位次</text>
+        <input class="bar__rank-in" type="number" value="{{profile.rank}}" bindinput="onRankInput" placeholder="填位次" placeholder-style="color:#bbb" />
+        <text class="bar__rank-u">名</text>
+      </view>
+    </view>
+    <view class="bar__edit" bindtap="goPick">✎ 取成绩</view>
+  </view>
+
+  <!-- 搜索 -->
+  <view class="sb">
+    <input class="sb__in" value="{{keyword}}" bindinput="onInput" confirm-type="search" bindconfirm="query"
+           placeholder="输入院校名，测录取概率" placeholder-style="color:#bbb" />
+    <view class="sb__btn" bindtap="query">测概率</view>
+  </view>
+
+  <view class="hint">按你的位次 vs 该校历年录取最低位次，估算各专业录取概率（仅供参考）</view>
+
+  <!-- 加载 -->
+  <skeleton wx:if="{{loading}}" rows="6" show />
+
+  <!-- 错误 -->
+  <empty-state wx:elif="{{error}}" icon="{{errIcon}}" title="{{error}}" desc="{{errDesc}}"
+               action="{{errRetry ? '重试' : ''}}" bind:action="query" />
+
+  <!-- 空态 -->
+  <empty-state wx:elif="{{searched && !list.length}}" img="/assets/illus/empty-search.png"
+               title="没找到「{{keyword}}」的录取数据" desc="换个院校名，或确认该校有历年录取记录" />
+
+  <empty-state wx:elif="{{!searched}}" img="/assets/illus/mascot.png"
+               title="输入院校，测录取概率" desc="先确认上方位次，再搜你想冲的大学" />
+
+  <!-- 结果 -->
+  <view wx:else class="list">
+    <view wx:for="{{list}}" wx:key="index" class="card" hover-class="card--press" hover-stay-time="80">
+      <view class="card__top">
+        <view class="card__main">
+          <view class="card__sch">{{item.school}}</view>
+          <view class="card__mj">{{item.major}} · {{item.year}}{{item.subject ? ' · ' + item.subject : ''}}</view>
+        </view>
+        <view class="prob prob--{{item.lk}}">
+          <text class="prob__n">{{item.prob}}%</text>
+          <text class="prob__t prob__t--{{item.lk}}">{{item.lt}}</text>
+        </view>
+      </view>
+      <view class="card__meta">
+        <text>最低分 {{item.minScore}}</text>
+        <text class="card__dot">·</text>
+        <text>最低位次 {{item.minRank}}</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="ft-safe"></view>
+</view>

@@ -1,0 +1,39 @@
+.page { padding-bottom: 60rpx; }
+
+.profile {
+  background: linear-gradient(135deg, #ff6600 0%, #ff7834 100%);
+  color: #fff; padding: 56rpx 40rpx; display: flex; align-items: center;
+  border-radius: 0 0 32rpx 32rpx; margin-bottom: 24rpx;
+}
+.profile__avatar {
+  width: 110rpx; height: 110rpx; border-radius: 9999rpx;
+  background: #ff7834; color: #fff; font-size: 44rpx; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-right: 28rpx;
+}
+.profile__name { font-size: 38rpx; font-weight: 700; }
+.profile__sub { font-size: 24rpx; opacity: 0.75; margin-top: 8rpx; }
+
+.quick { display: flex; gap: 16rpx; margin: 0 24rpx 16rpx; }
+.quick__item {
+  flex: 1; background: #fff; border: 1rpx solid #e6e6e6; border-radius: 16rpx;
+  padding: 32rpx 0; text-align: center;
+}
+.quick__icon { display: flex; justify-content: center; margin-bottom: 6rpx; }
+.quick__item--press { opacity: 0.85; }
+.quick__txt { font-size: 28rpx; font-weight: 600; color: #ff6600; margin-top: 8rpx; }
+
+.hist { padding: 18rpx 0; border-bottom: 1rpx solid #f0f0f0; }
+.hist:last-child { border-bottom: none; }
+.hist__score { font-size: 30rpx; font-weight: 700; color: #ff6600; }
+.hist__meta { font-size: 22rpx; color: #999; margin-top: 4rpx; }
+
+.row { display: flex; justify-content: space-between; align-items: center; font-size: 28rpx; color: #333; padding: 12rpx 0; }
+.row__l { display: flex; align-items: center; gap: 16rpx; }
+.row__label { font-size: 28rpx; color: #333; }
+.row__r { font-size: 24rpx; color: #bbb; }
+/* 把 share 按钮重置成普通行外观 */
+.row-btn { width: 100%; background: transparent; line-height: 1.5; border-radius: 0; text-align: left; margin: 0; padding: 12rpx 0; font-weight: normal; }
+.row-btn::after { border: none; }
+
+.footer-tip { text-align: center; font-size: 22rpx; color: #bbb; padding: 24rpx; }
+.profile__info { flex: 1; min-width: 0; }

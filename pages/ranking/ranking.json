@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "skeleton": "../../components/skeleton/skeleton",
+    "empty-state": "../../components/empty-state/empty-state"
+  },
+  "navigationBarTitleText": "高校排行榜",
+  "enablePullDownRefresh": true
+}

@@ -1,0 +1,48 @@
+<view class="page">
+  <view class="sel">
+    <view class="sel__row">
+      <text class="sel__label">省份</text>
+      <picker mode="selector" range="{{provinces}}" value="{{provinceIndex}}" bindchange="onProvince">
+        <view class="sel__val">{{province}} ▾</view>
+      </picker>
+    </view>
+    <text class="sel__label">年份</text>
+    <picker mode="selector" range="{{years}}" value="{{yearIndex}}" bindchange="onYear">
+      <view class="sel__val">{{year}} 年 ▾</view>
+    </picker>
+  </view>
+
+  <!-- 历年趋势折线（canvas 真图）-->
+  <view wx:if="{{hasTrend}}" class="trend">
+    <view class="trend__hd">
+      <text class="trend__title">历年批次线趋势</text>
+      <view class="trend__track">
+        <text class="trk {{track==='li'?'trk--on':''}}" data-k="li" bindtap="onTrack">理工</text>
+        <text class="trk {{track==='wen'?'trk--on':''}}" data-k="wen" bindtap="onTrack">文史</text>
+      </view>
+    </view>
+    <canvas type="2d" id="trendCanvas" class="trend__canvas"></canvas>
+    <view class="trend__legend">
+      <view class="lg"><text class="lg__dot" style="background:#FF6600"></text>本科线</view>
+      <view class="lg"><text class="lg__dot" style="background:#3A86FF"></text>本科二批</view>
+      <view class="lg"><text class="lg__dot" style="background:#06A77D"></text>专科批</view>
+    </view>
+    <text class="trend__note">本科一批与新高考本科批已归一为「本科线」</text>
+  </view>
+
+  <view wx:if="{{loading}}" class="tip">加载中…</view>
+  <view wx:elif="{{error}}" class="tip">{{error}}</view>
+  <view wx:else class="groups">
+    <view wx:for="{{groups}}" wx:key="subject" class="group">
+      <view class="group__hd">{{item.subject}}</view>
+      <view class="group__rows">
+        <view wx:for="{{item.batches}}" wx:key="batch" wx:for-item="b" class="brow">
+          <text class="brow__name">{{b.batch}}</text>
+          <text class="brow__score">{{b.score}}<text class="brow__unit"> 分</text></text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="foot-tip">数据来源：内蒙古教育考试院 · 历年批次线 · 仅供参考</view>
+</view>

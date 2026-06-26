@@ -1,0 +1,17 @@
+.sk { padding: 8rpx 0; }
+.sk__card {
+  background: #fff; border-radius: 16rpx;
+  padding: 28rpx 24rpx; margin: 0 24rpx 12rpx;
+  box-shadow: 0 2rpx 10rpx rgba(0,0,0,0.04);
+}
+.sk__line {
+  height: 22rpx; border-radius: 6rpx;
+  background: #ececec; animation: sk-shimmer 1.4s ease-in-out infinite;
+}
+.sk__line--lg { width: 60%; margin-bottom: 16rpx; }
+.sk__line--sm { width: 40%; }
+@keyframes sk-shimmer {
+  0% { opacity: 0.45; }
+  50% { opacity: 0.85; }
+  100% { opacity: 0.45; }
+}

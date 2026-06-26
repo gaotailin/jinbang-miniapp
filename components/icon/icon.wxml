@@ -1,0 +1,2 @@
+<view wx:if="{{src}}" class="ic-bg"
+      style="width:{{size}}rpx;height:{{size}}rpx;background-image:url('{{src}}')"></view>

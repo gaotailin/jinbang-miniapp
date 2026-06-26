@@ -1,0 +1,28 @@
+<view class="page">
+  <block wx:if="{{!done}}">
+    <view class="bar-top"><view class="bar-top__fill" style="width:{{(idx)/qs.length*100}}%"></view></view>
+    <view class="prog">{{idx+1}} / {{qs.length}}</view>
+    <view class="card q">
+      <view class="q__t">{{qs[idx].q}}？</view>
+      <view class="q__opt" data-v="{{qs[idx].av}}" bindtap="pick">{{qs[idx].a}}</view>
+      <view class="q__opt" data-v="{{qs[idx].bv}}" bindtap="pick">{{qs[idx].b}}</view>
+    </view>
+    <view wx:if="{{idx>0}}" class="text-center text-muted" bindtap="back">‹ 上一题</view>
+  </block>
+
+  <block wx:else>
+    <view class="res">
+      <view class="res__type">{{type}}</view>
+      <view class="res__label">你的 MBTI 性格类型</view>
+    </view>
+    <view class="card">
+      <view class="sec-title">适合的专业方向</view>
+      <view class="res__majors">{{majors}}</view>
+      <view class="text-sm text-muted mt-16">MBTI 仅作方向参考，建议结合霍兰德兴趣 + 分数综合决策。</view>
+    </view>
+    <view class="footer footer--row">
+      <button class="btn btn--ghost btn--lg" bindtap="restart">重新测</button>
+      <button class="btn btn--gold btn--lg flex-1" bindtap="goTest">做智能测评 ›</button>
+    </view>
+  </block>
+</view>

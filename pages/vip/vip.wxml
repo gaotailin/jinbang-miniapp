@@ -1,0 +1,43 @@
+<view class="page">
+  <view class="hero">
+    <view class="hero__crown">👑</view>
+    <view class="hero__t">九色鹿会员</view>
+    <view wx:if="{{isVip}}" class="hero__s">会员有效期至 {{expireText}}</view>
+    <view wx:else class="hero__s">解锁不限次选校 · 完整冲稳保 · 录取概率</view>
+  </view>
+
+  <!-- 套餐（iOS 隐藏：苹果政策禁止小程序内虚拟支付）-->
+  <view wx:if="{{!isIOS}}" class="plans">
+    <view wx:for="{{plans}}" wx:key="key" class="plan {{picked===item.key?'plan--on':''}}"
+          data-k="{{item.key}}" bindtap="pick">
+      <view wx:if="{{item.tag}}" class="plan__tag">{{item.tag}}</view>
+      <view class="plan__name">{{item.name}}</view>
+      <view class="plan__price"><text class="plan__cur">¥</text>{{item.price}}</view>
+      <view class="plan__unit">{{item.unit}}</view>
+    </view>
+  </view>
+
+  <!-- 权益对比 -->
+  <view class="card">
+    <view class="sec-title">会员权益</view>
+    <view class="rt rt--head"><text class="rt__f">功能</text><text class="rt__c">免费</text><text class="rt__c rt__c--v">会员</text></view>
+    <view class="rt"><text class="rt__f">按分数选大学</text><text class="rt__c">每日5次</text><text class="rt__c rt__c--v">不限次</text></view>
+    <view class="rt"><text class="rt__f">冲/稳/保 院校</text><text class="rt__c">每档前3所</text><text class="rt__c rt__c--v">全部</text></view>
+    <view class="rt"><text class="rt__f">录取概率%</text><text class="rt__c">✓</text><text class="rt__c rt__c--v">✓</text></view>
+    <view class="rt"><text class="rt__f">完整升学报告</text><text class="rt__c">摘要</text><text class="rt__c rt__c--v">完整</text></view>
+    <view class="rt"><text class="rt__f">查大学/查专业/排行/测评</text><text class="rt__c">✓</text><text class="rt__c rt__c--v">✓</text></view>
+  </view>
+
+  <view class="tip">分享给好友，每次 +1 当日免费次数</view>
+
+  <view class="bottom">
+    <block wx:if="{{isIOS}}">
+      <view wx:if="{{isVip}}" class="ios-note">您已是会员，有效期至 {{expireText}}</view>
+      <view wx:else class="ios-note">应苹果平台政策，iOS 暂不支持在小程序内开通会员。可在安卓手机上开通，或分享小程序，每日 +1 次免费名额。</view>
+    </block>
+    <block wx:else>
+      <button wx:if="{{!isVip}}" class="btn btn--gold btn--lg btn--block" bindtap="buy">立即开通</button>
+      <button wx:else class="btn btn--gold btn--lg btn--block" disabled>已是会员</button>
+    </block>
+  </view>
+</view>

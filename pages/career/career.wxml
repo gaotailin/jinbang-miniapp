@@ -1,0 +1,41 @@
+<view class="page">
+  <view class="hd">
+    <view class="hd__t">就业薪酬榜</view>
+    <view class="hd__s">按专业看 起薪 / 3年 / 5年 年薪 + 就业率 · 数据 MyCOS·薪酬网 2025</view>
+  </view>
+
+  <!-- 学科门类 -->
+  <scroll-view scroll-x class="cats" enable-flex>
+    <view wx:for="{{cats}}" wx:key="*this" class="cat {{catIdx===index?'cat--on':''}}"
+          hover-class="cat--press" hover-stay-time="80" data-i="{{index}}" bindtap="pickCat">{{item}}</view>
+  </scroll-view>
+
+  <!-- 排序 -->
+  <view class="sorts">
+    <text class="sorts__lab">排序</text>
+    <view wx:for="{{sorts}}" wx:key="k" class="sort {{sortKey===item.k?'sort--on':''}}"
+          hover-class="sort--press" hover-stay-time="80" data-k="{{item.k}}" bindtap="pickSort">{{item.label}}</view>
+  </view>
+
+  <skeleton wx:if="{{loading}}" rows="8" />
+  <empty-state wx:elif="{{!list.length}}" img="/assets/illus/empty-box.png" title="暂无薪酬数据" desc="换个学科门类试试" />
+
+  <view wx:else class="list">
+    <view wx:for="{{list}}" wx:key="name" class="row">
+      <view class="row__no row__no--{{item.rank<=3 ? item.rank : 0}}">{{item.rank}}</view>
+      <view class="row__main">
+        <view class="row__name">{{item.name}}</view>
+        <view class="row__sub">
+          <text class="row__tag">{{item.cat}}</text>
+          <text>起薪 {{item.start}}万 · 5年 {{item.yr5}}万 · 就业率 {{item.emp}}%</text>
+        </view>
+      </view>
+      <view class="row__metric">
+        <view class="row__val">{{item.head}}</view>
+        <view class="row__lab">{{item.headLabel}}</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="foot">薪资为税前年薪估算（月薪×12）· 仅供参考</view>
+</view>

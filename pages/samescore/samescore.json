@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "empty-state": "../../components/empty-state/empty-state"
+  },
+  "navigationBarTitleText": "同分去向",
+  "enablePullDownRefresh": true
+}

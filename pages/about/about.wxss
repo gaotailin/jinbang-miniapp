@@ -1,0 +1,16 @@
+.page { padding: 24rpx 24rpx 60rpx; }
+.head { text-align: center; padding: 30rpx 0 36rpx; }
+.head__logo {
+  width: 120rpx; height: 120rpx; line-height: 120rpx; margin: 0 auto;
+  background: linear-gradient(135deg, #ff6600, #ff8a3d); color: #fff;
+  border-radius: 28rpx; font-size: 60rpx; font-weight: 800;
+}
+.head__name { font-size: 36rpx; font-weight: 800; color: #111; margin-top: 20rpx; }
+.head__ver { font-size: 24rpx; color: #999; margin-top: 8rpx; }
+
+.p { font-size: 27rpx; color: #555; line-height: 1.9; margin-top: 10rpx; }
+.b { color: #ff6600; font-weight: 600; }
+
+.row { display: flex; justify-content: space-between; align-items: center; font-size: 28rpx; color: #333; padding: 24rpx 4rpx; }
+.row__r { font-size: 26rpx; color: #999; }
+.foot { text-align: center; font-size: 22rpx; color: #bbb; padding: 40rpx; }

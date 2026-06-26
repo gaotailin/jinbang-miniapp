@@ -1,0 +1,24 @@
+<view class="doc">
+  <view class="doc__t">用户协议</view>
+  <view class="doc__d">更新日期：2026年6月15日</view>
+
+  <view class="doc__p">本协议是您与「九色鹿前程助手」（运营主体：包头市九色鹿文化传播有限责任公司）之间就使用本小程序服务所订立的协议。使用本小程序即表示您已阅读并同意本协议。</view>
+
+  <view class="doc__h">一、服务内容</view>
+  <view class="doc__p">本小程序为内蒙古高考考生提供院校与专业查询、按分数/位次选校参考、冲稳保测算、院校与专业对比、霍兰德/MBTI/选科测评等信息服务。</view>
+
+  <view class="doc__h">二、数据准确性与免责</view>
+  <view class="doc__p">本小程序数据整理自公开渠道，录取概率等为统计估算，<text class="b">仅供参考</text>。最终录取以各省考试院及高校官方公布为准。您应自行核实并独立做出填报决策，本小程序不对因使用本服务产生的后果承担责任。</view>
+
+  <view class="doc__h">三、用户行为规范</view>
+  <view class="doc__p">您承诺合法使用本小程序，不得利用本服务从事违法违规活动，不得对本小程序进行恶意攻击、爬取或破坏。</view>
+
+  <view class="doc__h">四、知识产权</view>
+  <view class="doc__p">本小程序的界面设计、功能编排、自有整理的数据成果等知识产权归运营方所有，未经许可不得复制、传播或用于商业用途。</view>
+
+  <view class="doc__h">五、协议变更</view>
+  <view class="doc__p">我们可能适时修订本协议，修订后将在本页公示。若您不同意修订内容，应停止使用；继续使用视为接受。</view>
+
+  <view class="doc__h">六、联系方式</view>
+  <view class="doc__p">如有疑问，可通过"我的—关于我们"中的客服微信与我们联系。</view>
+</view>

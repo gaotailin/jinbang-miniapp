@@ -1,0 +1,88 @@
+<view class="page">
+  <!-- 选择区 -->
+  <view class="sel">
+    <view class="sel__row">
+      <text class="sel__label">省份</text>
+      <picker mode="selector" range="{{provinces}}" value="{{provinceIndex}}" bindchange="onProvince">
+        <view class="sel__val">{{province}} ▾</view>
+      </picker>
+    </view>
+    <view class="sel__row">
+      <text class="sel__label">年份</text>
+      <picker mode="selector" range="{{years}}" value="{{yearIndex}}" bindchange="onYear">
+        <view class="sel__val">{{year}} 年 ▾</view>
+      </picker>
+    </view>
+    <view class="sel__row">
+      <text class="sel__label">科类</text>
+      <picker mode="selector" range="{{subjects}}" value="{{subjectIndex}}" bindchange="onSubject">
+        <view class="sel__val">{{subject}} ▾</view>
+      </picker>
+    </view>
+    <view class="sel__row">
+      <text class="sel__label">分数</text>
+      <input class="sel__inp" type="number" placeholder="输入你的分数" value="{{score}}" bindinput="onScore" maxlength="3"/>
+    </view>
+    <button class="sel__btn" bindtap="query" loading="{{loading}}">查询位次</button>
+  </view>
+
+  <!-- 加载中 / 错误 -->
+  <skeleton wx:if="{{loading}}" rows="3" />
+  <empty-state wx:elif="{{error}}" icon="{{errIcon}}" title="{{error}}" desc="{{errDesc}}" action="{{errRetry ? '重试' : ''}}" bind:action="query" />
+
+  <!-- 结果 -->
+  <view wx:if="{{done && result}}" class="res">
+    <!-- 核心结果 -->
+    <view class="res__card">
+      <view class="res__score">{{result.score}}<text class="res__unit">分</text></view>
+      <view class="res__rank">
+        <block wx:if="{{result.cumulative_count}}">
+          全省累计 <text class="num">{{result.cumulative_count}}</text> 人
+        </block>
+        <block wx:else>位次数据暂无</block>
+      </view>
+      <view wx:if="{{result.section_count > 0}}" class="res__same">
+        同分 {{result.section_count}} 人（位次区间 {{result.rank_low}}~{{result.rank_high}}）
+      </view>
+      <view wx:if="{{result.beatPct}}" class="res__beat">超越全省 <text class="res__beat-n">{{result.beatPct}}%</text> 考生</view>
+    </view>
+
+    <!-- 一分一段分布图（canvas 真图）-->
+    <view wx:if="{{result.chart.length}}" class="res__dist">
+      <view class="sec-title">分数段人数分布（你的位置高亮）</view>
+      <canvas type="2d" id="distCanvas" class="dist-canvas"></canvas>
+    </view>
+
+    <!-- 历年等效分对照 -->
+    <view wx:if="{{result.equiv.length}}" class="res__equiv">
+      <view class="sec-title">历年等效分（同位次对照）</view>
+      <view class="equiv">
+        <view wx:for="{{result.equiv}}" wx:key="year" class="equiv__col">
+          <text class="equiv__y">{{item.year}}</text>
+          <text class="equiv__s">{{item.score}}</text>
+        </view>
+      </view>
+      <text class="equiv__note">按你的位次在各年一分一段表反查的等效分，跨新旧高考仅供参考</text>
+    </view>
+
+    <!-- 附近分数 ±10分 -->
+    <view wx:if="{{result.nearby.length > 0}}" class="res__near">
+      <view class="sec-title">附近分数位次对比</view>
+      <view class="near-table">
+        <view class="near-hd">
+          <text class="near-hd__s">分数</text>
+          <text class="near-hd__r">累计人数</text>
+          <text class="near-hd__d">同分人数</text>
+        </view>
+        <view wx:for="{{result.nearby}}" wx:key="score" class="near-row {{item.isMe?'near-row--me':''}}">
+          <text class="near-row__s">{{item.score}} {{item.isMe?'👈':''}}</text>
+          <text class="near-row__r">{{item.rank}}</text>
+          <text class="near-row__d">{{item.same}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="foot-tip" wx:if="{{isDerived}}">📊 历年录取分布参考 · 非官方一分一段 · 仅供参考</view>
+  <view class="foot-tip" wx:else>数据来源：eol.cn · 一分一段表 · 仅供参考</view>
+</view>

@@ -1,0 +1,22 @@
+<view class="page">
+  <view class="tabs">
+    <view wx:for="{{tabs}}" wx:key="key" class="tabs__i {{tab===item.key?'tabs__i--on':''}}"
+          data-k="{{item.key}}" bindtap="switchTab">{{item.name}}</view>
+  </view>
+
+  <view wx:if="{{!articles.length}}" class="tip">暂无内容</view>
+
+  <view wx:else class="list">
+    <view wx:for="{{articles}}" wx:key="title" wx:for-index="idx" class="card art" data-idx="{{idx}}" bindtap="toggle">
+      <view class="art__hd">
+        <text class="art__title">{{item.title}}</text>
+        <text class="art__arrow">{{expanded[idx] ? '▴' : '▾'}}</text>
+      </view>
+      <view wx:if="{{expanded[idx]}}" class="art__body">
+        <text class="art__text">{{item.content}}</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="foot-tip">📖 内容持续更新中 · 仅供参考 · 以官方信息为准</view>
+</view>

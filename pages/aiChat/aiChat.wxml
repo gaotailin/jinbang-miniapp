@@ -1,0 +1,46 @@
+<view class="page">
+
+  <!-- 深度合成标识（审核要求） -->
+  <view class="disclaimer">
+    <text class="disclaimer__icon">🤖</text>
+    <text class="disclaimer__text">人工智能生成内容，仅供参考，不构成填报决策。请以官方数据为准。</text>
+  </view>
+
+  <!-- 快捷提问 -->
+  <view class="quick">
+    <view class="quick__title">💡 常见问题</view>
+    <view class="flex flex-wrap gap-12">
+      <view wx:for="{{quickQuestions}}" wx:key="*this" class="quick__chip" data-q="{{item}}" bindtap="askQuick">
+        {{item}}
+      </view>
+    </view>
+  </view>
+
+  <!-- 消息列表 -->
+  <scroll-view class="msgs" scroll-y scroll-into-view="msg-{{messages.length - 1}}" scroll-with-animation>
+    <view wx:if="{{!messages.length}}" class="msgs__empty">
+      <image class="msgs__empty-img" src="/assets/illus/ai.png" mode="aspectFit" />
+      <view class="msgs__empty-text">智能选校助手</view>
+      <view class="msgs__empty-sub">可以问我关于院校、专业、分数线的任何问题</view>
+    </view>
+    <view wx:for="{{messages}}" wx:key="id" id="msg-{{index}}" class="msg {{item.role === 'user' ? 'msg--user' : 'msg--ai'}}">
+      <view class="msg__bubble">{{item.content}}</view>
+      <view wx:if="{{item.role === 'ai' && index === messages.length - 1 && !loading}}" class="msg__note">人工智能生成 · 仅供参考</view>
+    </view>
+    <view wx:if="{{loading}}" class="msg msg--ai">
+      <view class="msg__bubble msg__bubble--typing">
+        <text class="typing-dot">●</text><text class="typing-dot">●</text><text class="typing-dot">●</text>
+      </view>
+    </view>
+  </scroll-view>
+
+  <!-- 输入栏 -->
+  <view class="input-bar">
+    <input class="input-bar__input" value="{{input}}" bindinput="onInput" confirm-type="send"
+           bindconfirm="send" placeholder="输入报考问题…" placeholder-style="color:#bbb"
+           disabled="{{loading}}" maxlength="200" />
+    <view class="input-bar__btn {{input ? 'input-bar__btn--on' : ''}}" bindtap="send">发送</view>
+  </view>
+
+  <view class="ft-safe"></view>
+</view>

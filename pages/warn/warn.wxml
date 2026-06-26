@@ -1,0 +1,15 @@
+<view class="page">
+  <view class="hero">
+    <view class="hero__t">⚠️ 野鸡大学避坑指南</view>
+    <view class="hero__s">每年都有考生被山寨大学骗，记住这6条</view>
+  </view>
+  <view wx:for="{{tips}}" wx:key="t" class="card tip" bindtap="tapTip" data-index="{{index}}">
+    <view class="tip__t"><text class="tip__n">{{index+1}}</text>{{item.t}}<text class="tip__arrow">{{item.open ? "▾" : "▸"}}</text></view>
+    <view class="tip__d" wx:if="{{item.open}}">{{item.d}}</view>
+  </view>
+  <view class="card action" bindtap="goSearch">
+    <text>🔍 去查教育部正规院校名单</text>
+    <text class="action__arrow">→</text>
+  </view>
+  <view class="footer-tip">如遇可疑院校，拨打当地招生考试院电话核实</view>
+</view>

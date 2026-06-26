@@ -1,0 +1,34 @@
+.page { padding: 0 0 260rpx; }
+
+.hero {
+  background: linear-gradient(135deg, #ff6600 0%, #ff7834 100%);
+  color: #fff; padding: 48rpx 40rpx 40rpx; border-radius: 0 0 32rpx 32rpx; margin-bottom: 24rpx;
+}
+.hero__title { font-size: 48rpx; font-weight: 700; }
+.hero__sub { font-size: 26rpx; opacity: 0.75; margin-top: 8rpx; }
+
+.steps { display: flex; align-items: center; margin-top: 36rpx; }
+.steps__item { font-size: 24rpx; color: rgba(255,255,255,0.45); padding: 6rpx 20rpx; border-radius: 9999rpx; border: 1rpx solid rgba(255,255,255,0.2); }
+.steps__item.on { color: #ff6600; background: #fff; border-color: #fff; font-weight: 600; }
+.steps__line { flex: 1; height: 1rpx; background: rgba(255,255,255,0.2); margin: 0 12rpx; }
+
+.field { display: flex; align-items: center; justify-content: space-between; padding: 8rpx 0; }
+.field__label { font-size: 28rpx; color: #666; }
+.field__value { font-size: 32rpx; font-weight: 600; color: #ff6600; }
+
+.opt { flex: 1; background: #fff; border: 2rpx solid #e6e6e6; border-radius: 16rpx; padding: 28rpx 0; text-align: center; }
+.opt--sm { padding: 20rpx 0; }
+.opt--on { border-color: #ff6600; background: rgba(255,102,0,0.04); }
+.opt__icon { font-size: 44rpx; }
+.opt__txt { font-size: 28rpx; font-weight: 600; color: #ff6600; margin-top: 6rpx; }
+
+.score-input { font-size: 72rpx; font-weight: 700; color: #ff6600; text-align: center; padding: 20rpx 0; width: 100%; box-sizing: border-box; }
+
+.q__title { font-size: 30rpx; color: #111111; line-height: 1.5; }
+.q__opt { flex: 1; text-align: center; padding: 22rpx 0; border-radius: 12rpx; border: 2rpx solid #e6e6e6; color: #666; font-size: 28rpx; }
+.q__opt--yes { border-color: #ff6600; background: #ff6600; color: #fff; font-weight: 600; }
+.q__opt--no  { border-color: #999; background: #f0f0f0; color: #333; font-weight: 600; }
+
+.footer { position: fixed; left: 0; right: 0; bottom: 0; padding: 20rpx 24rpx calc(20rpx + env(safe-area-inset-bottom)); background: rgba(247,247,247,0.95); border-top: 1rpx solid #e6e6e6; }
+.footer--row { display: flex; gap: 16rpx; }
+.q { margin-bottom: 20rpx; }
