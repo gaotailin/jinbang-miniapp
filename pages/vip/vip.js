@@ -3,7 +3,7 @@ const vip = require('../../utils/vip.js')
 
 const PLANS = [
   { key: 'season', name: '高考季卡', price: 39, unit: '高考季', tag: '最热', days: 120 },
-  { key: 'year', name: '年卡', price: 68, unit: '一年', tag: '更划算', days: 365 }
+  { key: 'year', name: '年卡', price: 69, unit: '一年', tag: '更划算', days: 365 }
 ]
 
 Page({
@@ -22,26 +22,34 @@ Page({
 
   pick(e) { this.setData({ picked: e.currentTarget.dataset.k }) },
 
-  // C2 支付：前端流程已就绪。商户号通过 + 二蛋上线 /api/pay/create 后自动生效；
-  // 接口未就绪时优雅回退"即将开放"。
+  // 虚拟支付：后端 /api/vpay/create 出 signData+双签名，前端调 wx.requestVirtualPayment。
+  // 接口未就绪/低版本不支持时优雅回退"即将开放"。
   buy() {
     const plan = PLANS.find(x => x.key === this.data.picked)
+    if (!wx.requestVirtualPayment) { this.payComingSoon(); return }   // 基础库过低
     wx.showLoading({ title: '发起支付', mask: true })
-    // 后端用 openid 下单，需 code 换 openid（二蛋 /api/pay/create 内部处理或前端传 code）
     wx.login({
       success: (lr) => {
-        app.request('/api/pay/create', {
+        app.request('/api/vpay/create', {
           method: 'POST',
-          data: { plan: plan.key, amount: plan.price, code: lr.code }
+          data: { plan: plan.key, code: lr.code }   // 价格后端定，前端不传，防篡改
         }).then(res => {
           wx.hideLoading()
-          if (!res || !res.package) { wx.showToast({ title: '下单失败，请重试', icon: 'none' }); return }
+          if (!res || !res.signData || !res.paySig) {
+            wx.showToast({ title: '下单失败，请重试', icon: 'none' }); return
+          }
           const otn = res.out_trade_no
-          wx.requestPayment({
-            timeStamp: res.timeStamp, nonceStr: res.nonceStr, package: res.package,
-            signType: res.signType || 'RSA', paySign: res.paySign,
+          wx.requestVirtualPayment({
+            signData: res.signData,
+            paySig: res.paySig,
+            signature: res.signature,
+            mode: res.mode,
+            env: res.env,
             success: () => this.afterPaid(plan, otn),
-            fail: () => wx.showToast({ title: '支付已取消', icon: 'none' })
+            fail: (err) => {
+              const m = (err && err.errMsg) || ''
+              wx.showToast({ title: m.indexOf('cancel') >= 0 ? '支付已取消' : '支付未完成', icon: 'none' })
+            }
           })
         }).catch(() => { wx.hideLoading(); wx.showToast({ title: '下单失败，请稍后重试', icon: 'none' }) })
       },
@@ -52,16 +60,13 @@ Page({
   payComingSoon() {
     wx.showModal({
       title: '支付即将开放',
-      content: '微信支付商户号审核中（约1-2个工作日），通过后即可购买会员。可先点下方"体验会员"试用全部功能。',
+      content: '会员支付正在最后联调，马上开放。可先点下方"体验会员"试用全部功能。',
       showCancel: false, confirmText: '知道了'
     })
   },
 
-  // 支付成功后：主动查单补单（回调失败也能写会员），再本地开通
+  // 支付成功后：本地先开通（即时反馈）；真实会员以服务端发货回调写入 vip_members 为准
   afterPaid(plan, outTradeNo) {
-    if (outTradeNo) {
-      app.request('/api/pay/query', { data: { out_trade_no: outTradeNo } }).catch(() => {})
-    }
     vip.grantTrial(plan.days)
     this.onShow()
     wx.showToast({ title: '开通成功', icon: 'success' })
