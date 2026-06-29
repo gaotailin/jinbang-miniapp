@@ -9,6 +9,18 @@
     </view>
   </view>
 
+  <!-- 会员入口 -->
+  <view class="card" bindtap="goVip" hover-class="quick__item--press" hover-stay-time="80"
+        style="background:linear-gradient(135deg,#FF8A33,#FF6600);">
+    <view class="row" style="margin:0">
+      <view class="row__l">
+        <text style="font-size:44rpx;margin-right:12rpx">👑</text>
+        <text class="row__label" style="color:#fff;font-weight:600">{{isVip ? '会员中心 · 有效期至 '+expireText : '开通会员 · 解锁不限次选校'}}</text>
+      </view>
+      <text class="row__r" style="color:#fff">{{isVip ? '续费 ›' : '去开通 ›'}}</text>
+    </view>
+  </view>
+
   <!-- 快捷入口 -->
   <view class="quick">
     <view class="quick__item" hover-class="quick__item--press" hover-stay-time="80" bindtap="goTest">

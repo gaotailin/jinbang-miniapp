@@ -1,12 +1,23 @@
 const app = getApp()
+const vip = require('../../utils/vip.js')
 
 Page({
   data: {
     history: [],
-    hasReport: false
+    hasReport: false,
+    isVip: false,
+    expireText: ''
   },
 
   onShow() {
+    const isV = vip.isVip()
+    let expireText = ''
+    if (isV) {
+      const v = wx.getStorageSync('jb_vip') || {}
+      const d = new Date(v.expire)
+      expireText = d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate()
+    }
+    this.setData({ isVip: isV, expireText })
     const fmt = ts => {
       if (!ts) return ''
       const d = new Date(ts)
@@ -32,6 +43,7 @@ Page({
     wx.navigateTo({ url: '/pages/report/report' })
   },
 
+  goVip() { wx.navigateTo({ url: '/pages/vip/vip' }) },
   goMbti() { wx.navigateTo({ url: '/pages/mbti/mbti' }) },
   goSubject() { wx.navigateTo({ url: '/pages/subject/subject' }) },
   goWarn() { wx.navigateTo({ url: '/pages/warn/warn' }) },

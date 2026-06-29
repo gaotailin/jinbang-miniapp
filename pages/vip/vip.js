@@ -25,6 +25,7 @@ Page({
   // 虚拟支付：后端 /api/vpay/create 出 signData+双签名，前端调 wx.requestVirtualPayment。
   // 接口未就绪/低版本不支持时优雅回退"即将开放"。
   buy() {
+    wx.showToast({ title: 'buy已触发', icon: 'none', duration: 1500 })   // 联调标记，完后删
     const plan = PLANS.find(x => x.key === this.data.picked)
     if (!wx.requestVirtualPayment) {
       // 联调诊断：API 不存在时给明确提示(而非笼统"即将开放")
