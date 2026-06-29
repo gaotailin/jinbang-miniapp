@@ -37,7 +37,7 @@
     </block>
     <block wx:else>
       <button wx:if="{{!isVip}}" class="btn btn--gold btn--lg btn--block" bindtap="buy">立即开通</button>
-      <button wx:else class="btn btn--gold btn--lg btn--block" disabled>已是会员</button>
+      <button wx:else class="btn btn--gold btn--lg btn--block" bindtap="buy">续费 / 再次开通</button>
     </block>
   </view>
 </view>

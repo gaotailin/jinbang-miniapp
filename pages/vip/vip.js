@@ -26,7 +26,15 @@ Page({
   // 接口未就绪/低版本不支持时优雅回退"即将开放"。
   buy() {
     const plan = PLANS.find(x => x.key === this.data.picked)
-    if (!wx.requestVirtualPayment) { this.payComingSoon(); return }   // 基础库过低
+    if (!wx.requestVirtualPayment) {
+      // 联调诊断：API 不存在时给明确提示(而非笼统"即将开放")
+      wx.showModal({
+        title: '无法调起支付',
+        content: '当前微信不支持虚拟支付接口(requestVirtualPayment)。请升级微信到最新版，或确认小程序虚拟支付已开通。',
+        showCancel: false, confirmText: '知道了'
+      })
+      return
+    }
     wx.showLoading({ title: '发起支付', mask: true })
     wx.login({
       success: (lr) => {
