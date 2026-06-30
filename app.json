@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/luqu/luqu",
     "pages/index/index",
     "pages/pick/pick",
     "pages/search/search",

@@ -153,6 +153,7 @@ Page({
   goArtSchools() { wx.navigateTo({ url: '/pages/artSchools/artSchools' }) },
   goGuide() { wx.navigateTo({ url: '/pages/guide/guide' }) },
   goAbout() { wx.navigateTo({ url: '/pages/about/about' }) },
+  goLuqu() { wx.navigateTo({ url: '/pages/luqu/luqu' }) },
   goReport() {
     if (!wx.getStorageSync('jb_report')) { wx.showToast({ title: '先做测一测', icon: 'none' }); return }
     wx.navigateTo({ url: '/pages/report/report' })

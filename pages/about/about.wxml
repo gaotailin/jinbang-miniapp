@@ -7,7 +7,7 @@
 
   <view class="card">
     <view class="sec-title">关于我们</view>
-    <view class="p">九色鹿前程助手是一款面向<text class="b">内蒙古高考考生</text>的报考辅助工具，帮助考生按分数、位次匹配全国院校与专业，提供冲稳保参考、院校/专业对比、霍兰德/MBTI/选科测评等服务。</view>
+    <view class="p">九色鹿前程助手是一款面向<text class="b">全国高考考生</text>的报考辅助工具，基于各省历年录取数据，帮助考生按分数、位次匹配全国院校与专业，提供冲稳保参考、院校/专业对比、霍兰德/MBTI/选科测评等服务。</view>
     <view class="p">运营主体：包头市九色鹿文化传播有限责任公司。</view>
   </view>
 

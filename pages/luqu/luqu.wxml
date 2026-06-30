@@ -1,0 +1,56 @@
+<view class="page">
+  <view class="hero">
+    <view class="hero__title">📅 录取日程</view>
+    <view class="hero__sub">{{year}} 年全国各省 · 关键节点一目了然</view>
+  </view>
+
+  <!-- 省份切换 -->
+  <view class="prov-picker" bindtap="showPicker">
+    <text class="prov-picker__icon">📍</text>
+    <text class="prov-picker__val">{{current.province}}</text>
+    <text class="prov-picker__arr">›</text>
+  </view>
+
+  <!-- 省份弹出层 -->
+  <view wx:if="{{showProv}}" class="mask" bindtap="hidePicker"></view>
+  <view wx:if="{{showProv}}" class="prov-list">
+    <scroll-view scroll-y="true" class="prov-list__inner">
+      <view wx:for="{{provinces}}" wx:key="*this" class="prov-item {{provinceIndex===index?'prov-item--on':''}}" data-i="{{index}}" bindtap="selectProv">{{item}}</view>
+    </scroll-view>
+  </view>
+
+  <!-- 出分时间 -->
+  <view wx:if="{{current.score_release}}" class="card score-card">
+    <view class="score-card__icon">🎯</view>
+    <view class="score-card__text">出分时间：{{current.score_release}}</view>
+  </view>
+
+  <!-- 备注 -->
+  <view wx:if="{{current.note}}" class="note">{{current.note}}</view>
+
+  <!-- 批次列表 -->
+  <view class="card">
+    <view class="sec-title">录取批次</view>
+    <view wx:for="{{current.batches}}" wx:key="name" class="batch {{item.supplement?'batch--warn':''}}">
+      <view class="batch__head">
+        <text class="batch__name">{{item.name}}</text>
+        <text wx:if="{{item.supplement}}" class="batch__tag">📌 征集</text>
+      </view>
+      <view wx:if="{{item.apply}}" class="batch__row">
+        <text class="batch__label">填报</text>
+        <text class="batch__val">{{item.apply}}</text>
+      </view>
+      <view wx:if="{{item.admit}}" class="batch__row">
+        <text class="batch__label">录取</text>
+        <text class="batch__val">{{item.admit}}</text>
+      </view>
+      <view wx:if="{{item.supplement}}" class="batch__sup">
+        <text class="batch__sup-icon">⚠️</text>
+        <text>征集志愿：{{item.supplement}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 免责 -->
+  <view class="disclaimer">{{disclaimer}}</view>
+</view>
