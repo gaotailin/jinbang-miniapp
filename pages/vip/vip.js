@@ -25,7 +25,6 @@ Page({
   // 虚拟支付：后端 /api/vpay/create 出 signData+双签名，前端调 wx.requestVirtualPayment。
   // 接口未就绪/低版本不支持时优雅回退"即将开放"。
   buy() {
-    wx.showToast({ title: 'buy已触发', icon: 'none', duration: 1500 })   // 联调标记，完后删
     const plan = PLANS.find(x => x.key === this.data.picked)
     if (!wx.requestVirtualPayment) {
       // 联调诊断：API 不存在时给明确提示(而非笼统"即将开放")
@@ -56,12 +55,8 @@ Page({
             env: res.env,
             success: () => this.afterPaid(plan, otn),
             fail: (err) => {
-              // 联调：弹出微信确切错误码,便于定位(完后改回简洁提示)
-              wx.showModal({
-                title: '支付未完成(联调)',
-                content: 'errMsg: ' + ((err && err.errMsg) || JSON.stringify(err)),
-                showCancel: false, confirmText: '知道了'
-              })
+              const m = (err && err.errMsg) || ''
+              wx.showToast({ title: m.indexOf('cancel') >= 0 ? '支付已取消' : '支付未完成', icon: 'none' })
             }
           })
         }).catch(() => { wx.hideLoading(); wx.showToast({ title: '下单失败，请稍后重试', icon: 'none' }) })
@@ -73,7 +68,7 @@ Page({
   payComingSoon() {
     wx.showModal({
       title: '支付即将开放',
-      content: '会员支付正在最后联调，马上开放。可先点下方"体验会员"试用全部功能。',
+      content: '支付暂时无法发起，请稍后重试，或点下方"体验会员"先试用全部功能。',
       showCancel: false, confirmText: '知道了'
     })
   },
