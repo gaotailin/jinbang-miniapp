@@ -1,9 +1,4 @@
 <view class="page">
-  <!-- 【联调调试条】定位用，联调完删 -->
-  <view style="background:#ffeb3b;color:#000;padding:24rpx;font-size:28rpx;line-height:1.6" bindtap="buy">
-    调试: iOS={{isIOS}} · VIP={{isVip}} · 选中={{picked}}{{"\n"}}👉 点这条黄色区域 直接测试付款
-  </view>
-
   <view class="hero">
     <view class="hero__crown">👑</view>
     <view class="hero__t">九色鹿会员</view>
