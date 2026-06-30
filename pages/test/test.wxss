@@ -22,7 +22,7 @@
 .opt__icon { font-size: 44rpx; }
 .opt__txt { font-size: 28rpx; font-weight: 600; color: #ff6600; margin-top: 6rpx; }
 
-.score-input { font-size: 72rpx; font-weight: 700; color: #ff6600; text-align: center; padding: 20rpx 0; width: 100%; box-sizing: border-box; }
+.score-input { font-size: 56rpx; font-weight: 700; color: #ff6600; text-align: center; padding: 16rpx 0; width: 100%; box-sizing: border-box; }
 
 .q__title { font-size: 30rpx; color: #111111; line-height: 1.5; }
 .q__opt { flex: 1; text-align: center; padding: 22rpx 0; border-radius: 12rpx; border: 2rpx solid #e6e6e6; color: #666; font-size: 28rpx; }
