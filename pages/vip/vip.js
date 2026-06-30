@@ -2,7 +2,7 @@ const app = getApp()
 const vip = require('../../utils/vip.js')
 
 const PLANS = [
-  { key: 'season', name: '高考季卡', price: 39, unit: '高考季', tag: '最热', days: 120 },
+  { key: 'season', name: '高考季卡', price: 39, unit: '3个月', tag: '最热', days: 90 },
   { key: 'year', name: '年卡', price: 69, unit: '一年', tag: '更划算', days: 365 }
 ]
 
