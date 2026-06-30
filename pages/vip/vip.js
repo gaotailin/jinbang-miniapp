@@ -56,8 +56,12 @@ Page({
             env: res.env,
             success: () => this.afterPaid(plan, otn),
             fail: (err) => {
-              const m = (err && err.errMsg) || ''
-              wx.showToast({ title: m.indexOf('cancel') >= 0 ? '支付已取消' : '支付未完成', icon: 'none' })
+              // 联调：弹出微信确切错误码,便于定位(完后改回简洁提示)
+              wx.showModal({
+                title: '支付未完成(联调)',
+                content: 'errMsg: ' + ((err && err.errMsg) || JSON.stringify(err)),
+                showCancel: false, confirmText: '知道了'
+              })
             }
           })
         }).catch(() => { wx.hideLoading(); wx.showToast({ title: '下单失败，请稍后重试', icon: 'none' }) })
