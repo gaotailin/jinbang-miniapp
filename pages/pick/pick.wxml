@@ -141,6 +141,13 @@
       </view>
 
       <view wx:if="{{!result[tab].length}}" class="empty-tier">该梯度暂无匹配院校，换个分数试试</view>
+
+      <!-- 付费墙：非会员截断提示 -->
+      <view wx:if="{{!isVipUser && result[tab].length > 0 && result[tab].length < fullCounts[tab]}}" class="vip-teaser" bindtap="goVip">
+        <text class="vip-teaser__icon">🔒</text>
+        <text class="vip-teaser__t">仅显示前 {{result[tab].length}} 所，还有 {{fullCounts[tab] - result[tab].length}} 所隐藏</text>
+        <text class="vip-teaser__btn">开通会员查看全部 ›</text>
+      </view>
     </view>
 
     <!-- 一键智能填报 -->

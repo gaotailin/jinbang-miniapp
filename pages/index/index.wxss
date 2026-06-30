@@ -11,6 +11,8 @@
   padding: 28rpx 28rpx 0;
 }
 .topbar__name { font-size: 38rpx; font-weight: 800; color: #1a1a1a; }
+.topbar__quota { font-size: 22rpx; color: #e8780a; background: #FFF3E0; padding: 6rpx 16rpx; border-radius: 20rpx; }
+.topbar__quota--vip { color: #B8860B; background: #FFF8E1; }
 .topbar__tabs { display: flex; gap: 36rpx; }
 .topbar__tab {
   font-size: 28rpx; color: #aaa; font-weight: 400;

@@ -88,6 +88,18 @@
 .lock__s { font-size: 25rpx; color: #999; margin-top: 12rpx; }
 
 .empty-tier { text-align: center; color: #bbb; font-size: 26rpx; padding: 60rpx 20rpx; }
+
+/* 付费墙截断提示 */
+.vip-teaser {
+  display: flex; align-items: center; gap: 12rpx;
+  margin: 16rpx 0; padding: 24rpx 20rpx;
+  background: linear-gradient(135deg, #FFF8E1, #FFECB3);
+  border-radius: 16rpx; border: 1rpx solid #FFD54F;
+}
+.vip-teaser__icon { font-size: 36rpx; }
+.vip-teaser__t { flex: 1; font-size: 24rpx; color: #795548; }
+.vip-teaser__btn { font-size: 24rpx; color: #FF6F00; font-weight: 600; white-space: nowrap; }
+
 .tip-empty { text-align: center; padding: 140rpx 60rpx; }
 .tip-empty__icon { font-size: 100rpx; margin-bottom: 24rpx; display: block; }
 .tip-empty__t { font-size: 30rpx; font-weight: 600; color: #444; margin-bottom: 8rpx; }

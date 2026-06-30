@@ -1,4 +1,5 @@
 const app = getApp()
+const vip = require('../../utils/vip.js')
 
 Page({
   data: {
@@ -8,7 +9,9 @@ Page({
     hasData: false,
     profile: { province: '北京', subject: '物理类', score: '--', rank: '--' },
     bands: { chong: '--', wen: '--', bao: '--' },
-    rankBoards: []  // 首页高校排行榜预览（对标掌上）
+    rankBoards: [],  // 首页高校排行榜预览（对标掌上）
+    remaining: '--',  // 今日剩余免费次数
+    isVip: false
   },
 
   onShow() {
@@ -46,6 +49,11 @@ Page({
     }
     this.setData({ days, hasData, profile, bands, dotPos }, () => {
       if (hasData) this.drawViz()
+    })
+
+    this.setData({
+      isVip: vip.isVip(),
+      remaining: vip.isVip() ? '∞' : String(vip.remaining())
     })
 
     if (!this.data.rankBoards.length) this.loadRankBoards()
@@ -150,7 +158,13 @@ Page({
     wx.navigateTo({ url: '/pages/report/report' })
   },
 
+  goVip() {
+    wx.navigateTo({ url: '/pages/vip/vip' })
+  },
+
   onShareAppMessage() {
+    vip.addBonus(1)
+    wx.showToast({ title: '分享成功，今日免费 +1 次', icon: 'success' })
     return { title: '九色鹿前程助手 · 智能选校，科学填志愿', path: '/pages/index/index' }
   },
 

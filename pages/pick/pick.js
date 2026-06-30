@@ -1,5 +1,6 @@
 const app = getApp()
 const favSync = require('../../utils/fav.js')
+const vip = require('../../utils/vip.js')
 // 全国省份主数据（所有省），实际开放由 DATA_READY 控制：仅 ready 省显示在 picker
 const ALL_PROVINCES = ['内蒙古', '北京', '天津', '河北', '山西', '辽宁', '吉林', '黑龙江', '上海', '江苏',
   '浙江', '安徽', '福建', '江西', '山东', '河南', '湖北', '湖南', '广东', '广西', '海南',
@@ -61,12 +62,19 @@ Page({
     oralOptions: ['不限', '需口试合格'], oralIndex: 0,
     userRank: 0,
     result: { chong: [], wen: [], bao: [] },
-    counts: { chong: 0, wen: 0, bao: 0 }
+    counts: { chong: 0, wen: 0, bao: 0 },
+    fullCounts: { chong: 0, wen: 0, bao: 0 },
+    isVipUser: false
   },
 
   onLoad(q) {
     if (q && q.score) this.setData({ score: q.score, mode: 'score' })
     if (q && q.rank) this.setData({ rank: q.rank, mode: 'rank' })
+  },
+
+  onShow() {
+    const r = vip.remaining()
+    this.setData({ remaining: r === Infinity ? '不限次' : r })
   },
 
   switchMode(e) { this.setData({ mode: e.currentTarget.dataset.m, done: false, result: { chong:[], wen:[], bao:[] } }) },
@@ -112,6 +120,21 @@ Page({
         showCancel: false, confirmText: '知道了'
       })
       return
+    }
+
+    // 付费墙：非会员扣一次免费额度，耗尽弹引导
+    if (!vip.isVip()) {
+      const rem = vip.remaining()
+      if (rem <= 0) {
+        wx.showModal({
+          title: '今日免费次数已用完',
+          content: '每天 5 次免费查询，分享好友 +1 次。开通会员不限次、查看全部冲稳保院校。',
+          confirmText: '开通会员', cancelText: '稍后再说',
+          success: r => { if (r.confirm) wx.navigateTo({ url: '/pages/vip/vip' }) }
+        })
+        return
+      }
+      vip.consume()
     }
 
     if (mode === 'lincha') {
@@ -173,13 +196,26 @@ Page({
           color: p !== null ? (p < 30 ? '#e74c3c' : p > 75 ? '#27ae60' : '#e85d04') : '#999'
         }
       })
-      const result = { chong: mapTier(rec.chong), wen: mapTier(rec.wen), bao: mapTier(rec.bao) }
+      const isV = vip.isVip()
+      const limit = isV ? 999 : (vip.FREE_TIER_SHOW || 3)
+      const result = {
+        chong: mapTier(rec.chong).slice(0, limit),
+        wen: mapTier(rec.wen).slice(0, limit),
+        bao: mapTier(rec.bao).slice(0, limit)
+      }
+      const fullCounts = {
+        chong: (rec.chong || []).length,
+        wen: (rec.wen || []).length,
+        bao: (rec.bao || []).length
+      }
       this.setData({
-        score: String(score),   // 回填分数（位次模式用户输入的是位次，这里填转换后的分数）
+        score: String(score),
         loading: false, done: true,
         userRank: sc.user_rank || 0,
         result,
-        counts: { chong: result.chong.length, wen: result.wen.length, bao: result.bao.length }
+        counts: { chong: result.chong.length, wen: result.wen.length, bao: result.bao.length },
+        fullCounts,
+        isVipUser: isV
       })
     }).catch(() => {
       this.setData({ loading: false })
@@ -362,7 +398,13 @@ Page({
     })
   },
 
+  goVip() {
+    wx.navigateTo({ url: '/pages/vip/vip' })
+  },
+
   onShareAppMessage() {
+    vip.addBonus(1)
+    wx.showToast({ title: '分享成功，今日免费 +1 次', icon: 'success' })
     return { title: '我在九色鹿前程助手查到了冲稳保选校方案，内蒙古考生快来试', path: '/pages/index/index' }
   }
 ,

@@ -3,6 +3,8 @@
   <!-- ===== 1. 顶部导航 ===== -->
   <view class="topbar">
     <view class="topbar__name">九色鹿前程助手</view>
+    <view wx:if="{{!isVip}}" class="topbar__quota" bindtap="goVip">今日剩 {{remaining}} 次</view>
+    <view wx:else class="topbar__quota topbar__quota--vip" bindtap="goVip">👑 会员</view>
     <view class="topbar__tabs">
       <view class="topbar__tab {{category==='normal'?'topbar__tab--on':''}}" data-cat="normal" bindtap="switchCat">普通类</view>
       <view class="topbar__tab {{category==='art'?'topbar__tab--on':''}}" data-cat="art" bindtap="switchCat">艺术类</view>
