@@ -100,7 +100,7 @@ Page({
         wx.hideLoading()
         const items = res || []
         const total = items.reduce((s, it) => s + (it.count || 0), 0)
-        const info = total > 0 ? ('📋 计划招 ' + total + ' 人，' + items.length + ' 个专业组') : '暂无计划数据'
+        const info = total > 0 ? ('📋 计划招 ' + total + ' 人，' + items.length + ' 个专业组（2025招生计划·参考，2026以各省考试院官方为准）') : '暂无计划数据'
         // 缓存
         const cache = this.data.planCache || {}
         cache[sid] = info
