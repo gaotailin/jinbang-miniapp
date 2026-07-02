@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/luqu/luqu",
     "pages/index/index",
+    "pages/luqu/luqu",
     "pages/pick/pick",
     "pages/search/search",
     "pages/major/major",
