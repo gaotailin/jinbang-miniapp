@@ -1,3 +1,4 @@
+const app = getApp()
 const { PROVINCES, calcComposite, checkLine } = require('../../utils/artRules.js')
 const SECTION = require('../../assets/data/artSection.js')
 const MAJSEC = require('../../assets/data/artMajorSection.js')
@@ -15,7 +16,9 @@ Page({
     major: '',
     result: null,
     lineText: '', lineCls: '',
-    lineNote: ''
+    lineNote: '',
+    artRec: null,        // 冲稳保艺术院校（/api/art_recommend，16省投档线）
+    artRecLoading: false
   },
 
   onLoad() {
@@ -40,7 +43,8 @@ Page({
       formNames: cat.formulas.map(f => f.name),
       formIdx: 0,
       multiForm: cat.formulas.length > 1,
-      result: null
+      result: null,
+      artRec: null
     })
   },
 
@@ -90,8 +94,48 @@ Page({
       result: { comp, cat, prov, formula, seg, mseg },
       lineText: map[line].t, lineCls: map[line].cls
     })
-  }
-,
+    this._fetchArtRec(prov.name, cat.name, parseFloat(comp))
+  },
+
+  // ---- 冲稳保艺术院校：按综合分对照上年投档线分档 ----
+  _fetchArtRec(province, category, comp, retried) {
+    if (isNaN(comp)) { this.setData({ artRec: null }); return }
+    this.setData({ artRecLoading: true, artRec: null })
+    app.request('/api/art_recommend', { data: { province: province, category: category } })
+      .then(res => this._onArtRec(res, province, comp, retried))
+      .catch(res => this._onArtRec(res, province, comp, retried))
+  },
+  _onArtRec(res, province, comp, retried) {
+    // 类别名与库内口径不一致时，用接口回的 available 列表按前两字匹配重试一次
+    const avail = (res && (res.available_categories || res.available)) || []
+    if (res && !res.ok && !retried && avail.length) {
+      const want = this.data.catNames[this.data.catIdx] || ''
+      const hit = avail.find(a => a.indexOf(want.slice(0, 2)) >= 0) || avail[0]
+      this._fetchArtRec(province, hit, comp, true)
+      return
+    }
+    const schools = (res && res.ok && res.schools) || []
+    if (!schools.length) { this.setData({ artRec: null, artRecLoading: false }); return }
+    const band = { chong: [], wen: [], bao: [] }
+    schools.forEach(s => {
+      const d = s.score - comp
+      if (d > 0 && d <= 15) band.chong.push(s)
+      else if (d <= 0 && d > -10) band.wen.push(s)
+      else if (d <= -10 && d >= -30) band.bao.push(s)
+    })
+    const cut = a => a.slice(0, 8)
+    if (!band.chong.length && !band.wen.length && !band.bao.length) {
+      this.setData({ artRec: null, artRecLoading: false }); return
+    }
+    this.setData({
+      artRec: {
+        year: res.year || 2024, category: res.category,
+        chong: cut(band.chong), wen: cut(band.wen), bao: cut(band.bao)
+      },
+      artRecLoading: false
+    })
+  },
+
   onShareAppMessage() {
     return { title: '九色鹿前程助手 — AI智能填志愿', path: '/pages/index/index' }
   },

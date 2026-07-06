@@ -66,6 +66,24 @@
     </view>
   </view>
 
+  <!-- 冲稳保艺术院校（上年投档线对照） -->
+  <view wx:if="{{artRec}}" class="artrec">
+    <view class="artrec__t">够得着的艺术院校 <text class="artrec__sub">{{artRec.year}}年投档线 · {{artRec.category}}</text></view>
+    <block wx:for="{{[{k:'chong',n:'冲',cls:'c'},{k:'wen',n:'稳',cls:'w'},{k:'bao',n:'保',cls:'b'}]}}" wx:for-item="g" wx:key="k">
+      <view wx:if="{{artRec[g.k].length}}" class="artrec__grp">
+        <view class="artrec__tag artrec__tag--{{g.cls}}">{{g.n}}</view>
+        <view class="artrec__list">
+          <view wx:for="{{artRec[g.k]}}" wx:key="index" class="artrec__row">
+            <view class="artrec__school">{{item.school}}<text wx:if="{{item.remarks}}" class="artrec__rmk">{{item.remarks}}</text></view>
+            <view class="artrec__score">{{item.score}}<text class="artrec__batch">{{item.batch}}</text></view>
+          </view>
+        </view>
+      </view>
+    </block>
+    <view class="artrec__note">按你的综合分与{{artRec.year}}年投档综合分对照分档（冲=高你15分内 / 稳=低你10分内 / 保=低10~30分），折算公式院校间或有差异，以院校当年简章为准</view>
+  </view>
+  <view wx:elif="{{result && !artRecLoading}}" class="res__norank">该省该类暂无院校投档线数据（已收录16省），逐步补充中</view>
+
   <view wx:if="{{lineNote}}" class="note">📌 {{lineNote}}</view>
   <view class="note">说明：综合分按 a×文化 + b×专业 的官方系数折算。结果仅供参考，以省考试院当年正式公布为准。</view>
   <view class="src">数据来源：{{provNames[provIdx]}}省考试院 · 2025（仅官方公开源）</view>

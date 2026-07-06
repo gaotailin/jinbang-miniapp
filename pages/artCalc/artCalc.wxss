@@ -45,5 +45,22 @@
 .dt-row { display: flex; justify-content: space-between; font-size: 26rpx; color: #666; padding: 14rpx 0; }
 .dt-row text:first-child { color: #999; }
 
+.artrec { background: #fff; border-radius: 20rpx; padding: 28rpx; margin-top: 24rpx; box-shadow: 0 4rpx 16rpx rgba(0,0,0,0.05); }
+.artrec__t { font-size: 30rpx; font-weight: 800; color: #333; }
+.artrec__sub { font-size: 22rpx; font-weight: 400; color: #aaa; margin-left: 12rpx; }
+.artrec__grp { display: flex; margin-top: 22rpx; }
+.artrec__tag { width: 56rpx; height: 56rpx; line-height: 56rpx; text-align: center; border-radius: 12rpx; font-size: 28rpx; font-weight: 800; color: #fff; flex-shrink: 0; }
+.artrec__tag--c { background: #e74c3c; }
+.artrec__tag--w { background: #e8a004; }
+.artrec__tag--b { background: #27ae60; }
+.artrec__list { flex: 1; margin-left: 18rpx; }
+.artrec__row { display: flex; justify-content: space-between; align-items: baseline; padding: 10rpx 0; border-bottom: 1rpx solid #f6f6f6; }
+.artrec__row:last-child { border-bottom: none; }
+.artrec__school { font-size: 26rpx; color: #333; flex: 1; margin-right: 16rpx; }
+.artrec__rmk { font-size: 20rpx; color: #bbb; margin-left: 8rpx; }
+.artrec__score { font-size: 28rpx; font-weight: 700; color: #8b5cf6; flex-shrink: 0; }
+.artrec__batch { font-size: 20rpx; font-weight: 400; color: #bbb; margin-left: 8rpx; }
+.artrec__note { font-size: 20rpx; color: #bbb; line-height: 1.5; margin-top: 20rpx; border-top: 1rpx solid #f6f6f6; padding-top: 16rpx; }
+
 .note { font-size: 22rpx; color: #999; line-height: 1.6; margin: 24rpx 8rpx 8rpx; }
 .src { font-size: 22rpx; color: #bbb; margin: 0 8rpx; }
