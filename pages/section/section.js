@@ -17,7 +17,7 @@ function subjectsOf(prov) {
 Page({
   data: {
     provinces: ALL_PROVINCES, provinceIndex: 0, province: '内蒙古',
-    years: YEARS, yearIndex: 0, year: 2025,
+    years: YEARS, yearIndex: 1, year: 2025,   // yearIndex 与 YEARS[1]=2025 对齐(原0显示2026查2025不一致)
     subjects: subjectsOf('内蒙古'), subjectIndex: 0, subject: '物理类',
     score: '',
     loading: false, done: false, isDerived: false,
@@ -65,19 +65,25 @@ Page({
     this.setData({ loading: true, done: false, error: '' })
 
     // 查该分数两侧 ±15 分段（直方图）+ 全省总人数（算超越%）
+    // 优先真实官方一分一段 one_section(31省已入库)，该省该年该科类缺数据时回退派生表标"参考"
     const lo = Math.max(0, score - 15), hi = Math.min(750, score + 15)
-    const tableName = 'one_section_derived'  // 31省全有,标注"参考"
-    const qDist = `SELECT score,cumulative_count,section_count,rank_low,rank_high FROM ${tableName} WHERE province='${province}' AND year=${year} AND exam_type='${subject}' AND score BETWEEN ${lo} AND ${hi} ORDER BY score DESC`
-    const qTotal = `SELECT MAX(cumulative_count) AS total FROM ${tableName} WHERE province='${province}' AND year=${year} AND exam_type='${subject}'`
-    Promise.all([app.request('/api/sql', { data: { q: qDist } }), app.request('/api/sql', { data: { q: qTotal } })])
+    const fetchDist = (tableName) => {
+      const qDist = `SELECT score,cumulative_count,section_count,rank_low,rank_high FROM ${tableName} WHERE province='${province}' AND year=${year} AND exam_type='${subject}' AND score BETWEEN ${lo} AND ${hi} ORDER BY score DESC`
+      const qTotal = `SELECT MAX(cumulative_count) AS total FROM ${tableName} WHERE province='${province}' AND year=${year} AND exam_type='${subject}'`
+      return Promise.all([app.request('/api/sql', { data: { q: qDist } }), app.request('/api/sql', { data: { q: qTotal } })])
+    }
+    fetchDist('one_section')
       .then(([rows, totRows]) => {
+        if (rows && rows.length) return [rows, totRows, false]
+        return fetchDist('one_section_derived').then(([r2, t2]) => [r2, t2, true])
+      })
+      .then(([rows, totRows, isDerived]) => {
         if (!rows || rows.length === 0) {
           this.setData({ loading: false, error: '未找到该分数段数据', errIcon: '📊', errDesc: '检查年份和科类再查', errRetry: false })
           return
         }
         const total = (totRows && totRows[0] && totRows[0].total) ? totRows[0].total : null
         const hit = rows.find(r => r.score === score)
-        const isDerived = tableName.includes('derived')
         // 直方图：升序 {score, same, isMe}
         const chart = rows.slice().sort((a, b) => a.score - b.score).map(r => ({
           score: r.score, same: r.section_count || 0, isMe: r.score === score
