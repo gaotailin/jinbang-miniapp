@@ -6,8 +6,8 @@
     <view wx:else class="hero__s">解锁不限次选校 · 完整冲稳保 · 录取概率</view>
   </view>
 
-  <!-- 套餐（iOS 隐藏：苹果政策禁止小程序内虚拟支付）-->
-  <view wx:if="{{!isIOS}}" class="plans">
+  <!-- 套餐（虚拟支付双端支持，iOS 走同一接口由微信自动路由）-->
+  <view class="plans">
     <view wx:for="{{plans}}" wx:key="key" class="plan {{picked===item.key?'plan--on':''}}"
           data-k="{{item.key}}" bindtap="pick">
       <view wx:if="{{item.tag}}" class="plan__tag">{{item.tag}}</view>
@@ -31,13 +31,7 @@
   <view class="tip">分享给好友，每次 +1 当日免费次数</view>
 
   <view class="bottom">
-    <block wx:if="{{isIOS}}">
-      <view wx:if="{{isVip}}" class="ios-note">您已是会员，有效期至 {{expireText}}</view>
-      <view wx:else class="ios-note">应苹果平台政策，iOS 暂不支持在小程序内开通会员。可在安卓手机上开通，或分享小程序，每日 +1 次免费名额。</view>
-    </block>
-    <block wx:else>
-      <button wx:if="{{!isVip}}" class="btn btn--gold btn--lg btn--block" bindtap="buy">立即开通</button>
-      <button wx:else class="btn btn--gold btn--lg btn--block" bindtap="buy">续费 / 再次开通</button>
-    </block>
+    <button wx:if="{{!isVip}}" class="btn btn--gold btn--lg btn--block" bindtap="buy">立即开通</button>
+    <button wx:else class="btn btn--gold btn--lg btn--block" bindtap="buy">续费 / 再次开通</button>
   </view>
 </view>

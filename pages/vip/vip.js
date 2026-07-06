@@ -40,7 +40,8 @@ Page({
       success: (lr) => {
         app.request('/api/vpay/create', {
           method: 'POST',
-          data: { plan: plan.key, code: lr.code }   // 价格后端定，前端不传，防篡改
+          // 价格后端定，前端不传，防篡改；platform 回传真实设备端，供 signData 签名
+          data: { plan: plan.key, code: lr.code, platform: app.globalData.isIOS ? 'ios' : 'android' }
         }).then(res => {
           wx.hideLoading()
           if (!res || !res.signData || !res.paySig) {
