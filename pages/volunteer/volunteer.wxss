@@ -75,3 +75,63 @@
   margin-top: 16rpx; padding: 24rpx; text-align: center; font-size: 28rpx; color: #999;
   background: #f5f5f5; border-radius: 12rpx;
 }
+
+/* ================= 模拟填报 ================= */
+.vtab {
+  display: flex; margin: 0 24rpx 24rpx; background: #fff;
+  border-radius: 16rpx; overflow: hidden; border: 1rpx solid #eee;
+}
+.vtab__item {
+  flex: 1; text-align: center; padding: 20rpx 0;
+  font-size: 28rpx; color: #666; position: relative;
+}
+.vtab__item--on { background: #ff6600; color: #fff; font-weight: 700; }
+.vtab__new {
+  font-size: 18rpx; color: #ff6600; background: #fff3e8;
+  border-radius: 6rpx; padding: 0 6rpx; margin-left: 8rpx; vertical-align: 6rpx;
+}
+.vtab__item--on .vtab__new { color: #fff; background: rgba(255,255,255,0.25); }
+
+.sim-rule {
+  margin: 0 24rpx 20rpx; padding: 24rpx 28rpx; background: #fff;
+  border-radius: 16rpx; border: 1rpx solid #eee;
+}
+.sim-rule__t { font-size: 28rpx; font-weight: 700; color: #111; }
+.sim-rule__d { font-size: 24rpx; color: #888; line-height: 1.6; margin-top: 10rpx; }
+.sim-rule__p { display: flex; align-items: center; gap: 16rpx; margin-top: 16rpx; }
+.sim-rule__bar { flex: 1; height: 12rpx; background: #f0f0f0; border-radius: 9999rpx; overflow: hidden; }
+.sim-rule__fill { height: 100%; background: linear-gradient(90deg, #ff8c00, #ff6600); border-radius: 9999rpx; }
+.sim-rule__n { font-size: 24rpx; color: #ff6600; font-weight: 700; }
+
+.sim-ops { display: flex; flex-wrap: wrap; gap: 14rpx; margin: 0 24rpx 24rpx; }
+.sim-ops__btn {
+  padding: 14rpx 26rpx; background: #fff; border: 1rpx solid #ffd0b0;
+  color: #ff6600; border-radius: 9999rpx; font-size: 25rpx;
+}
+.sim-ops__btn--main { background: #ff6600; color: #fff; border-color: #ff6600; font-weight: 600; }
+.sim-ops__btn--danger { color: #d33; border-color: #f0c0c0; }
+
+.sim-item { display: flex; align-items: flex-start; gap: 18rpx; }
+.sim-item__idx {
+  width: 44rpx; height: 44rpx; line-height: 44rpx; text-align: center;
+  background: #fff3e8; color: #ff6600; border-radius: 10rpx;
+  font-size: 24rpx; font-weight: 700; flex-shrink: 0; margin-top: 4rpx;
+}
+.sim-item__body { flex: 1; }
+.sim-item__name { font-size: 30rpx; font-weight: 600; color: #111; }
+.sim-item__tier {
+  font-size: 20rpx; color: #fff; border-radius: 6rpx; padding: 2rpx 10rpx; flex-shrink: 0;
+}
+.sim-item__tier--chong { background: #e74c3c; }
+.sim-item__tier--wen { background: #f39c12; }
+.sim-item__tier--bao { background: #27ae60; }
+.sim-item__meta { font-size: 23rpx; color: #999; margin-top: 8rpx; }
+.sim-item__adjust { font-size: 23rpx; color: #ff6600; margin-top: 10rpx; }
+.sim-item__ops { display: flex; flex-direction: column; gap: 10rpx; flex-shrink: 0; }
+.sim-item__op {
+  width: 52rpx; height: 52rpx; line-height: 52rpx; text-align: center;
+  background: #f5f5f5; color: #666; border-radius: 10rpx; font-size: 28rpx;
+}
+.sim-item__op--del { color: #d33; }
+
+.sim-foot { text-align: center; font-size: 22rpx; color: #bbb; padding: 24rpx 40rpx 10rpx; }

@@ -1,73 +1,150 @@
 <view class="page">
   <view class="hd">
-    <view class="hd__t">我的选校单</view>
-    <view class="hd__s">共 {{totalCount}} 所 · 按批次分组</view>
-    <view class="hd__actions">
+    <view class="hd__t">{{view === 'sim' ? '模拟填报' : '我的选校单'}}</view>
+    <view class="hd__s">{{view === 'sim' ? (simProvince + ' · ' + (rule ? rule.batchName + ' · ' + rule.modeName : '')) : '共 ' + totalCount + ' 所 · 按批次分组'}}</view>
+    <view class="hd__actions" wx:if="{{view === 'fav'}}">
       <view wx:if="{{list.length>=2}}" class="hd__cmp" bindtap="goCompare"><icon name="compare" color="#fff" size="26" /><text>对比</text></view>
       <view wx:if="{{totalCount}}" class="hd__cmp" bindtap="savePlan"><icon name="save" color="#fff" size="26" /><text>保存方案</text></view>
       <view class="hd__cmp" bindtap="showPlans"><icon name="folder" color="#fff" size="26" /><text>历史方案</text></view>
       <view wx:if="{{totalCount}}" class="hd__cmp" bindtap="diagnose"><icon name="pulse" color="#fff" size="26" /><text>诊断</text></view>
       <button wx:if="{{totalCount}}" class="hd__cmp hd__cmp--btn" open-type="share"><icon name="share" color="#fff" size="26" /><text>分享</text></button>
     </view>
-  </view>
-
-  <!-- 一键智能填报入口（对标掌上志愿表顶部 Hot 卡）-->
-  <view class="ai-fill" hover-class="ai-fill--press" hover-stay-time="80" bindtap="goPick">
-    <view class="ai-fill__l">
-      <view class="ai-fill__t"><icon name="fill" color="#e85d04" size="30" /><text>一键智能填报</text></view>
-      <view class="ai-fill__s">按你的分数自动生成冲稳保方案</view>
+    <view class="hd__actions" wx:if="{{view === 'sim'}}">
+      <view class="hd__cmp" bindtap="chooseSimProvince"><icon name="same" color="#fff" size="26" /><text>切换省份</text></view>
+      <view wx:if="{{simList.length}}" class="hd__cmp" bindtap="validateSim"><icon name="pulse" color="#fff" size="26" /><text>校验</text></view>
+      <view wx:if="{{simList.length}}" class="hd__cmp" bindtap="exportSim"><icon name="share" color="#fff" size="26" /><text>复制</text></view>
     </view>
-    <view class="ai-fill__arrow">›</view>
   </view>
 
-  <view wx:if="{{!totalCount}}" class="empty">
-    <view class="empty__icon">📝</view>
-    <view class="empty__title">选校单还是空的</view>
-    <view class="empty__sub">在「查大学」或「按分选校」里把心仪院校加进来</view>
-    <button class="btn btn--gold btn--lg" bindtap="goSearch">去查大学</button>
+  <!-- 视图切换 -->
+  <view class="vtab">
+    <view class="vtab__item {{view === 'fav' ? 'vtab__item--on' : ''}}" data-v="fav" bindtap="switchView">选校单</view>
+    <view class="vtab__item {{view === 'sim' ? 'vtab__item--on' : ''}}" data-v="sim" bindtap="switchView">模拟填报<text class="vtab__new">NEW</text></view>
   </view>
 
-  <view wx:else>
-    <view wx:for="{{batches}}" wx:key="key" class="batch">
-      <!-- 批次头部 -->
-      <view class="batch__hd">
-        <view class="batch__name">
-          <text class="batch__icon">{{item.icon}}</text>
-          <text>{{item.name}}</text>
-          <text class="batch__count">({{item.schools.length}}所)</text>
+  <!-- ================= 选校单视图（原有） ================= -->
+  <block wx:if="{{view === 'fav'}}">
+    <!-- 一键智能填报入口（对标掌上志愿表顶部 Hot 卡）-->
+    <view class="ai-fill" hover-class="ai-fill--press" hover-stay-time="80" bindtap="goPick">
+      <view class="ai-fill__l">
+        <view class="ai-fill__t"><icon name="fill" color="#e85d04" size="30" /><text>一键智能填报</text></view>
+        <view class="ai-fill__s">按你的分数自动生成冲稳保方案</view>
+      </view>
+      <view class="ai-fill__arrow">›</view>
+    </view>
+
+    <view wx:if="{{!totalCount}}" class="empty">
+      <view class="empty__icon">📝</view>
+      <view class="empty__title">选校单还是空的</view>
+      <view class="empty__sub">在「查大学」或「按分选校」里把心仪院校加进来</view>
+      <button class="btn btn--gold btn--lg" bindtap="goSearch">去查大学</button>
+    </view>
+
+    <view wx:else>
+      <view wx:for="{{batches}}" wx:key="key" class="batch">
+        <!-- 批次头部 -->
+        <view class="batch__hd">
+          <view class="batch__name">
+            <text class="batch__icon">{{item.icon}}</text>
+            <text>{{item.name}}</text>
+            <text class="batch__count">({{item.schools.length}}所)</text>
+          </view>
+          <text wx:if="{{item.scoreLine}}" class="batch__line">批次线 {{item.scoreLine}}分</text>
         </view>
-        <text wx:if="{{item.scoreLine}}" class="batch__line">批次线 {{item.scoreLine}}分</text>
+
+        <!-- 院校列表 -->
+        <view wx:if="{{!item.schools.length}}" class="batch__empty">暂无 · 在查大学里加入院校后可拖拽到此批次</view>
+        <view wx:for="{{item.schools}}" wx:key="school" class="card item">
+          <view class="item__l" data-school="{{item.school}}" bindtap="goSchool">
+            <view class="flex items-center gap-12">
+              <text class="item__idx">{{index+1}}</text>
+              <text class="item__name">{{item.school}}</text>
+              <text wx:if="{{item.level}}" class="tag tag--gold">{{item.level}}</text>
+            </view>
+            <view class="item__meta">
+              <text wx:if="{{item.province}}">{{item.province}}</text>
+              <text wx:if="{{item.minScore}}" class="ml-8">{{item.minScore}}分</text>
+            </view>
+          </view>
+          <view class="item__actions">
+            <text class="item__act" data-school="{{item.school}}" data-batch="{{item.batch}}" catchtap="moveBatch">移动</text>
+            <text class="item__del" data-school="{{item.school}}" catchtap="remove">移除</text>
+          </view>
+        </view>
       </view>
 
-      <!-- 院校列表 -->
-      <view wx:if="{{!item.schools.length}}" class="batch__empty">暂无 · 在查大学里加入院校后可拖拽到此批次</view>
-      <view wx:for="{{item.schools}}" wx:key="school" class="card item">
-        <view class="item__l" data-school="{{item.school}}" bindtap="goSchool">
+      <!-- 批次移动弹窗 -->
+      <view wx:if="{{showMove}}" class="move-mask" bindtap="closeMove">
+        <view class="move-pop" catchtap="">
+          <view class="move-pop__title">将「{{moveSchool}}」移动到</view>
+          <view wx:for="{{batches}}" wx:key="key" class="move-pop__item {{moveFrom===item.key ? 'move-pop__item--cur' : ''}}"
+                data-to="{{item.key}}" bindtap="doMove">{{item.icon}} {{item.name}}</view>
+          <view class="move-pop__cancel" bindtap="closeMove">取消</view>
+        </view>
+      </view>
+    </view>
+  </block>
+
+  <!-- ================= 模拟填报视图（P1：内蒙古/河南/山东） ================= -->
+  <block wx:if="{{view === 'sim'}}">
+    <view wx:if="{{!rule}}" class="empty">
+      <view class="empty__icon">🗺️</view>
+      <view class="empty__title">{{simProvince}}志愿表模板整理中</view>
+      <view class="empty__sub">已支持：{{simSupported}}，其余省份陆续上线</view>
+      <button class="btn btn--gold btn--lg" bindtap="chooseSimProvince">用已支持省份体验</button>
+    </view>
+
+    <block wx:else>
+      <!-- 规则说明卡 -->
+      <view class="sim-rule">
+        <view class="sim-rule__t">📋 {{simProvince}} · {{rule.batchName}}志愿规则</view>
+        <view class="sim-rule__d">{{rule.desc}}</view>
+        <view class="sim-rule__p">
+          <view class="sim-rule__bar"><view class="sim-rule__fill" style="width:{{simList.length * 100 / rule.slots}}%"></view></view>
+          <text class="sim-rule__n">{{simList.length}}/{{rule.slots}}</text>
+        </view>
+      </view>
+
+      <!-- 操作区 -->
+      <view class="sim-ops">
+        <view class="sim-ops__btn sim-ops__btn--main" bindtap="genFromReport">⚡ 按冲稳保生成</view>
+        <view class="sim-ops__btn" bindtap="importFromFav">从选校单带入</view>
+        <view class="sim-ops__btn" bindtap="addManual">+ 手动添加</view>
+        <view wx:if="{{simList.length}}" class="sim-ops__btn sim-ops__btn--danger" bindtap="clearSim">清空</view>
+      </view>
+
+      <view wx:if="{{!simList.length}}" class="empty">
+        <view class="empty__icon">📄</view>
+        <view class="empty__title">志愿表还是空的</view>
+        <view class="empty__sub">用「按冲稳保生成」一键填出科学梯度，再手动微调顺序</view>
+      </view>
+
+      <!-- 志愿列表 -->
+      <view wx:for="{{simList}}" wx:key="index" class="card sim-item">
+        <view class="sim-item__idx">{{index + 1}}</view>
+        <view class="sim-item__body" data-school="{{item.school}}" bindtap="goSimSchool">
           <view class="flex items-center gap-12">
-            <text class="item__idx">{{index+1}}</text>
-            <text class="item__name">{{item.school}}</text>
-            <text wx:if="{{item.level}}" class="tag tag--gold">{{item.level}}</text>
+            <text wx:if="{{item.tierName}}" class="sim-item__tier sim-item__tier--{{item.tier}}">{{item.tierName}}</text>
+            <text class="sim-item__name">{{item.school}}</text>
           </view>
-          <view class="item__meta">
-            <text wx:if="{{item.province}}">{{item.province}}</text>
-            <text wx:if="{{item.minScore}}" class="ml-8">{{item.minScore}}分</text>
+          <view class="sim-item__meta">
+            <text wx:if="{{item.majors.length}}">{{item.majors}}</text>
+            <text wx:if="{{item.minScore}}" class="ml-8">参考 {{item.minScore}} 分</text>
+          </view>
+          <view wx:if="{{rule.adjustable}}" class="sim-item__adjust" data-idx="{{index}}" catchtap="toggleAdjust">
+            {{item.adjust ? '☑ 服从组内调剂' : '☐ 不服从调剂（退档风险）'}}
           </view>
         </view>
-        <view class="item__actions">
-          <text class="item__act" data-school="{{item.school}}" data-batch="{{item.batch}}" catchtap="moveBatch">移动</text>
-          <text class="item__del" data-school="{{item.school}}" catchtap="remove">移除</text>
+        <view class="sim-item__ops">
+          <text class="sim-item__op" data-idx="{{index}}" data-dir="-1" catchtap="moveSim">↑</text>
+          <text class="sim-item__op" data-idx="{{index}}" data-dir="1" catchtap="moveSim">↓</text>
+          <text class="sim-item__op sim-item__op--del" data-idx="{{index}}" catchtap="removeSim">✕</text>
         </view>
       </view>
-    </view>
 
-    <!-- 批次移动弹窗 -->
-    <view wx:if="{{showMove}}" class="move-mask" bindtap="closeMove">
-      <view class="move-pop" catchtap="">
-        <view class="move-pop__title">将「{{moveSchool}}」移动到</view>
-        <view wx:for="{{batches}}" wx:key="key" class="move-pop__item {{moveFrom===item.key ? 'move-pop__item--cur' : ''}}"
-              data-to="{{item.key}}" bindtap="doMove">{{item.icon}} {{item.name}}</view>
-        <view class="move-pop__cancel" bindtap="closeMove">取消</view>
+      <view wx:if="{{simList.length}}" class="sim-foot">
+        模拟填报仅供演练参考，正式填报以省考试院志愿系统为准
       </view>
-    </view>
-  </view>
+    </block>
+  </block>
 </view>
