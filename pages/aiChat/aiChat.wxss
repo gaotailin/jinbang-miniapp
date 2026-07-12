@@ -9,6 +9,11 @@
   padding: 16rpx 24rpx; background: #fff7e6; border-bottom: 1rpx solid #ffe6c0;
 }
 .disclaimer__icon { font-size: 26rpx; flex-shrink: 0; margin-top: 2rpx; }
+.disclaimer__badge {
+  flex-shrink: 0; padding: 2rpx 12rpx; margin-top: 2rpx;
+  background: #ff6600; color: #fff; border-radius: 8rpx;
+  font-size: 22rpx; font-weight: 600;
+}
 .disclaimer__text { font-size: 22rpx; color: #996600; line-height: 1.5; }
 .quick { padding: 20rpx 24rpx; background: #fff; border-bottom: 1rpx solid #e6e6e6; }
 .quick__title { font-size: 24rpx; color: #999; margin-bottom: 12rpx; }
@@ -22,6 +27,11 @@
 .msgs__empty-img { width: 300rpx; height: 220rpx; margin-bottom: 12rpx; }
 .msgs__empty-text { font-size: 30rpx; font-weight: 600; color: #333; margin-bottom: 8rpx; }
 .msgs__empty-sub { font-size: 24rpx; color: #999; }
+.msgs__empty-aigc {
+  display: inline-block; margin-top: 20rpx; padding: 6rpx 20rpx;
+  background: #fff7e6; color: #996600; border: 1rpx solid #ffe6c0;
+  border-radius: 24rpx; font-size: 22rpx;
+}
 .msg { margin-bottom: 20rpx; display: flex; flex-direction: column; }
 .msg--user { align-items: flex-end; }
 .msg--ai  { align-items: flex-start; }
@@ -29,7 +39,13 @@
 .msg--user .msg__bubble { background: #ff6600; color: #fff; border-bottom-right-radius: 4rpx; }
 .msg--ai .msg__bubble { background: #fff; color: #333; border: 1rpx solid #e6e6e6; border-bottom-left-radius: 4rpx; }
 .msg__bubble--typing { padding: 12rpx 24rpx; }
-.msg__note { font-size: 20rpx; color: #ccc; margin-top: 6rpx; margin-left: 4rpx; }
+.msg__note { font-size: 20rpx; color: #bbb; margin-top: 6rpx; margin-left: 4rpx; }
+.msg__aigc-tag {
+  display: inline-block; padding: 0 10rpx; margin-bottom: 8rpx;
+  background: #f0f0f0; color: #888; border-radius: 6rpx;
+  font-size: 20rpx; line-height: 32rpx;
+}
+.typing-label { font-size: 22rpx; color: #999; margin-left: 8rpx; }
 .typing-dot { color: #ccc; animation: blink 1.4s infinite; margin-right: 6rpx; }
 .typing-dot:nth-child(2) { animation-delay: 0.2s; }
 .typing-dot:nth-child(3) { animation-delay: 0.4s; }

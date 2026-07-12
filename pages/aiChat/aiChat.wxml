@@ -1,9 +1,9 @@
 <view class="page">
 
-  <!-- 深度合成标识（审核要求） -->
+  <!-- 深度合成标识（审核要求：显著说明"AI生成"） -->
   <view class="disclaimer">
-    <text class="disclaimer__icon">🤖</text>
-    <text class="disclaimer__text">人工智能生成内容，仅供参考，不构成填报决策。请以官方数据为准。</text>
+    <text class="disclaimer__badge">AI生成</text>
+    <text class="disclaimer__text">本页回答均为人工智能生成内容，仅供参考，不构成填报决策。请以官方数据为准。</text>
   </view>
 
   <!-- 快捷提问 -->
@@ -22,14 +22,19 @@
       <image class="msgs__empty-img" src="/assets/illus/ai.png" mode="aspectFit" />
       <view class="msgs__empty-text">智能选校助手</view>
       <view class="msgs__empty-sub">可以问我关于院校、专业、分数线的任何问题</view>
+      <view class="msgs__empty-aigc">回答内容由 AI 生成</view>
     </view>
     <view wx:for="{{messages}}" wx:key="id" id="msg-{{index}}" class="msg {{item.role === 'user' ? 'msg--user' : 'msg--ai'}}">
-      <view class="msg__bubble">{{item.content}}</view>
-      <view wx:if="{{item.role === 'ai' && index === messages.length - 1 && !loading}}" class="msg__note">人工智能生成 · 仅供参考</view>
+      <view class="msg__bubble">
+        <view wx:if="{{item.role === 'ai'}}" class="msg__aigc-tag">AI生成</view>
+        <text>{{item.content}}</text>
+      </view>
+      <view wx:if="{{item.role === 'ai'}}" class="msg__note">人工智能生成 · 仅供参考</view>
     </view>
     <view wx:if="{{loading}}" class="msg msg--ai">
       <view class="msg__bubble msg__bubble--typing">
         <text class="typing-dot">●</text><text class="typing-dot">●</text><text class="typing-dot">●</text>
+        <text class="typing-label">AI生成中…</text>
       </view>
     </view>
   </scroll-view>
