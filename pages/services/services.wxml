@@ -13,6 +13,9 @@
       <view class="cell" hover-class="cell--press" hover-stay-time="80" bindtap="go" data-url="/pages/volunteer/volunteer" data-tab="1">
         <view class="cell__ic ic--blue"><icon name="list" size="42" color="#2b86d9" /></view><view class="cell__t">选校单</view>
       </view>
+      <view class="cell" hover-class="cell--press" hover-stay-time="80" bindtap="go" data-url="/pages/aiChat/aiChat">
+        <view class="cell__ic ic--pink"><icon name="ai" size="42" color="#e85d6a" /></view><view class="cell__t">AI问答</view>
+      </view>
     </view>
   </view>
 

@@ -148,6 +148,7 @@ Page({
   goWarn() { wx.navigateTo({ url: '/pages/warn/warn' }) },
   goEnrollPlan() { wx.navigateTo({ url: '/pages/enrollPlan/enrollPlan' }) },
   goServices() { wx.navigateTo({ url: '/pages/services/services' }) },
+  goAiChat() { wx.navigateTo({ url: '/pages/aiChat/aiChat' }) },
   goAutofill() { wx.navigateTo({ url: '/pages/autofill/autofill' }) },
   goArtCalc() { wx.navigateTo({ url: '/pages/artCalc/artCalc' }) },
   goArtSchools() { wx.navigateTo({ url: '/pages/artSchools/artSchools' }) },

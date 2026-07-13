@@ -142,6 +142,11 @@
         <view class="grid__ic" style="font-size:46rpx;">📅</view>
         <view class="grid__t">录取日程</view>
       </view>
+      <view class="grid__i" hover-class="grid__i--press" hover-stay-time="80" bindtap="goAiChat">
+        <view class="grid__ic grid__ic--ai"><icon name="ai" size="46" color="#e85d6a" /></view>
+        <view class="grid__t">AI问答</view>
+        <view class="grid__badge">AI</view>
+      </view>
       <view class="grid__i" hover-class="grid__i--press" hover-stay-time="80" bindtap="goServices">
         <view class="grid__ic grid__ic--more"><icon name="more" size="46" color="#e8780a" /></view>
         <view class="grid__t">更多服务</view>
