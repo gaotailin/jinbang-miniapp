@@ -6,28 +6,26 @@
     <text class="disclaimer__text">本页回答均为人工智能生成内容，仅供参考，不构成填报决策。请以官方数据为准。</text>
   </view>
 
-  <!-- 快捷提问 -->
-  <view class="quick">
-    <view class="quick__title">💡 常见问题</view>
-    <view class="flex flex-wrap gap-12">
-      <view wx:for="{{quickQuestions}}" wx:key="*this" class="quick__chip" data-q="{{item}}" bindtap="askQuick">
-        {{item}}
-      </view>
+  <!-- 快捷提问：横向滑动胶囊 -->
+  <scroll-view class="quick" scroll-x enhanced show-scrollbar="{{false}}">
+    <view class="quick__row">
+      <view wx:for="{{quickQuestions}}" wx:key="*this" class="quick__chip" data-q="{{item}}" bindtap="askQuick">{{item}}</view>
+      <view class="quick__pad"></view>
     </view>
-  </view>
+  </scroll-view>
 
   <!-- 消息列表 -->
   <scroll-view class="msgs" scroll-y scroll-into-view="msg-{{messages.length - 1}}" scroll-with-animation>
     <view wx:if="{{!messages.length}}" class="msgs__empty">
       <image class="msgs__empty-img" src="/assets/illus/ai.png" mode="aspectFit" />
-      <view class="msgs__empty-text">智能选校助手</view>
-      <view class="msgs__empty-sub">可以问我关于院校、专业、分数线的任何问题</view>
-      <view class="msgs__empty-aigc">回答内容由 AI 生成</view>
+      <view class="msgs__empty-text">九色鹿 AI 选校助手</view>
+      <view class="msgs__empty-sub">院校 · 专业 · 分数线，随便问</view>
+      <view class="msgs__empty-aigc">✦ 回答内容由 AI 生成</view>
     </view>
     <view wx:for="{{messages}}" wx:key="id" id="msg-{{index}}" class="msg {{item.role === 'user' ? 'msg--user' : 'msg--ai'}}">
       <view class="msg__bubble">
         <view wx:if="{{item.role === 'ai'}}" class="msg__aigc-tag">AI生成</view>
-        <text>{{item.content}}</text>
+        <text user-select>{{item.content}}</text>
       </view>
       <view wx:if="{{item.role === 'ai'}}" class="msg__note">人工智能生成 · 仅供参考</view>
     </view>
@@ -37,14 +35,17 @@
         <text class="typing-label">AI生成中…</text>
       </view>
     </view>
+    <view class="msgs__tail"></view>
   </scroll-view>
 
-  <!-- 输入栏 -->
+  <!-- 输入栏：悬浮胶囊 -->
   <view class="input-bar">
-    <input class="input-bar__input" value="{{input}}" bindinput="onInput" confirm-type="send"
-           bindconfirm="send" placeholder="输入报考问题…" placeholder-style="color:#bbb"
-           disabled="{{loading}}" maxlength="200" />
-    <view class="input-bar__btn {{input ? 'input-bar__btn--on' : ''}}" bindtap="send">发送</view>
+    <view class="input-bar__wrap">
+      <input class="input-bar__input" value="{{input}}" bindinput="onInput" confirm-type="send"
+             bindconfirm="send" placeholder="输入报考问题…" placeholder-style="color:#c2c2c2"
+             disabled="{{loading}}" maxlength="200" />
+      <view class="input-bar__btn {{input ? 'input-bar__btn--on' : ''}}" bindtap="send">➤</view>
+    </view>
   </view>
 
   <view class="ft-safe"></view>
