@@ -106,13 +106,9 @@
     </view>
   </view>
 
-  <!-- ===== 5. 金刚区 ===== -->
+  <!-- ===== 5. 金刚区（高频 8 格：低频工具下沉「更多服务」）===== -->
   <view class="grid-section">
     <view class="grid">
-      <view class="grid__i" hover-class="grid__i--press" hover-stay-time="80" bindtap="goSearch">
-        <view class="grid__ic grid__ic--school"><icon name="school" size="46" color="#C60C0F" /></view>
-        <view class="grid__t">选大学</view>
-      </view>
       <view class="grid__i" hover-class="grid__i--press" hover-stay-time="80" bindtap="goMajor">
         <view class="grid__ic grid__ic--major"><icon name="major" size="46" color="#2b86d9" /></view>
         <view class="grid__t">挑专业</view>
@@ -129,22 +125,18 @@
         <view class="grid__ic grid__ic--rank"><icon name="rank1" size="46" color="#27ae60" /></view>
         <view class="grid__t">一分一段</view>
       </view>
-      <view class="grid__i" hover-class="grid__i--press" hover-stay-time="80" bindtap="goBatch">
-        <view class="grid__ic grid__ic--batch"><icon name="batch" size="46" color="#6b7280" /></view>
-        <view class="grid__t">批次线</view>
-      </view>
-      <view class="grid__i" hover-class="grid__i--press" hover-stay-time="80" bindtap="goEnrollPlan">
-        <view class="grid__ic grid__ic--plan"><icon name="plan" size="46" color="#5b7a99" /></view>
-        <view class="grid__t">查计划</view>
-      </view>
-      <view class="grid__i" hover-class="grid__i--press" hover-stay-time="80" bindtap="goLuqu">
-        <view class="grid__ic" style="font-size: 46rpx;">📅</view>
-        <view class="grid__t">录取日程</view>
-      </view>
       <view class="grid__i" hover-class="grid__i--press" hover-stay-time="80" bindtap="goAiChat">
         <view class="grid__ic grid__ic--ai"><icon name="ai" size="46" color="#e85d6a" /></view>
         <view class="grid__t">AI问答</view>
         <view class="grid__badge">AI</view>
+      </view>
+      <view class="grid__i" hover-class="grid__i--press" hover-stay-time="80" bindtap="goRanking">
+        <view class="grid__ic grid__ic--job"><icon name="trophy" size="46" color="#e0a400" /></view>
+        <view class="grid__t">大学排行</view>
+      </view>
+      <view class="grid__i" hover-class="grid__i--press" hover-stay-time="80" bindtap="goTest">
+        <view class="grid__ic grid__ic--plan"><icon name="compass" size="46" color="#5b7a99" /></view>
+        <view class="grid__t">兴趣测评</view>
       </view>
       <view class="grid__i" hover-class="grid__i--press" hover-stay-time="80" bindtap="goServices">
         <view class="grid__ic grid__ic--more"><icon name="more" size="46" color="#C60C0F" /></view>

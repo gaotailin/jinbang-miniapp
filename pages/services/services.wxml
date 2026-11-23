@@ -44,6 +44,9 @@
       <view class="cell" hover-class="cell--press" hover-stay-time="80" bindtap="go" data-url="/pages/enrollPlan/enrollPlan">
         <view class="cell__ic ic--steel"><icon name="plan" size="42" color="#5b7a99" /></view><view class="cell__t">招生计划</view>
       </view>
+      <view class="cell" hover-class="cell--press" hover-stay-time="80" bindtap="go" data-url="/pages/luqu/luqu">
+        <view class="cell__ic ic--steel"><icon name="plan" size="42" color="#5b7a99" /></view><view class="cell__t">录取日程</view>
+      </view>
       <view class="cell" hover-class="cell--press" hover-stay-time="80" bindtap="go" data-url="/pages/compare/compare">
         <view class="cell__ic ic--green"><icon name="compare" size="42" color="#27ae60" /></view><view class="cell__t">院校对比</view>
       </view>
