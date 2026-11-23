@@ -27,7 +27,7 @@
     <!-- 一键智能填报入口（对标掌上志愿表顶部 Hot 卡）-->
     <view class="ai-fill" hover-class="ai-fill--press" hover-stay-time="80" bindtap="goPick">
       <view class="ai-fill__l">
-        <view class="ai-fill__t"><icon name="fill" color="#C60C0F" size="30" /><text>一键智能填报</text></view>
+        <view class="ai-fill__t"><icon name="fill" color="#ff7834" size="30" /><text>一键智能填报</text></view>
         <view class="ai-fill__s">按你的分数自动生成冲稳保方案</view>
       </view>
       <view class="ai-fill__arrow">›</view>

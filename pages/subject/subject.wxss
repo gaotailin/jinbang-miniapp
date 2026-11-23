@@ -9,18 +9,18 @@
 /* 答题 */
 .prog { font-size: 26rpx; color: #999; margin: 20rpx 4rpx 12rpx; }
 .prog-bar { height: 10rpx; background: #f0f0f0; border-radius: 9999rpx; overflow: hidden; }
-.prog-bar__fill { height: 100%; background: linear-gradient(90deg, #C60C0F, #C60C0F); transition: width .25s; }
+.prog-bar__fill { height: 100%; background: linear-gradient(90deg, #ff7834, #ff7834); transition: width .25s; }
 .q { font-size: 34rpx; font-weight: 700; color: #111; margin: 44rpx 4rpx 36rpx; line-height: 1.5; }
 .opts { display: flex; flex-direction: column; gap: 24rpx; }
 .opt {
   background: #fff; border: 2rpx solid #eee; border-radius: 16rpx;
   padding: 36rpx 28rpx; font-size: 30rpx; color: #333; text-align: center;
 }
-.opt:active { border-color: #C60C0F; background: #FDF5F5; }
+.opt:active { border-color: #ff7834; background: #fff8f0; }
 
 /* 结果 */
 .res-hero {
-  background: linear-gradient(135deg, #C60C0F, #9A080B); color: #fff;
+  background: linear-gradient(135deg, #ff7834, #ff5504); color: #fff;
   border-radius: 24rpx; padding: 44rpx 32rpx; text-align: center;
 }
 .res-hero__label { font-size: 24rpx; opacity: .85; }
@@ -33,6 +33,6 @@
 .alt { display: flex; justify-content: space-between; align-items: center; padding: 16rpx 0; border-bottom: 1rpx solid #f4f4f4; }
 .alt:last-child { border-bottom: none; }
 .alt__c { font-size: 28rpx; color: #333; }
-.alt__v { font-size: 24rpx; color: #C60C0F; font-weight: 600; }
+.alt__v { font-size: 24rpx; color: #ff7834; font-weight: 600; }
 
 .foot-tip { text-align: center; font-size: 22rpx; color: #bbb; padding: 24rpx; }

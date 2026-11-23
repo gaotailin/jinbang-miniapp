@@ -34,7 +34,7 @@
         <view class="sec-title" style="margin:0;">报告通知</view>
         <text class="text-sm text-muted">报告生成后微信提醒你，不怕忘</text>
       </view>
-      <button size="mini" bindtap="subReport" style="margin:0;padding:0 22rpx;height:60rpx;line-height:60rpx;font-size: 26rpx;background:#C60C0F;color:#fff;border-radius:30rpx;">开启</button>
+      <button size="mini" bindtap="subReport" style="margin:0;padding:0 22rpx;height:60rpx;line-height:60rpx;font-size: 26rpx;background:#ff7834;color:#fff;border-radius:30rpx;">开启</button>
     </view>
 
     <!-- ① 兴趣画像 -->

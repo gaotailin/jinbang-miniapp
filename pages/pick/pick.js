@@ -297,7 +297,7 @@ Page({
     ctx.fillRect(0, 0, W, 9999)
 
     // 标题
-    ctx.setFillStyle('#C60C0F')
+    ctx.setFillStyle('#ff7834')
     ctx.setFontSize(18)
     ctx.setTextAlign('center')
     ctx.fillText('九色鹿 · 选校方案', W / 2, y + 18)

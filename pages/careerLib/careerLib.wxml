@@ -7,7 +7,7 @@
 
   <view wx:for="{{fields}}" wx:key="field" class="grp">
     <view class="grp__hd" hover-class="grp__hd--press" hover-stay-time="80" data-i="{{index}}" bindtap="toggle">
-      <view class="grp__ic"><icon name="{{item.icon}}" size="40" color="#C60C0F" /></view>
+      <view class="grp__ic"><icon name="{{item.icon}}" size="40" color="#ff7834" /></view>
       <text class="grp__name">{{item.field}}</text>
       <text class="grp__cnt">{{item.jobs.length}} 个职业</text>
       <text class="grp__arrow">{{openIdx===index ? '▾' : '▸'}}</text>

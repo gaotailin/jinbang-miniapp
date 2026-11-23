@@ -14,7 +14,7 @@ const YEARS = [2026, 2025, 2024, 2023, 2022, 2021, 2020, 2019]
 const TRACK_SUBJ = { 'li': ['理科', '物理类'], 'wen': ['文科', '历史类'] }
 // 趋势序列：本科一批(旧)与本科批(新)合并为「本科控制线」
 const SERIES = [
-  { key: 'ben', name: '本科线', color: '#C60C0F', batches: ['本科一批', '本科批'] },
+  { key: 'ben', name: '本科线', color: '#ff7834', batches: ['本科一批', '本科批'] },
   { key: 'ben2', name: '本科二批', color: '#3A86FF', batches: ['本科二批'] },
   { key: 'zhuan', name: '专科批', color: '#06A77D', batches: ['专科批'] }
 ]

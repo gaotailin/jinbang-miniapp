@@ -153,10 +153,10 @@ Page({
           const x = padL + i * bw
           const h = (c.same / maxSame) * (H - padT - padB)
           const y = baseY - h
-          ctx.fillStyle = c.isMe ? '#C60C0F' : 'rgba(198, 12, 15,0.28)'
+          ctx.fillStyle = c.isMe ? '#ff7834' : 'rgba(198, 12, 15,0.28)'
           ctx.fillRect(x + bw * 0.12, y, bw * 0.76, h)
           if (c.isMe) {
-            ctx.fillStyle = '#C60C0F'; ctx.font = 'bold 10px sans-serif'
+            ctx.fillStyle = '#ff7834'; ctx.font = 'bold 10px sans-serif'
             ctx.textAlign = 'center'; ctx.textBaseline = 'bottom'
             ctx.fillText(c.score, x + bw / 2, y - 2)
           }

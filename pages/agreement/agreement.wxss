@@ -3,4 +3,4 @@
 .doc__d { font-size: 24rpx; color: #999; margin: 12rpx 0 20rpx; }
 .doc__h { font-size: 30rpx; font-weight: 700; color: #222; margin: 32rpx 0 10rpx; }
 .doc__p { font-size: 26rpx; color: #555; line-height: 1.9; margin-top: 8rpx; }
-.b { color: #C60C0F; font-weight: 600; }
+.b { color: #ff7834; font-weight: 600; }

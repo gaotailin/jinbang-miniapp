@@ -127,7 +127,7 @@ Page({
         ctx.setLineDash([])
         ctx.beginPath()
         ctx.shadowColor = 'rgba(198, 12, 15,0.85)'; ctx.shadowBlur = 10
-        ctx.fillStyle = '#C60C0F'; ctx.arc(dotX, dotY, 5, 0, Math.PI * 2); ctx.fill()
+        ctx.fillStyle = '#ff7834'; ctx.arc(dotX, dotY, 5, 0, Math.PI * 2); ctx.fill()
         ctx.shadowBlur = 0
         ctx.beginPath(); ctx.fillStyle = '#fff'
         ctx.arc(dotX, dotY, 2, 0, Math.PI * 2); ctx.fill()

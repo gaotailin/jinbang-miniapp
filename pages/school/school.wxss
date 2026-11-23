@@ -1,7 +1,7 @@
 .page { padding-bottom: 160rpx; }
 
 .hd {
-  background: linear-gradient(135deg, #C60C0F 0%, #C60C0F 100%);
+  background: linear-gradient(135deg, #ff7834 0%, #ff7834 100%);
   color: #fff; padding: 44rpx 40rpx; display: flex; align-items: center; gap: 16rpx;
   border-radius: 0 0 32rpx 32rpx; margin-bottom: 24rpx;
 }
@@ -23,7 +23,7 @@
 
 .stat-row { display: flex; gap: 16rpx; }
 .stat { flex: 1; text-align: center; background: #fff6f0; border-radius: 12rpx; padding: 20rpx 8rpx; }
-.stat__num { font-size: 36rpx; font-weight: 700; color: #C60C0F; }
+.stat__num { font-size: 36rpx; font-weight: 700; color: #ff7834; }
 .stat__lbl { font-size: 22rpx; color: #999; margin-top: 6rpx; }
 .grad-note { display: flex; align-items: center; flex-wrap: wrap; gap: 16rpx; margin-top: 18rpx; }
 .tag--muted { background: #f0f0f0; color: #999; }
@@ -37,8 +37,8 @@
 .row__major { font-size: 28rpx; font-weight: 600; color: #111111; }
 .row__sub { font-size: 22rpx; color: #999; margin-top: 4rpx; }
 .row__r { text-align: right; }
-.row__score { font-size: 34rpx; font-weight: 700; color: #C60C0F; }
-.row__rank { font-size: 22rpx; color: #9A080B; }
+.row__score { font-size: 34rpx; font-weight: 700; color: #ff7834; }
+.row__rank { font-size: 22rpx; color: #ff5504; }
 
 .footer {
   position: fixed; left: 0; right: 0; bottom: 0;
