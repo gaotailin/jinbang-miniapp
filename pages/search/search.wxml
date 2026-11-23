@@ -22,10 +22,13 @@
           data-c="{{item}}" bindtap="pickCate" hover-class="cchip--press" hover-stay-time="80">{{item}}</view>
   </scroll-view>
 
-  <!-- 筛选条：地区 / 层次 / 排序 -->
+  <!-- 筛选条：地区 / 城市 / 层次 / 排序 -->
   <view class="fbar">
     <view class="fbar__i {{panel==='prov'?'fbar__i--on':''}} {{province!=='不限'?'fbar__i--act':''}}" data-p="prov" bindtap="openPanel">
       <text class="fbar__t">{{province==='不限'?'院校地区':province}}</text><text class="caret">▾</text>
+    </view>
+    <view class="fbar__i {{panel==='city'?'fbar__i--on':''}} {{city!=='不限'?'fbar__i--act':''}} {{province==='不限'?'fbar__i--dis':''}}" data-p="city" bindtap="openPanel">
+      <text class="fbar__t">{{province==='不限'?'选择城市':(city==='不限'?'全部城市':city)}}</text><text class="caret">▾</text>
     </view>
     <view class="fbar__i {{panel==='level'?'fbar__i--on':''}} {{level!=='不限'?'fbar__i--act':''}}" data-p="level" bindtap="openPanel">
       <text class="fbar__t">{{level==='不限'?'院校层次':level}}</text><text class="caret">▾</text>
@@ -40,6 +43,13 @@
   <view wx:if="{{panel}}" class="fpanel">
     <view wx:if="{{panel==='prov'}}" class="fopts">
       <view wx:for="{{provOpts}}" wx:key="*this" class="fopt {{province===item?'fopt--on':''}}" data-v="{{item}}" bindtap="pickProv">{{item}}</view>
+    </view>
+    <view wx:elif="{{panel==='city'}}" class="fopts">
+      <view wx:if="{{cityLoading}}" class="fopt-tip">城市加载中…</view>
+      <block wx:else>
+        <view class="fopt {{city==='不限'?'fopt--on':''}}" data-v="不限" bindtap="pickCity">全部</view>
+        <view wx:for="{{cityOpts}}" wx:key="*this" class="fopt {{city===item?'fopt--on':''}}" data-v="{{item}}" bindtap="pickCity">{{item}}</view>
+      </block>
     </view>
     <view wx:elif="{{panel==='level'}}" class="fopts">
       <view wx:for="{{levelOpts}}" wx:key="*this" class="fopt {{level===item?'fopt--on':''}}" data-v="{{item}}" bindtap="pickLevel">{{item}}</view>
@@ -70,6 +80,10 @@
       <view class="sch__logo" style="background:{{item.badge.color}}" data-name="{{item.school}}" bindtap="goSchool">{{item.badge.txt}}</view>
       <view class="sch__main" data-name="{{item.school}}" bindtap="goSchool">
         <text class="sch__name">{{item.school}}</text>
+        <view wx:if="{{item.softRank || item.majorCount}}" class="sch__stats">
+          <text wx:if="{{item.softRank}}" class="sch__stat sch__stat--rank">软科 {{item.softRank}}</text>
+          <text wx:if="{{item.majorCount}}" class="sch__stat">{{item.majorCount}} 个本科专业</text>
+        </view>
         <view wx:if="{{item.tags.length}}" class="sch__tags">
           <text wx:for="{{item.tags}}" wx:for-item="tg" wx:key="t" class="tag2 {{tg.hot?'tag2--hot':''}}">{{tg.t}}</text>
         </view>

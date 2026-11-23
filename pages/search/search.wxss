@@ -130,7 +130,18 @@
 .fbar__i--act .fbar__t { color: #C60C0F; font-weight: 600; }
 .fbar__i--on .fbar__t { color: #C60C0F; font-weight: 600; }
 .fbar__i--on .caret { transform: rotate(180deg); color: #C60C0F; }
+/* 未选省份时城市项禁用 */
+.fbar__i--dis { opacity: 0.4; }
 .caret { font-size: 20rpx; color: #bbb; transition: transform 0.15s; }
+
+/* 卡片信息增强行：软科排名 / 本科专业数 */
+.sch__stats { display: flex; align-items: center; gap: 12rpx; margin-top: 8rpx; }
+.sch__stat {
+  font-size: 22rpx; color: #888; line-height: 1;
+  background: #f5f6f8; border-radius: 6rpx; padding: 6rpx 12rpx;
+}
+.sch__stat--rank { color: #C60C0F; background: #FBEAEA; font-weight: 600; }
+.fopt-tip { width: 100%; text-align: center; color: #999; font-size: 26rpx; padding: 24rpx 0; }
 
 /* 下拉面板 */
 .fmask {
