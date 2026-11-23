@@ -41,6 +41,32 @@
 }
 .cate-chip--press { opacity: 0.7; }
 
+/* 学历条（第一级，浅红底强化层级） */
+.cate-bar--level { padding-bottom: 12rpx; }
+.cate-bar--level .cate-chip {
+  background: #FBEAEA; color: #9A080B;
+}
+.cate-bar--level .cate-chip--on {
+  background: #C60C0F; color: #fff;
+}
+/* 专业类条（第三级，描边式弱化，视觉次于门类） */
+.cate-bar--sub { padding-top: 12rpx; }
+.sub-chip {
+  display: inline-block;
+  font-size: 24rpx; color: #666;
+  padding: 8rpx 24rpx; margin-right: 14rpx;
+  background: #fff; border: 1rpx solid #ddd; border-radius: 999rpx;
+  transition: all 0.2s;
+}
+.sub-chip--on {
+  color: #C60C0F; border-color: #C60C0F; background: #FBEAEA; font-weight: 600;
+}
+/* 结果计数 */
+.result-count {
+  font-size: 22rpx; color: #999;
+  padding: 12rpx 28rpx 4rpx; background: #fff;
+}
+
 /* ---- 提示 ---- */
 .tip { text-align: center; color: #999; font-size: 24rpx; padding: 30rpx 0 20rpx; }
 
@@ -63,7 +89,7 @@
   flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
 }
 .tag--gold {
-  font-size: 22rpx; color: #b8860b; background: #FBEAEA;
+  font-size: 22rpx; color: #C60C0F; background: #FBEAEA;
   border-radius: 6rpx; padding: 4rpx 12rpx; flex-shrink: 0; margin-left: 16rpx;
 }
 
@@ -94,6 +120,11 @@
 .mj__more {
   margin-left: auto; font-size: 24rpx; color: #9A080B;
 }
+/* 无就业率/薪酬时的裸详情行 */
+.mj__data--bare {
+  margin-top: 14rpx; padding-top: 14rpx; gap: 0;
+}
+.mj__data--bare .mj__more { width: 100%; text-align: right; }
 
 /* ---- 展开详情 ---- */
 .mj__detail {

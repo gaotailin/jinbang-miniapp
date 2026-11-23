@@ -11,13 +11,28 @@
 
   <view class="subentry" bindtap="goProCompare">⚖️ 多专业横向对比 ›</view>
 
-  <!-- 门类筛选条（横向滑动） -->
-  <scroll-view wx:if="{{!searched}}" class="cate-bar" scroll-x enhanced show-scrollbar="{{false}}">
-    <view wx:for="{{cateList}}" wx:key="*this" class="cate-chip {{activeCate===item?'cate-chip--on':''}}"
-          data-cate="{{item}}" bindtap="filterByCate" hover-class="cate-chip--press" hover-stay-time="80">
-      {{item}}
-    </view>
-  </scroll-view>
+  <!-- 三级联动筛选（学历 → 门类 → 专业类，全部动态生成；搜索态隐藏） -->
+  <block wx:if="{{!searched}}">
+    <scroll-view class="cate-bar cate-bar--level" scroll-x enhanced show-scrollbar="{{false}}">
+      <view wx:for="{{levelList}}" wx:key="*this" class="cate-chip {{activeLevel===item?'cate-chip--on':''}}"
+            data-level="{{item}}" bindtap="filterByLevel" hover-class="cate-chip--press" hover-stay-time="80">
+        {{item}}
+      </view>
+    </scroll-view>
+    <scroll-view class="cate-bar" scroll-x enhanced show-scrollbar="{{false}}">
+      <view wx:for="{{cateList}}" wx:key="*this" class="cate-chip {{activeCate===item?'cate-chip--on':''}}"
+            data-cate="{{item}}" bindtap="filterByCate" hover-class="cate-chip--press" hover-stay-time="80">
+        {{item}}
+      </view>
+    </scroll-view>
+    <scroll-view wx:if="{{subList.length>1}}" class="cate-bar cate-bar--sub" scroll-x enhanced show-scrollbar="{{false}}">
+      <view wx:for="{{subList}}" wx:key="*this" class="sub-chip {{activeSub===item?'sub-chip--on':''}}"
+            data-sub="{{item}}" bindtap="filterBySub" hover-class="cate-chip--press" hover-stay-time="80">
+        {{item}}
+      </view>
+    </scroll-view>
+    <view class="result-count">共 {{list.length}} 个专业</view>
+  </block>
 
   <skeleton wx:if="{{loading}}" rows="8" />
   <empty-state wx:elif="{{!loading && !list.length}}" img="/assets/illus/empty-search.png" title="没找到相关专业" desc="换个关键词，或选上方门类浏览" />
@@ -38,8 +53,8 @@
         <text wx:if="{{item.years}}" class="mj__tag">{{item.years}}年</text>
       </view>
 
-      <!-- 数据行：就业率 + 平均薪酬（首屏可见，不藏到展开里） -->
-      <view class="mj__data">
+      <!-- 数据行：就业率 + 平均月薪（有值才渲染整栏，空值不留缝、不显示假 0） -->
+      <view wx:if="{{item.empRate || item.salary}}" class="mj__data">
         <view wx:if="{{item.empRate}}" class="mj__data-item">
           <text class="mj__data-val">{{item.empRate}}%</text>
           <text class="mj__data-label">就业率</text>
@@ -50,6 +65,12 @@
         </view>
         <view class="mj__more">
           <text>{{openIdx===index?'收起 ▲':'详情 ▼'}}</text>
+        </view>
+      </view>
+      <!-- 无就业率/薪酬时，详情入口独立成行，保证可展开 -->
+      <view wx:else class="mj__data mj__data--bare">
+        <view class="mj__more">
+          <text>{{openIdx===index?'收起 ▲':'查看详情 ▼'}}</text>
         </view>
       </view>
 

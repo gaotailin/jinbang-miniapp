@@ -8,8 +8,13 @@ Page({
     loading: false,
     searched: false,
     openIdx: -1,
+    // 三级联动筛选（全部由真实数据动态生成，不再写死）
+    levelList: ['全部', '本科', '专科'],
+    activeLevel: '全部',
+    cateList: [],          // 当前学历下的门类（动态）
     activeCate: '全部',
-    cateList: ['全部','高职','哲学','经济学','法学','教育学','文学','历史学','理学','工学','农学','医学','管理学','艺术学']
+    subList: [],           // 当前门类下的专业类（动态，二级钻取）
+    activeSub: '全部'
   },
 
   onLoad() {
@@ -37,34 +42,85 @@ Page({
     app.request('/api/major_detail', { data: { major: '%', brief: 1, limit: 2000 } })
       .then(rows => {
         const list = this._mapRows(rows || [])
-        this.setData({ allList: list, list, loading: false })
+        this.setData({
+          allList: list, list,
+          loading: false,
+          cateList: this._buildCates(list, '全部'),
+          subList: [],
+          activeLevel: '全部', activeCate: '全部', activeSub: '全部'
+        })
       })
       .catch(() => { this.setData({ loading: false }); wx.showToast({ title: '加载失败', icon: 'none' }) })
       .finally(() => { this._loadingAll = false })
+  },
+
+  /** 从数据中提取去重后的门类（按出现量降序，前置"全部"） */
+  _buildCates(list, level) {
+    const pool = level === '全部' ? list : list.filter(m => m.level === level)
+    const count = {}
+    pool.forEach(m => { if (m.category) count[m.category] = (count[m.category] || 0) + 1 })
+    return ['全部'].concat(Object.keys(count).sort((a, b) => count[b] - count[a]))
+  },
+
+  /** 从当前学历+门类数据中提取去重专业类 */
+  _buildSubs(list, level, cate) {
+    let pool = level === '全部' ? list : list.filter(m => m.level === level)
+    if (cate !== '全部') pool = pool.filter(m => m.category === cate)
+    const count = {}
+    pool.forEach(m => { if (m.subCategory) count[m.subCategory] = (count[m.subCategory] || 0) + 1 })
+    return ['全部'].concat(Object.keys(count).sort((a, b) => count[b] - count[a]))
+  },
+
+  /** 按当前三级筛选条件重算列表（纯前端过滤，不重拉后端） */
+  _applyFilter() {
+    const { allList, activeLevel, activeCate, activeSub } = this.data
+    let out = allList
+    if (activeLevel !== '全部') out = out.filter(m => m.level === activeLevel)
+    if (activeCate !== '全部') out = out.filter(m => m.category === activeCate)
+    if (activeSub !== '全部') out = out.filter(m => m.subCategory === activeSub)
+    this.setData({ list: out, openIdx: -1 })
+  },
+
+  /** 学历切换：重建门类、清空专业类 */
+  filterByLevel(e) {
+    const level = e.currentTarget.dataset.level
+    if (level === this.data.activeLevel) return
+    this.setData({
+      activeLevel: level,
+      activeCate: '全部', activeSub: '全部',
+      cateList: this._buildCates(this.data.allList, level),
+      subList: []
+    })
+    this._applyFilter()
+  },
+
+  /** 门类切换：重建专业类（二级钻取条） */
+  filterByCate(e) {
+    const cate = e.currentTarget.dataset.cate
+    if (cate === this.data.activeCate) return
+    this.setData({
+      activeCate: cate, activeSub: '全部',
+      subList: cate === '全部' ? [] : this._buildSubs(this.data.allList, this.data.activeLevel, cate)
+    })
+    this._applyFilter()
+  },
+
+  /** 专业类切换 */
+  filterBySub(e) {
+    const sub = e.currentTarget.dataset.sub
+    if (sub === this.data.activeSub) return
+    this.setData({ activeSub: sub })
+    this._applyFilter()
   },
 
   /** 搜索 */
   doSearch() {
     const kw = (this.data.keyword || '').trim()
     if (!kw) { return this.setData({ allList: [], searched: false }, () => this.loadAll()) }
-    this.setData({ loading: true, searched: true, list: [], openIdx: -1, activeCate: '' })
+    this.setData({ loading: true, searched: true, list: [], openIdx: -1 })
     app.request('/api/major_detail', { data: { major: kw } })
       .then(rows => { this.setData({ list: this._mapRows(rows || []), loading: false }) })
       .catch(() => { this.setData({ loading: false }); wx.showToast({ title: '查询失败', icon: 'none' }) })
-  },
-
-  /** 门类筛选 */
-  filterByCate(e) {
-    const cate = e.currentTarget.dataset.cate
-    if (cate === this.data.activeCate) return
-    this.setData({ activeCate: cate, openIdx: -1 })
-    if (cate === '全部') {
-      this.setData({ list: this.data.allList })
-    } else if (cate === '高职') {
-      this.setData({ list: this.data.allList.filter(m => m.level === '专科') })
-    } else {
-      this.setData({ list: this.data.allList.filter(m => m.category === cate) })
-    }
   },
 
   toggle(e) {
