@@ -1,7 +1,7 @@
 .page { padding:16px 24rpx 60rpx; background:#f7f7f7; min-height:100vh; }
 .tabs { display:flex; background:#fff; border-radius:16rpx; padding:8rpx; margin-bottom:20rpx; }
 .tabs__i { flex:1; text-align:center; padding:18rpx 0; font-size: 28rpx; color:#999; border-radius:12rpx; }
-.tabs__i--on { background:#FF6600; color:#fff; font-weight:700; }
+.tabs__i--on { background:#C60C0F; color:#fff; font-weight:700; }
 
 .tip { text-align:center; color:#999; padding:80rpx 0; }
 

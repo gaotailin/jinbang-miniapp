@@ -1,7 +1,7 @@
 .page { min-height: 100vh; background: #f5f6f8; padding: 0 0 60rpx; }
 
 .hero {
-  background: linear-gradient(135deg, #ff6600 0%, #ff8a3d 100%);
+  background: linear-gradient(135deg, #C60C0F 0%, #9A080B 100%);
   color: #fff; padding: 40rpx 32rpx 32rpx;
 }
 .hero__t { font-size: 40rpx; font-weight: 800; }
@@ -23,7 +23,7 @@
   font-size: 26rpx; color: #888; padding: 14rpx 36rpx;
   border: 1rpx solid #e6e6e6; border-radius: 30rpx; background: #fff;
 }
-.chip--on { color: #fff; background: linear-gradient(135deg, #ff6600, #ff8a3d); border-color: transparent; font-weight: 600; }
+.chip--on { color: #fff; background: linear-gradient(135deg, #C60C0F, #9A080B); border-color: transparent; font-weight: 600; }
 .chip--press { opacity: 0.85; }
 
 .step {
@@ -45,17 +45,17 @@
 
 .btn-main {
   margin: 28rpx 24rpx 8rpx;
-  background: linear-gradient(135deg, #ff6600, #ff8a3d);
+  background: linear-gradient(135deg, #C60C0F, #9A080B);
   color: #fff; font-size: 32rpx; font-weight: 700; border-radius: 44rpx;
 }
 .btn-ghost {
-  margin: 8rpx 24rpx; background: #fff; color: #ff6600;
+  margin: 8rpx 24rpx; background: #fff; color: #C60C0F;
   font-size: 28rpx; font-weight: 600; border-radius: 44rpx;
-  border: 1rpx solid #ffcaa0;
+  border: 1rpx solid #F0C6C7;
 }
 
 .result-tip { text-align: center; font-size: 26rpx; color: #666; margin: 28rpx 0 12rpx; }
-.result-tip .hl { color: #ff6600; font-weight: 800; font-size: 30rpx; }
+.result-tip .hl { color: #C60C0F; font-weight: 800; font-size: 30rpx; }
 
 .grp { background: #fff; border-radius: 20rpx; margin: 12rpx 24rpx; overflow: hidden; }
 .grp__hd { font-size: 28rpx; font-weight: 700; color: #fff; padding: 18rpx 28rpx; }
@@ -66,7 +66,7 @@
 .ritem:first-of-type { border-top: none; }
 .ritem__name { font-size: 28rpx; font-weight: 600; color: #111; }
 .ritem__lv {
-  font-size: 20rpx; color: #ff6600; background: #FFF3E8;
+  font-size: 20rpx; color: #C60C0F; background: #FBEAEA;
   padding: 2rpx 12rpx; border-radius: 6rpx; margin-left: 12rpx; font-weight: 500;
 }
 .ritem__meta { font-size: 22rpx; color: #999; margin-top: 8rpx; }

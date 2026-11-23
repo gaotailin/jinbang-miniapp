@@ -34,7 +34,7 @@
 /* 出分卡片 */
 .score-card {
   display: flex; align-items: center; gap: 16rpx;
-  background: linear-gradient(135deg, #FFF8E1, #FFECB3);
+  background: linear-gradient(135deg, #FBEAEA, #FFECB3);
   border: 1rpx solid #FFD54F;
 }
 .score-card__icon { font-size: 40rpx; }
@@ -53,7 +53,7 @@
 
 .batch__head { display: flex; align-items: center; gap: 12rpx; margin-bottom: 10rpx; }
 .batch__name { font-size: 28rpx; font-weight: 600; color: #333; }
-.batch__tag { font-size: 22rpx; color: #E65100; background: #FFF3E0; padding: 2rpx 12rpx; border-radius: 8rpx; }
+.batch__tag { font-size: 22rpx; color: #E65100; background: #FBEAEA; padding: 2rpx 12rpx; border-radius: 8rpx; }
 
 .batch__row { display: flex; gap: 16rpx; padding: 4rpx 0; }
 .batch__label { font-size: 24rpx; color: #999; min-width: 60rpx; }

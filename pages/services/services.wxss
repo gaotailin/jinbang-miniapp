@@ -1,6 +1,6 @@
 .page {
   min-height: 100vh;
-  background: linear-gradient(180deg, #FFF3E8 0%, #F7F7F7 16%);
+  background: linear-gradient(180deg, #FBEAEA 0%, #F7F7F7 16%);
   padding: 20rpx 24rpx 60rpx;
 }
 
@@ -21,7 +21,7 @@
   content: '';
   display: inline-block;
   width: 8rpx; height: 28rpx;
-  background: #ff6600;
+  background: #C60C0F;
   border-radius: 4rpx;
   vertical-align: -4rpx;
   margin-right: 12rpx;
@@ -45,12 +45,12 @@
   font-size: 38rpx; line-height: 1;
   margin-bottom: 10rpx;
 }
-.ic--orange { background: #FFF3E8; }
+.ic--orange { background: #FBEAEA; }
 .ic--blue   { background: #E8F4FD; }
 .ic--green  { background: #E8F8F0; }
 .ic--purple { background: #F3E8FF; }
-.ic--pink   { background: #FFE8EC; }
-.ic--gold   { background: #FFF8E1; }
+.ic--pink   { background: #FBEAEA; }
+.ic--gold   { background: #FBEAEA; }
 .ic--steel  { background: #F0F4F8; }
 .ic--gray   { background: #F0F0F0; color: #666; font-weight: 300; }
 

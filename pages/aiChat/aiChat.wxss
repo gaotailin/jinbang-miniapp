@@ -9,11 +9,11 @@
 /* 顶部 AI 生成标识条（审核要素，保留但做轻量化） */
 .disclaimer {
   display: flex; align-items: flex-start; gap: 12rpx;
-  padding: 14rpx 28rpx; background: #fff8f2;
+  padding: 14rpx 28rpx; background: #FDF5F5;
 }
 .disclaimer__badge {
   flex-shrink: 0; padding: 2rpx 12rpx; margin-top: 2rpx;
-  background: #ff6600; color: #fff; border-radius: 8rpx;
+  background: #C60C0F; color: #fff; border-radius: 8rpx;
   font-size: 20rpx; font-weight: 600;
 }
 .disclaimer__text { font-size: 20rpx; color: #c9863f; line-height: 1.5; }
@@ -30,7 +30,7 @@
   background: #f7f8fa; color: #555; border: 1rpx solid #efefef;
   border-radius: 34rpx; font-size: 24rpx; line-height: 1.4;
 }
-.quick__chip:active { background: #fff3ea; color: #ff6600; border-color: #ffd9bd; }
+.quick__chip:active { background: #FBEAEA; color: #C60C0F; border-color: #ffd9bd; }
 
 /* 消息区 */
 .msgs { flex: 1; padding: 24rpx 28rpx 0; overflow-y: auto; }
@@ -45,7 +45,7 @@
 .msgs__empty-sub { font-size: 24rpx; color: #aaa; letter-spacing: 1rpx; }
 .msgs__empty-aigc {
   display: inline-block; margin-top: 28rpx; padding: 8rpx 24rpx;
-  background: #fff8f2; color: #c9863f;
+  background: #FDF5F5; color: #c9863f;
   border-radius: 28rpx; font-size: 22rpx;
 }
 
@@ -57,9 +57,9 @@
   font-size: 28rpx; line-height: 1.7; word-break: break-all;
 }
 .msg--user .msg__bubble {
-  background: #ff6600; color: #fff;
+  background: #C60C0F; color: #fff;
   border-bottom-right-radius: 8rpx;
-  box-shadow: 0 4rpx 16rpx rgba(255, 102, 0, 0.18);
+  box-shadow: 0 4rpx 16rpx rgba(198, 12, 15, 0.18);
 }
 .msg--ai .msg__bubble {
   background: #fff; color: #333;
@@ -71,7 +71,7 @@
 .msg__note { font-size: 20rpx; color: #c9c9c9; margin-top: 8rpx; margin-left: 8rpx; }
 .msg__aigc-tag {
   display: inline-block; padding: 0 12rpx; margin-bottom: 10rpx;
-  background: #fff3ea; color: #ff6600; border-radius: 6rpx;
+  background: #FBEAEA; color: #C60C0F; border-radius: 6rpx;
   font-size: 20rpx; line-height: 34rpx; font-weight: 500;
 }
 
@@ -97,7 +97,7 @@
   transition: background 0.2s, color 0.2s;
 }
 .input-bar__btn--on {
-  background: #ff6600; color: #fff;
-  box-shadow: 0 4rpx 12rpx rgba(255, 102, 0, 0.3);
+  background: #C60C0F; color: #fff;
+  box-shadow: 0 4rpx 12rpx rgba(198, 12, 15, 0.3);
 }
 .ft-safe { height: env(safe-area-inset-bottom); background: #fff; }

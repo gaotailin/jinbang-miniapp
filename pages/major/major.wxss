@@ -13,12 +13,12 @@
 .searchbar__icon { font-size: 28rpx; }
 .searchbar__input { flex: 1; font-size: 28rpx; }
 .searchbar__btn {
-  background: #ff6600; color: #fff; font-size: 28rpx; font-weight: 600;
+  background: #C60C0F; color: #fff; font-size: 28rpx; font-weight: 600;
   padding: 0 28rpx; height: 72rpx; line-height: 72rpx; border-radius: 999rpx;
 }
 
 .subentry {
-  font-size: 24rpx; color: #ff6600; background: #fff;
+  font-size: 24rpx; color: #C60C0F; background: #fff;
   padding: 20rpx 28rpx; border-bottom: 1rpx solid #f0f0f0;
 }
 
@@ -37,7 +37,7 @@
   transition: all 0.2s;
 }
 .cate-chip--on {
-  background: #ff6600; color: #fff; font-weight: 600;
+  background: #C60C0F; color: #fff; font-weight: 600;
 }
 .cate-chip--press { opacity: 0.7; }
 
@@ -63,7 +63,7 @@
   flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
 }
 .tag--gold {
-  font-size: 22rpx; color: #b8860b; background: #fff8e1;
+  font-size: 22rpx; color: #b8860b; background: #FBEAEA;
   border-radius: 6rpx; padding: 4rpx 12rpx; flex-shrink: 0; margin-left: 16rpx;
 }
 
@@ -87,12 +87,12 @@
 .mj__data-val {
   font-size: 30rpx; font-weight: 700; color: #333;
 }
-.mj__data-item--accent .mj__data-val { color: #ff6600; }
+.mj__data-item--accent .mj__data-val { color: #C60C0F; }
 .mj__data-label {
   font-size: 22rpx; color: #999;
 }
 .mj__more {
-  margin-left: auto; font-size: 24rpx; color: #cc4d00;
+  margin-left: auto; font-size: 24rpx; color: #9A080B;
 }
 
 /* ---- 展开详情 ---- */
@@ -117,7 +117,7 @@
   margin-top: 16rpx; padding-top: 14rpx; border-top: 1rpx dashed #eee;
 }
 .mj__schools .mj__d-k {
-  display: block; min-width: auto; color: #ff6600; font-size: 24rpx;
+  display: block; min-width: auto; color: #C60C0F; font-size: 24rpx;
   font-weight: 600; margin-bottom: 10rpx;
 }
 .mj__sch {
@@ -127,7 +127,7 @@
 .mj__sch--press { background: #fafafa; }
 .mj__sch-n { flex: 1; color: #333; }
 .mj__sch-p { color: #999; font-size: 22rpx; }
-.mj__sch-sc { color: #ff6600; font-weight: 600; white-space: nowrap; }
+.mj__sch-sc { color: #C60C0F; font-weight: 600; white-space: nowrap; }
 .mj__loading {
   font-size: 24rpx; color: #bbb; padding: 16rpx 0; text-align: center;
 }

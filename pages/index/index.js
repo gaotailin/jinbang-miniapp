@@ -109,25 +109,25 @@ Page({
         for (let x = padX; x <= W - padX; x += 2) ctx.lineTo(x, yAt(x))
         ctx.lineTo(W - padX, baseY); ctx.closePath()
         const g = ctx.createLinearGradient(0, topPad, 0, baseY)
-        g.addColorStop(0, 'rgba(255,140,0,0.20)')
-        g.addColorStop(1, 'rgba(255,140,0,0.01)')
+        g.addColorStop(0, 'rgba(198, 12, 15,0.20)')
+        g.addColorStop(1, 'rgba(198, 12, 15,0.01)')
         ctx.fillStyle = g; ctx.fill()
 
         // 曲线描边
         ctx.beginPath()
         ctx.moveTo(padX, yAt(padX))
         for (let x = padX; x <= W - padX; x += 2) ctx.lineTo(x, yAt(x))
-        ctx.strokeStyle = 'rgba(255,140,0,0.55)'; ctx.lineWidth = 1.5; ctx.stroke()
+        ctx.strokeStyle = 'rgba(198, 12, 15,0.55)'; ctx.lineWidth = 1.5; ctx.stroke()
 
         // 你的位置：竖向引导虚线 + 发光点
         const dotX = padX + (W - 2 * padX) * (this.data.dotPos / 100), dotY = yAt(dotX)
         ctx.beginPath(); ctx.setLineDash([3, 3])
         ctx.moveTo(dotX, dotY); ctx.lineTo(dotX, baseY)
-        ctx.strokeStyle = 'rgba(255,140,0,0.35)'; ctx.lineWidth = 1; ctx.stroke()
+        ctx.strokeStyle = 'rgba(198, 12, 15,0.35)'; ctx.lineWidth = 1; ctx.stroke()
         ctx.setLineDash([])
         ctx.beginPath()
-        ctx.shadowColor = 'rgba(255,140,0,0.85)'; ctx.shadowBlur = 10
-        ctx.fillStyle = '#FF8C00'; ctx.arc(dotX, dotY, 5, 0, Math.PI * 2); ctx.fill()
+        ctx.shadowColor = 'rgba(198, 12, 15,0.85)'; ctx.shadowBlur = 10
+        ctx.fillStyle = '#C60C0F'; ctx.arc(dotX, dotY, 5, 0, Math.PI * 2); ctx.fill()
         ctx.shadowBlur = 0
         ctx.beginPath(); ctx.fillStyle = '#fff'
         ctx.arc(dotX, dotY, 2, 0, Math.PI * 2); ctx.fill()

@@ -23,8 +23,8 @@
 .note { font-size: 22rpx; color: #aaa; line-height: 1.6; margin: 24rpx 8rpx 0; }
 
 .bar__sw { font-size: 22rpx; color: #666; background: #f2f2f2; border-radius: 999rpx; padding: 8rpx 18rpx; }
-.bar__sw--on { color: #fff; background: #ff6600; }
-.card__data { font-size: 22rpx; color: #cc4d00; background: #fff3e8; border-radius: 6rpx; padding: 2rpx 10rpx; margin-left: 8rpx; }
+.bar__sw--on { color: #fff; background: #C60C0F; }
+.card__data { font-size: 22rpx; color: #9A080B; background: #FBEAEA; border-radius: 6rpx; padding: 2rpx 10rpx; margin-left: 8rpx; }
 .card__nodata { font-size: 22rpx; color: #999; margin-left: 8rpx; }
 .card__cats { font-size: 22rpx; color: #888; margin-top: 6rpx; }
 .card__more { color: #bbb; }

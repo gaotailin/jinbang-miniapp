@@ -10,4 +10,4 @@
   background: #f7f7f7; border-radius: 14rpx; padding: 22rpx; font-size: 28rpx;
 }
 .kefu { text-align: center; font-size: 24rpx; color: #999; padding: 32rpx; }
-.kefu__n { color: #ff6600; font-weight: 600; }
+.kefu__n { color: #C60C0F; font-weight: 600; }

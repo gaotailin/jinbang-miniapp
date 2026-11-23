@@ -21,14 +21,14 @@
 }
 .calc-btn--press { transform: scale(0.98); transition: transform .08s; }
 
-.warn-form { font-size: 22rpx; color: #ff6600; background: #fff6ec; border-radius: 14rpx; padding: 16rpx 20rpx; margin-top: 20rpx; line-height: 1.5; }
+.warn-form { font-size: 22rpx; color: #C60C0F; background: #FDF5F5; border-radius: 14rpx; padding: 16rpx 20rpx; margin-top: 20rpx; line-height: 1.5; }
 
 .res { background: #fff; border-radius: 20rpx; padding: 36rpx 28rpx; margin-top: 24rpx; text-align: center; box-shadow: 0 4rpx 16rpx rgba(0,0,0,0.05); }
 .res__lb { font-size: 26rpx; color: #999; }
 .res__num { font-size: 88rpx; font-weight: 800; color: #8b5cf6; line-height: 1.2; margin: 8rpx 0; }
 .res__line { display: inline-block; font-size: 26rpx; border-radius: 9999rpx; padding: 8rpx 28rpx; }
 .res__line--ok { background: #e6f7ec; color: #27ae60; }
-.res__line--mid { background: #fff4e0; color: #F39C12; }
+.res__line--mid { background: #FDF5F5; color: #F39C12; }
 .res__line--no { background: #fdeaea; color: #e74c3c; }
 
 .res__rank { margin-top: 20rpx; background: #f7f3ff; border-radius: 14rpx; padding: 20rpx; }

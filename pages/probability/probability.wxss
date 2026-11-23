@@ -3,7 +3,7 @@
 /* 成绩条 */
 .bar {
   display: flex; align-items: center; justify-content: space-between;
-  background: linear-gradient(135deg, #ff6600 0%, #ff8a3d 100%);
+  background: linear-gradient(135deg, #C60C0F 0%, #9A080B 100%);
   border-radius: 20rpx; padding: 24rpx 28rpx; color: #fff;
 }
 .bar__loc { font-size: 24rpx; opacity: 0.92; }
@@ -19,7 +19,7 @@
 /* 搜索 */
 .sb { display: flex; gap: 16rpx; margin-top: 24rpx; }
 .sb__in { flex: 1; height: 80rpx; background: #f5f5f5; border-radius: 16rpx; padding: 0 24rpx; font-size: 28rpx; }
-.sb__btn { width: 140rpx; height: 80rpx; line-height: 80rpx; text-align: center; background: #ff6600; color: #fff; border-radius: 16rpx; font-size: 28rpx; font-weight: 600; }
+.sb__btn { width: 140rpx; height: 80rpx; line-height: 80rpx; text-align: center; background: #C60C0F; color: #fff; border-radius: 16rpx; font-size: 28rpx; font-weight: 600; }
 .hint { font-size: 22rpx; color: #999; margin: 16rpx 4rpx 8rpx; line-height: 1.5; }
 
 /* 结果卡 */

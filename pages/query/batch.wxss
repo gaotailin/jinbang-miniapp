@@ -3,4 +3,4 @@
 .brow { display: flex; justify-content: space-between; align-items: center; padding: 18rpx 0; border-bottom: 1rpx solid #f0f0f0; }
 .brow:last-child { border-bottom: none; }
 .brow__name { font-size: 28rpx; color: #333; }
-.brow__score { font-size: 34rpx; font-weight: 700; color: #ff6600; }
+.brow__score { font-size: 34rpx; font-weight: 700; color: #C60C0F; }

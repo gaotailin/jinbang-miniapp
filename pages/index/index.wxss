@@ -126,7 +126,7 @@
 .grid__ic--rank   { background: #E8F8F0; }
 .grid__ic--job    { background: #FBEAEA; }
 .grid__ic--plan   { background: #F0F4F8; }
-.grid__ic--ai     { background: #FFE8EC; }
+.grid__ic--ai     { background: #FBEAEA; }
 .grid__ic--more   { background: #FBEAEA; }
 
 .grid__t { font-size: 24rpx; color: #555; font-weight: 500; }
