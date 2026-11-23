@@ -11,10 +11,10 @@
 
   <!-- 会员入口 -->
   <view class="card" bindtap="goVip" hover-class="quick__item--press" hover-stay-time="80"
-        style="background:linear-gradient(135deg,#FF8A33,#FF6600);">
+        style="background:linear-gradient(135deg,#ff8a3d,#FF6600);">
     <view class="row" style="margin:0">
       <view class="row__l">
-        <text style="font-size:44rpx;margin-right:12rpx">👑</text>
+        <text style="font-size: 44rpx;margin-right:12rpx">👑</text>
         <text class="row__label" style="color:#fff;font-weight:600">{{isVip ? '会员中心 · 有效期至 '+expireText : '开通会员 · 解锁不限次选校'}}</text>
       </view>
       <text class="row__r" style="color:#fff">{{isVip ? '续费 ›' : '去开通 ›'}}</text>
@@ -24,7 +24,7 @@
   <!-- 快捷入口 -->
   <view class="quick">
     <view class="quick__item" hover-class="quick__item--press" hover-stay-time="80" bindtap="goTest">
-      <view class="quick__icon"><icon name="compass" color="#e8780a" size="52" /></view>
+      <view class="quick__icon"><icon name="compass" color="#ff6600" size="52" /></view>
       <view class="quick__txt">测一测</view>
     </view>
     <view class="quick__item" hover-class="quick__item--press" hover-stay-time="80" bindtap="goReport">
@@ -76,8 +76,13 @@
       <text class="row__r">›</text>
     </button>
     <view class="divider"></view>
+    <button class="row row-btn" open-type="contact">
+      <view class="row__l"><icon name="chat" color="#27ae60" size="40" /><text class="row__label">在线客服</text></view>
+      <text class="row__r">›</text>
+    </button>
+    <view class="divider"></view>
     <view class="row" bindtap="goFeedback">
-      <view class="row__l"><icon name="chat" color="#e8780a" size="40" /><text class="row__label">意见反馈</text></view>
+      <view class="row__l"><icon name="chat" color="#ff6600" size="40" /><text class="row__label">意见反馈</text></view>
       <text class="row__r">›</text>
     </view>
     <view class="divider"></view>

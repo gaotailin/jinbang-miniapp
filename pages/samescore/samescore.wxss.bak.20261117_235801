@@ -1,0 +1,34 @@
+.page { padding: 20rpx 24rpx 60rpx; }
+
+.form { background: #fff; border-radius: 20rpx; padding: 12rpx 28rpx 28rpx; }
+.form__row { display: flex; align-items: center; justify-content: space-between; height: 96rpx; }
+.form__label { font-size: 28rpx; color: #333; }
+.form__val { font-size: 28rpx; color: #ff6600; }
+.form__val--fixed { color: #333; }
+.form__input { flex: 1; text-align: right; font-size: 28rpx; color: #111; }
+.form__divider { height: 1rpx; background: #f0f0f0; }
+
+.tip-rank { margin: 24rpx 4rpx 12rpx; font-size: 25rpx; color: #666; line-height: 1.6; }
+.hl { color: #ff6600; font-weight: 700; }
+
+/* ±5分步进 */
+.stepper {
+  display: flex; align-items: center; justify-content: space-between;
+  background: #fff; border-radius: 16rpx; padding: 16rpx 20rpx; margin-bottom: 16rpx;
+}
+.stepper__btn {
+  font-size: 26rpx; color: #ff6600; font-weight: 600;
+  padding: 12rpx 28rpx; border: 1rpx solid #ffd9b8; border-radius: 28rpx;
+}
+.stepper__btn--press { background: #FFF3E8; }
+.stepper__cur { font-size: 32rpx; font-weight: 800; color: #111; }
+
+.list { }
+.sch-hover { background: #fafafa; }
+.sch__name { font-size: 30rpx; font-weight: 600; color: #111; }
+.sch__major { font-size: 24rpx; color: #666; margin-top: 8rpx; }
+.sch__meta { font-size: 24rpx; color: #999; margin-top: 10rpx; }
+.empty { text-align: center; color: #bbb; font-size: 26rpx; padding: 60rpx; }
+
+.tip-empty { text-align: center; color: #bbb; padding: 120rpx 60rpx; }
+.tip-empty__icon { font-size: 110rpx; margin-bottom: 20rpx; }

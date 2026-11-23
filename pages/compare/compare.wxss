@@ -17,12 +17,12 @@
 .cmp__row { display: flex; border-bottom: 1rpx solid #f0f0f0; }
 .cmp__row:last-child { border-bottom: none; }
 .cmp__label {
-  width: 150rpx; flex-shrink: 0; font-size: 25rpx; color: #999;
+  width: 150rpx; flex-shrink: 0; font-size: 24rpx; color: #999;
   padding: 22rpx 20rpx; background: #fafafa;
 }
 .cmp__cell {
-  flex: 1; min-width: 0; font-size: 25rpx; color: #222; text-align: center;
+  flex: 1; min-width: 0; font-size: 24rpx; color: #222; text-align: center;
   padding: 22rpx 12rpx; word-break: break-all;
 }
 .cmp__row--head { background: #fff7f2; }
-.cmp__cell--head { font-size: 27rpx; font-weight: 700; color: #ff6600; }
+.cmp__cell--head { font-size: 26rpx; font-weight: 700; color: #ff6600; }

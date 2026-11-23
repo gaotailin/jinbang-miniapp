@@ -58,33 +58,33 @@
     <view class="form__divider" style="margin-top:24rpx;"></view>
     <view class="form__row" bindtap="toggleAdvanced">
       <text class="form__label">⚙️ 高级筛选</text>
-      <text class="form__val" style="font-size:24rpx;">{{showAdvanced ? '收起 ▴' : '色弱/单科限制 ›'}}</text>
+      <text class="form__val" style="font-size: 24rpx;">{{showAdvanced ? '收起 ▴' : '色弱/单科限制 ›'}}</text>
     </view>
     <view wx:if="{{showAdvanced}}" class="advanced">
       <view class="form__divider"></view>
       <view class="form__row">
-        <text class="form__label" style="font-size:26rpx;">色觉</text>
+        <text class="form__label" style="font-size: 26rpx;">色觉</text>
         <view class="flex gap-12">
           <view class="opt opt--xs {{colorBlind?'opt--on':''}}" bindtap="toggleColorBlind">色弱/色盲</view>
         </view>
       </view>
       <view class="form__divider"></view>
       <view class="form__row">
-        <text class="form__label" style="font-size:26rpx;">口试</text>
+        <text class="form__label" style="font-size: 26rpx;">口试</text>
         <picker mode="selector" range="{{oralOptions}}" value="{{oralIndex}}" bindchange="onOral">
-          <view class="form__val" style="font-size:26rpx;">{{oralOptions[oralIndex]}} ›</view>
+          <view class="form__val" style="font-size: 26rpx;">{{oralOptions[oralIndex]}} ›</view>
         </picker>
       </view>
       <view class="form__divider"></view>
       <view class="form__row">
-        <text class="form__label" style="font-size:26rpx;">视力</text>
+        <text class="form__label" style="font-size: 26rpx;">视力</text>
         <view class="flex gap-12">
           <view class="opt opt--xs {{visionLimit?'opt--on':''}}" bindtap="toggleVision">裸眼≤4.8</view>
         </view>
       </view>
       <view class="form__divider"></view>
       <view class="form__row">
-        <text class="form__label" style="font-size:26rpx;">身高</text>
+        <text class="form__label" style="font-size: 26rpx;">身高</text>
         <view class="flex gap-12">
           <view class="opt opt--xs {{heightLimit?'opt--on':''}}" bindtap="toggleHeight">受限</view>
         </view>

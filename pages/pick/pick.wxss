@@ -12,12 +12,12 @@
 .mode-i {
   flex:1; display:flex; align-items:center; justify-content:center; gap:8rpx;
   padding:16rpx 0; border-radius:14rpx;
-  font-size:28rpx; color:#999; background:#f7f7f7; font-weight:500;
+  font-size: 28rpx; color:#999; background:#f7f7f7; font-weight:500;
 }
-.mode-i--on { background:#e85d04; color:#fff; font-weight:700; box-shadow:0 4rpx 12rpx rgba(232,93,4,0.3); }
+.mode-i--on { background:#ff6600; color:#fff; font-weight:700; box-shadow:0 4rpx 12rpx rgba(232,93,4,0.3); }
 .form__row { display: flex; align-items: center; justify-content: space-between; height: 96rpx; }
 .form__label { font-size: 28rpx; color: #444; font-weight: 500; }
-.form__val { font-size: 28rpx; color: #e85d04; font-weight: 500; }
+.form__val { font-size: 28rpx; color: #ff6600; font-weight: 500; }
 .form__input { flex: 1; text-align: right; font-size: 32rpx; color: #111; font-weight: 600; }
 .form__divider { height: 1rpx; background: #f5f5f5; }
 
@@ -27,7 +27,7 @@
   background: #fff7f0; border-radius: 12rpx;
   font-size: 24rpx; color: #996600; text-align: center;
 }
-.rank-tip__n { color: #e85d04; font-weight: 700; font-size: 28rpx; }
+.rank-tip__n { color: #ff6600; font-weight: 700; font-size: 28rpx; }
 
 /* 冲稳保胶囊 — 更大更透气 */
 .caps { display: flex; gap: 14rpx; margin: 0 0 20rpx; }
@@ -40,7 +40,7 @@
 .cap__c { font-size: 24rpx; color: #999; margin-top: 4rpx; font-weight: 500; }
 .cap--on .cap__c { color: #fff; opacity: 0.85; }
 .cap--on .cap__n { color: #fff; }
-.cap--chong.cap--on { background: linear-gradient(145deg, #e85d04, #ff7b2c); border-color: #e85d04; box-shadow: 0 6rpx 20rpx rgba(232,93,4,0.3); }
+.cap--chong.cap--on { background: linear-gradient(145deg, #ff6600, #ff8a3d); border-color: #ff6600; box-shadow: 0 6rpx 20rpx rgba(232,93,4,0.3); }
 .cap--wen.cap--on  { background: linear-gradient(145deg, #27ae60, #2ecc71); border-color: #27ae60; box-shadow: 0 6rpx 20rpx rgba(39,174,96,0.3); }
 .cap--bao.cap--on  { background: linear-gradient(145deg, #2980b9, #3498db); border-color: #2980b9; box-shadow: 0 6rpx 20rpx rgba(41,128,185,0.3); }
 
@@ -72,20 +72,20 @@
 .sch__sc { font-size: 24rpx; color: #999; }
 .sch__prob { font-size: 26rpx; font-weight: 700; }
 .bar { height: 8rpx; background: #f0f0f0; border-radius: 9999rpx; margin-top: 12rpx; overflow: hidden; }
-.bar__fill { height: 100%; background: linear-gradient(90deg, #e85d04, #ff9a3c); border-radius: 9999rpx; transition: width 0.5s ease; }
+.bar__fill { height: 100%; background: linear-gradient(90deg, #ff6600, #ff8a3d); border-radius: 9999rpx; transition: width 0.5s ease; }
 
 .sch__fav {
-  flex-shrink: 0; font-size: 24rpx; color: #e85d04; font-weight: 600;
-  border: 1rpx solid #e85d04; border-radius: 20rpx; padding: 10rpx 18rpx; line-height: 1;
+  flex-shrink: 0; font-size: 24rpx; color: #ff6600; font-weight: 600;
+  border: 1rpx solid #ff6600; border-radius: 20rpx; padding: 10rpx 18rpx; line-height: 1;
 }
 .sch__fav--on { color: #bbb; border-color: #e0e0e0; }
 
 .quota { text-align: center; font-size: 24rpx; color: #999; margin-top: 18rpx; }
-.quota__n { color: #e85d04; font-weight: 700; }
+.quota__n { color: #ff6600; font-weight: 700; }
 
 .lock { background: #fff; border-radius: 16rpx; padding: 40rpx 28rpx; margin-top: 24rpx; text-align: center; box-shadow: 0 2rpx 10rpx rgba(0,0,0,0.04); }
 .lock__t { font-size: 30rpx; font-weight: 700; color: #333; }
-.lock__s { font-size: 25rpx; color: #999; margin-top: 12rpx; }
+.lock__s { font-size: 24rpx; color: #999; margin-top: 12rpx; }
 
 .empty-tier { text-align: center; color: #bbb; font-size: 26rpx; padding: 60rpx 20rpx; }
 
@@ -98,7 +98,7 @@
 }
 .vip-teaser__icon { font-size: 36rpx; }
 .vip-teaser__t { flex: 1; font-size: 24rpx; color: #795548; }
-.vip-teaser__btn { font-size: 24rpx; color: #FF6F00; font-weight: 600; white-space: nowrap; }
+.vip-teaser__btn { font-size: 24rpx; color: #ff6600; font-weight: 600; white-space: nowrap; }
 
 .tip-empty { text-align: center; padding: 140rpx 60rpx; }
 .tip-empty__icon { font-size: 100rpx; margin-bottom: 24rpx; display: block; }
@@ -108,8 +108,8 @@
 /* 导出 */
 .exp-btn-wrap { margin-top: 36rpx; text-align: center; }
 .exp-btn {
-  display: inline-block; background: #fff; color: #e85d04;
-  border: 2rpx solid #e85d04; border-radius: 44rpx;
+  display: inline-block; background: #fff; color: #ff6600;
+  border: 2rpx solid #ff6600; border-radius: 44rpx;
   font-size: 28rpx; padding: 18rpx 52rpx; line-height: 1;
   box-shadow: 0 2rpx 8rpx rgba(0,0,0,0.04);
 }

@@ -8,7 +8,7 @@
 .head__name { font-size: 36rpx; font-weight: 800; color: #111; margin-top: 20rpx; }
 .head__ver { font-size: 24rpx; color: #999; margin-top: 8rpx; }
 
-.p { font-size: 27rpx; color: #555; line-height: 1.9; margin-top: 10rpx; }
+.p { font-size: 26rpx; color: #555; line-height: 1.9; margin-top: 10rpx; }
 .b { color: #ff6600; font-weight: 600; }
 
 .row { display: flex; justify-content: space-between; align-items: center; font-size: 28rpx; color: #333; padding: 24rpx 4rpx; }

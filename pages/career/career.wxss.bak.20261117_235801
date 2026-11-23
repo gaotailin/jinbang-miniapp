@@ -1,0 +1,63 @@
+.page { min-height: 100vh; background: #f5f6f8; padding-bottom: 60rpx; }
+
+.hd {
+  background: linear-gradient(135deg, #ff8c00 0%, #ff5722 100%);
+  color: #fff; padding: 36rpx 32rpx 30rpx;
+}
+.hd__t { font-size: 38rpx; font-weight: 800; }
+.hd__s { font-size: 23rpx; opacity: 0.9; margin-top: 10rpx; }
+
+/* 门类横滑 */
+.cats {
+  white-space: nowrap; background: #fff;
+  padding: 16rpx 12rpx; border-bottom: 1rpx solid #f0f0f0;
+}
+.cat {
+  display: inline-block; font-size: 26rpx; color: #666;
+  padding: 10rpx 26rpx; margin: 0 6rpx; border-radius: 30rpx; background: #f4f4f6;
+}
+.cat--on { color: #fff; background: linear-gradient(135deg, #ff8c00, #ff5722); font-weight: 600; }
+.cat--press { opacity: 0.85; }
+
+/* 排序 */
+.sorts {
+  display: flex; align-items: center; gap: 12rpx;
+  padding: 18rpx 24rpx 8rpx;
+}
+.sorts__lab { font-size: 24rpx; color: #999; margin-right: 4rpx; }
+.sort {
+  font-size: 25rpx; color: #888; padding: 8rpx 22rpx;
+  border: 1rpx solid #e6e6e6; border-radius: 26rpx; background: #fff;
+}
+.sort--on { color: #e85d04; border-color: #ffcaa0; background: #FFF3E8; font-weight: 600; }
+.sort--press { opacity: 0.85; }
+
+/* 列表 */
+.list { padding: 8rpx 0; }
+.row {
+  display: flex; align-items: center; gap: 16rpx;
+  background: #fff; border-radius: 16rpx; padding: 24rpx 24rpx;
+  margin: 0 24rpx 12rpx; box-shadow: 0 2rpx 10rpx rgba(0,0,0,0.04);
+}
+.row__no {
+  flex-shrink: 0; width: 44rpx; text-align: center;
+  font-size: 30rpx; font-weight: 800; color: #c9ccd1;
+}
+.row__no--1 { color: #ff6600; }
+.row__no--2 { color: #ff9a3c; }
+.row__no--3 { color: #ffc06a; }
+.row__main { flex: 1; min-width: 0; }
+.row__name { font-size: 30rpx; font-weight: 600; color: #111; }
+.row__sub {
+  font-size: 22rpx; color: #999; margin-top: 8rpx;
+  display: flex; align-items: center; gap: 10rpx; flex-wrap: wrap;
+}
+.row__tag {
+  font-size: 20rpx; color: #e85d04; background: #FFF3E8;
+  padding: 2rpx 12rpx; border-radius: 6rpx;
+}
+.row__metric { flex-shrink: 0; text-align: right; }
+.row__val { font-size: 32rpx; font-weight: 800; color: #ff6600; }
+.row__lab { font-size: 20rpx; color: #bbb; margin-top: 4rpx; }
+
+.foot { text-align: center; font-size: 22rpx; color: #bbb; padding: 24rpx 0; }

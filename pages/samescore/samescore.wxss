@@ -8,7 +8,7 @@
 .form__input { flex: 1; text-align: right; font-size: 28rpx; color: #111; }
 .form__divider { height: 1rpx; background: #f0f0f0; }
 
-.tip-rank { margin: 24rpx 4rpx 12rpx; font-size: 25rpx; color: #666; line-height: 1.6; }
+.tip-rank { margin: 24rpx 4rpx 12rpx; font-size: 24rpx; color: #666; line-height: 1.6; }
 .hl { color: #ff6600; font-weight: 700; }
 
 /* ±5分步进 */

@@ -119,9 +119,9 @@ Page({
     const band = { chong: [], wen: [], bao: [] }
     schools.forEach(s => {
       const d = s.score - comp
-      if (d > 0 && d <= 15) band.chong.push(s)
-      else if (d <= 0 && d > -10) band.wen.push(s)
-      else if (d <= -10 && d >= -30) band.bao.push(s)
+      if (d > 0 && d <= 25) band.chong.push(s)
+      else if (d <= 0 && d > -15) band.wen.push(s)
+      else if (d <= -15 && d >= -50) band.bao.push(s)
     })
     const cut = a => a.slice(0, 8)
     if (!band.chong.length && !band.wen.length && !band.bao.length) {

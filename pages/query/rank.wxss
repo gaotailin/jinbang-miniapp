@@ -8,3 +8,11 @@
 .result__num { font-size: 96rpx; font-weight: 700; color: #ff6600; line-height: 1.1; }
 .result__unit { font-size: 28rpx; color: #cc4d00; }
 .opt--sm { padding: 16rpx 0; }
+
+.row { display: flex; justify-content: space-between; align-items: center;
+       padding: 20rpx 4rpx; border-bottom: 1rpx solid #f2f2f2; }
+.row__l { flex: 1; min-width: 0; }
+.row__major { font-size: 28rpx; color: #333; font-weight: 600; }
+.row__r { text-align: right; }
+.picker-val { font-size: 28rpx; color: #ff6600; font-weight: 600; }
+.tip { text-align: center; color: #999; font-size: 24rpx; padding: 16rpx 0; }

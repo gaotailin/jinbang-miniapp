@@ -12,7 +12,7 @@ import time
 import sys
 import os
 
-BASE = os.environ.get("API_BASE", "http://100.74.79.25:5001")
+BASE = os.environ.get("API_BASE", "https://jinbangtimingnm.cn")   # 内网 Tailscale 已下线，默认打公网
 KEY = "jinbang-2026"
 TIMEOUT = 10
 
@@ -44,9 +44,8 @@ CASES = [
     ("subject_req",      "GET",  "/api/subject_requirement",    {},                              lambda r: isinstance(r, list) and len(r) > 0),
     ("major_satisfaction","GET",  "/api/major_satisfaction",    {},                              lambda r: isinstance(r, list) and len(r) > 0),
     ("holland_questions","GET",  "/api/holland/questions",      {},                              lambda r: r.get("count", 0) == 60),
-    # 对比（已知后端问题，标记为 KNOWN_ISSUE）
-    ("compare",          "GET",  "/api/compare",                {"schools":"清华大学,北京大学"},  lambda r: isinstance(r, list),
-                         None, "KNOWN_ISSUE"),  # 列名bug同源，已修但待验证完整字段
+    # 对比（2026-11-17 复测已正常：返回含双校完整字段，取消 KNOWN_ISSUE）
+    ("compare",          "GET",  "/api/compare",                {"schools":"清华大学,北京大学"},  lambda r: isinstance(r, list) and len(r) >= 2),
 ]
 
 HEADERS = {"X-API-Key": KEY, "Content-Type": "application/json"}

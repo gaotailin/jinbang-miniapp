@@ -5,10 +5,10 @@
     <view class="card__hd">普通类填报</view>
     <view class="grid">
       <view class="cell" hover-class="cell--press" hover-stay-time="80" bindtap="go" data-url="/pages/pick/pick">
-        <view class="cell__ic ic--orange"><icon name="compass" size="42" color="#e8780a" /></view><view class="cell__t">智能选校</view>
+        <view class="cell__ic ic--orange"><icon name="compass" size="42" color="#ff6600" /></view><view class="cell__t">智能选校</view>
       </view>
       <view class="cell" hover-class="cell--press" hover-stay-time="80" bindtap="go" data-url="/pages/autofill/autofill">
-        <view class="cell__ic ic--orange"><icon name="fill" size="42" color="#e8780a" /></view><view class="cell__t">一键填报</view>
+        <view class="cell__ic ic--orange"><icon name="fill" size="42" color="#ff6600" /></view><view class="cell__t">一键填报</view>
       </view>
       <view class="cell" hover-class="cell--press" hover-stay-time="80" bindtap="go" data-url="/pages/volunteer/volunteer" data-tab="1">
         <view class="cell__ic ic--blue"><icon name="list" size="42" color="#2b86d9" /></view><view class="cell__t">选校单</view>
@@ -24,7 +24,7 @@
     <view class="card__hd">高考工具箱</view>
     <view class="grid">
       <view class="cell" hover-class="cell--press" hover-stay-time="80" bindtap="go" data-url="/pages/search/search" data-tab="1">
-        <view class="cell__ic ic--orange"><icon name="school" size="42" color="#e8780a" /></view><view class="cell__t">找大学</view>
+        <view class="cell__ic ic--orange"><icon name="school" size="42" color="#ff6600" /></view><view class="cell__t">找大学</view>
       </view>
       <view class="cell" hover-class="cell--press" hover-stay-time="80" bindtap="go" data-url="/pages/major/major">
         <view class="cell__ic ic--blue"><icon name="major" size="42" color="#2b86d9" /></view><view class="cell__t">挑专业</view>
@@ -57,7 +57,7 @@
         <view class="cell__ic ic--green"><icon name="salary" size="42" color="#27ae60" /></view><view class="cell__t">就业薪酬</view>
       </view>
       <view class="cell" hover-class="cell--press" hover-stay-time="80" bindtap="go" data-url="/pages/careerLib/careerLib">
-        <view class="cell__ic ic--orange"><icon name="compass" size="42" color="#e8780a" /></view><view class="cell__t">职业库</view>
+        <view class="cell__ic ic--orange"><icon name="compass" size="42" color="#ff6600" /></view><view class="cell__t">职业库</view>
       </view>
       <view class="cell" hover-class="cell--press" hover-stay-time="80" bindtap="go" data-url="/pages/warn/warn">
         <view class="cell__ic ic--pink"><icon name="shield" size="42" color="#e85d6a" /></view><view class="cell__t">虚假大学</view>
@@ -79,7 +79,7 @@
         <view class="cell__ic ic--blue"><icon name="cap" size="42" color="#2b86d9" /></view><view class="cell__t">高校专项</view>
       </view>
       <view class="cell" hover-class="cell--press" hover-stay-time="80" bindtap="go" data-url="/pages/guide/guide">
-        <view class="cell__ic ic--orange"><icon name="major" size="42" color="#e8780a" /></view><view class="cell__t">报考指南</view>
+        <view class="cell__ic ic--orange"><icon name="major" size="42" color="#ff6600" /></view><view class="cell__t">报考指南</view>
       </view>
       <view class="cell" hover-class="cell--press" hover-stay-time="80" bindtap="go" data-url="/pages/artCalc/artCalc">
         <view class="cell__ic ic--purple"><icon name="palette" size="42" color="#8b5cf6" /></view><view class="cell__t">艺考综合分</view>
@@ -92,7 +92,7 @@
     <view class="card__hd">测评与工具</view>
     <view class="grid">
       <view class="cell" hover-class="cell--press" hover-stay-time="80" bindtap="go" data-url="/pages/test/test">
-        <view class="cell__ic ic--orange"><icon name="compass" size="42" color="#e8780a" /></view><view class="cell__t">霍兰德测评</view>
+        <view class="cell__ic ic--orange"><icon name="compass" size="42" color="#ff6600" /></view><view class="cell__t">霍兰德测评</view>
       </view>
       <view class="cell" hover-class="cell--press" hover-stay-time="80" bindtap="go" data-url="/pages/mbti/mbti">
         <view class="cell__ic ic--purple"><icon name="mind" size="42" color="#8b5cf6" /></view><view class="cell__t">MBTI测评</view>

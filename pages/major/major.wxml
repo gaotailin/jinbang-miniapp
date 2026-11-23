@@ -49,7 +49,7 @@
           <text class="mj__data-label">平均月薪</text>
         </view>
         <view class="mj__more">
-          <text wx:if="{{item.direction || item.courses || item.intro}}">{{openIdx===index?'收起 ▲':'详情 ▼'}}</text>
+          <text>{{openIdx===index?'收起 ▲':'详情 ▼'}}</text>
         </view>
       </view>
 

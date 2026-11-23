@@ -18,7 +18,7 @@ function subjectsOf(prov) {
   if (SUBJ_33.indexOf(prov) >= 0) return ['综合']
   return ['物理类', '历史类', '艺术类', '体育类']
 }
-const SUBJECTS = subjectsOf('北京')
+const SUBJECTS = subjectsOf('内蒙古')
 const TIERS = [
   { key: 'chong', name: '冲', desc: '冲一冲' },
   { key: 'wen', name: '稳', desc: '稳一稳' },
@@ -53,7 +53,7 @@ Page({
   data: {
     mode: 'score',   // 'score' | 'rank' | 'lincha'
     provinces: PROVINCES, provinceIndex: 0,
-    province: '北京',
+    province: '内蒙古',
     subjects: SUBJECTS, subjectIndex: 0,
     score: '', rank: '', batchLine: '',
     tiers: TIERS, tab: 'chong',

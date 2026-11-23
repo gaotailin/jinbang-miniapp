@@ -1,0 +1,34 @@
+.page { padding:16px 24rpx 60rpx; background:#f7f7f7; min-height:100vh; }
+.modes { display:flex; gap:12rpx; margin-bottom:16rpx; }
+.modes__i { flex:1; text-align:center; font-size:26rpx; color:#888; background:#fff; border-radius:12rpx; padding:18rpx 0; font-weight:500; }
+.modes__i--on { color:#fff; background:#FF6600; font-weight:700; }
+.modes__i--press { opacity:0.85; }
+.bar { display:flex; gap:12rpx; align-items:center; background:#fff; border-radius:16rpx; padding:16rpx; margin-bottom:16rpx; }
+.bar__inp { flex:1; height:64rpx; background:#f7f7f7; border-radius:12rpx; padding:0 20rpx; font-size:26rpx; }
+.bar__subj { font-size:24rpx; color:#FF6600; padding:0 12rpx; white-space:nowrap; }
+.bar__btn { width:100rpx; height:64rpx; background:#FF6600; color:#fff; border-radius:12rpx; font-size:26rpx; padding:0; line-height:64rpx; text-align:center; }
+
+.tip { text-align:center; color:#999; padding:80rpx 0; font-size:26rpx; }
+
+.group { background:#fff; border-radius:16rpx; margin-bottom:16rpx; overflow:hidden; }
+.group__hd { display:flex; align-items:center; justify-content:space-between; padding:20rpx 24rpx; background:#FFF8F2; border-bottom:1rpx solid #f0f0f0; }
+.group__name { font-size:30rpx; font-weight:bold; color:#333; }
+.group__arrow { font-size:32rpx; color:#ccc; }
+
+.row { display:flex; align-items:flex-start; justify-content:space-between; padding:20rpx 24rpx; border-bottom:1rpx solid #f5f5f5; }
+.row:last-child { border-bottom:0; }
+.row__main { flex:1; min-width:0; }
+.row__major { font-size:28rpx; color:#333; font-weight:500; }
+.row__tags { display:flex; gap:8rpx; margin-top:8rpx; flex-wrap:wrap; }
+.tag { font-size:20rpx; color:#FF9966; background:#FFF3E8; padding:2rpx 12rpx; border-radius:6rpx; }
+.tag--gray { color:#999; background:#f5f5f5; }
+.row__note { font-size:22rpx; color:#aaa; margin-top:6rpx; }
+.row__nums { text-align:right; flex-shrink:0; margin-left:16rpx; }
+.row__plan { font-size:28rpx; font-weight:bold; color:#FF6600; display:block; }
+.row__fee { font-size:20rpx; color:#999; margin-top:4rpx; }
+
+.foot-tip { text-align:center; color:#bbb; font-size:22rpx; padding:24rpx 0; }
+
+.group__plan { padding:12rpx 24rpx; background:#EEF2FF; font-size:24rpx; color:#4A6CF7; text-align:center; border-bottom:1rpx solid #E0E7FF; }
+.bar--filters { background:transparent; gap:8rpx; padding:0 0 12rpx 0; margin-bottom:0; }
+.bar--filters .bar__subj { background:#fff; border-radius:10rpx; padding:14rpx 20rpx; font-size:26rpx; }

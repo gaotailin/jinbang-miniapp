@@ -4,13 +4,13 @@
 .ai-fill {
   display: flex; align-items: center; justify-content: space-between;
   margin: 0 24rpx 24rpx; padding: 28rpx 32rpx;
-  background: linear-gradient(135deg, #FF8C00 0%, #FF5722 100%);
+  background: linear-gradient(135deg, #ff6600 0%, #ff8a3d 100%);
   border-radius: 20rpx; color: #fff;
   box-shadow: 0 6rpx 20rpx rgba(255,87,34,0.25);
 }
 .ai-fill--press { opacity: 0.92; transform: scale(0.99); }
 .ai-fill__t { display: flex; align-items: center; gap: 8rpx; font-size: 30rpx; font-weight: 700; }
-.ai-fill__s { font-size: 23rpx; opacity: 0.9; margin-top: 6rpx; }
+.ai-fill__s { font-size: 22rpx; opacity: 0.9; margin-top: 6rpx; }
 .ai-fill__arrow { font-size: 44rpx; font-weight: 300; }
 
 .hd {
@@ -100,13 +100,13 @@
 .sim-rule__d { font-size: 24rpx; color: #888; line-height: 1.6; margin-top: 10rpx; }
 .sim-rule__p { display: flex; align-items: center; gap: 16rpx; margin-top: 16rpx; }
 .sim-rule__bar { flex: 1; height: 12rpx; background: #f0f0f0; border-radius: 9999rpx; overflow: hidden; }
-.sim-rule__fill { height: 100%; background: linear-gradient(90deg, #ff8c00, #ff6600); border-radius: 9999rpx; }
+.sim-rule__fill { height: 100%; background: linear-gradient(90deg, #ff6600, #ff6600); border-radius: 9999rpx; }
 .sim-rule__n { font-size: 24rpx; color: #ff6600; font-weight: 700; }
 
 .sim-ops { display: flex; flex-wrap: wrap; gap: 14rpx; margin: 0 24rpx 24rpx; }
 .sim-ops__btn {
   padding: 14rpx 26rpx; background: #fff; border: 1rpx solid #ffd0b0;
-  color: #ff6600; border-radius: 9999rpx; font-size: 25rpx;
+  color: #ff6600; border-radius: 9999rpx; font-size: 24rpx;
 }
 .sim-ops__btn--main { background: #ff6600; color: #fff; border-color: #ff6600; font-weight: 600; }
 .sim-ops__btn--danger { color: #d33; border-color: #f0c0c0; }
@@ -125,8 +125,8 @@
 .sim-item__tier--chong { background: #e74c3c; }
 .sim-item__tier--wen { background: #f39c12; }
 .sim-item__tier--bao { background: #27ae60; }
-.sim-item__meta { font-size: 23rpx; color: #999; margin-top: 8rpx; }
-.sim-item__adjust { font-size: 23rpx; color: #ff6600; margin-top: 10rpx; }
+.sim-item__meta { font-size: 22rpx; color: #999; margin-top: 8rpx; }
+.sim-item__adjust { font-size: 22rpx; color: #ff6600; margin-top: 10rpx; }
 .sim-item__ops { display: flex; flex-direction: column; gap: 10rpx; flex-shrink: 0; }
 .sim-item__op {
   width: 52rpx; height: 52rpx; line-height: 52rpx; text-align: center;

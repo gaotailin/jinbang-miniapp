@@ -1,0 +1,36 @@
+.page { padding-bottom: 40rpx; }
+
+.tabs {
+  display: flex; background: #fff; position: sticky; top: 0; z-index: 10;
+  border-bottom: 1rpx solid #eee;
+}
+.tabs__i {
+  flex: 1; text-align: center; font-size: 28rpx; color: #666; padding: 26rpx 0;
+  position: relative;
+}
+.tabs__i--on { color: #ff6600; font-weight: 700; }
+.tabs__i--on::after {
+  content: ''; position: absolute; left: 50%; bottom: 0; transform: translateX(-50%);
+  width: 48rpx; height: 6rpx; background: #ff6600; border-radius: 9999rpx;
+}
+
+.tip { text-align: center; color: #999; font-size: 26rpx; padding: 80rpx; }
+
+.list { padding: 8rpx 24rpx; }
+.rk {
+  display: flex; align-items: center; gap: 20rpx;
+  background: #fff; border-radius: 16rpx; padding: 24rpx 24rpx; margin-top: 16rpx;
+}
+.rk__no {
+  width: 52rpx; height: 52rpx; line-height: 52rpx; text-align: center; flex-shrink: 0;
+  border-radius: 9999rpx; font-size: 26rpx; font-weight: 700; color: #999; background: #f2f3f5;
+}
+.rk__no--1 { background: #ff6600; color: #fff; }
+.rk__no--2 { background: #ff9a52; color: #fff; }
+.rk__no--3 { background: #ffc08a; color: #fff; }
+.rk__main { flex: 1; min-width: 0; }
+.rk__name { font-size: 30rpx; font-weight: 600; color: #111; }
+.rk__level { font-size: 22rpx; color: #999; margin-top: 6rpx; }
+.rk__metric { flex-shrink: 0; font-size: 26rpx; font-weight: 600; color: #ff6600; }
+
+.foot-tip { text-align: center; font-size: 22rpx; color: #bbb; padding: 30rpx; }

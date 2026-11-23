@@ -34,7 +34,7 @@
     <view class="card">
       <view class="sec-title">高考分数</view>
       <input class="score-input" type="number" value="{{score}}" bindinput="onScore"
-             placeholder="输入分数" placeholder-style="color:#ccc;font-size:40rpx;" />
+             placeholder="输入分数" placeholder-style="color:#ccc;font-size: 40rpx;" />
     </view>
 
     <view class="footer">

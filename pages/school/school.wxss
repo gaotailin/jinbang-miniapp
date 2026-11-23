@@ -18,6 +18,8 @@
 .grad-note { display: flex; align-items: center; flex-wrap: wrap; gap: 16rpx; margin-top: 18rpx; }
 .tag--muted { background: #f0f0f0; color: #999; }
 .grad-site { font-size: 24rpx; color: #2b86d9; }
+.grad-addr { display: block; font-size: 22rpx; color: #888; line-height: 1.5; margin-top: 8rpx; }
+
 .intro { font-size: 26rpx; color: #444; line-height: 1.7; margin-top: 20rpx; }
 
 .row { display: flex; justify-content: space-between; align-items: center; padding: 18rpx 0; border-bottom: 1rpx solid #f0f0f0; }

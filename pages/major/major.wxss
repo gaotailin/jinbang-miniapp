@@ -18,7 +18,7 @@
 }
 
 .subentry {
-  font-size: 25rpx; color: #ff6600; background: #fff;
+  font-size: 24rpx; color: #ff6600; background: #fff;
   padding: 20rpx 28rpx; border-bottom: 1rpx solid #f0f0f0;
 }
 
@@ -101,13 +101,13 @@
   border-top: 1rpx solid #f0f0f0;
 }
 .mj__d-row {
-  font-size: 25rpx; color: #555; line-height: 1.8; margin-bottom: 8rpx;
+  font-size: 24rpx; color: #555; line-height: 1.8; margin-bottom: 8rpx;
 }
 .mj__d-k {
   display: inline-block; min-width: 120rpx; color: #999;
 }
 .mj__intro {
-  font-size: 25rpx; color: #666; line-height: 1.8; margin-top: 8rpx;
+  font-size: 24rpx; color: #666; line-height: 1.8; margin-top: 8rpx;
 }
 .mj__empty {
   font-size: 24rpx; color: #bbb; padding: 20rpx 0; text-align: center;
@@ -117,17 +117,17 @@
   margin-top: 16rpx; padding-top: 14rpx; border-top: 1rpx dashed #eee;
 }
 .mj__schools .mj__d-k {
-  display: block; min-width: auto; color: #e8780a; font-size: 24rpx;
+  display: block; min-width: auto; color: #ff6600; font-size: 24rpx;
   font-weight: 600; margin-bottom: 10rpx;
 }
 .mj__sch {
   display: flex; align-items: center; gap: 12rpx;
-  padding: 12rpx 0; border-bottom: 1rpx solid #f5f5f5; font-size: 25rpx;
+  padding: 12rpx 0; border-bottom: 1rpx solid #f5f5f5; font-size: 24rpx;
 }
 .mj__sch--press { background: #fafafa; }
 .mj__sch-n { flex: 1; color: #333; }
 .mj__sch-p { color: #999; font-size: 22rpx; }
-.mj__sch-sc { color: #e8780a; font-weight: 600; white-space: nowrap; }
+.mj__sch-sc { color: #ff6600; font-weight: 600; white-space: nowrap; }
 .mj__loading {
   font-size: 24rpx; color: #bbb; padding: 16rpx 0; text-align: center;
 }

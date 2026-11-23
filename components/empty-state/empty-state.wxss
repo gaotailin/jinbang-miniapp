@@ -6,7 +6,7 @@
 .es__btn {
   display: inline-block; margin-top: 32rpx;
   padding: 18rpx 56rpx; border-radius: 44rpx;
-  background: linear-gradient(135deg, #e85d04, #ff7b2c);
+  background: linear-gradient(135deg, #ff6600, #ff8a3d);
   color: #fff; font-size: 28rpx; font-weight: 600;
 }
 .es__btn--press { opacity: 0.9; }

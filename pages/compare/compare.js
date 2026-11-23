@@ -37,7 +37,12 @@ Page({
           name,
           level: (favMap[name] && favMap[name].level) || d.level || '',
           city: d.city || d.province || '',
-          soft: d.ranking_soft_science || '',
+          soft: (function (rk, lab, bd) {
+            if (!rk || rk <= 0) return ''
+            var v = lab || String(rk)
+            if (!bd || bd.indexOf('中国大学排名') === 0) return v
+            return v + '（' + bd.replace('高职-', '高职') + '）'
+          })(d.ranking_soft_science, d.ranking_label, d.ranking_board),
           salary: d.avg_salary || '',
           emp: d.employment_rate || '',
           doctor: d.doctor_programs,

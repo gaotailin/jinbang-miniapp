@@ -21,7 +21,7 @@
   content: '';
   display: inline-block;
   width: 8rpx; height: 28rpx;
-  background: #e85d04;
+  background: #ff6600;
   border-radius: 4rpx;
   vertical-align: -4rpx;
   margin-right: 12rpx;

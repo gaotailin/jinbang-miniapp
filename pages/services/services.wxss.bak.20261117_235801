@@ -1,0 +1,64 @@
+.page {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #FFF3E8 0%, #F7F7F7 16%);
+  padding: 20rpx 24rpx 60rpx;
+}
+
+.card {
+  background: #fff;
+  border-radius: 20rpx;
+  box-shadow: 0 4px 20rpx rgba(0,0,0,0.04);
+  padding: 24rpx 4rpx 12rpx;
+  margin-bottom: 20rpx;
+}
+.card__hd {
+  font-size: 30rpx;
+  font-weight: 700;
+  color: #1a1a1a;
+  padding: 0 24rpx 8rpx;
+}
+.card__hd::before {
+  content: '';
+  display: inline-block;
+  width: 8rpx; height: 28rpx;
+  background: #e85d04;
+  border-radius: 4rpx;
+  vertical-align: -4rpx;
+  margin-right: 12rpx;
+}
+
+.grid { display: flex; flex-wrap: wrap; }
+.cell {
+  width: 25%;
+  text-align: center;
+  padding: 16rpx 0 12rpx;
+  border-radius: 14rpx;
+}
+.cell--press { background: #f2f2f2; }
+
+.cell__ic {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 76rpx; height: 76rpx;
+  border-radius: 20rpx;
+  font-size: 38rpx; line-height: 1;
+  margin-bottom: 10rpx;
+}
+.ic--orange { background: #FFF3E8; }
+.ic--blue   { background: #E8F4FD; }
+.ic--green  { background: #E8F8F0; }
+.ic--purple { background: #F3E8FF; }
+.ic--pink   { background: #FFE8EC; }
+.ic--gold   { background: #FFF8E1; }
+.ic--steel  { background: #F0F4F8; }
+.ic--gray   { background: #F0F0F0; color: #666; font-weight: 300; }
+
+.cell__t { font-size: 24rpx; color: #555; font-weight: 500; }
+
+.foot {
+  text-align: center;
+  font-size: 22rpx;
+  color: #bbb;
+  padding: 20rpx 0 0;
+}

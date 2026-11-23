@@ -7,7 +7,7 @@ Page({
     dotPos: 62,  // 曲线发光点位置(%)
     category: 'normal',  // 'normal' | 'art'
     hasData: false,
-    profile: { province: '北京', subject: '物理类', score: '--', rank: '--' },
+    profile: { province: '内蒙古', subject: '物理类', score: '--', rank: '--' },
     bands: { chong: '--', wen: '--', bao: '--' },
     rankBoards: [],  // 首页高校排行榜预览（对标掌上）
     remaining: '--',  // 今日剩余免费次数
@@ -23,11 +23,11 @@ Page({
 
     // 读用户成绩
     const r = wx.getStorageSync('jb_report')
-    let hasData = false, profile = { province: '北京', subject: '物理类', score: '--', rank: '--' }, bands = { chong: '--', wen: '--', bao: '--' }
+    let hasData = false, profile = { province: '内蒙古', subject: '物理类', score: '--', rank: '--' }, bands = { chong: '--', wen: '--', bao: '--' }
     if (r && r.meta) {
       hasData = true
       profile = {
-        province: r.meta.province || '北京',
+        province: r.meta.province || '内蒙古',
         subject: r.meta.subject || '物理类',
         score: r.meta.score || '--',
         rank: (r.score && r.score.user_rank) ? r.score.user_rank : '--'
@@ -63,7 +63,7 @@ Page({
   loadRankBoards() {
     const boards = [
       { key: 'soft', title: '软科中国最好大学', unit: '',
-        q: 'SELECT school,ranking_soft_science AS v,school_level FROM college_detail WHERE ranking_soft_science>0 ORDER BY ranking_soft_science ASC LIMIT 4' },
+        q: 'SELECT school,ranking_soft_science AS v,ranking_label,school_level FROM college_detail WHERE ranking_soft_science>0 AND (ranking_board IS NULL OR ranking_board LIKE \'中国大学排名%\') ORDER BY ranking_soft_science ASC LIMIT 4' },
       { key: 'salary', title: '毕业薪酬最高', unit: '元',
         q: 'SELECT school,avg_salary AS v,school_level FROM college_detail WHERE avg_salary>0 ORDER BY avg_salary DESC LIMIT 4' }
     ]

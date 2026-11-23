@@ -10,9 +10,9 @@
     <view class="card" wx:if="{{softRank || avgSalary || empRate || intro}}">
       <view class="sec-title">院校概况</view>
       <view class="stat-row" wx:if="{{softRank || avgSalary || empRate}}">
-        <view class="stat" wx:if="{{softRank}}">
-          <view class="stat__num">{{softRank}}</view>
-          <view class="stat__lbl">软科排名</view>
+        <view class="stat" wx:if="{{softRankText}}">
+          <view class="stat__num">{{softRankText}}</view>
+          <view class="stat__lbl">{{softRankLbl}}</view>
         </view>
         <view class="stat" wx:if="{{avgSalary}}">
           <view class="stat__num">{{avgSalary}}</view>
@@ -46,6 +46,8 @@
       <view class="grad-note">
         <text class="tag {{hasGrad ? 'tag--gold' : 'tag--muted'}}">{{hasGrad ? '✓ 设有研究生院' : '无研究生院'}}</text>
         <text wx:if="{{website}}" class="grad-site" bindtap="copySite">官网：{{website}}</text>
+        <text wx:if="{{phone}}" class="grad-site" bindtap="copyPhone">招生电话：{{phone}}</text>
+        <text wx:if="{{address}}" class="grad-addr">{{address}}</text>
       </view>
     </view>
 
@@ -63,6 +65,21 @@
         <view class="row__l">
           <view class="row__major">{{item.major}}</view>
           <view class="row__sub">{{item.year}} · {{item.subject}} · {{item.batch}}</view>
+        </view>
+        <view class="row__r">
+          <view class="row__score">{{item.min_score}}</view>
+          <view class="row__rank" wx:if="{{item.min_rank}}">位次 {{item.min_rank}}</view>
+        </view>
+      </view>
+    </view>
+
+
+    <view class="card" wx:if="{{groups.length}}">
+      <view class="sec-title">2026 专业组投档线（省考试院）</view>
+      <view wx:for="{{groups}}" wx:key="index" class="row">
+        <view class="row__l">
+          <view class="row__major">{{item.group_name || item.group_code}}{{item.requirement ? ' · ' + item.requirement : ''}}</view>
+          <view class="row__sub">{{item.province}} · {{item.subject}} · {{item.batch}}</view>
         </view>
         <view class="row__r">
           <view class="row__score">{{item.min_score}}</view>

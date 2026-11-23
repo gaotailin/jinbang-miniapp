@@ -4,7 +4,7 @@
 .hero__t { font-size: 40rpx; font-weight: 800; color: #111; }
 .hero__s { font-size: 26rpx; color: #999; margin-top: 12rpx; }
 
-.intro__row { font-size: 27rpx; color: #555; line-height: 2; }
+.intro__row { font-size: 26rpx; color: #555; line-height: 2; }
 
 /* 答题 */
 .prog { font-size: 26rpx; color: #999; margin: 20rpx 4rpx 12rpx; }

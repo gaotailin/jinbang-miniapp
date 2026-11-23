@@ -9,7 +9,7 @@
 
 .tip { text-align:center; color:#999; padding:40px 0; font-size:14px; }
 
-.res__card { background: linear-gradient(135deg, #FF6600, #FF8C42); border-radius:14px; padding:28px 20px; text-align:center; color:#fff; margin-bottom:16px; }
+.res__card { background: linear-gradient(135deg, #FF6600, #ff8a3d); border-radius:14px; padding:28px 20px; text-align:center; color:#fff; margin-bottom:16px; }
 .res__score { font-size:52px; font-weight:bold; line-height:1.2; }
 .res__unit { font-size:20px; margin-left:4px; }
 .res__rank { font-size:16px; margin-top:10px; opacity:.92; }

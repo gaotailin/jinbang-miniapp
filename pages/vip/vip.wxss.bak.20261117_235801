@@ -1,0 +1,37 @@
+.page { padding: 24rpx 24rpx 60rpx; }
+
+.hero {
+  background: linear-gradient(135deg, #3a2a18, #6b4a22); color: #ffd9a0;
+  border-radius: 24rpx; padding: 44rpx 32rpx; text-align: center;
+}
+.hero__crown { font-size: 72rpx; }
+.hero__t { font-size: 38rpx; font-weight: 800; color: #ffe8c4; margin-top: 8rpx; }
+.hero__s { font-size: 25rpx; opacity: .85; margin-top: 12rpx; }
+
+.plans { display: flex; gap: 20rpx; margin: 24rpx 0; }
+.plan {
+  flex: 1; background: #fff; border-radius: 18rpx; padding: 30rpx 0; text-align: center;
+  border: 3rpx solid #eee; position: relative;
+}
+.plan--on { border-color: #ff6600; background: #fff7f2; }
+.plan__tag {
+  position: absolute; top: -2rpx; right: -2rpx; background: #ff6600; color: #fff;
+  font-size: 20rpx; padding: 4rpx 14rpx; border-radius: 0 16rpx 0 16rpx;
+}
+.plan__name { font-size: 28rpx; color: #333; }
+.plan__price { font-size: 56rpx; font-weight: 800; color: #ff6600; margin-top: 8rpx; }
+.plan__cur { font-size: 28rpx; }
+.plan__unit { font-size: 22rpx; color: #999; }
+
+.rt { display: flex; align-items: center; padding: 18rpx 0; border-bottom: 1rpx solid #f4f4f4; font-size: 26rpx; }
+.rt:last-child { border-bottom: none; }
+.rt--head { color: #999; font-size: 24rpx; }
+.rt__f { flex: 2; color: #333; }
+.rt__c { flex: 1; text-align: center; color: #999; }
+.rt__c--v { color: #ff6600; font-weight: 600; }
+
+.tip { text-align: center; font-size: 24rpx; color: #999; margin: 24rpx 0; }
+
+.bottom { margin-top: 20rpx; }
+.ios-note { font-size: 25rpx; color: #999; line-height: 1.8; text-align: center; padding: 24rpx 20rpx; background: #f7f7f7; border-radius: 14rpx; }
+.trial { text-align: center; font-size: 25rpx; color: #999; padding: 24rpx; text-decoration: underline; }

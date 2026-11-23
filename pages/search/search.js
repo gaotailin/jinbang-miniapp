@@ -69,7 +69,7 @@ Page({
     let order
     if (this.data.sort === 'salary') order = 'ORDER BY avg_salary DESC'
     else if (this.data.sort === 'emp') order = 'ORDER BY employment_rate DESC'
-    else order = 'ORDER BY CASE WHEN ranking_soft_science>0 THEN 0 ELSE 1 END, ranking_soft_science ASC'
+    else order = "ORDER BY CASE WHEN ranking_soft_science>0 AND (ranking_board IS NULL OR ranking_board LIKE '中国大学排名%') THEN 0 ELSE 1 END, ranking_soft_science ASC"
     return `SELECT ${COLS} FROM college_detail ${where} ${order} LIMIT ${PAGE} OFFSET ${offset}`
   },
 

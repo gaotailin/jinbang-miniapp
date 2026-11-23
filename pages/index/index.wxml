@@ -13,7 +13,7 @@
 
   <!-- ===== 2. 搜索框 ===== -->
   <view class="search-bar" bindtap="goSearch">
-    <text class="search-bar__icon">🔍</text>
+    <icon name="search" size="30" color="#999999" />
     <text class="search-bar__ph">输入要查询的大学或专业</text>
   </view>
 
@@ -49,7 +49,6 @@
         <text class="hero__loc-txt">{{profile.province || '北京'}} ｜ {{profile.subject || '物理类'}} {{profile.score || '--'}}分 {{profile.rank || '--'}}名</text>
       </view>
       <view class="hero__edit" bindtap="goPick">
-        <text class="hero__edit-icon">✎</text>
         <text>编辑成绩</text>
       </view>
     </view>
@@ -111,7 +110,7 @@
   <view class="grid-section">
     <view class="grid">
       <view class="grid__i" hover-class="grid__i--press" hover-stay-time="80" bindtap="goSearch">
-        <view class="grid__ic grid__ic--school"><icon name="school" size="46" color="#e8780a" /></view>
+        <view class="grid__ic grid__ic--school"><icon name="school" size="46" color="#ff6600" /></view>
         <view class="grid__t">选大学</view>
       </view>
       <view class="grid__i" hover-class="grid__i--press" hover-stay-time="80" bindtap="goMajor">
@@ -139,7 +138,7 @@
         <view class="grid__t">查计划</view>
       </view>
       <view class="grid__i" hover-class="grid__i--press" hover-stay-time="80" bindtap="goLuqu">
-        <view class="grid__ic" style="font-size:46rpx;">📅</view>
+        <view class="grid__ic" style="font-size: 46rpx;">📅</view>
         <view class="grid__t">录取日程</view>
       </view>
       <view class="grid__i" hover-class="grid__i--press" hover-stay-time="80" bindtap="goAiChat">
@@ -148,7 +147,7 @@
         <view class="grid__badge">AI</view>
       </view>
       <view class="grid__i" hover-class="grid__i--press" hover-stay-time="80" bindtap="goServices">
-        <view class="grid__ic grid__ic--more"><icon name="more" size="46" color="#e8780a" /></view>
+        <view class="grid__ic grid__ic--more"><icon name="more" size="46" color="#ff6600" /></view>
         <view class="grid__t">更多服务</view>
       </view>
     </view>

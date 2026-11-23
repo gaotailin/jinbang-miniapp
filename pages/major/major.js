@@ -9,7 +9,7 @@ Page({
     searched: false,
     openIdx: -1,
     activeCate: '全部',
-    cateList: ['全部','哲学','经济学','法学','教育学','文学','历史学','理学','工学','农学','医学','管理学','艺术学']
+    cateList: ['全部','高职','哲学','经济学','法学','教育学','文学','历史学','理学','工学','农学','医学','管理学','艺术学']
   },
 
   onLoad() {
@@ -34,7 +34,7 @@ Page({
     if (this._loadingAll) return
     this._loadingAll = true
     this.setData({ loading: true, searched: false })
-    app.request('/api/major_detail', { data: { major: '%' } })
+    app.request('/api/major_detail', { data: { major: '%', brief: 1, limit: 2000 } })
       .then(rows => {
         const list = this._mapRows(rows || [])
         this.setData({ allList: list, list, loading: false })
@@ -60,6 +60,8 @@ Page({
     this.setData({ activeCate: cate, openIdx: -1 })
     if (cate === '全部') {
       this.setData({ list: this.data.allList })
+    } else if (cate === '高职') {
+      this.setData({ list: this.data.allList.filter(m => m.level === '专科') })
     } else {
       this.setData({ list: this.data.allList.filter(m => m.category === cate) })
     }
@@ -71,8 +73,24 @@ Page({
     this.setData({ openIdx: opening ? i : -1 })
     if (opening) {
       const m = this.data.list[i]
+      if (m && !m.detailLoaded) this.loadDetail(m.name, i)
       if (m && !m.schoolsLoaded) this.loadSchools(m.name, i)
     }
+  },
+
+  /** 展开时才拉长文本：列表接口只返回轻量字段，避免一次吐 5MB */
+  loadDetail(name, idx) {
+    app.request('/api/major_detail', { data: { major: name, exact: 1 } })
+      .then(rows => {
+        const d = (rows || [])[0] || {}
+        this.setData({
+          [`list[${idx}].intro`]: d.introduction || '',
+          [`list[${idx}].courses`]: d.courses || '',
+          [`list[${idx}].direction`]: d.employment_direction || '',
+          [`list[${idx}].detailLoaded`]: true
+        })
+      })
+      .catch(() => { this.setData({ [`list[${idx}].detailLoaded`]: true }) })
   },
 
   // 开设院校：enrollment_special 里专业组含该专业的院校录取分（按校去重，最新年优先）
@@ -114,7 +132,7 @@ Page({
   }
 ,
   onShareAppMessage() {
-    return { title: '九色鹿前程助手 — AI智能填志愿', path: '/pages/index/index' }
+    return { title: '九色鹿前程助手 — AI智能填志愿', path: '/pages/major/major' }
   },
   onShareTimeline() {
     return { title: '试试这个AI志愿助手，高考志愿一站搞定' }

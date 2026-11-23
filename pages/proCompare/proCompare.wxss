@@ -23,7 +23,7 @@
 .sel__hd { font-size: 24rpx; color: #999; margin-bottom: 14rpx; }
 .sel__chips { display: flex; flex-wrap: wrap; gap: 14rpx; }
 .sel__chip {
-  font-size: 25rpx; color: #ff6600; background: #fff4ec; border: 1rpx solid #ff6600;
+  font-size: 24rpx; color: #ff6600; background: #fff4ec; border: 1rpx solid #ff6600;
   border-radius: 9999rpx; padding: 10rpx 22rpx;
 }
 
@@ -31,8 +31,8 @@
 .cmp { background: #fff; border-radius: 16rpx; overflow: hidden; margin: 16rpx 24rpx 0; }
 .cmp__row { display: flex; border-bottom: 1rpx solid #f0f0f0; }
 .cmp__row:last-child { border-bottom: none; }
-.cmp__label { width: 140rpx; flex-shrink: 0; font-size: 25rpx; color: #999; padding: 22rpx 18rpx; background: #fafafa; }
-.cmp__cell { flex: 1; min-width: 0; font-size: 25rpx; color: #222; text-align: center; padding: 22rpx 12rpx; word-break: break-all; }
+.cmp__label { width: 140rpx; flex-shrink: 0; font-size: 24rpx; color: #999; padding: 22rpx 18rpx; background: #fafafa; }
+.cmp__cell { flex: 1; min-width: 0; font-size: 24rpx; color: #222; text-align: center; padding: 22rpx 12rpx; word-break: break-all; }
 .cmp__row--head { background: #fff7f2; }
 .cmp__cell--head { font-size: 26rpx; font-weight: 700; color: #ff6600; }
 
@@ -41,7 +41,7 @@
 .list__hd { font-size: 24rpx; color: #999; padding: 22rpx 28rpx 8rpx; }
 .mj { display: flex; align-items: center; gap: 16rpx; }
 .mj__main { flex: 1; min-width: 0; }
-.mj__name { font-size: 29rpx; font-weight: 600; color: #111; }
+.mj__name { font-size: 28rpx; font-weight: 600; color: #111; }
 .mj__meta { font-size: 24rpx; color: #999; margin-top: 8rpx; }
 .mj__add {
   flex-shrink: 0; font-size: 24rpx; color: #ff6600; font-weight: 600;

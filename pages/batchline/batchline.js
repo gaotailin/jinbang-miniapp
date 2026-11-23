@@ -1,4 +1,5 @@
 const app = getApp()
+const sec = require('../../utils/wechat.js')
 const { classify } = require('../../utils/err')
 
 // 全国 ready：列出所有省份，DATA_READY 标记已有数据的省
@@ -30,6 +31,13 @@ Page({
   },
 
   onLoad() { this.loadAll('内蒙古') },
+
+  subNews() {
+    sec.subscribe('news', {}).then(ok => {
+      if (ok) wx.showToast({ title: '已订阅，更新会通知你', icon: 'success' })
+      else wx.showToast({ title: '未订阅，可随时再来', icon: 'none' })
+    })
+  },
 
   onPullDownRefresh() {
     if (DATA_READY[this.data.province]) this.loadAll(this.data.province)
@@ -162,7 +170,7 @@ Page({
   }
 ,
   onShareAppMessage() {
-    return { title: '九色鹿前程助手 — AI智能填志愿', path: '/pages/index/index' }
+    return { title: '九色鹿前程助手 — AI智能填志愿', path: '/pages/batchline/batchline' }
   },
   onShareTimeline() {
     return { title: '试试这个AI志愿助手，高考志愿一站搞定' }

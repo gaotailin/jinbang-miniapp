@@ -68,8 +68,8 @@ Page({
 
   payComingSoon() {
     wx.showModal({
-      title: '支付即将开放',
-      content: '支付暂时无法发起，请稍后重试，或点下方"体验会员"先试用全部功能。',
+      title: '暂时无法支付',
+      content: '支付通道暂时不可用，请稍后再试。有问题可加客服微信 bobo184458。',
       showCancel: false, confirmText: '知道了'
     })
   },
@@ -83,7 +83,7 @@ Page({
 
   trial() {
     wx.showModal({
-      title: '体验会员', content: '开通 1 天体验，解锁不限次按分选校与完整冲稳保（仅本地体验用）',
+      title: '体验会员', content: '开通 1 天体验，解锁不限次按分选校与完整冲稳保',
       success: (r) => {
         if (r.confirm) { vip.grantTrial(1); this.onShow(); wx.showToast({ title: '已开通体验', icon: 'success' }) }
       }

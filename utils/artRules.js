@@ -41,9 +41,10 @@ function _uniArt(code, name, fname, a, b) {
 
 const PROVINCES = [
   {
-    code: 'neimenggu', name: '内蒙古', year: 2025, cultureFull: 750, decimals: 0,
+    code: 'neimenggu', name: '内蒙古', year: 2026, cultureFull: 750, decimals: 0,
     voluntary: '平行志愿（同分先比专业统考，再比文化）',
-    source: '内蒙古招生考试信息网 nm.zsks.cn · 2025',
+    source: '内蒙古招生考试信息网 nm.zsks.cn · 2026录取数据（控制线为2025口径，2026以官方为准）',
+    lineNote: '本科/专科控制线暂按2025年口径显示，2026年控制线以自治区考试院公布为准',
     categories: [
       { key: 'art',    name: '美术与设计类',  formulas: [{ name: '文化60%+专业40%', a: 0.6, b: 1.0 }],  ben: { c: 282, m: 197 }, zhuan: { c: 160, m: 183 } },
       { key: 'calli',  name: '书法类',        formulas: [{ name: '文化60%+专业40%', a: 0.6, b: 1.0 }],  ben: { c: 300, m: 237 }, zhuan: { c: 160, m: 183 } },
@@ -51,7 +52,10 @@ const PROVINCES = [
       { key: 'musvoc', name: '音乐表演(声乐)', formulas: [{ name: '文化50%+专业50%', a: 0.5, b: 1.25 }], ben: { c: 282, m: 200 }, zhuan: { c: 160, m: 162 } },
       { key: 'musins', name: '音乐表演(器乐)', formulas: [{ name: '文化50%+专业50%', a: 0.5, b: 1.25 }], ben: { c: 282, m: 190 }, zhuan: { c: 160, m: 155 } },
       { key: 'dance',  name: '舞蹈类',        formulas: [{ name: '文化50%+专业50%', a: 0.5, b: 1.25 }], ben: { c: 282, m: 203 }, zhuan: { c: 160, m: 188 } },
-      { key: 'broad',  name: '播音与主持类',  formulas: [{ name: '文化70%+专业30%', a: 0.7, b: 0.75 }], ben: { c: 370, m: 200 }, zhuan: { c: 160, m: 175 } }
+      { key: 'broad',  name: '播音与主持类',  formulas: [{ name: '文化70%+专业30%', a: 0.7, b: 0.75 }], ben: { c: 370, m: 200 }, zhuan: { c: 160, m: 175 } },
+      { key: 'perf',   name: '表（导）演类（戏剧影视表演）', formulas: [{ name: '文化50%+专业50%', a: 0.5, b: 1.25 }], ben: null, zhuan: null },
+      { key: 'perfd',  name: '表（导）演类（戏剧影视导演）', formulas: [{ name: '文化50%+专业50%', a: 0.5, b: 1.25 }], ben: null, zhuan: null },
+      { key: 'perfm',  name: '表（导）演类（服装表演）',     formulas: [{ name: '文化50%+专业50%', a: 0.5, b: 1.25 }], ben: null, zhuan: null }
     ]
   },
   {

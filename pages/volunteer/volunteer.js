@@ -290,7 +290,7 @@ Page({
     if (goods.length) lines.push(...goods.map(g => '✅ ' + g))
     if (warns.length) lines.push(...warns.map(w => '💡 ' + w))
     if (issues.length) lines.push(...issues.map(i => '⚠️ ' + i))
-    lines.push('', '（选科要求校验将在后端接口上线后加入）')
+    lines.push('', '💡 选科要求以各高校当年招生章程为准，提交前请核对目标专业组要求')
     wx.showModal({
       title: '志愿表校验: ' + score,
       content: lines.join('\n'),

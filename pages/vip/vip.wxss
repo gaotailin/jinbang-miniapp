@@ -6,7 +6,7 @@
 }
 .hero__crown { font-size: 72rpx; }
 .hero__t { font-size: 38rpx; font-weight: 800; color: #ffe8c4; margin-top: 8rpx; }
-.hero__s { font-size: 25rpx; opacity: .85; margin-top: 12rpx; }
+.hero__s { font-size: 24rpx; opacity: .85; margin-top: 12rpx; }
 
 .plans { display: flex; gap: 20rpx; margin: 24rpx 0; }
 .plan {
@@ -33,5 +33,5 @@
 .tip { text-align: center; font-size: 24rpx; color: #999; margin: 24rpx 0; }
 
 .bottom { margin-top: 20rpx; }
-.ios-note { font-size: 25rpx; color: #999; line-height: 1.8; text-align: center; padding: 24rpx 20rpx; background: #f7f7f7; border-radius: 14rpx; }
-.trial { text-align: center; font-size: 25rpx; color: #999; padding: 24rpx; text-decoration: underline; }
+.ios-note { font-size: 24rpx; color: #999; line-height: 1.8; text-align: center; padding: 24rpx 20rpx; background: #f7f7f7; border-radius: 14rpx; }
+.trial { text-align: center; font-size: 24rpx; color: #999; padding: 24rpx; text-decoration: underline; }

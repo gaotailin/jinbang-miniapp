@@ -1,9 +1,24 @@
 /* ===========================
    九色鹿前程助手 全局样式（橙系）
-   主色 #ff6600 / 浅橙 #ff7834 / 深橙 #cc4d00 / 底 #f7f7f7
+   设计变量单一来源：改色只改这里
+   品牌 #FF6600 / 深 #CC4D00 / 浅底 #FFF3E8
+   语义：冲 #E74C3C · 稳 #F39C12 · 保 #27AE60
    =========================== */
 
 page {
+  --brand: #FF6600;
+  --brand-deep: #CC4D00;
+  --brand-tint: #FFF3E8;
+  --chong: #E74C3C;
+  --wen: #F39C12;
+  --bao: #27AE60;
+  --text-1: #1A1A1A;
+  --text-2: #5A5A5A;
+  --text-3: #8C8C8C;
+  --line: #ECECEC;
+  --bg: #F7F7F7;
+  --radius-card: 20rpx;
+  --radius-btn: 12rpx;
   font-family: -apple-system, 'PingFang SC', 'Helvetica Neue', sans-serif;
   background-color: #f7f7f7;
   color: #333;
@@ -16,8 +31,8 @@ page {
 /* ---- 卡片 ---- */
 .card {
   background: #ffffff;
-  border-radius: 16rpx;
-  box-shadow: 0 2rpx 10rpx rgba(0,0,0,0.05);
+  border-radius: var(--radius-card);
+  box-shadow: 0 4rpx 20rpx rgba(0,0,0,0.05);
   padding: 24rpx;
   margin: 0 24rpx 16rpx;
 }
@@ -25,10 +40,22 @@ page {
 
 /* ---- 区块标题 ---- */
 .sec-title {
+  position: relative;
+  padding-left: 18rpx;
   font-size: 30rpx;
   font-weight: 700;
-  color: #111111;
+  color: var(--text-1);
   margin-bottom: 20rpx;
+  line-height: 1.4;
+}
+.sec-title::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 50%;
+  transform: translateY(-50%);
+  width: 6rpx; height: 26rpx;
+  border-radius: 6rpx;
+  background: var(--brand);
 }
 
 /* ---- 按钮 ---- */
@@ -45,8 +72,8 @@ page {
   outline: none;
 }
 .btn::after { border: none; }
-.btn--primary { background: #ff6600; color: #fff; }
-.btn--gold    { background: #ff6600; color: #fff; }
+.btn--primary { background: var(--brand); color: #fff; }
+.btn--gold    { background: var(--brand); color: #fff; }
 .btn--outline { background: transparent; border: 2rpx solid #ff6600; color: #ff6600; }
 .btn--ghost   { background: rgba(255,102,0,0.08); color: #ff6600; }
 .btn--block { width: 100%; }

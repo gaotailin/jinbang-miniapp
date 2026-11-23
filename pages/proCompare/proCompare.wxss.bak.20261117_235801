@@ -1,0 +1,50 @@
+.page { padding-bottom: 40rpx; }
+
+.searchbar {
+  display: flex; align-items: center; gap: 16rpx;
+  padding: 20rpx 24rpx; background: #fff; border-bottom: 1rpx solid #e6e6e6;
+  position: sticky; top: 0; z-index: 10;
+}
+.searchbar__box {
+  flex: 1; display: flex; align-items: center; gap: 12rpx;
+  background: #f2f3f5; border-radius: 9999rpx; padding: 0 24rpx; height: 72rpx;
+}
+.searchbar__icon { font-size: 28rpx; }
+.searchbar__input { flex: 1; font-size: 28rpx; }
+.searchbar__btn {
+  background: #ff6600; color: #fff; font-size: 28rpx; font-weight: 600;
+  padding: 0 28rpx; height: 72rpx; line-height: 72rpx; border-radius: 9999rpx;
+}
+
+.tip { text-align: center; color: #999; font-size: 26rpx; padding: 40rpx; }
+
+/* 已选 */
+.sel { background: #fff; padding: 24rpx; margin: 16rpx 24rpx 0; border-radius: 16rpx; }
+.sel__hd { font-size: 24rpx; color: #999; margin-bottom: 14rpx; }
+.sel__chips { display: flex; flex-wrap: wrap; gap: 14rpx; }
+.sel__chip {
+  font-size: 25rpx; color: #ff6600; background: #fff4ec; border: 1rpx solid #ff6600;
+  border-radius: 9999rpx; padding: 10rpx 22rpx;
+}
+
+/* 对比表 */
+.cmp { background: #fff; border-radius: 16rpx; overflow: hidden; margin: 16rpx 24rpx 0; }
+.cmp__row { display: flex; border-bottom: 1rpx solid #f0f0f0; }
+.cmp__row:last-child { border-bottom: none; }
+.cmp__label { width: 140rpx; flex-shrink: 0; font-size: 25rpx; color: #999; padding: 22rpx 18rpx; background: #fafafa; }
+.cmp__cell { flex: 1; min-width: 0; font-size: 25rpx; color: #222; text-align: center; padding: 22rpx 12rpx; word-break: break-all; }
+.cmp__row--head { background: #fff7f2; }
+.cmp__cell--head { font-size: 26rpx; font-weight: 700; color: #ff6600; }
+
+/* 搜索结果 */
+.list { padding-top: 8rpx; }
+.list__hd { font-size: 24rpx; color: #999; padding: 22rpx 28rpx 8rpx; }
+.mj { display: flex; align-items: center; gap: 16rpx; }
+.mj__main { flex: 1; min-width: 0; }
+.mj__name { font-size: 29rpx; font-weight: 600; color: #111; }
+.mj__meta { font-size: 24rpx; color: #999; margin-top: 8rpx; }
+.mj__add {
+  flex-shrink: 0; font-size: 24rpx; color: #ff6600; font-weight: 600;
+  border: 1rpx solid #ff6600; border-radius: 9999rpx; padding: 10rpx 20rpx; line-height: 1;
+}
+.mj__add--on { color: #bbb; border-color: #e0e0e0; }

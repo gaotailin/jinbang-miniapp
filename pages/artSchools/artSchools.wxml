@@ -4,7 +4,8 @@
     <picker class="bar__prov" mode="selector" range="{{provNames}}" value="{{provIdx}}" bindchange="onProv">
       <view class="bar__pv">{{provNames[provIdx]}} ›</view>
     </picker>
-    <text class="bar__cnt">共 {{list.length}} 所</text>
+    <view class="bar__cnt">共 {{list.length}} 所</view>
+    <view class="bar__sw {{onlyData?'bar__sw--on':''}}" bindtap="toggleData">{{onlyData?'仅2026招生':'全部院校'}}</view>
   </view>
 
   <scroll-view class="tabs" scroll-x enhanced show-scrollbar="{{false}}">
@@ -16,7 +17,13 @@
       <view class="card__logo">{{item.name[0]}}</view>
       <view class="card__main">
         <view class="card__name">{{item.name}}</view>
-        <view class="card__meta"><text class="card__tag">{{item.type}}</text><text class="card__prov">{{item.prov}}</text></view>
+        <view class="card__meta">
+          <text class="card__tag">{{item.type}}</text>
+          <text class="card__prov">{{item.prov}}</text>
+          <text wx:if="{{item.d}}" class="card__data">2026 综合分 {{item.mn}}~{{item.mx}}</text>
+          <text wx:elif="{{item.d === 0}}" class="card__nodata">2026 未招生</text>
+        </view>
+        <view wx:if="{{item.cats}}" class="card__cats">{{item.cats}}<text wx:if="{{item.catN>3}}" class="card__more"> 等{{item.catN}}类</text></view>
       </view>
       <view class="card__arrow">›</view>
     </view>
@@ -24,6 +31,6 @@
 
   <view wx:if="{{!list.length}}" class="empty">该筛选下暂无院校</view>
 
-  <view class="note">数据：阳光高考独立艺术类院校（{{total}}所）。综合性大学的艺术专业见各省招生计划（整理中）。</view>
+  <view class="note">共 {{total}} 所，其中 {{nData}} 所有 2026 内蒙古官方投档数据；综合分为专业组最低综合分区间。招生计划数以自治区考试院当年计划书为准（未公开电子版）。</view>
   <view class="ft-safe"></view>
 </view>

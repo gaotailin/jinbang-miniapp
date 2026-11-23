@@ -1,0 +1,38 @@
+.page { padding: 24rpx; }
+
+.hero { padding: 30rpx 8rpx 24rpx; }
+.hero__t { font-size: 40rpx; font-weight: 800; color: #111; }
+.hero__s { font-size: 26rpx; color: #999; margin-top: 12rpx; }
+
+.intro__row { font-size: 27rpx; color: #555; line-height: 2; }
+
+/* 答题 */
+.prog { font-size: 26rpx; color: #999; margin: 20rpx 4rpx 12rpx; }
+.prog-bar { height: 10rpx; background: #f0f0f0; border-radius: 9999rpx; overflow: hidden; }
+.prog-bar__fill { height: 100%; background: linear-gradient(90deg, #ff7834, #ff6600); transition: width .25s; }
+.q { font-size: 34rpx; font-weight: 700; color: #111; margin: 44rpx 4rpx 36rpx; line-height: 1.5; }
+.opts { display: flex; flex-direction: column; gap: 24rpx; }
+.opt {
+  background: #fff; border: 2rpx solid #eee; border-radius: 16rpx;
+  padding: 36rpx 28rpx; font-size: 30rpx; color: #333; text-align: center;
+}
+.opt:active { border-color: #ff6600; background: #fff7f2; }
+
+/* 结果 */
+.res-hero {
+  background: linear-gradient(135deg, #ff6600, #ff8a3d); color: #fff;
+  border-radius: 24rpx; padding: 44rpx 32rpx; text-align: center;
+}
+.res-hero__label { font-size: 24rpx; opacity: .85; }
+.res-hero__combo { font-size: 44rpx; font-weight: 800; margin: 16rpx 0; }
+.res-hero__cover { font-size: 26rpx; opacity: .95; }
+.res-hero__num { font-size: 36rpx; font-weight: 800; }
+
+.res-dir { font-size: 28rpx; color: #333; line-height: 1.7; }
+
+.alt { display: flex; justify-content: space-between; align-items: center; padding: 16rpx 0; border-bottom: 1rpx solid #f4f4f4; }
+.alt:last-child { border-bottom: none; }
+.alt__c { font-size: 28rpx; color: #333; }
+.alt__v { font-size: 24rpx; color: #ff6600; font-weight: 600; }
+
+.foot-tip { text-align: center; font-size: 22rpx; color: #bbb; padding: 24rpx; }

@@ -1,11 +1,20 @@
 <view class="page">
   <view class="card">
     <view class="sec-title">分数 → 位次换算</view>
-    <view class="flex gap-20 mb-16">
-      <view class="opt opt--sm {{subject==='物理类'?'opt--on':''}}" data-v="物理类" bindtap="chooseSub"><view class="opt__txt">物理类</view></view>
-      <view class="opt opt--sm {{subject==='历史类'?'opt--on':''}}" data-v="历史类" bindtap="chooseSub"><view class="opt__txt">历史类</view></view>
-    </view>
-    <input class="score-input" type="number" value="{{score}}" bindinput="onScore" placeholder="输入分数" placeholder-style="color:#ccc;font-size:40rpx;" />
+    <picker range="{{provinces}}" value="{{provinceIndex}}" bindchange="onProvince">
+      <view class="row row--picker">
+        <view class="row__l"><view class="row__major">高考省份</view></view>
+        <view class="row__r"><text class="picker-val">{{province}} ›</text></view>
+      </view>
+    </picker>
+    <picker wx:if="{{subjects.length > 1}}" range="{{subjects}}" value="{{subjectIndex}}" bindchange="onSubject">
+      <view class="row row--picker">
+        <view class="row__l"><view class="row__major">科类</view></view>
+        <view class="row__r"><text class="picker-val">{{subject}} ›</text></view>
+      </view>
+    </picker>
+    <view wx:if="{{subjects.length === 1}}" class="tip">该省为综合改革，不分文理</view>
+    <input class="score-input" type="number" value="{{score}}" bindinput="onScore" placeholder="输入分数" placeholder-style="color:#ccc;font-size: 40rpx;" />
     <button class="btn btn--primary btn--lg btn--block mt-16" loading="{{loading}}" bindtap="query">查位次</button>
   </view>
 
@@ -13,6 +22,6 @@
     <view class="result__label">{{score}} 分 · {{subject}} 约</view>
     <view class="result__num">{{rank}}</view>
     <view class="result__unit">位</view>
-    <view class="text-xs text-muted mt-8">数据来源：{{source}}（内蒙古一分一段）</view>
+    <view class="text-xs text-muted mt-8">{{province}} {{year || 2026}} 年一分一段{{source === 'one_section' ? '（省考试院官方）' : source === 'one_section_interp' ? '（相邻分档插值）' : '（估算，暂无该省官方分档）'}}</view>
   </view>
 </view>

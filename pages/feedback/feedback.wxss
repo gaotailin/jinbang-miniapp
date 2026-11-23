@@ -9,5 +9,5 @@
   width: 100%; box-sizing: border-box; margin-top: 4rpx;
   background: #f7f7f7; border-radius: 14rpx; padding: 22rpx; font-size: 28rpx;
 }
-.kefu { text-align: center; font-size: 25rpx; color: #999; padding: 32rpx; }
+.kefu { text-align: center; font-size: 24rpx; color: #999; padding: 32rpx; }
 .kefu__n { color: #ff6600; font-weight: 600; }

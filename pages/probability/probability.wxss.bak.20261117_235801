@@ -1,0 +1,45 @@
+.page { padding: 20rpx 24rpx 60rpx; }
+
+/* 成绩条 */
+.bar {
+  display: flex; align-items: center; justify-content: space-between;
+  background: linear-gradient(135deg, #e85d04 0%, #f0892e 100%);
+  border-radius: 20rpx; padding: 24rpx 28rpx; color: #fff;
+}
+.bar__loc { font-size: 24rpx; opacity: 0.92; }
+.bar__rank { display: flex; align-items: baseline; margin-top: 10rpx; }
+.bar__rank-lb { font-size: 24rpx; opacity: 0.9; margin-right: 12rpx; }
+.bar__rank-in {
+  min-width: 120rpx; font-size: 38rpx; font-weight: 700; color: #fff;
+  border-bottom: 2rpx solid rgba(255,255,255,0.6); padding: 0 8rpx; text-align: center;
+}
+.bar__rank-u { font-size: 24rpx; margin-left: 6rpx; opacity: 0.9; }
+.bar__edit { font-size: 24rpx; color: #fff; background: rgba(255,255,255,0.22); border-radius: 9999rpx; padding: 8rpx 22rpx; }
+
+/* 搜索 */
+.sb { display: flex; gap: 16rpx; margin-top: 24rpx; }
+.sb__in { flex: 1; height: 80rpx; background: #f5f5f5; border-radius: 16rpx; padding: 0 24rpx; font-size: 28rpx; }
+.sb__btn { width: 140rpx; height: 80rpx; line-height: 80rpx; text-align: center; background: #e85d04; color: #fff; border-radius: 16rpx; font-size: 28rpx; font-weight: 600; }
+.hint { font-size: 22rpx; color: #999; margin: 16rpx 4rpx 8rpx; line-height: 1.5; }
+
+/* 结果卡 */
+.list { margin-top: 8rpx; }
+.card { background: #fff; border-radius: 20rpx; padding: 24rpx; margin-bottom: 16rpx; box-shadow: 0 4rpx 16rpx rgba(0,0,0,0.05); }
+.card--press { transform: scale(0.99); transition: transform .08s; }
+.card__top { display: flex; align-items: center; justify-content: space-between; }
+.card__main { flex: 1; min-width: 0; }
+.card__sch { font-size: 30rpx; font-weight: 700; color: #111; }
+.card__mj { font-size: 24rpx; color: #888; margin-top: 8rpx; }
+.card__meta { font-size: 24rpx; color: #999; margin-top: 16rpx; }
+.card__dot { margin: 0 12rpx; color: #ddd; }
+
+/* 概率徽 */
+.prob { display: flex; flex-direction: column; align-items: center; flex-shrink: 0; margin-left: 20rpx; }
+.prob__n { font-size: 40rpx; font-weight: 800; }
+.prob--chong .prob__n { color: #e74c3c; }
+.prob--wen .prob__n { color: #e8a004; }
+.prob--bao .prob__n { color: #27ae60; }
+.prob__t { font-size: 20rpx; color: #fff; border-radius: 8rpx; padding: 2rpx 12rpx; margin-top: 4rpx; }
+.prob__t--chong { background: #e74c3c; }
+.prob__t--wen { background: #e8a004; }
+.prob__t--bao { background: #27ae60; }

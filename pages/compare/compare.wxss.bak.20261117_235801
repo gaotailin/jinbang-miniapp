@@ -1,0 +1,28 @@
+.page { padding: 20rpx 24rpx 60rpx; }
+
+/* 选择区 */
+.pick { background: #fff; border-radius: 20rpx; padding: 24rpx; margin-bottom: 20rpx; }
+.pick__hd { font-size: 26rpx; color: #666; margin-bottom: 16rpx; }
+.pick__chips { display: flex; flex-wrap: wrap; gap: 16rpx; }
+.chip {
+  font-size: 26rpx; color: #555; background: #f2f3f5;
+  border-radius: 9999rpx; padding: 12rpx 24rpx; border: 2rpx solid transparent;
+}
+.chip--on { color: #ff6600; background: #fff4ec; border-color: #ff6600; }
+
+.tip { text-align: center; color: #999; font-size: 26rpx; padding: 50rpx; }
+
+/* 对比表 */
+.cmp { background: #fff; border-radius: 20rpx; overflow: hidden; }
+.cmp__row { display: flex; border-bottom: 1rpx solid #f0f0f0; }
+.cmp__row:last-child { border-bottom: none; }
+.cmp__label {
+  width: 150rpx; flex-shrink: 0; font-size: 25rpx; color: #999;
+  padding: 22rpx 20rpx; background: #fafafa;
+}
+.cmp__cell {
+  flex: 1; min-width: 0; font-size: 25rpx; color: #222; text-align: center;
+  padding: 22rpx 12rpx; word-break: break-all;
+}
+.cmp__row--head { background: #fff7f2; }
+.cmp__cell--head { font-size: 27rpx; font-weight: 700; color: #ff6600; }

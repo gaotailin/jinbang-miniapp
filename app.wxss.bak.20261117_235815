@@ -1,0 +1,110 @@
+/* ===========================
+   九色鹿前程助手 全局样式（橙系）
+   主色 #ff6600 / 浅橙 #ff7834 / 深橙 #cc4d00 / 底 #f7f7f7
+   =========================== */
+
+page {
+  font-family: -apple-system, 'PingFang SC', 'Helvetica Neue', sans-serif;
+  background-color: #f7f7f7;
+  color: #333;
+  font-size: 28rpx;
+  line-height: 1.6;
+  box-sizing: border-box;
+  height: 100%;
+}
+
+/* ---- 卡片 ---- */
+.card {
+  background: #ffffff;
+  border-radius: 16rpx;
+  box-shadow: 0 2rpx 10rpx rgba(0,0,0,0.05);
+  padding: 24rpx;
+  margin: 0 24rpx 16rpx;
+}
+.card--flat { box-shadow: none; border: 2rpx solid #e6e6e6; }
+
+/* ---- 区块标题 ---- */
+.sec-title {
+  font-size: 30rpx;
+  font-weight: 700;
+  color: #111111;
+  margin-bottom: 20rpx;
+}
+
+/* ---- 按钮 ---- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 80rpx;
+  padding: 0 32rpx;
+  border-radius: 8rpx;
+  font-size: 28rpx;
+  font-weight: 600;
+  border: none;
+  outline: none;
+}
+.btn::after { border: none; }
+.btn--primary { background: #ff6600; color: #fff; }
+.btn--gold    { background: #ff6600; color: #fff; }
+.btn--outline { background: transparent; border: 2rpx solid #ff6600; color: #ff6600; }
+.btn--ghost   { background: rgba(255,102,0,0.08); color: #ff6600; }
+.btn--block { width: 100%; }
+.btn--lg { height: 96rpx; font-size: 32rpx; border-radius: 16rpx; }
+.btn--sm { height: 56rpx; padding: 0 20rpx; font-size: 24rpx; }
+
+/* ---- 标签 ---- */
+.tag {
+  display: inline-flex;
+  align-items: center;
+  height: 40rpx;
+  padding: 0 12rpx;
+  border-radius: 8rpx;
+  font-size: 22rpx;
+  font-weight: 500;
+}
+.tag--primary { background: rgba(255,102,0,0.10); color: #cc4d00; }
+.tag--gold    { background: #fff3e6; color: #cc4d00; }
+.tag--blue    { background: rgba(41,128,185,0.08); color: #2980B9; }
+.tag--green   { background: rgba(39,174,96,0.08); color: #27AE60; }
+.tag--gray    { background: #f0f0f0; color: #666; }
+
+/* ---- 进度条 ---- */
+.bar { height: 14rpx; background: #f0f0f0; border-radius: 999rpx; overflow: hidden; }
+.bar__fill { height: 100%; background: #ff6600; border-radius: 999rpx; transition: width .3s; }
+.bar__fill--gold { background: #ff7834; }
+
+/* ---- 分割线 ---- */
+.divider { height: 1rpx; background: #e6e6e6; margin: 16rpx 0; }
+
+/* ---- 工具类 ---- */
+.flex        { display: flex; }
+.flex-col    { display: flex; flex-direction: column; }
+.flex-wrap   { flex-wrap: wrap; }
+.items-center{ align-items: center; }
+.justify-between { justify-content: space-between; }
+.justify-center  { justify-content: center; }
+.flex-1      { flex: 1; }
+.gap-12      { gap: 12rpx; }
+.gap-16      { gap: 16rpx; }
+.gap-20      { gap: 20rpx; }
+.text-center { text-align: center; }
+.text-primary   { color: #ff6600; }
+.text-gold      { color: #cc4d00; }
+.text-secondary { color: #666; }
+.text-muted     { color: #999; }
+.font-bold   { font-weight: 700; }
+.font-600    { font-weight: 600; }
+.text-sm     { font-size: 24rpx; }
+.text-xs     { font-size: 22rpx; }
+.text-lg     { font-size: 32rpx; }
+.text-xl     { font-size: 36rpx; }
+.mt-8  { margin-top: 8rpx; }
+.mt-16 { margin-top: 16rpx; }
+.mt-24 { margin-top: 24rpx; }
+.mb-8  { margin-bottom: 8rpx; }
+.mb-16 { margin-bottom: 16rpx; }
+.ml-8  { margin-left: 8rpx; }
+.mr-8  { margin-right: 8rpx; }
+.px-24 { padding-left: 24rpx; padding-right: 24rpx; }
+.py-16 { padding-top: 16rpx; padding-bottom: 16rpx; }

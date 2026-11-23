@@ -1,4 +1,5 @@
 const app = getApp()
+const sec = require('../../utils/wechat.js')
 
 const QUICK = [
   '理科550分能报哪些学校？',
@@ -35,14 +36,26 @@ Page({
 
   send() {
     const content = (this.data.input || '').trim()
-    if (!content || this.data.loading) return
+    if (!content || this.data.loading || this._checking) return
 
+    this._checking = true
+    sec.checkText(content).then(ok => {
+      this._checking = false
+      if (!ok) {
+        wx.showToast({ title: '内容含敏感信息，请修改后再发', icon: 'none' })
+        return
+      }
+      this._send(content)
+    })
+  },
+
+  _send(content) {
     const msgs = this.data.messages.concat({ id: ++msgId, role: 'user', content })
     this.setData({ messages: msgs, input: '', loading: true })
 
     app.request('/api/chat', {
       method: 'GET',
-      data: { msg: content, ctx: this._ctx || '' }
+      data: { msg: content, ctx: this._ctx || '', openid: app.globalData.openid || '' }
     }).then(res => {
       const reply = (res && (res.reply || res.message)) || '抱歉，暂时无法回复，请稍后重试。'
       this.setData({
@@ -58,7 +71,7 @@ Page({
   }
 ,
   onShareAppMessage() {
-    return { title: '九色鹿前程助手 — AI智能填志愿', path: '/pages/index/index' }
+    return { title: '九色鹿前程助手 — AI智能填志愿', path: '/pages/aiChat/aiChat' }
   },
   onShareTimeline() {
     return { title: '试试这个AI志愿助手，高考志愿一站搞定' }

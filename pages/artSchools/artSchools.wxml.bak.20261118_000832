@@ -1,0 +1,29 @@
+<view class="page">
+
+  <view class="bar">
+    <picker class="bar__prov" mode="selector" range="{{provNames}}" value="{{provIdx}}" bindchange="onProv">
+      <view class="bar__pv">{{provNames[provIdx]}} ›</view>
+    </picker>
+    <text class="bar__cnt">共 {{list.length}} 所</text>
+  </view>
+
+  <scroll-view class="tabs" scroll-x enhanced show-scrollbar="{{false}}">
+    <view wx:for="{{types}}" wx:key="*this" class="tab {{typeIdx===index?'tab--on':''}}" data-i="{{index}}" bindtap="onType">{{item}}</view>
+  </scroll-view>
+
+  <view class="list">
+    <view wx:for="{{list}}" wx:key="name" class="card" hover-class="card--press" hover-stay-time="80" data-name="{{item.name}}" bindtap="goSchool">
+      <view class="card__logo">{{item.name[0]}}</view>
+      <view class="card__main">
+        <view class="card__name">{{item.name}}</view>
+        <view class="card__meta"><text class="card__tag">{{item.type}}</text><text class="card__prov">{{item.prov}}</text></view>
+      </view>
+      <view class="card__arrow">›</view>
+    </view>
+  </view>
+
+  <view wx:if="{{!list.length}}" class="empty">该筛选下暂无院校</view>
+
+  <view class="note">数据：阳光高考独立艺术类院校（{{total}}所）。综合性大学的艺术专业见各省招生计划（整理中）。</view>
+  <view class="ft-safe"></view>
+</view>

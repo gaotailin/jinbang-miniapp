@@ -19,9 +19,9 @@ function cleanMajors(rows) {
 }
 
 Page({
-  data: { name: '', level: '', province: '', majors: [], history: [], loading: true,
-          intro: '', softRank: '', avgSalary: '', empRate: '',
-          hasGrad: false, masterN: 0, doctorN: 0, ugMajorN: 0, website: '' },
+  data: { name: '', level: '', province: '', majors: [], history: [], groups: [], loading: true,
+          intro: '', softRank: '', softRankText: '', softRankLbl: '', avgSalary: '', empRate: '',
+          hasGrad: false, masterN: 0, doctorN: 0, ugMajorN: 0, website: '', phone: '', address: '' },
 
   onLoad(q) {
     const name = decodeURIComponent(q.name || '')
@@ -29,33 +29,50 @@ Page({
     wx.setNavigationBarTitle({ title: name || '院校详情' })
     // 院校富内容(简介/软科/均薪/就业率/研究生信息)经 /api/sql 取 college_detail 完整行
     const safe = name.replace(/'/g, '')
-    const dq = "SELECT province,city,intro,ranking_soft_science,avg_salary,employment_rate,"
-      + "has_graduate_school,master_programs,doctor_programs,undergraduate_majors,website "
+    const dq = "SELECT province,city,intro,ranking_soft_science,ranking_board,ranking_label,avg_salary,employment_rate,"
+      + "has_graduate_school,master_programs,doctor_programs,undergraduate_majors,website,phone,address "
       + "FROM college_detail WHERE school='" + safe + "' LIMIT 1"
     Promise.all([
       app.request('/api/scoreline_history', { data: { school: name } }).catch(() => []),
       app.request('/api/college_majors', { data: { school: name } }).catch(() => []),
-      app.request('/api/sql', { data: { q: dq } }).catch(() => [])
-    ]).then(([rows, majors, detail]) => {
+      app.request('/api/sql', { data: { q: dq } }).catch(() => []),
+      app.request('/api/school_groups', { data: { school: name } }).catch(() => [])
+    ]).then(([rows, majors, detail, groups]) => {
       rows = rows || []
       const level = (rows.find(r => r.school_level) || {}).school_level || ''
       const history = rows.filter(r => r.min_score)
         .sort((a, b) => (b.year - a.year) || (b.min_score - a.min_score))
         .slice(0, 50)
       const mj = cleanMajors(majors)
+      const grp = (groups || []).filter(g => g.min_score)
+        .sort((a, b) => (a.province === b.province
+          ? (a.subject === b.subject ? b.min_score - a.min_score : (a.subject < b.subject ? -1 : 1))
+          : (a.province < b.province ? -1 : 1)))
+        .slice(0, 60)
       const d = ((detail && (detail.rows || detail.data || detail)) || [])[0] || {}
       this.setData({
-        level, history, majors: mj, loading: false,
+        level, history, majors: mj, groups: grp, loading: false,
         province: d.province || d.city || '',
         intro: d.intro || '',
         softRank: d.ranking_soft_science || '',
+        softRankText: (function (rk, lab) {
+          if (!rk || rk <= 0) return ''
+          return (lab || String(rk)) + ''
+        })(d.ranking_soft_science, d.ranking_label),
+        softRankLbl: (function (board) {
+          var b = (board || '').trim()
+          if (!b || b.indexOf('中国大学排名') === 0) return '软科排名'
+          return '软科' + b.replace('高职-', '高职').replace(/类$/, '') + '排名'
+        })(d.ranking_board),
         avgSalary: d.avg_salary || '',
         empRate: d.employment_rate || '',
         hasGrad: !!d.has_graduate_school,
         masterN: d.master_programs || 0,
         doctorN: d.doctor_programs || 0,
         ugMajorN: d.undergraduate_majors || 0,
-        website: d.website || ''
+        website: d.website || '',
+        phone: (d.phone || '').trim(),
+        address: (d.address || '').trim()
       })
     })
   },
@@ -63,6 +80,16 @@ Page({
   copySite() {
     if (!this.data.website) return
     wx.setClipboardData({ data: this.data.website, success: () => wx.showToast({ title: '官网已复制', icon: 'none' }) })
+  },
+
+  copyPhone() {
+    const raw = this.data.phone || ''
+    const m = raw.match(/[0-9][0-9\-]{6,19}/)
+    if (!m) return
+    const p = m[0]
+    wx.makePhoneCall({ phoneNumber: p, fail: () => {
+      wx.setClipboardData({ data: p, success: () => wx.showToast({ title: '电话已复制', icon: 'none' }) })
+    } })
   },
 
   favorite() {
@@ -78,7 +105,11 @@ Page({
   }
 ,
   onShareAppMessage() {
-    return { title: '九色鹿前程助手 — AI智能填志愿', path: '/pages/index/index' }
+    const n = this.data.name || ''
+    return {
+      title: n ? (n + ' 院校详情 · 录取分数与专业') : '九色鹿前程助手 — AI智能填志愿',
+      path: '/pages/school/school?name=' + encodeURIComponent(n)
+    }
   },
   onShareTimeline() {
     return { title: '试试这个AI志愿助手，高考志愿一站搞定' }

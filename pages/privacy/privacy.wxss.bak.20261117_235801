@@ -1,0 +1,5 @@
+.doc { padding: 32rpx 32rpx 80rpx; }
+.doc__t { font-size: 38rpx; font-weight: 800; color: #111; }
+.doc__d { font-size: 24rpx; color: #999; margin: 12rpx 0 20rpx; }
+.doc__h { font-size: 30rpx; font-weight: 700; color: #222; margin: 32rpx 0 10rpx; }
+.doc__p { font-size: 27rpx; color: #555; line-height: 1.9; margin-top: 8rpx; }
