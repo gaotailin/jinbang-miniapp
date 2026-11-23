@@ -1,6 +1,9 @@
 const app = getApp()
 const favSync = require('../../utils/fav.js')
 
+// SQL 转义：单引号双写（与 search 页统一的防御式处理，替代粗暴删引号）
+function sqlEscape(v) { return String(v == null ? '' : v).replace(/'/g, "''") }
+
 // 源数据里 college_majors 很多是招生专业组拼接串（含括号注释、「、」分隔、结尾"等"）
 // → 去注释、拆分、去重，清成干净的单专业列表
 function cleanMajors(rows) {
@@ -21,15 +24,16 @@ function cleanMajors(rows) {
 Page({
   data: { name: '', level: '', province: '', majors: [], history: [], groups: [], loading: true,
           intro: '', softRank: '', softRankText: '', softRankLbl: '', avgSalary: '', empRate: '',
-          hasGrad: false, masterN: 0, doctorN: 0, ugMajorN: 0, website: '', phone: '', address: '' },
+          hasGrad: false, masterN: 0, doctorN: 0, ugMajorN: 0, website: '', phone: '', address: '',
+          honorTags: [], schoolType: '', region: '' },
 
   onLoad(q) {
     const name = decodeURIComponent(q.name || '')
     this.setData({ name })
     wx.setNavigationBarTitle({ title: name || '院校详情' })
     // 院校富内容(简介/软科/均薪/就业率/研究生信息)经 /api/sql 取 college_detail 完整行
-    const safe = name.replace(/'/g, '')
-    const dq = "SELECT province,city,intro,ranking_soft_science,ranking_board,ranking_label,avg_salary,employment_rate,"
+    const safe = sqlEscape(name)
+    const dq = "SELECT province,city,school_type,is_985,is_211,is_double_first_class,intro,ranking_soft_science,ranking_board,ranking_label,avg_salary,employment_rate,"
       + "has_graduate_school,master_programs,doctor_programs,undergraduate_majors,website,phone,address "
       + "FROM college_detail WHERE school='" + safe + "' LIMIT 1"
     Promise.all([
@@ -50,8 +54,18 @@ Page({
           : (a.province < b.province ? -1 : 1)))
         .slice(0, 60)
       const d = ((detail && (detail.rows || detail.data || detail)) || [])[0] || {}
+      // 头部身份标签：985/211/双一流（有才显示，与搜索卡片口径一致）
+      const honorTags = []
+      if (d.is_985) honorTags.push('985')
+      if (d.is_211) honorTags.push('211')
+      if (d.is_double_first_class) honorTags.push('双一流')
+      // 属地：优先城市，回退省份；与类型拼成副信息
+      const region = d.city || d.province || ''
       this.setData({
         level, history, majors: mj, groups: grp, loading: false,
+        honorTags,
+        schoolType: d.school_type || '',
+        region,
         province: d.province || d.city || '',
         intro: d.intro || '',
         softRank: d.ranking_soft_science || '',
