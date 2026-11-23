@@ -46,7 +46,7 @@
     <view class="hero__info">
       <view class="hero__loc">
         <text class="hero__dot">●</text>
-        <text class="hero__loc-txt">{{profile.province || '北京'}} ｜ {{profile.subject || '物理类'}} {{profile.score || '--'}}分 {{profile.rank || '--'}}名</text>
+        <text class="hero__loc-txt">{{profile.province || '内蒙古'}} ｜ {{profile.subject || '物理类'}} {{profile.score || '--'}}分 {{profile.rank || '--'}}名</text>
       </view>
       <view class="hero__edit" bindtap="goPick">
         <text>编辑成绩</text>
@@ -110,7 +110,7 @@
   <view class="grid-section">
     <view class="grid">
       <view class="grid__i" hover-class="grid__i--press" hover-stay-time="80" bindtap="goSearch">
-        <view class="grid__ic grid__ic--school"><icon name="school" size="46" color="#ff6600" /></view>
+        <view class="grid__ic grid__ic--school"><icon name="school" size="46" color="#C60C0F" /></view>
         <view class="grid__t">选大学</view>
       </view>
       <view class="grid__i" hover-class="grid__i--press" hover-stay-time="80" bindtap="goMajor">
@@ -147,7 +147,7 @@
         <view class="grid__badge">AI</view>
       </view>
       <view class="grid__i" hover-class="grid__i--press" hover-stay-time="80" bindtap="goServices">
-        <view class="grid__ic grid__ic--more"><icon name="more" size="46" color="#ff6600" /></view>
+        <view class="grid__ic grid__ic--more"><icon name="more" size="46" color="#C60C0F" /></view>
         <view class="grid__t">更多服务</view>
       </view>
     </view>

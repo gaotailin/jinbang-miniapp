@@ -1,48 +1,79 @@
 /* ===========================
-   九色鹿前程助手 全局样式（橙系）
-   设计变量单一来源：改色只改这里
-   品牌 #FF6600 / 深 #CC4D00 / 浅底 #FFF3E8
-   语义：冲 #E74C3C · 稳 #F39C12 · 保 #27AE60
+   九色鹿前程助手 全局样式 · 设计 Token 单一来源
+   —— 学掌上志愿「主色+深色横向渐变做按钮 / 灰底白卡 / 克制字号阶梯」手法，
+      颜色全部换成九色鹿自有品牌红，不沿用对手橙色。
+   品牌红 #C60C0F / 深 #9A080B / 浅底 #FBEAEA
+   语义：冲 #EE6666 · 稳 #FAC858 · 保 #3CA272（与行业认知对齐）
+   改色/改字号/改圆角：只改本文件的 page 变量，全局生效。
    =========================== */
 
 page {
-  --brand: #FF6600;
-  --brand-deep: #CC4D00;
-  --brand-tint: #FFF3E8;
-  --chong: #E74C3C;
-  --wen: #F39C12;
-  --bao: #27AE60;
-  --text-1: #1A1A1A;
-  --text-2: #5A5A5A;
-  --text-3: #8C8C8C;
-  --line: #ECECEC;
-  --bg: #F7F7F7;
-  --radius-card: 20rpx;
-  --radius-btn: 12rpx;
+  /* ---- 品牌色阶（红） ---- */
+  --brand: #C60C0F;          /* 主品牌色 */
+  --brand-deep: #9A080B;     /* 渐变终点 / 按下态 */
+  --brand-tint: #FBEAEA;     /* 品牌浅底（标签/提示底） */
+  --brand-grad: linear-gradient(90deg, #C60C0F, #9A080B); /* 主 CTA 统一横向红渐变 */
+  --brand-shadow: 0 20rpx 40rpx rgba(154, 8, 11, 0.12);   /* 红按钮轻投影（带品牌色调） */
+
+  /* ---- 冲 / 稳 / 保 语义色 ---- */
+  --chong: #EE6666;
+  --wen: #FAC858;
+  --bao: #3CA272;
+
+  /* ---- 文字 5 级灰阶（克制，靠颜色拉开层级） ---- */
+  --text-1: #1E1E1E;         /* 标题、核心数据 */
+  --text-2: #595959;         /* 正文、说明（最高频） */
+  --text-3: #A0A0A6;         /* 标签、时间、占位 */
+  --text-disabled: #BFBFBF;  /* 禁用 */
+  --text-inverse: #FFFFFF;   /* 深底反白 */
+
+  /* ---- 线 / 底 ---- */
+  --line: #E6E6E6;           /* 极浅分割线 */
+  --bg: #F7F7F7;             /* 页面灰底 */
+  --card-bg: #FFFFFF;        /* 卡片白底 */
+
+  /* ---- 字号 8 档（22→40rpx，收敛，勿再新增字号） ---- */
+  --fs-min: 22rpx;   /* 最小说明 */
+  --fs-tag: 24rpx;   /* 辅助说明、标签 */
+  --fs-list: 26rpx;  /* 列表主文字 */
+  --fs-base: 28rpx;  /* 正文基准（全局默认） */
+  --fs-sub: 30rpx;   /* 次级标题 */
+  --fs-title: 32rpx; /* 小标题 */
+  --fs-card: 34rpx;  /* 卡片标题 */
+  --fs-hero: 40rpx;  /* 页面大标题/核心数字 */
+
+  /* ---- 圆角 3 档 ---- */
+  --radius-btn: 8rpx;    /* 按钮、小标签 */
+  --radius-card: 16rpx;  /* 卡片默认 */
+  --radius-panel: 24rpx; /* 大卡片、弹窗 */
+
+  /* ---- 卡片极轻阴影 ---- */
+  --shadow-card: 0 2rpx 16rpx rgba(0, 0, 0, 0.06);
+
   font-family: -apple-system, 'PingFang SC', 'Helvetica Neue', sans-serif;
-  background-color: #f7f7f7;
-  color: #333;
-  font-size: 28rpx;
+  background-color: var(--bg);
+  color: var(--text-2);
+  font-size: var(--fs-base);
   line-height: 1.6;
   box-sizing: border-box;
   height: 100%;
 }
 
-/* ---- 卡片 ---- */
+/* ---- 卡片：灰底 + 白卡 + 极轻阴影，靠底色差分模块而非重边框 ---- */
 .card {
-  background: #ffffff;
+  background: var(--card-bg);
   border-radius: var(--radius-card);
-  box-shadow: 0 4rpx 20rpx rgba(0,0,0,0.05);
+  box-shadow: var(--shadow-card);
   padding: 24rpx;
   margin: 0 24rpx 16rpx;
 }
-.card--flat { box-shadow: none; border: 2rpx solid #e6e6e6; }
+.card--flat { box-shadow: none; border: 2rpx solid var(--line); }
 
 /* ---- 区块标题 ---- */
 .sec-title {
   position: relative;
   padding-left: 18rpx;
-  font-size: 30rpx;
+  font-size: var(--fs-sub);
   font-weight: 700;
   color: var(--text-1);
   margin-bottom: 20rpx;
@@ -58,27 +89,27 @@ page {
   background: var(--brand);
 }
 
-/* ---- 按钮 ---- */
+/* ---- 按钮：主按钮统一红渐变 ---- */
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   height: 80rpx;
   padding: 0 32rpx;
-  border-radius: 8rpx;
-  font-size: 28rpx;
+  border-radius: var(--radius-btn);
+  font-size: var(--fs-base);
   font-weight: 600;
   border: none;
   outline: none;
 }
 .btn::after { border: none; }
-.btn--primary { background: var(--brand); color: #fff; }
-.btn--gold    { background: var(--brand); color: #fff; }
-.btn--outline { background: transparent; border: 2rpx solid #ff6600; color: #ff6600; }
-.btn--ghost   { background: rgba(255,102,0,0.08); color: #ff6600; }
+.btn--primary { background: var(--brand-grad); color: var(--text-inverse); box-shadow: var(--brand-shadow); }
+.btn--gold    { background: var(--brand-grad); color: var(--text-inverse); box-shadow: var(--brand-shadow); }
+.btn--outline { background: transparent; border: 2rpx solid var(--brand); color: var(--brand); }
+.btn--ghost   { background: var(--brand-tint); color: var(--brand); }
 .btn--block { width: 100%; }
-.btn--lg { height: 96rpx; font-size: 32rpx; border-radius: 16rpx; }
-.btn--sm { height: 56rpx; padding: 0 20rpx; font-size: 24rpx; }
+.btn--lg { height: 96rpx; font-size: var(--fs-title); border-radius: var(--radius-card); }
+.btn--sm { height: 56rpx; padding: 0 20rpx; font-size: var(--fs-tag); }
 
 /* ---- 标签 ---- */
 .tag {
@@ -86,23 +117,23 @@ page {
   align-items: center;
   height: 40rpx;
   padding: 0 12rpx;
-  border-radius: 8rpx;
-  font-size: 22rpx;
+  border-radius: var(--radius-btn);
+  font-size: var(--fs-min);
   font-weight: 500;
 }
-.tag--primary { background: rgba(255,102,0,0.10); color: #cc4d00; }
-.tag--gold    { background: #fff3e6; color: #cc4d00; }
-.tag--blue    { background: rgba(41,128,185,0.08); color: #2980B9; }
-.tag--green   { background: rgba(39,174,96,0.08); color: #27AE60; }
-.tag--gray    { background: #f0f0f0; color: #666; }
+.tag--primary { background: var(--brand-tint); color: var(--brand-deep); }
+.tag--gold    { background: var(--brand-tint); color: var(--brand-deep); }
+.tag--blue    { background: rgba(41, 128, 185, 0.08); color: #2980B9; }
+.tag--green   { background: rgba(60, 162, 114, 0.10); color: var(--bao); }
+.tag--gray    { background: #f0f0f0; color: var(--text-2); }
 
 /* ---- 进度条 ---- */
 .bar { height: 14rpx; background: #f0f0f0; border-radius: 999rpx; overflow: hidden; }
-.bar__fill { height: 100%; background: #ff6600; border-radius: 999rpx; transition: width .3s; }
-.bar__fill--gold { background: #ff7834; }
+.bar__fill { height: 100%; background: var(--brand); border-radius: 999rpx; transition: width .3s; }
+.bar__fill--gold { background: var(--brand-grad); }
 
 /* ---- 分割线 ---- */
-.divider { height: 1rpx; background: #e6e6e6; margin: 16rpx 0; }
+.divider { height: 1rpx; background: var(--line); margin: 16rpx 0; }
 
 /* ---- 工具类 ---- */
 .flex        { display: flex; }
@@ -116,16 +147,16 @@ page {
 .gap-16      { gap: 16rpx; }
 .gap-20      { gap: 20rpx; }
 .text-center { text-align: center; }
-.text-primary   { color: #ff6600; }
-.text-gold      { color: #cc4d00; }
-.text-secondary { color: #666; }
-.text-muted     { color: #999; }
+.text-primary   { color: var(--brand); }
+.text-gold      { color: var(--brand-deep); }
+.text-secondary { color: var(--text-2); }
+.text-muted     { color: var(--text-3); }
 .font-bold   { font-weight: 700; }
 .font-600    { font-weight: 600; }
-.text-sm     { font-size: 24rpx; }
-.text-xs     { font-size: 22rpx; }
-.text-lg     { font-size: 32rpx; }
-.text-xl     { font-size: 36rpx; }
+.text-sm     { font-size: var(--fs-tag); }
+.text-xs     { font-size: var(--fs-min); }
+.text-lg     { font-size: var(--fs-title); }
+.text-xl     { font-size: var(--fs-card); }
 .mt-8  { margin-top: 8rpx; }
 .mt-16 { margin-top: 16rpx; }
 .mt-24 { margin-top: 24rpx; }
