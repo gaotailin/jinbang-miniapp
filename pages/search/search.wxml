@@ -16,11 +16,13 @@
     <view class="tabs__i" hover-class="tabs__i--press" hover-stay-time="80" bindtap="goTab" data-t="fav">我的关注</view>
   </view>
 
-  <!-- 常驻分类横滑条 -->
-  <scroll-view class="cstrip" scroll-x enhanced show-scrollbar="{{false}}">
-    <view wx:for="{{cateStrip}}" wx:key="*this" class="cchip {{activeCate===item?'cchip--on':''}}"
-          data-c="{{item}}" bindtap="pickCate" hover-class="cchip--press" hover-stay-time="80">{{item}}</view>
-  </scroll-view>
+  <!-- 常驻分类横滑条（右缘渐隐提示可滑动）-->
+  <view class="cstrip-wrap">
+    <scroll-view class="cstrip" scroll-x enhanced show-scrollbar="{{false}}">
+      <view wx:for="{{cateStrip}}" wx:key="*this" class="cchip {{activeCate===item?'cchip--on':''}}"
+            data-c="{{item}}" bindtap="pickCate" hover-class="cchip--press" hover-stay-time="80">{{item}}</view>
+    </scroll-view>
+  </view>
 
   <!-- 筛选条：地区 / 城市 / 层次 / 排序 -->
   <view class="fbar">
@@ -81,7 +83,7 @@
       <view class="sch__main" data-name="{{item.school}}" bindtap="goSchool">
         <text class="sch__name">{{item.school}}</text>
         <view wx:if="{{item.softRank || item.majorCount}}" class="sch__stats">
-          <text wx:if="{{item.softRank}}" class="sch__stat sch__stat--rank">软科 {{item.softRank}}</text>
+          <text wx:if="{{item.softRank}}" class="sch__stat sch__stat--rank">软科第 {{item.softRank}} 名</text>
           <text wx:if="{{item.majorCount}}" class="sch__stat">{{item.majorCount}} 个本科专业</text>
         </view>
         <view wx:if="{{item.tags.length}}" class="sch__tags">

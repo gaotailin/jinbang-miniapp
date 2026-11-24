@@ -45,7 +45,8 @@
   font-size: 20rpx; color: #888; line-height: 1;
   background: #f2f3f5; border-radius: 6rpx; padding: 6rpx 12rpx;
 }
-.tag2--hot { color: #ff7834; background: #fff0e3; font-weight: 600; }
+/* 重点资质（985/211/双一流/C9）：橙描边白底，克制不与主操作撞色 */
+.tag2--hot { color: #ff5504; background: #fff; font-weight: 600; border: 1rpx solid #fda962; }
 
 /* 分类入口 */
 .cats { padding: 28rpx 24rpx 8rpx; }
@@ -83,10 +84,10 @@
 .list { padding: 8rpx 0; }
 .sch {
   display: flex; align-items: center; gap: 16rpx;
-  background: #fff; border-radius: 16rpx; padding: 28rpx 24rpx;
-  margin: 0 24rpx 12rpx; box-shadow: 0 2rpx 10rpx rgba(0,0,0,0.04);
+  background: #fff; border-radius: 20rpx; padding: 28rpx 24rpx;
+  margin: 0 24rpx 16rpx; box-shadow: 0 6rpx 20rpx rgba(0,0,0,0.06);
 }
-.sch-hover { background: #fafafa; }
+.sch-hover { background: #fafafa; transform: scale(0.995); }
 .sch__logo {
   flex-shrink: 0; width: 76rpx; height: 76rpx; border-radius: 50%;
   color: #fff; font-size: 28rpx; font-weight: 600; letter-spacing: 1rpx;
@@ -100,16 +101,23 @@
 }
 .sch__type { color: #999; }
 .sch__more { margin-left: auto; color: #ff7834; font-weight: 500; }
+/* 选校单=主操作实心橙；已加入=灰色禁用态 */
 .sch__fav {
-  flex-shrink: 0; font-size: 24rpx; color: #ff7834; font-weight: 600;
-  border: 1rpx solid #ff7834; border-radius: 20rpx; padding: 10rpx 20rpx; line-height: 1;
+  flex-shrink: 0; font-size: 24rpx; color: #fff; font-weight: 600;
+  background: linear-gradient(90deg, #ff7834, #ff5504);
+  border-radius: 24rpx; padding: 12rpx 22rpx; line-height: 1;
+  box-shadow: 0 4rpx 12rpx rgba(255,85,4,0.25);
 }
-.sch__fav--on { color: #bbb; border-color: #e0e0e0; }
+.sch__fav--on { color: #999; background: #f2f3f5; box-shadow: none; }
 
-/* 常驻分类横滑条 */
+/* 常驻分类横滑条（右缘渐隐提示可滑动）*/
+.cstrip-wrap { position: relative; background: #fff; border-bottom: 1rpx solid #f3f3f3; }
+.cstrip-wrap::after {
+  content: ''; position: absolute; top: 0; right: 0; bottom: 0; width: 48rpx;
+  background: linear-gradient(90deg, rgba(255,255,255,0), #fff); pointer-events: none; z-index: 2;
+}
 .cstrip {
-  white-space: nowrap; background: #fff; padding: 16rpx 16rpx 14rpx;
-  border-bottom: 1rpx solid #f3f3f3;
+  white-space: nowrap; padding: 16rpx 16rpx 14rpx;
 }
 .cchip {
   display: inline-block; font-size: 26rpx; color: #555;
@@ -126,6 +134,12 @@
 .fbar__i {
   flex: 1; display: flex; align-items: center; justify-content: center; gap: 6rpx;
   font-size: 26rpx; color: #555; padding: 22rpx 0;
+  position: relative;
+}
+/* 筛选项之间细分隔，避免地区/城市粘在一起 */
+.fbar__i:not(:last-child)::after {
+  content: ''; position: absolute; right: 0; top: 50%; transform: translateY(-50%);
+  width: 1rpx; height: 28rpx; background: #ececec;
 }
 .fbar__i--act .fbar__t { color: #ff7834; font-weight: 600; }
 .fbar__i--on .fbar__t { color: #ff7834; font-weight: 600; }
