@@ -39,113 +39,115 @@
     <view class="art-panel__tip">更多艺术类功能（录取概率/招生计划）陆续上线</view>
   </view>
 
-  <!-- ===== 3. 数据看板（重构重点·普通类）===== -->
-  <view wx:if="{{category!=='art'}}" class="hero {{hasData?'hero--data':''}}">
-
-    <!-- 顶部信息行 -->
-    <view class="hero__info">
-      <view class="hero__loc">
-        <text class="hero__dot">●</text>
-        <text class="hero__loc-txt">{{profile.province || '内蒙古'}} ｜ {{profile.subject || '物理类'}} {{profile.score || '--'}}分 {{profile.rank || '--'}}名</text>
+  <!-- ===== 3. 成绩绑定卡（1:1 对标掌上核心模块·普通类）===== -->
+  <view wx:if="{{category!=='art'}}" class="score-card">
+    <!-- 卡头：定位 + 科类 + 编辑 -->
+    <view class="score-card__hd">
+      <view class="score-card__loc">
+        <text class="score-card__dot">●</text>
+        <text class="score-card__prov">{{profile.province || '内蒙古'}}</text>
+        <text class="score-card__sub">{{profile.subject || '物理类'}}</text>
       </view>
-      <view class="hero__edit" bindtap="goPick">
-        <text>编辑成绩</text>
+      <view class="score-card__edit" bindtap="goPick">{{hasData ? '编辑成绩' : '录入成绩'}}</view>
+    </view>
+
+    <!-- 已绑定：大分数 + 位次 -->
+    <view wx:if="{{hasData}}" class="score-card__body">
+      <view class="score-metric">
+        <view class="score-metric__num">{{profile.score}}</view>
+        <view class="score-metric__label">高考分数</view>
+      </view>
+      <view class="score-card__divider"></view>
+      <view class="score-metric">
+        <view class="score-metric__num score-metric__num--rank">{{profile.rank}}</view>
+        <view class="score-metric__label">高考位次</view>
       </view>
     </view>
-
-    <!-- 可视化曲线区域（canvas 真图：分数分布 + 你的位置）-->
-    <view wx:if="{{hasData}}" class="hero__viz">
-      <canvas type="2d" id="vizCanvas" class="viz-canvas"></canvas>
-    </view>
-    <view wx:else class="hero__empty">
-      <view class="hero__empty-text">输入高考成绩，解锁冲稳保分析</view>
-      <view class="hero__empty-btn" bindtap="goPick">立即输入</view>
+    <!-- 未绑定：引导 -->
+    <view wx:else class="score-card__empty">
+      <view class="score-card__empty-txt">绑定高考成绩，解锁冲稳保分析与志愿推荐</view>
     </view>
 
-    <!-- 冲稳保三栏 -->
-    <view wx:if="{{hasData}}" class="hero__bands">
+    <!-- 开始填报 CTA（橙渐变，掌上灵魂按钮）-->
+    <view class="score-card__cta" hover-class="score-card__cta--press" hover-stay-time="80" bindtap="goPick">
+      {{hasData ? '开始填报' : '立即输入成绩'}}
+    </view>
+  </view>
+
+  <!-- ===== 4. 功能横排（对标掌上：志愿表/订单/会员/更多 → 九色鹿真实功能）===== -->
+  <view wx:if="{{category!=='art'}}" class="quick">
+    <view class="quick__i" hover-class="grid__i--press" hover-stay-time="80" bindtap="goVolunteer">
+      <view class="quick__ic quick__ic--v"><icon name="fill" size="40" color="#ff7834" /></view>
+      <view class="quick__t">志愿表</view>
+    </view>
+    <view class="quick__i" hover-class="grid__i--press" hover-stay-time="80" bindtap="goPick">
+      <view class="quick__ic quick__ic--p"><icon name="same" size="40" color="#8b5cf6" /></view>
+      <view class="quick__t">选校单</view>
+    </view>
+    <view class="quick__i" hover-class="grid__i--press" hover-stay-time="80" bindtap="goReport">
+      <view class="quick__ic quick__ic--r"><icon name="trophy" size="40" color="#27ae60" /></view>
+      <view class="quick__t">升学报告</view>
+    </view>
+    <view class="quick__i" hover-class="grid__i--press" hover-stay-time="80" bindtap="goServices">
+      <view class="quick__ic quick__ic--s"><icon name="more" size="40" color="#ff7834" /></view>
+      <view class="quick__t">更多服务</view>
+    </view>
+  </view>
+
+  <!-- ===== 5. 填报入口横条（对标掌上：提前批/艺术/严审 → 九色鹿真实落点）===== -->
+  <view wx:if="{{category!=='art'}}" class="entry">
+    <view class="entry__i" hover-class="entry__i--press" hover-stay-time="80" bindtap="goAutofill">
+      <view class="entry__name">智能填报</view>
+      <view class="entry__desc">一键生成方案</view>
+    </view>
+    <view class="entry__i" hover-class="entry__i--press" hover-stay-time="80" bindtap="goProbability">
+      <view class="entry__name">录取概率</view>
+      <view class="entry__desc">测冲稳保</view>
+    </view>
+    <view class="entry__i" hover-class="entry__i--press" hover-stay-time="80" bindtap="goArtCalc">
+      <view class="entry__name">艺术类</view>
+      <view class="entry__desc">综合分测算</view>
+    </view>
+  </view>
+
+  <!-- ===== 6. 金刚区两大格（1:1 对标掌上：选大学 / 挑专业）===== -->
+  <view wx:if="{{category!=='art'}}" class="king">
+    <view class="king__i king__i--school" hover-class="king__i--press" hover-stay-time="80" bindtap="goSearch">
+      <view class="king__txt">
+        <view class="king__title">选大学</view>
+        <view class="king__sub">3251所院校 · 城市/层次筛选</view>
+      </view>
+      <view class="king__ic"><icon name="search" size="56" color="#ff7834" /></view>
+    </view>
+    <view class="king__i king__i--major" hover-class="king__i--press" hover-stay-time="80" bindtap="goMajor">
+      <view class="king__txt">
+        <view class="king__title">挑专业</view>
+        <view class="king__sub">1855个专业 · 三级门类查询</view>
+      </view>
+      <view class="king__ic"><icon name="major" size="56" color="#2b86d9" /></view>
+    </view>
+  </view>
+
+  <!-- ===== 7. 冲稳保三栏（有数据时，九色鹿增值保留）===== -->
+  <view wx:if="{{category!=='art' && hasData}}" class="bands-card">
+    <view class="bands-card__hd">你的冲稳保</view>
+    <view class="hero__bands">
       <view class="band band--chong" bindtap="goPick">
         <text class="band__num">{{bands.chong}}</text>
-        <view class="band__bot">
-          <text class="band__label">可冲击</text>
-          <text class="band__arrow">›</text>
-        </view>
+        <view class="band__bot"><text class="band__label">可冲击</text><text class="band__arrow">›</text></view>
       </view>
       <view class="band band--wen" bindtap="goPick">
         <text class="band__num">{{bands.wen}}</text>
-        <view class="band__bot">
-          <text class="band__label">较稳妥</text>
-          <text class="band__arrow">›</text>
-        </view>
+        <view class="band__bot"><text class="band__label">较稳妥</text><text class="band__arrow">›</text></view>
       </view>
       <view class="band band--bao" bindtap="goPick">
         <text class="band__num">{{bands.bao}}</text>
-        <view class="band__bot">
-          <text class="band__label">可保底</text>
-          <text class="band__arrow">›</text>
-        </view>
+        <view class="band__bot"><text class="band__label">可保底</text><text class="band__arrow">›</text></view>
       </view>
     </view>
   </view>
 
-  <!-- ===== 4. 双大卡片 ===== -->
-  <view class="actions">
-    <view class="act act--ai" hover-class="act--press" hover-stay-time="80" bindtap="goPick">
-      <view class="act__content">
-        <view class="act__title">智能选校</view>
-        <view class="act__sub">按分数秒出冲稳保</view>
-      </view>
-      <view class="act__deco">⚡</view>
-    </view>
-    <view class="act act--hl" hover-class="act--press" hover-stay-time="80" bindtap="goTest">
-      <view class="act__content">
-        <view class="act__title">霍兰德专业测评</view>
-        <view class="act__sub">测兴趣，定专业方向</view>
-      </view>
-      <view class="act__deco">🎯</view>
-    </view>
-  </view>
-
-  <!-- ===== 5. 金刚区（高频 8 格：低频工具下沉「更多服务」）===== -->
-  <view class="grid-section">
-    <view class="grid">
-      <view class="grid__i" hover-class="grid__i--press" hover-stay-time="80" bindtap="goMajor">
-        <view class="grid__ic grid__ic--major"><icon name="major" size="46" color="#2b86d9" /></view>
-        <view class="grid__t">挑专业</view>
-      </view>
-      <view class="grid__i" hover-class="grid__i--press" hover-stay-time="80" bindtap="goAutofill">
-        <view class="grid__ic grid__ic--ai"><icon name="fill" size="46" color="#e85d6a" /></view>
-        <view class="grid__t">一键填报</view>
-      </view>
-      <view class="grid__i" hover-class="grid__i--press" hover-stay-time="80" bindtap="goSameScore">
-        <view class="grid__ic grid__ic--same"><icon name="same" size="46" color="#8b5cf6" /></view>
-        <view class="grid__t">同分去向</view>
-      </view>
-      <view class="grid__i" hover-class="grid__i--press" hover-stay-time="80" bindtap="goRank">
-        <view class="grid__ic grid__ic--rank"><icon name="rank1" size="46" color="#27ae60" /></view>
-        <view class="grid__t">一分一段</view>
-      </view>
-      <view class="grid__i" hover-class="grid__i--press" hover-stay-time="80" bindtap="goAiChat">
-        <view class="grid__ic grid__ic--ai"><icon name="ai" size="46" color="#e85d6a" /></view>
-        <view class="grid__t">AI问答</view>
-        <view class="grid__badge">AI</view>
-      </view>
-      <view class="grid__i" hover-class="grid__i--press" hover-stay-time="80" bindtap="goRanking">
-        <view class="grid__ic grid__ic--job"><icon name="trophy" size="46" color="#e0a400" /></view>
-        <view class="grid__t">大学排行</view>
-      </view>
-      <view class="grid__i" hover-class="grid__i--press" hover-stay-time="80" bindtap="goTest">
-        <view class="grid__ic grid__ic--plan"><icon name="compass" size="46" color="#5b7a99" /></view>
-        <view class="grid__t">兴趣测评</view>
-      </view>
-      <view class="grid__i" hover-class="grid__i--press" hover-stay-time="80" bindtap="goServices">
-        <view class="grid__ic grid__ic--more"><icon name="more" size="46" color="#ff7834" /></view>
-        <view class="grid__t">更多服务</view>
-      </view>
-    </view>
-  </view>
-
-  <!-- ===== 5.5 高校排行榜预览（对标掌上）===== -->
+  <!-- ===== 8. 高校排行榜预览（真实数据，保留）===== -->
   <view wx:if="{{rankBoards.length}}" class="rk-sec">
     <view class="rk-sec__hd" bindtap="goRanking">
       <text class="rk-sec__title">高校排行榜</text>

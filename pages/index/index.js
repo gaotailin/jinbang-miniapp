@@ -150,6 +150,7 @@ Page({
   goServices() { wx.navigateTo({ url: '/pages/services/services' }) },
   goAiChat() { wx.navigateTo({ url: '/pages/aiChat/aiChat' }) },
   goAutofill() { wx.navigateTo({ url: '/pages/autofill/autofill' }) },
+  goProbability() { wx.navigateTo({ url: '/pages/probability/probability' }) },
   goArtCalc() { wx.navigateTo({ url: '/pages/artCalc/artCalc' }) },
   goArtSchools() { wx.navigateTo({ url: '/pages/artSchools/artSchools' }) },
   goGuide() { wx.navigateTo({ url: '/pages/guide/guide' }) },
