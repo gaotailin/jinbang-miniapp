@@ -22,10 +22,10 @@
   padding: 20rpx 28rpx; border-bottom: 1rpx solid #f0f0f0;
 }
 
-/* ---- 门类筛选条 ---- */
+/* ---- 门类筛选条（scroll-view 原生组件层级会盖住伪元素遮罩，改用右侧留白让末尾标签露半截，天然提示可横滑）---- */
 .cate-bar {
   white-space: nowrap;
-  padding: 20rpx 20rpx 16rpx;
+  padding: 20rpx 60rpx 16rpx 20rpx;
   background: #fff;
   border-bottom: 1rpx solid #f0f0f0;
 }
@@ -73,12 +73,12 @@
 /* ---- 列表 ---- */
 .list { padding-top: 8rpx; }
 .card.mj {
-  margin: 12rpx 24rpx;
-  background: #fff; border-radius: 16rpx;
-  padding: 24rpx 28rpx;
-  box-shadow: 0 2rpx 12rpx rgba(0,0,0,0.04);
+  margin: 0 24rpx 16rpx;
+  background: #fff; border-radius: 20rpx;
+  padding: 28rpx 28rpx;
+  box-shadow: 0 6rpx 20rpx rgba(0,0,0,0.06);
 }
-.mj-hover { background: #fafafa; }
+.mj-hover { background: #fafafa; transform: scale(0.995); }
 
 /* ---- 卡片头 ---- */
 .mj__head {
@@ -89,8 +89,9 @@
   flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
 }
 .tag--gold {
-  font-size: 22rpx; color: #ff7834; background: #fff0e3;
-  border-radius: 6rpx; padding: 4rpx 12rpx; flex-shrink: 0; margin-left: 16rpx;
+  font-size: 22rpx; color: #ff5504; background: #fff;
+  border: 1rpx solid #fda962; border-radius: 8rpx;
+  padding: 6rpx 14rpx; flex-shrink: 0; margin-left: 16rpx; font-weight: 600;
 }
 
 /* ---- 标签 ---- */
@@ -111,9 +112,10 @@
   display: flex; flex-direction: column; align-items: flex-start; gap: 4rpx;
 }
 .mj__data-val {
-  font-size: 30rpx; font-weight: 700; color: #333;
+  font-size: 34rpx; font-weight: 800; color: #ff5504;
+  font-family: -apple-system, 'DIN Alternate', sans-serif;
 }
-.mj__data-item--accent .mj__data-val { color: #ff7834; }
+.mj__data-item--accent .mj__data-val { color: #ff5504; }
 .mj__data-label {
   font-size: 22rpx; color: #999;
 }
