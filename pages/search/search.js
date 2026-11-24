@@ -2,7 +2,7 @@ const app = getApp()
 const favSync = require('../../utils/fav.js')
 
 const PAGE = 30
-const COLS = 'school,province,city,school_level,school_type,is_985,is_211,is_double_first_class,ranking_soft_science,avg_salary,employment_rate,undergraduate_majors,master_programs,has_graduate_school'
+const COLS = 'school,province,city,school_level,school_type,is_985,is_211,is_double_first_class,ranking_soft_science,avg_salary,employment_rate,undergraduate_majors,master_programs,has_graduate_school,school_nature,has_tuimian'
 
 // 城市名归一化：去掉「市/盟/地区」后缀，合并「呼和浩特」「呼和浩特市」这类同源脏数据
 function normCity(c) {
@@ -35,7 +35,8 @@ Page({
     keyword: '', schools: [], loading: false, noMore: false,
     // 筛选态
     province: '不限', level: '不限', activeCate: '全部', sort: 'default', sortLabel: '综合排序',
-    panel: '',   // '' | 'prov' | 'city' | 'level' | 'sort'
+    nature: '不限', // 办学性质：不限/公办/民办/中外合作
+    panel: '',   // '' | 'prov' | 'city' | 'level' | 'nature' | 'sort'
     // 城市级筛选（选定省份后按需加载）
     city: '不限', cityOpts: [], cityLoading: false, cityMap: {}, // 归一化名 -> 原始变体数组
     // 常驻分类横滑条（按 school_type 实际取值，每个都点得出院校）
@@ -44,6 +45,8 @@ Page({
     provOpts: ['不限', '北京', '江苏', '辽宁', '上海', '山东', '广东', '内蒙古', '湖北', '浙江', '天津', '河北', '四川', '河南', '黑龙江', '湖南', '江西', '吉林', '陕西', '安徽', '重庆', '福建', '新疆', '广西', '山西', '云南', '甘肃', '贵州', '海南', '宁夏', '青海', '西藏'],
     // 院校层次（school_level 实际取值）
     levelOpts: ['不限', '985', '211', '双一流', 'C9', '省重点', '其他'],
+    // 办学性质（college_detail.school_nature 枚举，留空校在具体性质筛选下自然排除）
+    natureOpts: ['不限', '公办', '民办', '中外合作'],
     sortOpts: [
       { k: 'default', label: '综合排序' },
       { k: 'soft', label: '软科排名' },
@@ -81,6 +84,8 @@ Page({
       if (variants.length) w.push(`city IN (${variants.map(v => `'${v}'`).join(',')})`)
     }
     if (this.data.level !== '不限') w.push(`school_level LIKE '%${sqlEscape(this.data.level)}%'`)
+    // 办学性质精确匹配（枚举值受控，无注入面；留空校在选具体性质时被排除）
+    if (this.data.nature !== '不限') w.push(`school_nature='${sqlEscape(this.data.nature)}'`)
     const c = this.data.activeCate
     if (c && c !== '全部') w.push(`school_type='${c}'`)
     const where = w.length ? ('WHERE ' + w.join(' AND ')) : ''
@@ -99,13 +104,15 @@ Page({
     if (r.school_level === 'C9') tags.push({ t: 'C9', hot: true })
     else if (r.school_level === '省重点') tags.push({ t: '省重点', hot: false })
     if (r.has_graduate_school) tags.push({ t: '研究生院', hot: false })
+    if (r.has_tuimian) tags.push({ t: '保研', hot: false, tm: true })
     // 卡片增强：软科排名（>0 才显示）、本科专业数（>0 才显示）
     const soft = r.ranking_soft_science ? Number(r.ranking_soft_science) : 0
     const majors = r.undergraduate_majors ? Number(r.undergraduate_majors) : 0
     return {
       school: r.school, province: r.province || '', city: r.city || '', type: r.school_type || '',
       badge: schoolBadge(r.school), tags, inFav: !!set[r.school],
-      softRank: soft, majorCount: majors
+      softRank: soft, majorCount: majors,
+      nature: r.school_nature || ''
     }
   },
 
@@ -166,6 +173,7 @@ Page({
   },
 
   pickLevel(e) { this.setData({ level: e.currentTarget.dataset.v, panel: '' }); this.load(true) },
+  pickNature(e) { this.setData({ nature: e.currentTarget.dataset.v, panel: '' }); this.load(true) },
   pickSort(e) {
     const k = e.currentTarget.dataset.v
     const o = this.data.sortOpts.find(x => x.k === k)

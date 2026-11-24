@@ -47,6 +47,10 @@
 }
 /* 重点资质（985/211/双一流/C9）：橙描边白底，克制不与主操作撞色 */
 .tag2--hot { color: #ff5504; background: #fff; font-weight: 600; border: 1rpx solid #fda962; }
+/* 保研资格：绿色资质标记，与橙色重点标签区分 */
+.tag2--tm { color: #1f9d55; background: #e8f7ee; border: 1rpx solid #a6e2c0; font-weight: 600; }
+/* 卡片底部办学性质小字 */
+.sch__nature { color: #777; }
 
 /* 分类入口 */
 .cats { padding: 28rpx 24rpx 8rpx; }

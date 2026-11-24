@@ -35,6 +35,9 @@
     <view class="fbar__i {{panel==='level'?'fbar__i--on':''}} {{level!=='不限'?'fbar__i--act':''}}" data-p="level" bindtap="openPanel">
       <text class="fbar__t">{{level==='不限'?'院校层次':level}}</text><text class="caret">▾</text>
     </view>
+    <view class="fbar__i {{panel==='nature'?'fbar__i--on':''}} {{nature!=='不限'?'fbar__i--act':''}}" data-p="nature" bindtap="openPanel">
+      <text class="fbar__t">{{nature==='不限'?'办学性质':nature}}</text><text class="caret">▾</text>
+    </view>
     <view class="fbar__i {{panel==='sort'?'fbar__i--on':''}} {{sort!=='default'?'fbar__i--act':''}}" data-p="sort" bindtap="openPanel">
       <text class="fbar__t">{{sortLabel}}</text><text class="caret">▾</text>
     </view>
@@ -55,6 +58,9 @@
     </view>
     <view wx:elif="{{panel==='level'}}" class="fopts">
       <view wx:for="{{levelOpts}}" wx:key="*this" class="fopt {{level===item?'fopt--on':''}}" data-v="{{item}}" bindtap="pickLevel">{{item}}</view>
+    </view>
+    <view wx:elif="{{panel==='nature'}}" class="fopts">
+      <view wx:for="{{natureOpts}}" wx:key="*this" class="fopt {{nature===item?'fopt--on':''}}" data-v="{{item}}" bindtap="pickNature">{{item}}</view>
     </view>
     <view wx:elif="{{panel==='sort'}}" class="fopts">
       <view wx:for="{{sortOpts}}" wx:key="k" class="fopt {{sort===item.k?'fopt--on':''}}" data-v="{{item.k}}" bindtap="pickSort">{{item.label}}</view>
@@ -87,12 +93,13 @@
           <text wx:if="{{item.majorCount}}" class="sch__stat">{{item.majorCount}} 个本科专业</text>
         </view>
         <view wx:if="{{item.tags.length}}" class="sch__tags">
-          <text wx:for="{{item.tags}}" wx:for-item="tg" wx:key="t" class="tag2 {{tg.hot?'tag2--hot':''}}">{{tg.t}}</text>
+          <text wx:for="{{item.tags}}" wx:for-item="tg" wx:key="t" class="tag2 {{tg.hot?'tag2--hot':''}} {{tg.tm?'tag2--tm':''}}">{{tg.t}}</text>
         </view>
         <view class="sch__meta">
           <text wx:if="{{item.city}}">{{item.city}}</text>
           <text wx:elif="{{item.province}}">{{item.province}}</text>
           <text wx:if="{{item.type}}" class="sch__type">· {{item.type}}</text>
+          <text wx:if="{{item.nature}}" class="sch__nature">{{(item.city || item.province || item.type) ? ' · ' : ''}}{{item.nature}}</text>
           <text class="sch__more">查录取分 ›</text>
         </view>
       </view>
