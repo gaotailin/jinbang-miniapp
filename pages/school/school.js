@@ -25,7 +25,7 @@ Page({
   data: { name: '', level: '', province: '', majors: [], history: [], groups: [], loading: true,
           intro: '', softRank: '', softRankText: '', softRankLbl: '', avgSalary: '', empRate: '',
           hasGrad: false, masterN: 0, doctorN: 0, ugMajorN: 0, website: '', phone: '', address: '',
-          honorTags: [], schoolType: '', region: '', inFav: false },
+          honorTags: [], schoolType: '', region: '', inFav: false, schoolNature: '', hasTuimian: false },
 
   onLoad(q) {
     const name = decodeURIComponent(q.name || '')
@@ -34,7 +34,7 @@ Page({
     // 院校富内容(简介/软科/均薪/就业率/研究生信息)经 /api/sql 取 college_detail 完整行
     const safe = sqlEscape(name)
     const dq = "SELECT province,city,school_type,is_985,is_211,is_double_first_class,intro,ranking_soft_science,ranking_board,ranking_label,avg_salary,employment_rate,"
-      + "has_graduate_school,master_programs,doctor_programs,undergraduate_majors,website,phone,address "
+      + "has_graduate_school,master_programs,doctor_programs,undergraduate_majors,website,phone,address,school_nature,has_tuimian "
       + "FROM college_detail WHERE school='" + safe + "' LIMIT 1"
     Promise.all([
       app.request('/api/scoreline_history', { data: { school: name } }).catch(() => []),
@@ -88,7 +88,9 @@ Page({
         ugMajorN: d.undergraduate_majors || 0,
         website: d.website || '',
         phone: (d.phone || '').trim(),
-        address: (d.address || '').trim()
+        address: (d.address || '').trim(),
+        schoolNature: d.school_nature || '',
+        hasTuimian: !!d.has_tuimian
       })
     })
   },

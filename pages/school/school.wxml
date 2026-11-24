@@ -8,8 +8,9 @@
         <text wx:if="{{schoolType}}">{{schoolType}}类</text>
         <text wx:if="{{level && !honorTags.length}}" class="hd__level">{{(region || schoolType) ? ' · ' : ''}}{{level}}</text>
       </view>
-      <view wx:if="{{honorTags.length}}" class="hd__tags">
+      <view wx:if="{{honorTags.length || schoolNature}}" class="hd__tags">
         <text wx:for="{{honorTags}}" wx:key="*this" class="hd__tag">{{item}}</text>
+        <text wx:if="{{schoolNature}}" class="hd__tag hd__tag--nature">{{schoolNature}}</text>
       </view>
     </view>
   </view>
@@ -55,6 +56,7 @@
       </view>
       <view class="grad-note">
         <text class="tag {{hasGrad ? 'tag--gold' : 'tag--muted'}}">{{hasGrad ? '✓ 设有研究生院' : '无研究生院'}}</text>
+        <text wx:if="{{hasTuimian}}" class="tag tag--tuimian">✓ 具有保研资格</text>
         <text wx:if="{{website}}" class="grad-site" bindtap="copySite">官网：{{website}}</text>
         <text wx:if="{{phone}}" class="grad-site" bindtap="copyPhone">招生电话：{{phone}}</text>
         <text wx:if="{{address}}" class="grad-addr">{{address}}</text>

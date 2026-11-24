@@ -16,6 +16,15 @@
   font-size: 22rpx; line-height: 1; color: #ff5504; font-weight: 700;
   border-radius: 8rpx; padding: 8rpx 16rpx; background: rgba(255,255,255,0.95);
 }
+/* 办学性质：白底透空描边，与实心重点标签区分，仍保持橙底可读 */
+.hd__tag--nature {
+  color: #fff; background: rgba(255,255,255,0.18);
+  border: 1rpx solid rgba(255,255,255,0.65); font-weight: 600;
+}
+/* 保研资格：绿色资质标记，区别于橙色重点资质 */
+.tag--tuimian {
+  background: #e8f7ee; color: #1f9d55; border: 1rpx solid #a6e2c0; font-weight: 600;
+}
 
 .tip { text-align: center; color: #999; font-size: 26rpx; padding: 40rpx; }
 
