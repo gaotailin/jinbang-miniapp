@@ -16,7 +16,7 @@
   background: #fff; border: 2rpx solid #eee; border-radius: 16rpx;
   padding: 36rpx 28rpx; font-size: 30rpx; color: #333; text-align: center;
 }
-.opt:active { border-color: #ff7834; background: #fff8f0; }
+.opt:active { border-color: #ff7834; background: #fff0e3; }
 
 /* 结果 */
 .res-hero {

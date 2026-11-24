@@ -23,7 +23,7 @@
 .sel__hd { font-size: 24rpx; color: #999; margin-bottom: 14rpx; }
 .sel__chips { display: flex; flex-wrap: wrap; gap: 14rpx; }
 .sel__chip {
-  font-size: 24rpx; color: #ff7834; background: #fff8f0; border: 1rpx solid #ff7834;
+  font-size: 24rpx; color: #ff7834; background: #fff0e3; border: 1rpx solid #ff7834;
   border-radius: 9999rpx; padding: 10rpx 22rpx;
 }
 
@@ -33,7 +33,7 @@
 .cmp__row:last-child { border-bottom: none; }
 .cmp__label { width: 140rpx; flex-shrink: 0; font-size: 24rpx; color: #999; padding: 22rpx 18rpx; background: #fafafa; }
 .cmp__cell { flex: 1; min-width: 0; font-size: 24rpx; color: #222; text-align: center; padding: 22rpx 12rpx; word-break: break-all; }
-.cmp__row--head { background: #fff8f0; }
+.cmp__row--head { background: #fff0e3; }
 .cmp__cell--head { font-size: 26rpx; font-weight: 700; color: #ff7834; }
 
 /* 搜索结果 */

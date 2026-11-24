@@ -7,7 +7,7 @@
 
 .page {
   min-height: 100vh;
-  background: linear-gradient(180deg, #fff0e3 0%, #fff8f0 16%, #F7F7F7 40%);
+  background: linear-gradient(180deg, #fff0e3 0%, #fff0e3 16%, #F7F7F7 40%);
   padding-bottom: 180rpx;
 }
 
@@ -18,7 +18,7 @@
 }
 .topbar__name { font-size: 38rpx; font-weight: 800; color: #1a1a1a; }
 .topbar__quota { font-size: 22rpx; color: #ff5504; background: #fff0e3; padding: 6rpx 16rpx; border-radius: 20rpx; }
-.topbar__quota--vip { color: #B8860B; background: #fff0e3; }
+.topbar__quota--vip { color: #ff5504; background: #fff0e3; }
 .topbar__tabs { display: flex; gap: 36rpx; }
 .topbar__tab {
   font-size: 28rpx; color: #aaa; font-weight: 400;

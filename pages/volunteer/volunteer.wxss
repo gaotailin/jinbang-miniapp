@@ -53,7 +53,7 @@
 .batch__name { display: flex; align-items: center; gap: 8rpx; font-size: 28rpx; font-weight: 700; color: #333; }
 .batch__icon { font-size: 24rpx; }
 .batch__count { font-weight: 400; color: #999; font-size: 24rpx; }
-.batch__line { font-size: 22rpx; color: #ff7834; background: #fff8f0; padding: 4rpx 12rpx; border-radius: 8rpx; }
+.batch__line { font-size: 22rpx; color: #ff7834; background: #fff0e3; padding: 4rpx 12rpx; border-radius: 8rpx; }
 .batch__empty { text-align: center; padding: 40rpx; font-size: 24rpx; color: #ccc; }
 
 /* 移动弹窗 */

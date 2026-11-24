@@ -13,7 +13,7 @@
   flex: 1; background: #fff; border-radius: 18rpx; padding: 30rpx 0; text-align: center;
   border: 3rpx solid #eee; position: relative;
 }
-.plan--on { border-color: #ff7834; background: #fff8f0; }
+.plan--on { border-color: #ff7834; background: #fff0e3; }
 .plan__tag {
   position: absolute; top: -2rpx; right: -2rpx; background: #ff7834; color: #fff;
   font-size: 20rpx; padding: 4rpx 14rpx; border-radius: 0 16rpx 0 16rpx;

@@ -21,7 +21,7 @@
       <text class="text-sm">本年录取分尚未全部公布，已按 {{score.data_year}} 年专业录取分换算到 2026 等位分给出参考；分数仅供梯度参考，以当年官方投档为准。</text>
     </view>
 
-    <view class="card" wx:if="{{score.notice}}" style="border-left:8rpx solid #F39C12;background:#FFF8EC;">
+    <view class="card" wx:if="{{score.notice}}" style="border-left:8rpx solid #F39C12;background:#fff0e3;">
       <text class="text-sm">{{score.notice}}</text>
     </view>
 

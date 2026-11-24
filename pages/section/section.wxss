@@ -23,7 +23,7 @@
 
 .res__equiv { background:#fff; border-radius:12px; padding:16px; margin-bottom:16px; }
 .equiv { display:flex; flex-wrap:wrap; gap:10px; }
-.equiv__col { flex:1; min-width:60px; background:#fff8f0; border-radius:8px; padding:10px 0; text-align:center; }
+.equiv__col { flex:1; min-width:60px; background:#fff0e3; border-radius:8px; padding:10px 0; text-align:center; }
 .equiv__y { display:block; font-size:12px; color:#999; }
 .equiv__s { display:block; font-size:20px; font-weight:bold; color:#ff7834; margin-top:4px; }
 .equiv__note { display:block; font-size:11px; color:#bbb; margin-top:10px; }

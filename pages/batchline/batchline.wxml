@@ -30,7 +30,7 @@
     <text class="trend__note">本科一批与新高考本科批已归一为「本科线」</text>
   </view>
 
-  <view style="display:flex;align-items:center;justify-content:space-between;background:#fff8f0;border:1rpx solid #f6d9b4;border-radius:16rpx;padding:18rpx 24rpx;margin:16rpx 24rpx;">
+  <view style="display:flex;align-items:center;justify-content:space-between;background:#fff0e3;border:1rpx solid #ffdbb2;border-radius:16rpx;padding:18rpx 24rpx;margin:16rpx 24rpx;">
     <text style="font-size: 26rpx;color:#8a5a1f;">批次线一更新，微信通知你</text>
     <button size="mini" bindtap="subNews" style="margin:0;padding:0 22rpx;height:56rpx;line-height:56rpx;font-size: 24rpx;background:#ff7834;color:#fff;border-radius:28rpx;">订阅</button>
   </view>

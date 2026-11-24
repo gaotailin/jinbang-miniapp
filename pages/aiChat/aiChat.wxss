@@ -9,14 +9,14 @@
 /* 顶部 AI 生成标识条（审核要素，保留但做轻量化） */
 .disclaimer {
   display: flex; align-items: flex-start; gap: 12rpx;
-  padding: 14rpx 28rpx; background: #fff8f0;
+  padding: 14rpx 28rpx; background: #fff0e3;
 }
 .disclaimer__badge {
   flex-shrink: 0; padding: 2rpx 12rpx; margin-top: 2rpx;
   background: #ff7834; color: #fff; border-radius: 8rpx;
   font-size: 20rpx; font-weight: 600;
 }
-.disclaimer__text { font-size: 20rpx; color: #c9863f; line-height: 1.5; }
+.disclaimer__text { font-size: 20rpx; color: #b5651d; line-height: 1.5; }
 
 /* 快捷提问：横向滑动胶囊 */
 .quick {
@@ -45,7 +45,7 @@
 .msgs__empty-sub { font-size: 24rpx; color: #aaa; letter-spacing: 1rpx; }
 .msgs__empty-aigc {
   display: inline-block; margin-top: 28rpx; padding: 8rpx 24rpx;
-  background: #fff8f0; color: #c9863f;
+  background: #fff0e3; color: #b5651d;
   border-radius: 28rpx; font-size: 22rpx;
 }
 

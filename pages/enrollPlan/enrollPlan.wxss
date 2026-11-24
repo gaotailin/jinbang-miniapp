@@ -11,7 +11,7 @@
 .tip { text-align:center; color:#999; padding:80rpx 0; font-size: 26rpx; }
 
 .group { background:#fff; border-radius:16rpx; margin-bottom:16rpx; overflow:hidden; }
-.group__hd { display:flex; align-items:center; justify-content:space-between; padding:20rpx 24rpx; background:#fff8f0; border-bottom:1rpx solid #f0f0f0; }
+.group__hd { display:flex; align-items:center; justify-content:space-between; padding:20rpx 24rpx; background:#fff0e3; border-bottom:1rpx solid #f0f0f0; }
 .group__name { font-size: 30rpx; font-weight:bold; color:#333; }
 .group__arrow { font-size: 32rpx; color:#ccc; }
 
