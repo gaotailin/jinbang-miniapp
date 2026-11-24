@@ -62,7 +62,7 @@
     </view>
 
     <view class="card" wx:if="{{majors.length}}">
-      <view class="sec-title">招生专业（{{majors.length}}）</view>
+      <view class="sec-title">招生专业<text class="sec-count">{{majors.length}}</text></view>
       <view class="flex flex-wrap gap-12">
         <text wx:for="{{majors}}" wx:key="*this" class="tag tag--primary major-tag">{{item}}</text>
       </view>
@@ -99,7 +99,9 @@
     </view>
 
     <view class="footer">
-      <button class="btn btn--gold btn--lg btn--block" bindtap="favorite">＋ 加入选校单</button>
+      <button class="btn btn--lg btn--block fav-btn {{inFav ? 'fav-btn--on' : ''}}" bindtap="favorite">
+        {{inFav ? '✓ 已加入选校单（点击移除）' : '＋ 加入选校单'}}
+      </button>
     </view>
   </block>
 </view>

@@ -25,7 +25,7 @@ Page({
   data: { name: '', level: '', province: '', majors: [], history: [], groups: [], loading: true,
           intro: '', softRank: '', softRankText: '', softRankLbl: '', avgSalary: '', empRate: '',
           hasGrad: false, masterN: 0, doctorN: 0, ugMajorN: 0, website: '', phone: '', address: '',
-          honorTags: [], schoolType: '', region: '' },
+          honorTags: [], schoolType: '', region: '', inFav: false },
 
   onLoad(q) {
     const name = decodeURIComponent(q.name || '')
@@ -54,6 +54,8 @@ Page({
           : (a.province < b.province ? -1 : 1)))
         .slice(0, 60)
       const d = ((detail && (detail.rows || detail.data || detail)) || [])[0] || {}
+      // 是否已在选校单（吸底按钮态）
+      const inFav = (wx.getStorageSync('jb_fav') || []).some(x => x.school === (d.school || name))
       // 头部身份标签：985/211/双一流（有才显示，与搜索卡片口径一致）
       const honorTags = []
       if (d.is_985) honorTags.push('985')
@@ -63,7 +65,7 @@ Page({
       const region = d.city || d.province || ''
       this.setData({
         level, history, majors: mj, groups: grp, loading: false,
-        honorTags,
+        honorTags, inFav,
         schoolType: d.school_type || '',
         region,
         province: d.province || d.city || '',
@@ -78,7 +80,7 @@ Page({
           if (!b || b.indexOf('中国大学排名') === 0) return '软科排名'
           return '软科' + b.replace('高职-', '高职').replace(/类$/, '') + '排名'
         })(d.ranking_board),
-        avgSalary: d.avg_salary || '',
+        avgSalary: d.avg_salary ? Number(d.avg_salary).toLocaleString('en-US') : '',
         empRate: d.employment_rate || '',
         hasGrad: !!d.has_graduate_school,
         masterN: d.master_programs || 0,
@@ -107,14 +109,20 @@ Page({
   },
 
   favorite() {
-    const fav = wx.getStorageSync('jb_fav') || []
-    if (!fav.find(x => x.school === this.data.name)) {
+    let fav = wx.getStorageSync('jb_fav') || []
+    const idx = fav.findIndex(x => x.school === this.data.name)
+    if (idx < 0) {
       fav.unshift({ school: this.data.name, level: this.data.level, province: this.data.province, batch: 'normal', time: Date.now() })
       wx.setStorageSync('jb_fav', fav)
       favSync.push()
+      this.setData({ inFav: true })
       wx.showToast({ title: '已加入选校单', icon: 'success' })
     } else {
-      wx.showToast({ title: '已在选校单中', icon: 'none' })
+      fav.splice(idx, 1)
+      wx.setStorageSync('jb_fav', fav)
+      favSync.push()
+      this.setData({ inFav: false })
+      wx.showToast({ title: '已移选校单', icon: 'none' })
     }
   }
 ,
