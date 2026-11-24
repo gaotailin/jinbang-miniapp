@@ -24,8 +24,8 @@
 /* 位次提示 */
 .rank-tip {
   margin: 0 4rpx 16rpx; padding: 16rpx 20rpx;
-  background: #fff8f0; border-radius: 12rpx;
-  font-size: 24rpx; color: #996600; text-align: center;
+  background: var(--brand-tint); border-radius: 12rpx;
+  font-size: 24rpx; color: var(--brand-deep); text-align: center;
 }
 .rank-tip__n { color: #ff7834; font-weight: 700; font-size: 28rpx; }
 
@@ -93,11 +93,11 @@
 .vip-teaser {
   display: flex; align-items: center; gap: 12rpx;
   margin: 16rpx 0; padding: 24rpx 20rpx;
-  background: linear-gradient(135deg, #fff0e3, #FFECB3);
-  border-radius: 16rpx; border: 1rpx solid #FFD54F;
+  background: var(--brand-tint);
+  border-radius: 16rpx; border: 1rpx solid #fda962;
 }
 .vip-teaser__icon { font-size: 36rpx; }
-.vip-teaser__t { flex: 1; font-size: 24rpx; color: #795548; }
+.vip-teaser__t { flex: 1; font-size: 24rpx; color: #8a4a2a; }
 .vip-teaser__btn { font-size: 24rpx; color: #ff7834; font-weight: 600; white-space: nowrap; }
 
 .tip-empty { text-align: center; padding: 140rpx 60rpx; }
