@@ -76,10 +76,13 @@
 
       <!-- 展开详情 -->
       <view wx:if="{{openIdx===index}}" class="mj__detail">
+        <view wx:if="{{item.majorCode}}" class="mj__d-row"><text class="mj__d-k">专业代码</text>{{item.majorCode}}</view>
         <view wx:if="{{item.subCategory}}" class="mj__d-row"><text class="mj__d-k">专业类</text>{{item.subCategory}}</view>
         <view wx:if="{{item.direction}}" class="mj__d-row"><text class="mj__d-k">就业方向</text>{{item.direction}}</view>
         <view wx:if="{{item.courses}}" class="mj__d-row"><text class="mj__d-k">主干课程</text>{{item.courses}}</view>
         <view wx:if="{{item.intro}}" class="mj__intro">{{item.intro}}</view>
+        <!-- 数据来源标注（薪资/就业率口径，透明可信） -->
+        <view wx:if="{{item.dataSource}}" class="mj__source">数据来源：{{item.dataSource}}</view>
         <!-- 开设院校（enrollment_special 真数据，点进院校详情） -->
         <view wx:if="{{item.schoolsLoaded && item.schools.length}}" class="mj__schools">
           <view class="mj__d-k">开设院校 · 录取分（高→低，部分）</view>

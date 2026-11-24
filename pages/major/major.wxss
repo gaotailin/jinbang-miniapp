@@ -142,6 +142,10 @@
 .mj__intro {
   font-size: 24rpx; color: #666; line-height: 1.8; margin-top: 8rpx;
 }
+.mj__source {
+  font-size: 20rpx; color: #bbb; line-height: 1.6;
+  margin-top: 14rpx; padding-top: 12rpx; border-top: 1rpx dashed #f0f0f0;
+}
 .mj__empty {
   font-size: 24rpx; color: #bbb; padding: 20rpx 0; text-align: center;
 }

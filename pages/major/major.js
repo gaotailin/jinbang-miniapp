@@ -143,6 +143,8 @@ Page({
           [`list[${idx}].intro`]: d.introduction || '',
           [`list[${idx}].courses`]: d.courses || '',
           [`list[${idx}].direction`]: d.employment_direction || '',
+          [`list[${idx}].majorCode`]: d.major_code || '',
+          [`list[${idx}].dataSource`]: d.source || '',
           [`list[${idx}].detailLoaded`]: true
         })
       })
@@ -183,7 +185,9 @@ Page({
       salary: m.salary_avg || '',
       courses: m.courses || '',
       direction: m.employment_direction || '',
-      intro: m.introduction || ''
+      intro: m.introduction || '',
+      majorCode: m.major_code || '',
+      dataSource: m.source || ''
     })).filter(x => x.name)
   }
 ,
