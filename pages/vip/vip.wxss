@@ -1,8 +1,9 @@
 .page { padding: 24rpx 24rpx 60rpx; }
 
 .hero {
-  background: linear-gradient(135deg, #3a2a18, #6b4a22); color: #F4D4D5;
+  background: linear-gradient(135deg, #7a2d05, #b8430a); color: #F4D4D5;
   border-radius: 24rpx; padding: 44rpx 32rpx; text-align: center;
+  box-shadow: 0 12rpx 28rpx rgba(255,85,4,0.25);
 }
 .hero__crown { font-size: 72rpx; }
 .hero__t { font-size: 38rpx; font-weight: 800; color: #fff0e3; margin-top: 8rpx; }
