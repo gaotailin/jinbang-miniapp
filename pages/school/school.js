@@ -4,6 +4,17 @@ const favSync = require('../../utils/fav.js')
 // SQL 转义：单引号双写（与 search 页统一的防御式处理，替代粗暴删引号）
 function sqlEscape(v) { return String(v == null ? '' : v).replace(/'/g, "''") }
 
+// 属地展示：对标掌上高考「省 + 完整行政区名」（如 贵州黔南布依族苗族自治州、河南省直辖县级行政区划）。
+// 不改库、仅前端拼接；直辖市/city 已含省名时去重，避免「北京北京」「上海上海市」。
+function buildRegion(province, city) {
+  const p = String(province || '').trim()
+  const c = String(city || '').trim()
+  if (!c) return p
+  if (!p) return c
+  if (c === p || c.indexOf(p) === 0) return c      // 北京/北京、上海市已含上海、自治州等已带省名
+  return p + c
+}
+
 // 源数据里 college_majors 很多是招生专业组拼接串（含括号注释、「、」分隔、结尾"等"）
 // → 去注释、拆分、去重，清成干净的单专业列表
 function cleanMajors(rows) {
@@ -62,8 +73,8 @@ Page({
       if (d.is_985) honorTags.push('985')
       if (d.is_211) honorTags.push('211')
       if (d.is_double_first_class) honorTags.push('双一流')
-      // 属地：优先城市，回退省份；与类型拼成副信息
-      const region = d.city || d.province || ''
+      // 属地：对标掌上高考「省 + 完整行政区名」拼接；city 缺省回退省份
+      const region = buildRegion(d.province, d.city || d.province)
       this.setData({
         level, history, majors: mj, groups: grp, loading: false,
         honorTags, inFav,
