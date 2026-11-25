@@ -2,7 +2,7 @@ const app = getApp()
 const favSync = require('../../utils/fav.js')
 
 const PAGE = 30
-const COLS = 'school,province,city,school_level,school_type,is_985,is_211,is_double_first_class,ranking_soft_science,avg_salary,employment_rate,undergraduate_majors,master_programs,has_graduate_school,school_nature,has_tuimian'
+const COLS = 'school,province,city,school_level,school_type,is_985,is_211,is_double_first_class,ranking_soft_science,avg_salary,employment_rate,undergraduate_majors,master_programs,has_graduate_school,school_nature,has_tuimian,has_master,has_doctor'
 
 // 城市名归一化：去掉「市/盟/地区」后缀，合并「呼和浩特」「呼和浩特市」这类同源脏数据
 function normCity(c) {
@@ -105,6 +105,9 @@ Page({
     else if (r.school_level === '省重点') tags.push({ t: '省重点', hot: false })
     if (r.has_graduate_school) tags.push({ t: '研究生院', hot: false })
     if (r.has_tuimian) tags.push({ t: '保研', hot: false, tm: true })
+    // 硕博学位授予资质（单位级布尔，覆盖远高于具体点数；博士优先，硕士其次）
+    if (r.has_doctor) tags.push({ t: '博士点', hot: false, deg: 'phd' })
+    else if (r.has_master) tags.push({ t: '硕士点', hot: false, deg: 'ms' })
     // 卡片增强：软科排名（>0 才显示）、本科专业数（>0 才显示）
     const soft = r.ranking_soft_science ? Number(r.ranking_soft_science) : 0
     const majors = r.undergraduate_majors ? Number(r.undergraduate_majors) : 0

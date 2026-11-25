@@ -38,9 +38,9 @@
     </view>
 
     <!-- 研究生信息 -->
-    <view class="card" wx:if="{{hasGrad || masterN || doctorN || ugMajorN}}">
+    <view class="card" wx:if="{{hasGrad || masterN || doctorN || ugMajorN || hasMaster || hasDoctor}}">
       <view class="sec-title">研究生 / 办学信息</view>
-      <view class="stat-row">
+      <view class="stat-row" wx:if="{{masterN || doctorN || ugMajorN}}">
         <view class="stat" wx:if="{{masterN}}">
           <view class="stat__num">{{masterN}}</view>
           <view class="stat__lbl">硕士点</view>
@@ -55,6 +55,8 @@
         </view>
       </view>
       <view class="grad-note">
+        <text wx:if="{{hasDoctor}}" class="tag tag--deg tag--phd">✓ 博士学位授予</text>
+        <text wx:elif="{{hasMaster}}" class="tag tag--deg tag--ms">✓ 硕士学位授予</text>
         <text class="tag {{hasGrad ? 'tag--gold' : 'tag--muted'}}">{{hasGrad ? '✓ 设有研究生院' : '无研究生院'}}</text>
         <text wx:if="{{hasTuimian}}" class="tag tag--tuimian">✓ 具有保研资格</text>
         <text wx:if="{{website}}" class="grad-site" bindtap="copySite">官网：{{website}}</text>

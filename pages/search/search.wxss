@@ -49,6 +49,9 @@
 .tag2--hot { color: #ff5504; background: #fff; font-weight: 600; border: 1rpx solid #fda962; }
 /* 保研资格：绿色资质标记，与橙色重点标签区分 */
 .tag2--tm { color: #1f9d55; background: #e8f7ee; border: 1rpx solid #a6e2c0; font-weight: 600; }
+/* 硕博学位授予：博士深绿实心、硕士浅绿描边，绿色资质家族，与保研可区分 */
+.tag2--phd { color: #fff; background: #1f9d55; border: 1rpx solid #1f9d55; font-weight: 700; }
+.tag2--ms { color: #177a42; background: #e8f7ee; border: 1rpx solid #8fd8ad; font-weight: 600; }
 /* 卡片底部办学性质小字 */
 .sch__nature { color: #777; }
 

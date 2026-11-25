@@ -25,6 +25,10 @@
 .tag--tuimian {
   background: #e8f7ee; color: #1f9d55; border: 1rpx solid #a6e2c0; font-weight: 600;
 }
+/* 硕博学位授予资质：博士深绿实心、硕士浅绿描边，同属绿色资质语义家族 */
+.tag--deg { font-weight: 700; border-radius: 8rpx; padding: 6rpx 14rpx; font-size: 22rpx; }
+.tag--phd { background: #1f9d55; color: #fff; border: 1rpx solid #1f9d55; }
+.tag--ms { background: #e8f7ee; color: #177a42; border: 1rpx solid #8fd8ad; }
 
 .tip { text-align: center; color: #999; font-size: 26rpx; padding: 40rpx; }
 

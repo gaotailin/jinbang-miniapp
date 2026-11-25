@@ -93,7 +93,7 @@
           <text wx:if="{{item.majorCount}}" class="sch__stat">{{item.majorCount}} 个本科专业</text>
         </view>
         <view wx:if="{{item.tags.length}}" class="sch__tags">
-          <text wx:for="{{item.tags}}" wx:for-item="tg" wx:key="t" class="tag2 {{tg.hot?'tag2--hot':''}} {{tg.tm?'tag2--tm':''}}">{{tg.t}}</text>
+          <text wx:for="{{item.tags}}" wx:for-item="tg" wx:key="t" class="tag2 {{tg.hot?'tag2--hot':''}} {{tg.tm?'tag2--tm':''}} {{tg.deg==='phd'?'tag2--phd':''}} {{tg.deg==='ms'?'tag2--ms':''}}">{{tg.t}}</text>
         </view>
         <view class="sch__meta">
           <text wx:if="{{item.city}}">{{item.city}}</text>
