@@ -145,11 +145,11 @@ Page({
   onShareAppMessage() {
     const n = this.data.name || ''
     return {
-      title: n ? (n + ' 院校详情 · 录取分数与专业') : '九色鹿前程助手 — AI智能填志愿',
+      title: n ? (n + ' 院校详情 · 录取分数与专业') : '九色鹿前程助手 — AI智能选校',
       path: '/pages/school/school?name=' + encodeURIComponent(n)
     }
   },
   onShareTimeline() {
-    return { title: '试试这个AI志愿助手，高考志愿一站搞定' }
+    return { title: '试试这个AI选校助手，高考升学一站搞定' }
   },
 })

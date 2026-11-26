@@ -409,6 +409,6 @@ Page({
   }
 ,
   onShareTimeline() {
-    return { title: '试试这个AI志愿助手，高考志愿一站搞定' }
+    return { title: '试试这个AI选校助手，高考升学一站搞定' }
   },
 })

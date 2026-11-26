@@ -168,10 +168,10 @@ Page({
   onShareAppMessage() {
     vip.addBonus(1)
     wx.showToast({ title: '分享成功，今日免费 +1 次', icon: 'success' })
-    return { title: '九色鹿前程助手 · 智能选校，科学填志愿', path: '/pages/index/index' }
+    return { title: '九色鹿前程助手 · 智能选校，科学填报', path: '/pages/index/index' }
   },
 
   onShareTimeline() {
-    return { title: '九色鹿前程助手 · 智能选校，科学填志愿' }
+    return { title: '九色鹿前程助手 · 智能选校，科学填报' }
   }
 })

@@ -9,10 +9,10 @@ Page({
     else { wx.navigateTo({ url: d.url }) }
   },
   onShareAppMessage() {
-    return { title: '九色鹿前程助手 · 高考志愿全套工具', path: '/pages/index/index' }
+    return { title: '九色鹿前程助手 · 高考升学全套工具', path: '/pages/index/index' }
   }
 ,
   onShareTimeline() {
-    return { title: '试试这个AI志愿助手，高考志愿一站搞定' }
+    return { title: '试试这个AI选校助手，高考升学一站搞定' }
   },
 })

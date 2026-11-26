@@ -129,11 +129,11 @@ Page({
     const overwrite = () => {
       this.setData({ simList: entries.slice(0, rule.slots) })
       this._saveSim()
-      wx.showToast({ title: '已生成 ' + Math.min(entries.length, rule.slots) + ' 个志愿', icon: 'success' })
+      wx.showToast({ title: '已生成 ' + Math.min(entries.length, rule.slots) + ' 个选校', icon: 'success' })
     }
     if (this.data.simList.length) {
       wx.showModal({
-        title: '覆盖当前志愿表？',
+        title: '覆盖当前选校单？',
         content: '将用冲稳保结果重新生成（当前已填 ' + this.data.simList.length + ' 个）',
         success: r => { if (r.confirm) overwrite() }
       })
@@ -162,9 +162,9 @@ Page({
   addManual() {
     const { rule, simList } = this.data
     if (!rule) return
-    if (simList.length >= rule.slots) { wx.showToast({ title: '已满 ' + rule.slots + ' 个志愿', icon: 'none' }); return }
+    if (simList.length >= rule.slots) { wx.showToast({ title: '已满 ' + rule.slots + ' 个选校', icon: 'none' }); return }
     wx.showModal({
-      title: '添加志愿',
+      title: '添加选校',
       editable: true,
       placeholderText: rule.mode === 'majorFirst' ? '院校名，如: 山东大学' : '院校名，如: 郑州大学',
       success: r => {
@@ -209,8 +209,8 @@ Page({
   clearSim() {
     if (!this.data.simList.length) return
     wx.showModal({
-      title: '清空模拟志愿表？',
-      content: '将删除「' + this.data.simProvince + '」已填的 ' + this.data.simList.length + ' 个志愿',
+      title: '清空模拟选校单？',
+      content: '将删除「' + this.data.simProvince + '」已填的 ' + this.data.simList.length + ' 个选校',
       success: r => {
         if (r.confirm) { this.setData({ simList: [] }); this._saveSim() }
       }
@@ -221,13 +221,13 @@ Page({
   validateSim() {
     const { rule, simList, simProvince, simScore } = this.data
     if (!rule) return
-    if (!simList.length) { wx.showToast({ title: '志愿表为空', icon: 'none' }); return }
+    if (!simList.length) { wx.showToast({ title: '选校单为空', icon: 'none' }); return }
 
     const issues = [], goods = [], warns = []
 
     // 数量
-    if (simList.length < Math.min(10, rule.slots)) warns.push('仅填 ' + simList.length + '/' + rule.slots + ' 个——平行志愿建议填满，多一个志愿多一分保障')
-    else goods.push('已填 ' + simList.length + '/' + rule.slots + ' 个志愿')
+    if (simList.length < Math.min(10, rule.slots)) warns.push('仅填 ' + simList.length + '/' + rule.slots + ' 个——平行投档建议填满，多一个选校多一分保障')
+    else goods.push('已填 ' + simList.length + '/' + rule.slots + ' 个选校')
 
     // 重复
     const seen = {}, dup = []
@@ -235,7 +235,7 @@ Page({
       const k = x.school + '|' + (x.majors || []).join(',')
       if (seen[k]) dup.push(x.school); seen[k] = 1
     })
-    if (dup.length) issues.push('重复志愿: ' + dup.slice(0, 3).join('、') + (dup.length > 3 ? ' 等' : ''))
+    if (dup.length) issues.push('重复选校: ' + dup.slice(0, 3).join('、') + (dup.length > 3 ? ' 等' : ''))
 
     // 梯度（有参考分的条目应大体递减，断层>25分提示）
     const scored = simList.map((x, i) => ({ i: i + 1, s: x.minScore })).filter(x => x.s)
@@ -245,8 +245,8 @@ Page({
       const gap = scored[j - 1].s - scored[j].s
       if (gap > maxGap) maxGap = gap
     }
-    if (inversion > 2) issues.push('志愿顺序有 ' + inversion + ' 处分数倒挂——平行志愿按顺序检索，高分院校应排前')
-    if (maxGap > 25) warns.push('相邻志愿最大分差 ' + maxGap + ' 分——中段出现断层，建议补几所过渡院校')
+    if (inversion > 2) issues.push('投档顺序有 ' + inversion + ' 处分数倒挂——平行投档按顺序检索，高分院校应排前')
+    if (maxGap > 25) warns.push('相邻选校最大分差 ' + maxGap + ' 分——中段出现断层，建议补几所过渡院校')
     if (scored.length >= 5 && inversion <= 2 && maxGap <= 25) goods.push('梯度大体递减、无明显断层')
 
     // 冲稳保结构
@@ -254,7 +254,7 @@ Page({
     simList.forEach(x => { if (tc[x.tier] !== undefined) tc[x.tier]++ })
     const tiered = tc.chong + tc.wen + tc.bao
     if (tiered) {
-      if (tc.bao === 0) issues.push('没有「保」档志愿——滑档时无兜底')
+      if (tc.bao === 0) issues.push('没有「保」档院校——滑档时无兜底')
       if (tc.chong > tiered * 0.5) warns.push('「冲」占比过半——激进，建议加稳/保')
       if (tc.bao > 0 && tc.chong <= tiered * 0.5) goods.push('冲' + tc.chong + ' 稳' + tc.wen + ' 保' + tc.bao + '，结构合理')
     }
@@ -292,7 +292,7 @@ Page({
     if (issues.length) lines.push(...issues.map(i => '⚠️ ' + i))
     lines.push('', '💡 选科要求以各高校当年招生章程为准，提交前请核对目标专业组要求')
     wx.showModal({
-      title: '志愿表校验: ' + score,
+      title: '选校单校验: ' + score,
       content: lines.join('\n'),
       showCancel: false, confirmText: '知道了'
     })
@@ -301,9 +301,9 @@ Page({
   // 导出文本志愿表到剪贴板
   exportSim() {
     const { rule, simList, simProvince } = this.data
-    if (!simList.length) { wx.showToast({ title: '志愿表为空', icon: 'none' }); return }
-    const lines = [simProvince + ' · ' + rule.batchName + ' 模拟志愿表（' + rule.modeName + '）',
-      '共 ' + simList.length + '/' + rule.slots + ' 个志愿 · 九色鹿前程助手', '']
+    if (!simList.length) { wx.showToast({ title: '选校单为空', icon: 'none' }); return }
+    const lines = [simProvince + ' · ' + rule.batchName + ' 模拟选校单（' + rule.modeName + '）',
+      '共 ' + simList.length + '/' + rule.slots + ' 个选校 · 九色鹿前程助手', '']
     simList.forEach((x, i) => {
       let l = (i + 1) + '. ' + x.school
       if (x.majors && x.majors.length) l += ' [' + x.majors.join('/') + ']'
@@ -314,7 +314,7 @@ Page({
     })
     wx.setClipboardData({
       data: lines.join('\n'),
-      success: () => wx.showToast({ title: '志愿表已复制', icon: 'success' })
+      success: () => wx.showToast({ title: '选校单已复制', icon: 'success' })
     })
   },
 
@@ -369,7 +369,7 @@ Page({
     const plan = plans[idx]
     if (!plan || !plan.schools) return
     wx.showModal({
-      title: '加载志愿方案',
+      title: '加载选校方案',
       content: '将替换当前选校单为「' + plan.name + '」（' + plan.schools.length + '所）',
       success: r => {
         if (r.confirm) {
@@ -442,7 +442,7 @@ Page({
 
     // 批次错位检测
     const earlyElite = batches.find(b => b.key === 'early').schools.filter(s => (s.level || '').match(/985/)).length
-    if (earlyElite > 3) warns.push('提前批985较多→提前批录取后普通批志愿自动作废')
+    if (earlyElite > 3) warns.push('提前批985较多→提前批录取后普通批投档自动作废')
 
     // 选科提示
     const ctx = wx.getStorageSync('jb_report')
@@ -465,7 +465,7 @@ Page({
     if (issues.length) lines.push(...issues.map(i => `⚠️ ${i}`))
 
     wx.showModal({
-      title: `志愿诊断: ${score}`,
+      title: `选校诊断: ${score}`,
       content: lines.join('\n'),
       showCancel: false, confirmText: '知道了'
     })
@@ -483,12 +483,12 @@ Page({
 
   onShareAppMessage() {
     const n = this.data.totalCount
-    const title = n ? ('我用九色鹿整理了 ' + n + ' 所院校的志愿表，冲稳保科学填报') : '九色鹿前程助手 · 智能选校，科学填志愿'
+    const title = n ? ('我用九色鹿整理了 ' + n + ' 所院校的选校单，冲稳保科学填报') : '九色鹿前程助手 · 智能选校，科学填报'
     return { title, path: '/pages/index/index' }
   },
 
   onShareTimeline() {
     const n = this.data.totalCount
-    return { title: n ? ('我的志愿表已选 ' + n + ' 所院校 · 九色鹿前程助手') : '九色鹿前程助手 · 科学填志愿' }
+    return { title: n ? ('我的选校单已选 ' + n + ' 所院校 · 九色鹿前程助手') : '九色鹿前程助手 · 科学填选校' }
   }
 })

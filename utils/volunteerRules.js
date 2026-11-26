@@ -10,19 +10,19 @@ const RULES = {
     mode: 'group', modeName: '院校专业组',
     batchName: '本科批', slots: 45, majorsPerGroup: 12, adjustable: true,
     unit: '院校专业组',
-    desc: '本科批设 45 个「院校专业组」平行志愿，每组可填 12 个专业和 1 个是否服从组内调剂'
+    desc: '本科批设 45 个「院校专业组」平行投档，每组可填 12 个专业和 1 个是否服从组内调剂'
   },
   '河南': {
     mode: 'group', modeName: '院校专业组',
     batchName: '本科批', slots: 48, majorsPerGroup: 6, adjustable: true,
     unit: '院校专业组',
-    desc: '本科批设 48 个「院校专业组」平行志愿，每组可填 6 个专业和 1 个是否服从组内调剂'
+    desc: '本科批设 48 个「院校专业组」平行投档，每组可填 6 个专业和 1 个是否服从组内调剂'
   },
   '山东': {
     mode: 'majorFirst', modeName: '专业(类)+院校',
     batchName: '常规批', slots: 96, majorsPerGroup: 1, adjustable: false,
     unit: '专业(类)+院校',
-    desc: '常规批以「专业(类)+院校」为志愿单位，每次填报最多 96 个志愿，1 个专业即 1 个志愿，无专业调剂'
+    desc: '常规批以「专业(类)+院校」为投档单位，每次填报最多 96 个院校专业组合，1 个专业即 1 个投档单位，无专业调剂'
   }
 }
 

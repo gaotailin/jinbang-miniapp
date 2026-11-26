@@ -46,7 +46,7 @@
       </view>
       <view wx:if="{{item.supplement}}" class="batch__sup">
         <text class="batch__sup-icon">⚠️</text>
-        <text>征集志愿：{{item.supplement}}</text>
+        <text>征集补录：{{item.supplement}}</text>
       </view>
     </view>
   </view>

@@ -20,7 +20,7 @@ function _uni50(code, name, a, b, opt) {
   if (opt.broad) cats.push({ key: 'broad', name: '播音与主持类', formulas: [{ name: '文化' + Math.round(opt.broad[0] * 100) + '%', a: opt.broad[0], b: opt.broad[1] }], ben: null, zhuan: null })
   return {
     code: code, name: name, year: 2025, cultureFull: opt.cultureFull || 750, decimals: 2,
-    voluntary: '平行志愿', verified: !!opt.verified,
+    voluntary: '平行投档', verified: !!opt.verified,
     source: opt.source || (name + '省教育考试院 · 2025（综合分公式据官方/公开汇总，控制线以官方公布为准）'),
     lineNote: (opt.lineNote || (name + '艺术类控制线为动态/校考制，以省考试院当年正式公布为准（本批暂未录固定线）')),
     categories: cats
@@ -30,7 +30,7 @@ function _uni50(code, name, a, b, opt) {
 function _uniArt(code, name, fname, a, b) {
   return {
     code: code, name: name, year: 2025, cultureFull: 750, decimals: 2,
-    voluntary: '平行志愿',
+    voluntary: '平行投档',
     source: name + '省教育考试院 · 2025（综合分公式据官方/公开汇总，控制线以官方公布为准）',
     lineNote: name + '艺术类控制线以省考试院当年公布为准；美术为' + fname + '，其它类别(音乐/舞蹈/书法/播音)公式待逐项核',
     categories: [
@@ -42,7 +42,7 @@ function _uniArt(code, name, fname, a, b) {
 const PROVINCES = [
   {
     code: 'neimenggu', name: '内蒙古', year: 2026, cultureFull: 750, decimals: 0,
-    voluntary: '平行志愿（同分先比专业统考，再比文化）',
+    voluntary: '平行投档（同分先比专业统考，再比文化）',
     source: '内蒙古招生考试信息网 nm.zsks.cn · 2026录取数据（控制线为2025口径，2026以官方为准）',
     lineNote: '本科/专科控制线暂按2025年口径显示，2026年控制线以自治区考试院公布为准',
     categories: [
@@ -60,7 +60,7 @@ const PROVINCES = [
   },
   {
     code: 'shandong', name: '山东', year: 2025, cultureFull: 750, decimals: 2,
-    voluntary: '平行志愿',
+    voluntary: '平行投档',
     source: '山东省教育招生考试院 sdzk.cn · 2025',
     lineNote: '本科文化线 = 普通类一段线×75%（动态，按当年一段线计）',
     categories: [
@@ -74,7 +74,7 @@ const PROVINCES = [
   },
   {
     code: 'henan', name: '河南', year: 2025, cultureFull: 750, decimals: 2,
-    voluntary: '平行志愿',
+    voluntary: '平行投档',
     source: '河南省教育厅 jyt.henan.gov.cn · 2025',
     lineNote: '⚠️ 本科综合分由招生院校在下列4种办法中各自选其一，请按目标院校简章切换公式；美术统考合格线175',
     categories: [
@@ -94,7 +94,7 @@ const PROVINCES = [
     source: '河北省教育考试院 · 2025（官方核实）',
     lineNote: '美术/音乐/书法本科文化线=普通本科线×80%；舞蹈/表演×75%；播音=普通本科线（动态，以当年公布为准）' }),
   {
-    code: 'guangdong', name: '广东', year: 2025, cultureFull: 750, decimals: 2, voluntary: '平行志愿', verified: true,
+    code: 'guangdong', name: '广东', year: 2025, cultureFull: 750, decimals: 2, voluntary: '平行投档', verified: true,
     source: '广东省教育考试院 eea.gd.gov.cn · 2025（官方核实）',
     lineNote: '广东美术/音乐/舞蹈/表演/书法=文化50%+专业50%；播音=文化70%+专业30%；控制线以当年公布为准',
     categories: [
@@ -121,7 +121,7 @@ const PROVINCES = [
   _uni50('chongqing', '重庆', 0.5, 1.25),
   _uni50('guizhou', '贵州', 0.5, 1.25),
   {
-    code: 'yunnan', name: '云南', year: 2025, cultureFull: 750, decimals: 2, voluntary: '平行志愿',
+    code: 'yunnan', name: '云南', year: 2025, cultureFull: 750, decimals: 2, voluntary: '平行投档',
     source: '云南省招生考试院 · 2025（美术多办法，院校自选）',
     lineNote: '⚠️ 云南美术综合分有多种办法(院校自选)，请按目标院校简章切换公式；控制线以官方为准',
     categories: [

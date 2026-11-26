@@ -89,7 +89,7 @@
   <block wx:if="{{view === 'sim'}}">
     <view wx:if="{{!rule}}" class="empty">
       <view class="empty__icon">🗺️</view>
-      <view class="empty__title">{{simProvince}}志愿表模板整理中</view>
+      <view class="empty__title">{{simProvince}}选校单模板整理中</view>
       <view class="empty__sub">已支持：{{simSupported}}，其余省份陆续上线</view>
       <button class="btn btn--gold btn--lg" bindtap="chooseSimProvince">用已支持省份体验</button>
     </view>
@@ -97,7 +97,7 @@
     <block wx:else>
       <!-- 规则说明卡 -->
       <view class="sim-rule">
-        <view class="sim-rule__t">📋 {{simProvince}} · {{rule.batchName}}志愿规则</view>
+        <view class="sim-rule__t">📋 {{simProvince}} · {{rule.batchName}}投档规则</view>
         <view class="sim-rule__d">{{rule.desc}}</view>
         <view class="sim-rule__p">
           <view class="sim-rule__bar"><view class="sim-rule__fill" style="width:{{simList.length * 100 / rule.slots}}%"></view></view>
@@ -115,7 +115,7 @@
 
       <view wx:if="{{!simList.length}}" class="empty">
         <view class="empty__icon">📄</view>
-        <view class="empty__title">志愿表还是空的</view>
+        <view class="empty__title">选校单还是空的</view>
         <view class="empty__sub">用「按冲稳保生成」一键填出科学梯度，再手动微调顺序</view>
       </view>
 
@@ -143,7 +143,7 @@
       </view>
 
       <view wx:if="{{simList.length}}" class="sim-foot">
-        模拟填报仅供演练参考，正式填报以省考试院志愿系统为准
+        模拟填报仅供演练参考，正式填报以省考试院官方系统为准
       </view>
     </block>
   </block>

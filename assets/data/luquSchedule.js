@@ -88,7 +88,7 @@ module.exports = {
       "score_release": "6月26日左右(含一分一段表)",
       "batches": [
         {
-          "name": "第一段平行志愿",
+          "name": "第一段平行投档",
           "apply": "6月29-30日填报"
         },
         {
@@ -156,7 +156,7 @@ module.exports = {
       "score_release": "6月25日",
       "batches": [
         {
-          "name": "常规批本科第1次志愿",
+          "name": "常规批本科第1次投档",
           "apply": "7月5-7日填报"
         },
         {
@@ -199,7 +199,7 @@ module.exports = {
       "province": "湖北",
       "complete": "full",
       "score_release": "6月25日",
-      "note": "征集志愿共6次，7月16日-8月20日分批，每次仅开放一天(8:00-17:00)",
+      "note": "征集补录共6次，7月16日-8月20日分批，每次仅开放一天(8:00-17:00)",
       "batches": [
         {
           "name": "第1次集中填报(本科提前批等)",
@@ -244,7 +244,7 @@ module.exports = {
       "note": "为拟完成录取时间",
       "batches": [
         {
-          "name": "志愿填报",
+          "name": "升学填报",
           "apply": "6月28日00:00-7月2日18:00"
         },
         {

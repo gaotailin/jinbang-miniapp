@@ -81,9 +81,9 @@ Page({
   }
 ,
   onShareAppMessage() {
-    return { title: '我生成了一份升学志愿报告，你也来测测', path: '/pages/report/report' }
+    return { title: '我生成了一份升学选校报告，你也来测测', path: '/pages/report/report' }
   },
   onShareTimeline() {
-    return { title: '试试这个AI志愿助手，高考志愿一站搞定' }
+    return { title: '试试这个AI选校助手，高考升学一站搞定' }
   },
 })
