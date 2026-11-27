@@ -66,7 +66,7 @@ module.exports = {
           "name": "本科普通批",
           "apply": "7月1-2日",
           "admit": "7月19-29日",
-          "supplement": "征求志愿7月24日、7月27日"
+          "supplement": "7月24日、7月27日征集"
         },
         {
           "name": "专科艺体/提前批",
@@ -77,7 +77,7 @@ module.exports = {
           "name": "专科普通批",
           "apply": "7月30日",
           "admit": "8月1-5日",
-          "supplement": "征求志愿8月4日"
+          "supplement": "8月4日征集"
         }
       ]
     },
