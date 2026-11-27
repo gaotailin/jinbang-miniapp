@@ -75,6 +75,11 @@ Page({
   onShow() {
     const r = vip.remaining()
     this.setData({ remaining: r === Infinity ? '不限次' : r })
+    // 进选校页即同步服务端权威会员状态，回来后校正；query 付费墙据此判断（TTL 内不重复请求）
+    vip.refreshVipFromServer().then(() => {
+      const r2 = vip.remaining()
+      this.setData({ remaining: r2 === Infinity ? '不限次' : r2 })
+    })
   },
 
   switchMode(e) { this.setData({ mode: e.currentTarget.dataset.m, done: false, result: { chong:[], wen:[], bao:[] } }) },
@@ -109,6 +114,11 @@ Page({
   },
 
   query() {
+    // 付费墙强校验：先同步服务端权威会员状态（TTL 内走缓存、几乎零成本），再执行查询，杜绝本地伪造绕过
+    vip.refreshVipFromServer().then(() => this._runQuery())
+  },
+
+  _runQuery() {
     const { mode, province, score, rank, subjects, subjectIndex } = this.data
     const subject = subjects[subjectIndex]
 

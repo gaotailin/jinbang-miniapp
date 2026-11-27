@@ -56,6 +56,14 @@ Page({
       remaining: vip.isVip() ? '∞' : String(vip.remaining())
     })
 
+    // 异步拉服务端权威会员状态，回来后校正展示（防本地缓存与服务端不一致/退款未同步）
+    vip.refreshVipFromServer().then(() => {
+      this.setData({
+        isVip: vip.isVip(),
+        remaining: vip.isVip() ? '∞' : String(vip.remaining())
+      })
+    })
+
     if (!this.data.rankBoards.length) this.loadRankBoards()
   },
 

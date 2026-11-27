@@ -10,11 +10,16 @@ Page({
   data: { plans: PLANS, picked: 'season', isVip: false, expireText: '', isIOS: false },
 
   onShow() {
+    this._renderVip()
+    // 进页面同步服务端权威会员状态（覆盖退款回收、换设备等场景）
+    vip.refreshVipFromServer().then(() => this._renderVip())
+  },
+
+  _renderVip() {
     const isV = vip.isVip()
     let expireText = ''
     if (isV) {
-      const v = wx.getStorageSync('jb_vip') || {}
-      const d = new Date(v.expire)
+      const d = new Date(vip.expireMs())
       expireText = d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate()
     }
     this.setData({ isVip: isV, expireText, isIOS: app.globalData.isIOS })
@@ -74,11 +79,33 @@ Page({
     })
   },
 
-  // 支付成功后：本地先开通（即时反馈）；真实会员以服务端发货回调写入 vip_members 为准
+  // 支付成功后：轮询服务端确认真实到账（不再本地伪造付费会员；微信发货回调有几秒延迟）
   afterPaid(plan, outTradeNo) {
-    vip.grantTrial(plan.days)
-    this.onShow()
-    wx.showToast({ title: '开通成功', icon: 'success' })
+    wx.showLoading({ title: '开通确认中', mask: true })
+    let tries = 0
+    const MAX_TRIES = 8   // 8 次 × 1.5s ≈ 12s，覆盖发货回调延迟（真机实测约 9s）
+    const poll = () => {
+      tries++
+      vip.refreshVipFromServer(true).then((srv) => {
+        if (srv && srv.vip) {
+          wx.hideLoading()
+          this._renderVip()
+          wx.showToast({ title: '开通成功', icon: 'success' })
+        } else if (tries >= MAX_TRIES) {
+          wx.hideLoading()
+          // 超时不等于失败：回调可能稍慢，权益会在下次进入页面时自动校正
+          wx.showModal({
+            title: '支付已完成',
+            content: '会员权益正在开通中，通常几秒内到账。若稍后仍未显示，重新进入本页即可刷新。',
+            showCancel: false, confirmText: '知道了'
+          })
+          this._renderVip()
+        } else {
+          setTimeout(poll, 1500)
+        }
+      })
+    }
+    poll()
   },
 
   trial() {

@@ -10,14 +10,9 @@ Page({
   },
 
   onShow() {
-    const isV = vip.isVip()
-    let expireText = ''
-    if (isV) {
-      const v = wx.getStorageSync('jb_vip') || {}
-      const d = new Date(v.expire)
-      expireText = d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate()
-    }
-    this.setData({ isVip: isV, expireText })
+    this._renderVip()
+    // 异步以服务端权威状态校正（退款/换设备/清缓存场景）
+    vip.refreshVipFromServer().then(() => this._renderVip())
     const fmt = ts => {
       if (!ts) return ''
       const d = new Date(ts)
@@ -29,6 +24,16 @@ Page({
       history: (wx.getStorageSync('jb_history') || []).map(h => ({ ...h, time: fmt(h.time) })),
       hasReport: !!wx.getStorageSync('jb_report')
     })
+  },
+
+  _renderVip() {
+    const isV = vip.isVip()
+    let expireText = ''
+    if (isV) {
+      const d = new Date(vip.expireMs())
+      expireText = d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate()
+    }
+    this.setData({ isVip: isV, expireText })
   },
 
   goTest() {
